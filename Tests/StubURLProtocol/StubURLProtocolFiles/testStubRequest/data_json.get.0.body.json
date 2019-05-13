@@ -1,0 +1,9 @@
+{
+    "args": {},
+    "headers": {
+        "Accept": "*/*",
+        "Host": "httpbin.org",
+        "User-Agent": "xctest/14490.71 CFNetwork/978.0.7 Darwin/18.6.0"
+    },
+    "url": "https://httpbin.org/get"
+}

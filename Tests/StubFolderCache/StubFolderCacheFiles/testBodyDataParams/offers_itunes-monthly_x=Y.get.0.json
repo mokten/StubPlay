@@ -1,0 +1,32 @@
+{
+  "bodyFileName" : "offers_itunes-monthly_x=Y.get.0.body.json",
+  "response" : {
+    "headerFields" : {
+      "Vary" : "Accept-Encoding",
+      "x-xss-protection" : "1 ; mode=block",
+      "Content-Type" : "application\/json;charset=utf-8",
+      "x-b3-traceid" : "9517c000519a91aa",
+      "x-b3-spanid" : "9517c000519a91aa",
+      "Access-Control-Allow-Origin" : "*",
+      "Cache-Control" : "max-age=314",
+      "Set-Cookie" : "bm_sv=381382A72B2763EA5DCA727A6A647E02~RmSzk8rm38EuSj36tz\/VzqmojOaWe2ZYNorINJF9ZtcuOlYIJF3dLmMVbmzZB8AD\/BBtMryCMk1D2kA\/\/pppj34YfViMQcpy06+mqfCzeUbMTIzy+GdKQCBKMDzkAHte78Cu\/zGjYSroIoFCjB0u6QV9bA7wLSMwWs7XGxqo0Fg=; Domain=.kayosports.com.au; Path=\/; Max-Age=7198; HttpOnly",
+      "referrer-policy" : "no-referrer",
+      "x-content-type-options" : "nosniff",
+      "Date" : "Sun, 12 May 2019 00:08:27 GMT",
+      "x-frame-options" : "DENY",
+      "Content-Length" : "3010"
+    },
+    "statusCode" : 200,
+    "mimeType" : "application\/json"
+  },
+  "request" : {
+    "url" : "https:\/\/a.com\/offers\/itunes-monthly?x=Y",
+    "method" : "get",
+    "headers" : {
+      "Accept-Language" : "en;q=1.0",
+      "Accept-Encoding" : "gzip;q=1.0, compress;q=0.5",
+      "User-Agent" : "Kayo\/1.1.4 (au.com.streamotion.kayo; build:135; iOS 12.2.0) Alamofire\/4.7.3"
+    }
+  },
+  "index" : 0
+}

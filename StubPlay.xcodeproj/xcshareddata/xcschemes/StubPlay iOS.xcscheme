@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1020"
+   LastUpgradeVersion = "1010"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3F5FAF782268878F008BF163"
-               BuildableName = "StubPlay.framework"
-               BlueprintName = "StubPlay"
+               BlueprintIdentifier = "3F843C1E22425B6F0007BBA4"
+               BuildableName = "StubPlay_iOS.framework"
+               BlueprintName = "StubPlay iOS"
                ReferencedContainer = "container:StubPlay.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -26,13 +26,14 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      enableThreadSanitizer = "YES"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3F5FAF812268878F008BF163"
+               BlueprintIdentifier = "3F843C2722425B6F0007BBA4"
                BuildableName = "StubPlayTests.xctest"
                BlueprintName = "StubPlayTests"
                ReferencedContainer = "container:StubPlay.xcodeproj">
@@ -42,31 +43,38 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3F5FAF782268878F008BF163"
-            BuildableName = "StubPlay.framework"
-            BlueprintName = "StubPlay"
+            BlueprintIdentifier = "3F843C1E22425B6F0007BBA4"
+            BuildableName = "StubPlay_iOS.framework"
+            BlueprintName = "StubPlay iOS"
             ReferencedContainer = "container:StubPlay.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
+         <AdditionalOption
+            key = "NSZombieEnabled"
+            value = "YES"
+            isEnabled = "YES">
+         </AdditionalOption>
       </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      enableThreadSanitizer = "YES"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
+      stopOnEveryThreadSanitizerIssue = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3F5FAF782268878F008BF163"
-            BuildableName = "StubPlay.framework"
-            BlueprintName = "StubPlay"
+            BlueprintIdentifier = "3F843C1E22425B6F0007BBA4"
+            BuildableName = "StubPlay_iOS.framework"
+            BlueprintName = "StubPlay iOS"
             ReferencedContainer = "container:StubPlay.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -82,9 +90,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3F5FAF782268878F008BF163"
-            BuildableName = "StubPlay.framework"
-            BlueprintName = "StubPlay"
+            BlueprintIdentifier = "3F843C1E22425B6F0007BBA4"
+            BuildableName = "StubPlay_iOS.framework"
+            BlueprintName = "StubPlay iOS"
             ReferencedContainer = "container:StubPlay.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

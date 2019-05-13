@@ -1,0 +1,15 @@
+{
+  "bodyFileName" : "image.get.0.body",
+  "response" : {
+    "headerFields" : {
+    },
+    "statusCode" : 200
+  },
+  "request" : {
+    "url" : "https:\/\/a.com\/image\/block.png",
+    "method" : "get",
+    "headers" : {
+    }
+  },
+  "index" : 0
+}

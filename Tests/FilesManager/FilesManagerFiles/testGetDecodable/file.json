@@ -1,0 +1,20 @@
+{
+  "rewriteRule": {
+    "path": "hi",
+    "method": "post",
+    "host": "httpbin.org"
+  },
+  "response": {
+    "bodyUrl": "https:\/\/httpbin.org\/get",
+    "statusCode": 200,
+    "mimeType" : "application/json",
+    "headerFields": {
+      "hi": "ho"
+    }
+  },
+  "request": {
+    "url": "https:\/\/httpbin.org\/get",
+    "method": "get"
+  },
+  "index": 0
+}

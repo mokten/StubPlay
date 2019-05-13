@@ -1,0 +1,17 @@
+{
+  "bodyFileName" : "get.get.0.body.json",
+  "response" : {
+    "headerFields" : {
+    },
+    "statusCode" : 200,
+    "mimeType" : "application\/json"
+  },
+  "request" : {
+    "url" : "https:\/\/httpbin.org\/get",
+    "method" : "get",
+    "headers" : {
+
+    }
+  },
+  "index" : 0
+}

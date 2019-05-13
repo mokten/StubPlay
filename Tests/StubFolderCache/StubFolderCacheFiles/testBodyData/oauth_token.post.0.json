@@ -1,0 +1,34 @@
+{
+  "bodyFileName" : "oauth_token.post.0.body.json",
+  "response" : {
+    "headerFields" : {
+      "Server" : "nginx",
+      "x-ratelimit-reset" : "1557557919",
+      "Content-Encoding" : "gzip",
+      "Vary" : "Accept-Encoding",
+      "Content-Type" : "application\/json",
+      "Expires" : "Sat, 11 May 2019 06:44:15 GMT",
+      "x-auth0-requestid" : "1b28c3545490595f64e0",
+      "Strict-Transport-Security" : "max-age=15768000",
+      "Cache-Control" : "max-age=0, no-cache, no-store",
+      "x-robots-tag" : "noindex, nofollow, nosnippet, noarchive",
+      "x-ratelimit-remaining" : "99",
+      "x-ratelimit-limit" : "100",
+      "Date" : "Sat, 11 May 2019 06:44:15 GMT",
+      "Pragma" : "no-cache",
+      "Content-Length" : "1896"
+    },
+    "statusCode" : 200,
+    "mimeType" : "application\/json"
+  },
+  "request" : {
+    "url" : "https:\/\/a.com.au\/au",
+    "method" : "post",
+    "headers" : {
+      "Content-Type" : "application\/json",
+      "Content-Length" : "276",
+      "Auth0-Client" : "eyJzd2lmd"
+    }
+  },
+  "index" : 0
+}
