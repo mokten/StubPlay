@@ -42,7 +42,9 @@ $ pod install
 
 We recommend enabling stubs as soon as possible - in you main file or App delegate.
 
-By default: requests/response are saved in the "com.mokten.stubplay" directory
+By default: requests/response are saved in the caches/"com.mokten.stubplay" directory.
+Everytime the app is run this directory will be cleared out.
+
 Add a reference folder to your app. ie. "Stub/default", this is where your stubs will be read from
 
 ```java

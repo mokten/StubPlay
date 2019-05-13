@@ -53,8 +53,10 @@ extension FilesManager {
             let newURL = url.appendingPathComponent(Constants.baseDir)
             try? FileManager.default.createDirectory(at: newURL, withIntermediateDirectories: false, attributes: [:])
             saveURL = newURL
+            
+            print("StubPlay: saved requests/responses directory= \n\t \(saveURL.path)")
         } else {
-            fatalError("Could not create URL at caches directory: \(Constants.baseDir)")
+            fatalError("Could not create URL at directory: \(Constants.baseDir)")
         }
     }
     
