@@ -47,7 +47,7 @@ public class StubFileSaver: StubSaver {
                 msg.bodyFileName = bodyFileName
                 msg.bodyData = nil
                 
-                _ = try self.filesManager.save(msg, to: filename)
+                self.filesManager.save(msg, to: filename)
                 _ = try self.filesManager.save(data: bodyData, to: bodyFileName)
             } catch {
                 //TODO:
