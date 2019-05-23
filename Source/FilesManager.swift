@@ -54,7 +54,7 @@ extension FilesManager {
             try? FileManager.default.createDirectory(at: newURL, withIntermediateDirectories: false, attributes: [:])
             saveURL = newURL
             
-            print("StubPlay: saved requests/responses directory= \n\t \(saveURL.path)")
+            print("StubPlay: saving requests+responses to:\n\t \(saveURL.path)")
         } else {
             fatalError("Could not create URL at directory: \(Constants.baseDir)")
         }
@@ -120,7 +120,7 @@ public extension FilesManager {
             _ = try self.save(data: data, to: fileName)
         } catch {
             // TODO:
-            print(error)
+            logger(error)
         }
     }
     
@@ -132,7 +132,7 @@ public extension FilesManager {
             let decoder = JSONDecoder()
             return try decoder.decode(type, from: fileData)
         } catch {
-            print("Error! \(url.absoluteString): \(String(data:fileData, encoding: .utf8) ?? "")")
+            logger("Error! \(url.absoluteString): \(String(data:fileData, encoding: .utf8) ?? "")")
             throw error
         }
     }

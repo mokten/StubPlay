@@ -55,7 +55,7 @@ public class StubFileSaver: StubSaver {
                 _ = try self.filesManager.save(data: bodyData, to: bodyFileName)
             } catch {
                 //TODO:
-                print(error)
+                logger(error)
             }
         }
     }
