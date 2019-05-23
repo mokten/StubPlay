@@ -16,6 +16,8 @@
 		3F1F0E722275CC04005FB5DD /* StubFolderCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1F0E712275CC04005FB5DD /* StubFolderCacheTests.swift */; };
 		3F3180772264979E00863A32 /* RewriteRuleCreateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3180762264979E00863A32 /* RewriteRuleCreateTests.swift */; };
 		3F31807A2264A21A00863A32 /* StubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3180792264A21A00863A32 /* StubTests.swift */; };
+		3F44FC842296AD4E0086A7C6 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44FC832296AD4E0086A7C6 /* Logger.swift */; };
+		3F44FC852296AD4E0086A7C6 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44FC832296AD4E0086A7C6 /* Logger.swift */; };
 		3F576869224CC2B100BBC26C /* FileNameHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F576868224CC2B100BBC26C /* FileNameHelperTests.swift */; };
 		3F75A8F2227B24F0003AA140 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F75A8F1227B24F0003AA140 /* Counter.swift */; };
 		3F75A8F3227B24F0003AA140 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F75A8F1227B24F0003AA140 /* Counter.swift */; };
@@ -88,6 +90,7 @@
 		3F1F0E712275CC04005FB5DD /* StubFolderCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubFolderCacheTests.swift; sourceTree = "<group>"; };
 		3F3180762264979E00863A32 /* RewriteRuleCreateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewriteRuleCreateTests.swift; sourceTree = "<group>"; };
 		3F3180792264A21A00863A32 /* StubTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubTests.swift; sourceTree = "<group>"; };
+		3F44FC832296AD4E0086A7C6 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		3F576868224CC2B100BBC26C /* FileNameHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNameHelperTests.swift; sourceTree = "<group>"; };
 		3F75A8F1227B24F0003AA140 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		3F843C1F22425B6F0007BBA4 /* StubPlay_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StubPlay_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +161,7 @@
 				3F8C98652261F2F800717E14 /* FilenameFormatter.swift */,
 				3F8C98682261F39F00717E14 /* FilesManager.swift */,
 				3F75A8F1227B24F0003AA140 /* Counter.swift */,
+				3F44FC832296AD4E0086A7C6 /* Logger.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -487,6 +491,7 @@
 				3F8C98662261F2F800717E14 /* FilenameFormatter.swift in Sources */,
 				3F8C98692261F39F00717E14 /* FilesManager.swift in Sources */,
 				3FDDD88D227C6A7100F1CB37 /* URLSessionConfigurationExtension.swift in Sources */,
+				3F44FC842296AD4E0086A7C6 /* Logger.swift in Sources */,
 				3F1F0E6F2275B407005FB5DD /* StubFolderCache.swift in Sources */,
 				3FBC1CDB22426A2600B8F41F /* StubManager.swift in Sources */,
 				3FAE4E5222425F40005EF99D /* Stub.swift in Sources */,
@@ -523,6 +528,7 @@
 				3F8C98672261F2F800717E14 /* FilenameFormatter.swift in Sources */,
 				3F8C986A2261F39F00717E14 /* FilesManager.swift in Sources */,
 				3F943A0B228992CF00655968 /* URLSessionConfigurationExtension.swift in Sources */,
+				3F44FC852296AD4E0086A7C6 /* Logger.swift in Sources */,
 				3F1F0E702275B407005FB5DD /* StubFolderCache.swift in Sources */,
 				3FBC1CDC22426A2600B8F41F /* StubManager.swift in Sources */,
 				3FAE4E5322425F40005EF99D /* Stub.swift in Sources */,
