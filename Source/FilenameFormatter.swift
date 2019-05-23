@@ -25,20 +25,19 @@
 
 import Foundation
 
-public protocol FileNameHelper {
-    func fileName(for stub: Stub) -> String
-    func bodyFilename(for stub: Stub) -> String
+private enum Constants {
+    static let maxFileNameQueryLength = 800
 }
 
-public struct DefaultFileNameHelper: FileNameHelper {
-    
-    private enum Constants {
-        static let maxFileNameQueryLength = 800
-    }
+public protocol FilenameFormatter {
+    func filename(for stub: Stub) -> String
+}
+
+public struct DefaultFilenameFormatter: FilenameFormatter {
     
     public init() { }
     
-    public func fileName(for stub: Stub) -> String {
+    public func filename(for stub: Stub) -> String {
         let request = stub.request
         
         var name: String
@@ -55,8 +54,14 @@ public struct DefaultFileNameHelper: FileNameHelper {
         
         return "\(name.safeFileName).\(request.method.rawValue).\(stub.index).json"
     }
+}
+
+
+public struct BodyFilenameFormatter: FilenameFormatter {
     
-    public func bodyFilename(for stub: Stub) -> String {
+    public init() { }
+    
+    public func filename(for stub: Stub) -> String {
         let request = stub.request
         
         var name: String

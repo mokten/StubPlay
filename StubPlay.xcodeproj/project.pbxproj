@@ -22,8 +22,8 @@
 		3F843C2922425B6F0007BBA4 /* StubPlay_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F843C1F22425B6F0007BBA4 /* StubPlay_iOS.framework */; };
 		3F843C3022425B6F0007BBA4 /* StubPlay.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F843C2222425B6F0007BBA4 /* StubPlay.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3F8C986422618EC600717E14 /* RewriteRuleMatchesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8C986322618EC600717E14 /* RewriteRuleMatchesTests.swift */; };
-		3F8C98662261F2F800717E14 /* FileNameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8C98652261F2F800717E14 /* FileNameHelper.swift */; };
-		3F8C98672261F2F800717E14 /* FileNameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8C98652261F2F800717E14 /* FileNameHelper.swift */; };
+		3F8C98662261F2F800717E14 /* FilenameFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8C98652261F2F800717E14 /* FilenameFormatter.swift */; };
+		3F8C98672261F2F800717E14 /* FilenameFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8C98652261F2F800717E14 /* FilenameFormatter.swift */; };
 		3F8C98692261F39F00717E14 /* FilesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8C98682261F39F00717E14 /* FilesManager.swift */; };
 		3F8C986A2261F39F00717E14 /* FilesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8C98682261F39F00717E14 /* FilesManager.swift */; };
 		3F8C986C2261F55E00717E14 /* FilesManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8C986B2261F55E00717E14 /* FilesManagerTests.swift */; };
@@ -96,7 +96,7 @@
 		3F843C2822425B6F0007BBA4 /* StubPlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StubPlayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F843C2F22425B6F0007BBA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F8C986322618EC600717E14 /* RewriteRuleMatchesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewriteRuleMatchesTests.swift; sourceTree = "<group>"; };
-		3F8C98652261F2F800717E14 /* FileNameHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNameHelper.swift; sourceTree = "<group>"; };
+		3F8C98652261F2F800717E14 /* FilenameFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilenameFormatter.swift; sourceTree = "<group>"; };
 		3F8C98682261F39F00717E14 /* FilesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesManager.swift; sourceTree = "<group>"; };
 		3F8C986B2261F55E00717E14 /* FilesManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesManagerTests.swift; sourceTree = "<group>"; };
 		3FAE4E3722425D3D005EF99D /* StubPlay_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StubPlay_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,7 +155,7 @@
 		3F101225227DAD370018D3E0 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				3F8C98652261F2F800717E14 /* FileNameHelper.swift */,
+				3F8C98652261F2F800717E14 /* FilenameFormatter.swift */,
 				3F8C98682261F39F00717E14 /* FilesManager.swift */,
 				3F75A8F1227B24F0003AA140 /* Counter.swift */,
 			);
@@ -484,7 +484,7 @@
 				3F0E5419227D47CC008E0F6A /* URLExtension.swift in Sources */,
 				3F75A8F2227B24F0003AA140 /* Counter.swift in Sources */,
 				3FF207A4227C4C58000202B0 /* StubURLProtocol.swift in Sources */,
-				3F8C98662261F2F800717E14 /* FileNameHelper.swift in Sources */,
+				3F8C98662261F2F800717E14 /* FilenameFormatter.swift in Sources */,
 				3F8C98692261F39F00717E14 /* FilesManager.swift in Sources */,
 				3FDDD88D227C6A7100F1CB37 /* URLSessionConfigurationExtension.swift in Sources */,
 				3F1F0E6F2275B407005FB5DD /* StubFolderCache.swift in Sources */,
@@ -520,7 +520,7 @@
 				3F75A8F3227B24F0003AA140 /* Counter.swift in Sources */,
 				3FF207A5227C4C59000202B0 /* StubURLProtocol.swift in Sources */,
 				3FFC2599228058A600BC47E8 /* StubPlay.swift in Sources */,
-				3F8C98672261F2F800717E14 /* FileNameHelper.swift in Sources */,
+				3F8C98672261F2F800717E14 /* FilenameFormatter.swift in Sources */,
 				3F8C986A2261F39F00717E14 /* FilesManager.swift in Sources */,
 				3F943A0B228992CF00655968 /* URLSessionConfigurationExtension.swift in Sources */,
 				3F1F0E702275B407005FB5DD /* StubFolderCache.swift in Sources */,

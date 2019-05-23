@@ -74,4 +74,9 @@ public class StubManager {
     func add(_ cache: StubCache) {
         stubCaches.append(cache)
     }
+    
+    func reset() {
+        stubCaches.removeAll()
+        stubSaver = nil
+    }
 }

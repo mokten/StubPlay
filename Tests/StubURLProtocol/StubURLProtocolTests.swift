@@ -42,9 +42,8 @@ class StubURLProtocolTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let filenameHelper = DefaultFileNameHelper()
         let filesManager = FilesManager(bundle: Bundle(for: type(of: self)))
-        let stubSaver = StubFileSaver(filesManager: filesManager, filenameHelper: filenameHelper)
+        let stubSaver = StubFileSaver(filesManager: filesManager)
         
         guard let stubCache = StubFolderCache(baseFolder: "StubURLProtocolFiles/testStubRequest", filesManager: filesManager) else {
             return XCTAssertTrue(false)

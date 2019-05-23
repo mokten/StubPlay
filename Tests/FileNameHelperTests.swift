@@ -32,59 +32,59 @@ import XCTest
 #endif
 
 class FileNameHelperTests: XCTestCase {
-    private let filenameHelper = DefaultFileNameHelper()
+    private let filenameHelper = DefaultFilenameFormatter()
     
     func testFileName_path() {
         let request = Request(method: .get, url: URL(string: "https://localhost"), headers:nil, body: nil)
         let msg = Stub(rewriteRule: nil, index: 0, request: request, response: nil)
-        XCTAssertEqual(filenameHelper.fileName(for: msg), "_.get.0.json")
+        XCTAssertEqual(filenameHelper.filename(for: msg), "_.get.0.json")
     }
     
     func testFileName_path_() {
         let request = Request(method: .get, url: URL(string: "https://localhost/?"), headers:nil, body: nil)
         let msg = Stub(rewriteRule: nil, index: 0, request: request, response: nil)
-        XCTAssertEqual(filenameHelper.fileName(for: msg), "_.get.0.json")
+        XCTAssertEqual(filenameHelper.filename(for: msg), "_.get.0.json")
     }
     
     func testFileName_path_a() {
         let request = Request(method: .get, url: URL(string: "https://localhost/?a"), headers:nil, body: nil)
         let msg = Stub(rewriteRule: nil, index: 0, request: request, response: nil)
-        XCTAssertEqual(filenameHelper.fileName(for: msg), "_a.get.0.json")
+        XCTAssertEqual(filenameHelper.filename(for: msg), "_a.get.0.json")
     }
     
     func testFileName_path_long() {
         let request = Request(method: .get, url: URL(string: "https://localhost/a/b/c"), headers:nil, body: nil)
         let msg = Stub(rewriteRule: nil, index: 0, request: request, response: nil)
-        XCTAssertEqual(filenameHelper.fileName(for: msg), "a_b_c.get.0.json")
+        XCTAssertEqual(filenameHelper.filename(for: msg), "a_b_c.get.0.json")
     }
     func testFileName_path_long2() {
         let request = Request(method: .get, url: URL(string: "https://localhost/a/b/c/?d=e"), headers:nil, body: nil)
         let msg = Stub(rewriteRule: nil, index: 0, request: request, response: nil)
-        XCTAssertEqual(filenameHelper.fileName(for: msg), "a_b_c_d=e.get.0.json")
+        XCTAssertEqual(filenameHelper.filename(for: msg), "a_b_c_d=e.get.0.json")
     }
     
     func testFileName_path_query() {
         let request = Request(method: .get, url: URL(string: "https://localhost?a=b"), headers: nil, body: nil)
         let msg = Stub(rewriteRule: nil, index: 0, request: request, response: nil)
-        XCTAssertEqual(filenameHelper.fileName(for: msg), "_a=b.get.0.json")
+        XCTAssertEqual(filenameHelper.filename(for: msg), "_a=b.get.0.json")
     }
     
     func testFileName_path_ext() {
         let request = Request(method: .get, url: URL(string: "http://a.b/data.json"), headers:nil, body: nil)
         let msg = Stub(rewriteRule: nil, index: 0, request: request, response: nil)
-        XCTAssertEqual(filenameHelper.fileName(for: msg), "data_json.get.0.json")
+        XCTAssertEqual(filenameHelper.filename(for: msg), "data_json.get.0.json")
     }
     
     func testFileName_path_noresponse() {
         let request = Request(method: .get, url: URL(string: "https://a.b/noreponse"), headers:nil, body: nil)
         let msg = Stub(rewriteRule: nil, index: 0, request: request, response: nil)
-        XCTAssertEqual(filenameHelper.fileName(for: msg), "noreponse.get.0.json")
+        XCTAssertEqual(filenameHelper.filename(for: msg), "noreponse.get.0.json")
     }
     
     func testFileName_path_query_unsafe() {
         let request = Request(method: .get, url: URL(string: "https://localhost?a=[/* <>?%|.:"), headers: nil, body: nil)
         let msg = Stub(rewriteRule: nil, index: 0, request: request, response: nil)
-        XCTAssertEqual(filenameHelper.fileName(for: msg), "_.get.0.json")
+        XCTAssertEqual(filenameHelper.filename(for: msg), "_.get.0.json")
     }
     
 }

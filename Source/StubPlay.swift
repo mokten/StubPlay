@@ -36,6 +36,7 @@ public class StubPlay {
         isEnabled = enable
         
         if isEnabled {
+            URLCache.shared.removeAllCachedResponses()
             URLProtocol.registerClass(StubURLProtocol.self)
         } else {
             URLProtocol.unregisterClass(StubURLProtocol.self)
@@ -51,15 +52,15 @@ public enum StubPlayError: LocalizedError {
 
 public extension StubPlay {
     
-    func enableStub(for folders: [Folder], clearSaveDir: Bool = true, bundle: Bundle = Bundle.main) throws {
-        URLCache.shared.removeAllCachedResponses()
+    // Convenience helper
+    func enableStub(for folders: [Folder], saveResponses: Bool = true, clearSaveDir: Bool = true, bundle: Bundle = Bundle.main) throws {
         enableStub()
         
-        let filenameHelper = DefaultFileNameHelper()
+        StubManager.shared.reset()
         let filesManager = FilesManager(bundle: bundle)
-        let saver = StubFileSaver(filesManager: filesManager, filenameHelper: filenameHelper)
-        try saver.clear()
-        StubManager.shared.stubSaver = saver
+        let saver = StubFileSaver(filesManager: filesManager)
+        if clearSaveDir { try saver.clear() }
+        StubManager.shared.stubSaver = saveResponses ? saver : nil
         
         try folders.forEach { folder in
             guard let stubCache = StubFolderCache(baseFolder: folder, filesManager: filesManager) else {
@@ -74,6 +75,10 @@ public extension StubPlay {
         }
     }
     
+    func disableStub() {
+        enableStub(false)
+        StubManager.shared.reset()
+    }
 }
 
 private extension StubPlay {

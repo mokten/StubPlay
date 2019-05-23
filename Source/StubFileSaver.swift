@@ -28,13 +28,17 @@ import Foundation
 public class StubFileSaver: StubSaver {
     
     private let filesManager: FilesManager
-    private let filenameHelper: FileNameHelper
+    private let filenameFormatter: FilenameFormatter
+    private let bodyFilenameFormatter: FilenameFormatter
     private let counter = Counter<Request>()
     private let queue = DispatchQueue(label: "com.mokten.stubplay.stubfilesaver", qos: .background)
     
-    public init(filesManager: FilesManager, filenameHelper: FileNameHelper) {
+    public init(filesManager: FilesManager,
+                filenameFormatter: FilenameFormatter = DefaultFilenameFormatter(),
+                bodyFilenameFormatter: FilenameFormatter = BodyFilenameFormatter()) {
         self.filesManager = filesManager
-        self.filenameHelper = filenameHelper
+        self.filenameFormatter = filenameFormatter
+        self.bodyFilenameFormatter = bodyFilenameFormatter
     }
     
     public func save(_ stub: Stub, bodyData: Data?) {
@@ -42,8 +46,8 @@ public class StubFileSaver: StubSaver {
             do {
                 var msg = stub
                 msg.index = self.counter.count(for: msg.request)
-                let filename = self.filenameHelper.fileName(for: msg)
-                let bodyFileName = self.filenameHelper.bodyFilename(for: msg)
+                let filename = self.filenameFormatter.filename(for: msg)
+                let bodyFileName = self.bodyFilenameFormatter.filename(for: msg)
                 msg.bodyFileName = bodyFileName
                 msg.bodyData = nil
                 
