@@ -79,34 +79,12 @@ extension RewriteRule {
             guard request.method == method else { return false }
         }
         
-        
         if doesNotMatch(key: host, matcher: requestUrl.host) { return false }
         if doesNotMatch(key: path, matcher: requestUrl.path) { return false }
         
-        
-//        if let host = host {
-//            if host.contains("*") {
-//                if let requestHost = requestUrl.host, requestHost.range(of: host, options: .regularExpression) == nil {  return false }
-//            } else {
-//                if let requestHost = requestUrl.host, requestHost != host { return false }
-//            }
-//        }
-        
-//        if let path = path {
-//                if requestUrl.path.range(of: path, options: .regularExpression) == nil { return false }
-//
-//        }
-        
         if let params = params {
             if doesNotMatch(key: params, matcher: requestUrl.query) { return false }
-            if doesNotMatch(key: params, matcher: request.body) { return false }
-            
-//            if let requestQuery = requestUrl.query {
-//                if requestQuery.range(of: params, options: .regularExpression) == nil { return false }
-//            }
-//            if let requestBody = request.body {
-//                if requestBody.range(of: params, options: .regularExpression) == nil { return false }
-//            }
+            if doesNotMatch(key: params, matcher: request.body) { return false }             
         }
         
         return true
@@ -149,8 +127,8 @@ public extension URLRequest {
         guard let url = url else { return nil }
         
         let method: HttpMethod
-        if let httpMethod = httpMethod?.lowercased() {
-            method = HttpMethod(rawValue: httpMethod) ?? .get
+        if let methodLower = httpMethod?.lowercased(), let httpMethod = HttpMethod(rawValue: methodLower) {
+            method = httpMethod
         } else {
             method = .get
         }
@@ -181,19 +159,8 @@ public extension HTTPURLResponse {
     var stubResponse: Response {
         var headerFields: [String: String] = [:]
         for (key, value) in self.allHeaderFields {
-//            if let keyStr = "\(key)" as? String {
-//                if let keyStrLower = keyStr.lowercased as? String {
-//                    if "cache-control" == keyStrLower || "expires" == keyStrLower {
-//                        continue
-//                    }
-//                }
-                
-                headerFields["\(key)"] = "\(value)"
-//            }
+            headerFields["\(key)"] = "\(value)"
         }
-        
-        headerFields["Cache-Control" ] = nil
-        headerFields["Expires" ] = nil
         
         return Response(statusCode: statusCode, mimeType: mimeType, headerFields: headerFields, bodyUrl: nil)
     }
