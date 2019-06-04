@@ -26,7 +26,8 @@
 import Foundation
 
 private enum Constants {
-    static let maxFileNameQueryLength = 800
+    static let maxExtensionLength = 10
+    static let maxFilenamePartLength = 100
 }
 
 public protocol FilenameFormatter {
@@ -38,50 +39,16 @@ public struct DefaultFilenameFormatter: FilenameFormatter {
     public init() { }
     
     public func filename(for stub: Stub) -> String {
-        let request = stub.request
-        
-        var name: String
-        if let path = request.url?.path, !path.isEmpty {
-            name = path
-        } else {
-            name = "_"
-        }
-        
-        if let query = request.url?.query {
-            if !name.hasSuffix("_") { name += "_" }
-            name += String(query.prefix(Constants.maxFileNameQueryLength))
-        }
-        
-        return "\(name.safeFileName).\(request.method.rawValue).\(stub.index).json"
+        return "\(stub.name).\(stub.request.method.rawValue).\(stub.index).json"
     }
 }
-
 
 public struct BodyFilenameFormatter: FilenameFormatter {
     
     public init() { }
     
     public func filename(for stub: Stub) -> String {
-        let request = stub.request
-        
-        var name: String
-        if let path = request.url?.path, !path.isEmpty {
-            name = path
-        } else {
-            name = "_"
-        }
-        if let query = request.url?.query {
-            name += ("_" + String(query.prefix(Constants.maxFileNameQueryLength)))
-        }
-        
-        let ext: String
-        if let mimeType = stub.response?.mimeType {
-            ext =  URL.pathExtension(for: mimeType)
-        } else {
-            ext = "txt"
-        }
-        
-        return "\(name.safeFileName).\(request.method.rawValue).\(stub.index).body.\(ext)"
+        return "\(stub.name).\(stub.request.method.rawValue).\(stub.index).body.\(stub.fileExtension)"
     }
 }
 
@@ -91,9 +58,7 @@ public protocol Canonical {
 
 public extension Canonical {
     func path(_ path: String) -> String {
-        guard path.count > 1 else {
-            return "_"
-        }
+        guard path.count > 1 else { return "_" }
         
         let newPath = path.starts(with: "/") ? String(Array(path)[1...]) : path
         return newPath.safeFileName
@@ -105,5 +70,43 @@ public extension String {
         guard !isEmpty else { return "_" }
         let filename = self.replacingOccurrences(of: "^/", with: "", options: .regularExpression)
         return filename.replacingOccurrences(of: "[/\\* <>?%|.:]", with: "_", options: .regularExpression)
+    }
+}
+
+private extension Stub {
+    var name: String {
+        var name: String
+        if let path = request.url?.path, !path.isEmpty {
+            name = path
+        } else {
+            name = "_"
+        }
+        
+        if let query = request.url?.query {
+            if !name.hasSuffix("_") { name += "_" }
+            name += query
+        }
+        
+        if name.count > Constants.maxFilenamePartLength {
+            name = "\(name.prefix(Constants.maxFilenamePartLength))_\(name.hashValue)"
+        }
+        
+        return name.safeFileName
+    }
+    
+    var fileExtension: String {
+        let ext: String
+        if let mimeType = response?.mimeType, let mimeTypeExt = URL.pathExtension(for: mimeType) {
+            ext = mimeTypeExt
+        } else if let pathExt = request.url?.pathExtension, !pathExt.isEmpty {
+            if pathExt.count > Constants.maxExtensionLength {
+                ext = "\(pathExt.prefix(Constants.maxExtensionLength))_\(pathExt.djb2hash)"
+            } else {
+                ext = pathExt
+            }
+        } else {
+            ext = "txt"
+        }
+        return ext
     }
 }
