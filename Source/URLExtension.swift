@@ -28,11 +28,11 @@ import MobileCoreServices
 
 public extension URL {
     
-    static func pathExtension(for mimeType: String) -> String {
+    static func pathExtension(for mimeType: String) -> String? {
         let mime = mimeType as NSString
         guard let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, mime, nil)?.takeRetainedValue(),
             let fileExtension = UTTypeCopyPreferredTagWithClass(uti, kUTTagClassFilenameExtension)?.takeRetainedValue() else {
-                return "txt"
+                return nil
         }
         return fileExtension as String
     }
