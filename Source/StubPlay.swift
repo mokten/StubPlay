@@ -25,20 +25,35 @@
 
 import Foundation
 
+public enum StubPlayConstants {
+    public static let serverPort: in_port_t = 9080
+}
+
 public class StubPlay {
     
     public static let `default` = StubPlay()
+    public let serverPort: in_port_t
+    public let stubManager: StubManager
+    public let stubServer: StubServer
     
     private var isEnabled = false
     
-    public func enableStub(_ enable: Bool = true) {
+    init(stubManager: StubManager = StubManager.shared, serverPort: in_port_t = StubPlayConstants.serverPort) {
+        self.stubManager = stubManager
+        self.stubServer = StubServer(stubManager: stubManager)
+        self.serverPort = serverPort
+    }
+    
+    public func enableStub(_ enable: Bool = true) throws {
         guard isEnabled != enable else { return }
         isEnabled = enable
         
         if isEnabled {
+            try stubServer.start(port: StubPlayConstants.serverPort)
             URLCache.shared.removeAllCachedResponses()
             URLProtocol.registerClass(StubURLProtocol.self)
         } else {
+            stubServer.stop()
             URLProtocol.unregisterClass(StubURLProtocol.self)
         }
         
@@ -54,19 +69,19 @@ public extension StubPlay {
     
     // Convenience helper
     func enableStub(for folders: [Folder], saveResponses: Bool = true, clearSaveDir: Bool = true, bundle: Bundle = Bundle.main) throws {
-        enableStub()
+        try enableStub()
         
-        StubManager.shared.reset()
+        stubManager.reset()
         let filesManager = FilesManager(bundle: bundle)
         let saver = StubFileSaver(filesManager: filesManager)
         if clearSaveDir { try saver.clear() }
-        StubManager.shared.stubSaver = saveResponses ? saver : nil
+        stubManager.stubSaver = saveResponses ? saver : nil
         
         try folders.forEach { folder in
             guard let stubCache = StubFolderCache(baseFolder: folder, filesManager: filesManager) else {
                 throw StubPlayError.stubCacheLoad(nil, nil, folder)
             }
-            StubManager.shared.add(stubCache)
+            stubManager.add(stubCache)
             do {
                 try stubCache.load()
             } catch {
@@ -75,9 +90,9 @@ public extension StubPlay {
         }
     }
     
-    func disableStub() {
-        enableStub(false)
-        StubManager.shared.reset()
+    func disableStub() throws {
+        try enableStub(false)
+        stubManager.reset()
     }
 }
 

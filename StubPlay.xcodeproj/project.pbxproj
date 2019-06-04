@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19BBBEE2EA6FC3EBA9A528E7 /* Pods_StubPlay_tvOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44B6E016385C51B9984A016B /* Pods_StubPlay_tvOSTests.framework */; };
+		3ED7B758CE1BB9B3D3059ECE /* Pods_StubPlay_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B1BB878A4D1649748BE8155 /* Pods_StubPlay_iOS.framework */; };
 		3F0E5419227D47CC008E0F6A /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0E5418227D47CC008E0F6A /* URLExtension.swift */; };
 		3F101227227DB0A60018D3E0 /* StubFileSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F101226227DB0A60018D3E0 /* StubFileSaver.swift */; };
 		3F101228227DB0A60018D3E0 /* StubFileSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F101226227DB0A60018D3E0 /* StubFileSaver.swift */; };
@@ -18,7 +20,7 @@
 		3F31807A2264A21A00863A32 /* StubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3180792264A21A00863A32 /* StubTests.swift */; };
 		3F44FC842296AD4E0086A7C6 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44FC832296AD4E0086A7C6 /* Logger.swift */; };
 		3F44FC852296AD4E0086A7C6 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44FC832296AD4E0086A7C6 /* Logger.swift */; };
-		3F576869224CC2B100BBC26C /* FileNameHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F576868224CC2B100BBC26C /* FileNameHelperTests.swift */; };
+		3F576869224CC2B100BBC26C /* FilenameFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F576868224CC2B100BBC26C /* FilenameFormatterTests.swift */; };
 		3F75A8F2227B24F0003AA140 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F75A8F1227B24F0003AA140 /* Counter.swift */; };
 		3F75A8F3227B24F0003AA140 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F75A8F1227B24F0003AA140 /* Counter.swift */; };
 		3F843C2922425B6F0007BBA4 /* StubPlay_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F843C1F22425B6F0007BBA4 /* StubPlay_iOS.framework */; };
@@ -29,7 +31,7 @@
 		3F8C98692261F39F00717E14 /* FilesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8C98682261F39F00717E14 /* FilesManager.swift */; };
 		3F8C986A2261F39F00717E14 /* FilesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8C98682261F39F00717E14 /* FilesManager.swift */; };
 		3F8C986C2261F55E00717E14 /* FilesManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8C986B2261F55E00717E14 /* FilesManagerTests.swift */; };
-		3F943A072289921E00655968 /* FileNameHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F576868224CC2B100BBC26C /* FileNameHelperTests.swift */; };
+		3F943A072289921E00655968 /* FilenameFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F576868224CC2B100BBC26C /* FilenameFormatterTests.swift */; };
 		3F943A082289929900655968 /* StubURLProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDDD88A227C68FE00F1CB37 /* StubURLProtocolTests.swift */; };
 		3F943A092289929F00655968 /* FilesManagerFiles in Resources */ = {isa = PBXBuildFile; fileRef = 3FD3DF41227B048A00953856 /* FilesManagerFiles */; };
 		3F943A0A228992A300655968 /* FilesManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8C986B2261F55E00717E14 /* FilesManagerTests.swift */; };
@@ -47,6 +49,14 @@
 		3FAE4E4722425D3D005EF99D /* StubPlay_tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FAE4E3922425D3D005EF99D /* StubPlay_tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FAE4E5222425F40005EF99D /* Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE4E5122425F40005EF99D /* Stub.swift */; };
 		3FAE4E5322425F40005EF99D /* Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE4E5122425F40005EF99D /* Stub.swift */; };
+		3FB169BD2296C97E0014773C /* HlsPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB169BA2296C97E0014773C /* HlsPlaylist.swift */; };
+		3FB169BE2296C97E0014773C /* HlsPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB169BA2296C97E0014773C /* HlsPlaylist.swift */; };
+		3FB169BF2296C97E0014773C /* AssetResourceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB169BB2296C97E0014773C /* AssetResourceLoader.swift */; };
+		3FB169C02296C97E0014773C /* AssetResourceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB169BB2296C97E0014773C /* AssetResourceLoader.swift */; };
+		3FB169C12296C97E0014773C /* StubServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB169BC2296C97E0014773C /* StubServer.swift */; };
+		3FB169C22296C97E0014773C /* StubServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB169BC2296C97E0014773C /* StubServer.swift */; };
+		3FB169C42296D1630014773C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB169C32296D1630014773C /* StringExtension.swift */; };
+		3FB169C52296D1630014773C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB169C32296D1630014773C /* StringExtension.swift */; };
 		3FBC1CDB22426A2600B8F41F /* StubManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBC1CDA22426A2600B8F41F /* StubManager.swift */; };
 		3FBC1CDC22426A2600B8F41F /* StubManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBC1CDA22426A2600B8F41F /* StubManager.swift */; };
 		3FBDB1422289796D006CC848 /* StubFolderCacheMultilpleFolderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBDB1412289796D006CC848 /* StubFolderCacheMultilpleFolderTests.swift */; };
@@ -63,6 +73,8 @@
 		3FFC2598228058A600BC47E8 /* StubPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC2597228058A600BC47E8 /* StubPlay.swift */; };
 		3FFC2599228058A600BC47E8 /* StubPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC2597228058A600BC47E8 /* StubPlay.swift */; };
 		3FFF8A632287010A008D179A /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0E5418227D47CC008E0F6A /* URLExtension.swift */; };
+		EA0215009AAFB6E240364B4B /* Pods_StubPlayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D51976CC05B8812CF853AC4 /* Pods_StubPlayTests.framework */; };
+		F198F28E07CD89A72038701A /* Pods_StubPlay_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B175BC2003ED4E4B900DB984 /* Pods_StubPlay_tvOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +95,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		044D13F7C04410CE6386F837 /* Pods-StubPlay tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StubPlay tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StubPlay tvOS/Pods-StubPlay tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		28A8EC9D19A05A5B9EF546E8 /* Pods-StubPlayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StubPlayTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StubPlayTests/Pods-StubPlayTests.debug.xcconfig"; sourceTree = "<group>"; };
+		31152BA94DE39E11A8AE05EE /* Pods-StubPlayTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StubPlayTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StubPlayTests/Pods-StubPlayTests.release.xcconfig"; sourceTree = "<group>"; };
+		38168F9794292662C581DBFF /* Pods-StubPlay tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StubPlay tvOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StubPlay tvOSTests/Pods-StubPlay tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3F0E5418227D47CC008E0F6A /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
 		3F101226227DB0A60018D3E0 /* StubFileSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubFileSaver.swift; sourceTree = "<group>"; };
 		3F19675C2287FFEF00199246 /* StubPlayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubPlayTests.swift; sourceTree = "<group>"; };
@@ -91,7 +107,7 @@
 		3F3180762264979E00863A32 /* RewriteRuleCreateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewriteRuleCreateTests.swift; sourceTree = "<group>"; };
 		3F3180792264A21A00863A32 /* StubTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubTests.swift; sourceTree = "<group>"; };
 		3F44FC832296AD4E0086A7C6 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		3F576868224CC2B100BBC26C /* FileNameHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNameHelperTests.swift; sourceTree = "<group>"; };
+		3F576868224CC2B100BBC26C /* FilenameFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilenameFormatterTests.swift; sourceTree = "<group>"; };
 		3F75A8F1227B24F0003AA140 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		3F843C1F22425B6F0007BBA4 /* StubPlay_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StubPlay_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F843C2222425B6F0007BBA4 /* StubPlay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StubPlay.h; sourceTree = "<group>"; };
@@ -108,6 +124,10 @@
 		3FAE4E3F22425D3D005EF99D /* StubPlay tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "StubPlay tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FAE4E4622425D3D005EF99D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FAE4E5122425F40005EF99D /* Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stub.swift; sourceTree = "<group>"; };
+		3FB169BA2296C97E0014773C /* HlsPlaylist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HlsPlaylist.swift; sourceTree = "<group>"; };
+		3FB169BB2296C97E0014773C /* AssetResourceLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetResourceLoader.swift; sourceTree = "<group>"; };
+		3FB169BC2296C97E0014773C /* StubServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubServer.swift; sourceTree = "<group>"; };
+		3FB169C32296D1630014773C /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		3FBC1CDA22426A2600B8F41F /* StubManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubManager.swift; sourceTree = "<group>"; };
 		3FBDB1412289796D006CC848 /* StubFolderCacheMultilpleFolderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubFolderCacheMultilpleFolderTests.swift; sourceTree = "<group>"; };
 		3FC46D6E2286917E0021E275 /* StubFolderCacheBodyDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubFolderCacheBodyDataTests.swift; sourceTree = "<group>"; };
@@ -119,6 +139,14 @@
 		3FDDD88E227C6DBD00F1CB37 /* StubURLProtocolFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = StubURLProtocolFiles; sourceTree = "<group>"; };
 		3FF207A3227C4C58000202B0 /* StubURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubURLProtocol.swift; sourceTree = "<group>"; };
 		3FFC2597228058A600BC47E8 /* StubPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubPlay.swift; sourceTree = "<group>"; };
+		44B6E016385C51B9984A016B /* Pods_StubPlay_tvOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StubPlay_tvOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		497145BCF8CD0ACAD00A0670 /* Pods-StubPlay iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StubPlay iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-StubPlay iOS/Pods-StubPlay iOS.release.xcconfig"; sourceTree = "<group>"; };
+		6EE00FB9602615B625754F2C /* Pods-StubPlay iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StubPlay iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StubPlay iOS/Pods-StubPlay iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		8B1BB878A4D1649748BE8155 /* Pods_StubPlay_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StubPlay_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D51976CC05B8812CF853AC4 /* Pods_StubPlayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StubPlayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B175BC2003ED4E4B900DB984 /* Pods_StubPlay_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StubPlay_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4F5AF8EEC1EDAB3B0CFA629 /* Pods-StubPlay tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StubPlay tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-StubPlay tvOS/Pods-StubPlay tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		DA0E6F3F6658121843AC8EB1 /* Pods-StubPlay tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StubPlay tvOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StubPlay tvOSTests/Pods-StubPlay tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3ED7B758CE1BB9B3D3059ECE /* Pods_StubPlay_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F843C2922425B6F0007BBA4 /* StubPlay_iOS.framework in Frameworks */,
+				EA0215009AAFB6E240364B4B /* Pods_StubPlayTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +171,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F198F28E07CD89A72038701A /* Pods_StubPlay_tvOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FAE4E4022425D3D005EF99D /* StubPlay_tvOS.framework in Frameworks */,
+				19BBBEE2EA6FC3EBA9A528E7 /* Pods_StubPlay_tvOSTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +206,8 @@
 				3FAE4E3822425D3D005EF99D /* StubPlay tvOS */,
 				3FAE4E4322425D3D005EF99D /* StubPlay tvOSTests */,
 				3F843C2022425B6F0007BBA4 /* Products */,
+				76A2252F2D3140BBDAD3B8D9 /* Pods */,
+				F8B253EA7415AB14B43C1841 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -195,6 +229,7 @@
 				3FAE4E5022425EF8005EF99D /* Model */,
 				3FBC1CDD2242714000B8F41F /* Extension */,
 				3F101225227DAD370018D3E0 /* Helper */,
+				3FB169B92296C9560014773C /* AVPlayer */,
 				3FAE4E4E22425D97005EF99D /* Supporting Files */,
 			);
 			path = Source;
@@ -207,7 +242,7 @@
 				3FD3DF38227B045600953856 /* FilesManager */,
 				3FD3DF2F227AF99100953856 /* StubFolderCache */,
 				3F843C2F22425B6F0007BBA4 /* Info.plist */,
-				3F576868224CC2B100BBC26C /* FileNameHelperTests.swift */,
+				3F576868224CC2B100BBC26C /* FilenameFormatterTests.swift */,
 				3F8C986322618EC600717E14 /* RewriteRuleMatchesTests.swift */,
 				3F3180762264979E00863A32 /* RewriteRuleCreateTests.swift */,
 				3F3180792264A21A00863A32 /* StubTests.swift */,
@@ -261,11 +296,22 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		3FB169B92296C9560014773C /* AVPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				3FB169BB2296C97E0014773C /* AssetResourceLoader.swift */,
+				3FB169BA2296C97E0014773C /* HlsPlaylist.swift */,
+				3FB169BC2296C97E0014773C /* StubServer.swift */,
+			);
+			name = AVPlayer;
+			sourceTree = "<group>";
+		};
 		3FBC1CDD2242714000B8F41F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				3FDDD88C227C6A7100F1CB37 /* URLSessionConfigurationExtension.swift */,
 				3F0E5418227D47CC008E0F6A /* URLExtension.swift */,
+				3FB169C32296D1630014773C /* StringExtension.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -301,6 +347,32 @@
 			path = StubURLProtocol;
 			sourceTree = "<group>";
 		};
+		76A2252F2D3140BBDAD3B8D9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6EE00FB9602615B625754F2C /* Pods-StubPlay iOS.debug.xcconfig */,
+				497145BCF8CD0ACAD00A0670 /* Pods-StubPlay iOS.release.xcconfig */,
+				044D13F7C04410CE6386F837 /* Pods-StubPlay tvOS.debug.xcconfig */,
+				B4F5AF8EEC1EDAB3B0CFA629 /* Pods-StubPlay tvOS.release.xcconfig */,
+				38168F9794292662C581DBFF /* Pods-StubPlay tvOSTests.debug.xcconfig */,
+				DA0E6F3F6658121843AC8EB1 /* Pods-StubPlay tvOSTests.release.xcconfig */,
+				28A8EC9D19A05A5B9EF546E8 /* Pods-StubPlayTests.debug.xcconfig */,
+				31152BA94DE39E11A8AE05EE /* Pods-StubPlayTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F8B253EA7415AB14B43C1841 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8B1BB878A4D1649748BE8155 /* Pods_StubPlay_iOS.framework */,
+				B175BC2003ED4E4B900DB984 /* Pods_StubPlay_tvOS.framework */,
+				44B6E016385C51B9984A016B /* Pods_StubPlay_tvOSTests.framework */,
+				9D51976CC05B8812CF853AC4 /* Pods_StubPlayTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -327,6 +399,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3F843C3322425B6F0007BBA4 /* Build configuration list for PBXNativeTarget "StubPlay iOS" */;
 			buildPhases = (
+				825483945330D1CFFE9E7823 /* [CP] Check Pods Manifest.lock */,
 				3F843C1A22425B6F0007BBA4 /* Headers */,
 				3F843C1B22425B6F0007BBA4 /* Sources */,
 				3F843C1C22425B6F0007BBA4 /* Frameworks */,
@@ -345,6 +418,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3F843C3622425B6F0007BBA4 /* Build configuration list for PBXNativeTarget "StubPlayTests" */;
 			buildPhases = (
+				71920800136B6F5D6016FFE8 /* [CP] Check Pods Manifest.lock */,
 				3F843C2422425B6F0007BBA4 /* Sources */,
 				3F843C2522425B6F0007BBA4 /* Frameworks */,
 				3F843C2622425B6F0007BBA4 /* Resources */,
@@ -363,6 +437,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3FAE4E4822425D3D005EF99D /* Build configuration list for PBXNativeTarget "StubPlay tvOS" */;
 			buildPhases = (
+				2D0D6A6A9D6290E7564910F2 /* [CP] Check Pods Manifest.lock */,
 				3FAE4E3222425D3D005EF99D /* Headers */,
 				3FAE4E3322425D3D005EF99D /* Sources */,
 				3FAE4E3422425D3D005EF99D /* Frameworks */,
@@ -381,6 +456,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3FAE4E4B22425D3D005EF99D /* Build configuration list for PBXNativeTarget "StubPlay tvOSTests" */;
 			buildPhases = (
+				8A047FDE79EF048718B8CCF7 /* [CP] Check Pods Manifest.lock */,
 				3FAE4E3B22425D3D005EF99D /* Sources */,
 				3FAE4E3C22425D3D005EF99D /* Frameworks */,
 				3FAE4E3D22425D3D005EF99D /* Resources */,
@@ -479,13 +555,107 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2D0D6A6A9D6290E7564910F2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StubPlay tvOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		71920800136B6F5D6016FFE8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StubPlayTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		825483945330D1CFFE9E7823 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StubPlay iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8A047FDE79EF048718B8CCF7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StubPlay tvOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3F843C1B22425B6F0007BBA4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				3FFC2598228058A600BC47E8 /* StubPlay.swift in Sources */,
+				3FB169BF2296C97E0014773C /* AssetResourceLoader.swift in Sources */,
 				3F0E5419227D47CC008E0F6A /* URLExtension.swift in Sources */,
+				3FB169C12296C97E0014773C /* StubServer.swift in Sources */,
+				3FB169C42296D1630014773C /* StringExtension.swift in Sources */,
 				3F75A8F2227B24F0003AA140 /* Counter.swift in Sources */,
 				3FF207A4227C4C58000202B0 /* StubURLProtocol.swift in Sources */,
 				3F8C98662261F2F800717E14 /* FilenameFormatter.swift in Sources */,
@@ -494,6 +664,7 @@
 				3F44FC842296AD4E0086A7C6 /* Logger.swift in Sources */,
 				3F1F0E6F2275B407005FB5DD /* StubFolderCache.swift in Sources */,
 				3FBC1CDB22426A2600B8F41F /* StubManager.swift in Sources */,
+				3FB169BD2296C97E0014773C /* HlsPlaylist.swift in Sources */,
 				3FAE4E5222425F40005EF99D /* Stub.swift in Sources */,
 				3F101227227DB0A60018D3E0 /* StubFileSaver.swift in Sources */,
 			);
@@ -512,7 +683,7 @@
 				3FC46D6F2286917E0021E275 /* StubFolderCacheBodyDataTests.swift in Sources */,
 				3F1F0E722275CC04005FB5DD /* StubFolderCacheTests.swift in Sources */,
 				3F8C986C2261F55E00717E14 /* FilesManagerTests.swift in Sources */,
-				3F576869224CC2B100BBC26C /* FileNameHelperTests.swift in Sources */,
+				3F576869224CC2B100BBC26C /* FilenameFormatterTests.swift in Sources */,
 				3FD3DF31227AF9B600953856 /* StubFolderCacheLoadTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -522,7 +693,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FFF8A632287010A008D179A /* URLExtension.swift in Sources */,
+				3FB169C02296C97E0014773C /* AssetResourceLoader.swift in Sources */,
 				3F75A8F3227B24F0003AA140 /* Counter.swift in Sources */,
+				3FB169C22296C97E0014773C /* StubServer.swift in Sources */,
+				3FB169C52296D1630014773C /* StringExtension.swift in Sources */,
 				3FF207A5227C4C59000202B0 /* StubURLProtocol.swift in Sources */,
 				3FFC2599228058A600BC47E8 /* StubPlay.swift in Sources */,
 				3F8C98672261F2F800717E14 /* FilenameFormatter.swift in Sources */,
@@ -531,6 +705,7 @@
 				3F44FC852296AD4E0086A7C6 /* Logger.swift in Sources */,
 				3F1F0E702275B407005FB5DD /* StubFolderCache.swift in Sources */,
 				3FBC1CDC22426A2600B8F41F /* StubManager.swift in Sources */,
+				3FB169BE2296C97E0014773C /* HlsPlaylist.swift in Sources */,
 				3FAE4E5322425F40005EF99D /* Stub.swift in Sources */,
 				3F101228227DB0A60018D3E0 /* StubFileSaver.swift in Sources */,
 			);
@@ -542,7 +717,7 @@
 			files = (
 				3F943A132289930400655968 /* RewriteRuleCreateTests.swift in Sources */,
 				3F943A10228992E600655968 /* StubPlayTests.swift in Sources */,
-				3F943A072289921E00655968 /* FileNameHelperTests.swift in Sources */,
+				3F943A072289921E00655968 /* FilenameFormatterTests.swift in Sources */,
 				3F943A11228992E600655968 /* StubFolderCacheLoadTests.swift in Sources */,
 				3F943A0A228992A300655968 /* FilesManagerTests.swift in Sources */,
 				3F943A0E228992E600655968 /* StubFolderCacheMultilpleFolderTests.swift in Sources */,
@@ -698,6 +873,7 @@
 		};
 		3F843C3422425B6F0007BBA4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6EE00FB9602615B625754F2C /* Pods-StubPlay iOS.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -725,6 +901,7 @@
 		};
 		3F843C3522425B6F0007BBA4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 497145BCF8CD0ACAD00A0670 /* Pods-StubPlay iOS.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -751,8 +928,8 @@
 		};
 		3F843C3722425B6F0007BBA4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28A8EC9D19A05A5B9EF546E8 /* Pods-StubPlayTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 862DX7386G;
 				INFOPLIST_FILE = Tests/Info.plist;
@@ -770,8 +947,8 @@
 		};
 		3F843C3822425B6F0007BBA4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31152BA94DE39E11A8AE05EE /* Pods-StubPlayTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 862DX7386G;
 				INFOPLIST_FILE = Tests/Info.plist;
@@ -789,6 +966,7 @@
 		};
 		3FAE4E4922425D3D005EF99D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 044D13F7C04410CE6386F837 /* Pods-StubPlay tvOS.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -810,13 +988,14 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 			};
 			name = Debug;
 		};
 		3FAE4E4A22425D3D005EF99D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4F5AF8EEC1EDAB3B0CFA629 /* Pods-StubPlay tvOS.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -837,15 +1016,15 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 			};
 			name = Release;
 		};
 		3FAE4E4C22425D3D005EF99D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38168F9794292662C581DBFF /* Pods-StubPlay tvOSTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 862DX7386G;
 				INFOPLIST_FILE = Tests/Info.plist;
@@ -857,7 +1036,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mokten.StubPlay-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 12.1;
 			};
@@ -865,8 +1044,8 @@
 		};
 		3FAE4E4D22425D3D005EF99D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA0E6F3F6658121843AC8EB1 /* Pods-StubPlay tvOSTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 862DX7386G;
 				INFOPLIST_FILE = Tests/Info.plist;
@@ -878,7 +1057,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mokten.StubPlay-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 12.1;
 			};
