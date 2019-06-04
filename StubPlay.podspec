@@ -16,5 +16,6 @@ Stub http requests. Saves requests and replays them. Handles various http respon
   s.source_files = 'Source/**/*.swift'
   s.ios.deployment_target  = '11.0'
   s.tvos.deployment_target = '11.0'
+  s.dependency   'Swifter'
 
 end

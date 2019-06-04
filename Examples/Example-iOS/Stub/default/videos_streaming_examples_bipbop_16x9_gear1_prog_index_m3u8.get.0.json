@@ -1,0 +1,33 @@
+{
+  "bodyFileName" : "videos_streaming_examples_bipbop_16x9_gear1_prog_index_m3u8.get.0.body.m3u",
+  "response" : {
+    "headerFields" : {
+      "x-amz-id-2" : "04DYSHYk2DxXa+cWGAGNlAEAXVRzYTH+zAprDDZlzooYZVZXZEOD4zfslFNRWWbqzeqloPHifag=",
+      "Server" : "ATS\/8.0.4",
+      "x-cache" : "miss, hit-stale",
+      "Etag" : "\"a2831dcd22eb5e1ebc3477230f14806a\"",
+      "Content-Type" : "audio\/mpegurl",
+      "Cache-Control" : "max-age=600, public",
+      "Accept-Ranges" : "bytes",
+      "Last-Modified" : "Wed, 24 May 2017 23:44:02 GMT",
+      "x-amz-request-id" : "1CD582327EA1D553",
+      "cdnuuid" : "666419be-695f-4c92-8055-54b1a71ca1aa-427082411",
+      "Date" : "Wed, 29 May 2019 13:18:49 GMT",
+      "Via" : "https\/1.1 ausyd2-edge-lx-003.ts.apple.com (ApacheTrafficServer\/8.0.4), https\/1.1 ausyd2-edge-bx-001.ts.apple.com (ApacheTrafficServer\/8.0.4)",
+      "Age" : "2",
+      "Content-Length" : "10484"
+    },
+    "statusCode" : 200,
+    "mimeType" : "audio\/mpegurl"
+  },
+  "request" : {
+    "url" : "https:\/\/devstreaming-cdn.apple.com\/videos\/streaming\/examples\/bipbop_16x9\/gear1\/prog_index.m3u8",
+    "method" : "get",
+    "headers" : {
+      "User-Agent" : "AppleCoreMedia\/1.0.0.16B91 (iPhone; U; CPU OS 12_1 like Mac OS X; en_us)",
+      "Accept-Encoding" : "gzip",
+      "X-Playback-Session-Id" : "11E3FD0B-EDB8-4203-9926-6E4AC7CEEC76"
+    }
+  },
+  "index" : 0
+}
