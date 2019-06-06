@@ -53,13 +53,7 @@ public class StubURLProtocol: URLProtocol {
         
         if let stubRequest = request.stubRequest, let stub = stubManager.get(request: stubRequest) {
             logger("MOCK: ", request.url!)
-            
-            
-            if request.url?.absoluteString.contains("itunes-monthly") == true {
-                logger("mock: ", stub.bodyData?.count)
-            }
-            
-            finished(stub: stub, response: stub.httpURLResponse, bodyData: stub.bodyData, isCached: true)
+            finished(stub: stub, response: stub.httpURLResponse(defaultURL: request.url), bodyData: stub.bodyData, isCached: true)
             
         } else {
             logger("NETWORK: ", request.url!)
@@ -152,6 +146,8 @@ private extension StubURLProtocol {
     }
     
     func finished(stub: Stub?, response: URLResponse?, bodyData: Data?, isCached: Bool = false) {
+        print("finished=")
+        
         if let stub = stub {
             stubManager.save(stub, bodyData: bodyData)
         }
@@ -162,7 +158,11 @@ private extension StubURLProtocol {
         
         client.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
         
+        print("urlProtocol=")
+        
         if isCached, let data = bodyData {
+            print("urlProtocol=", String(data: data, encoding: .utf8))
+            
             client.urlProtocol(self, didLoad: data)
         }
     }

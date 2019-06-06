@@ -146,8 +146,8 @@ public extension URLRequest {
 }
 
 public extension Stub {
-    var httpURLResponse: HTTPURLResponse? {
-        guard let url = request.url else { return nil }
+    func httpURLResponse(defaultURL: URL?) -> HTTPURLResponse? {
+        let url = request.url ?? defaultURL ?? URL(string: "https://stubplay.com/missing_url")!
         return HTTPURLResponse(url: url,
                                statusCode: response?.statusCode ?? 0,
                                httpVersion: "HTTP/1.1",

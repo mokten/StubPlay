@@ -12,6 +12,7 @@ target 'StubPlay iOS' do
  
   target 'StubPlayTests' do
     inherit! :search_paths
+    commonPods
   end
 
 end
@@ -22,6 +23,7 @@ target 'StubPlay tvOS' do
  
   target 'StubPlay tvOSTests' do
     inherit! :search_paths
+    commonPods
   end
 
 end

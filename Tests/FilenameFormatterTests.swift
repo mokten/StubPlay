@@ -91,6 +91,6 @@ class FilenameFormatterTests: XCTestCase {
         let url = "https://localhost/asdf/bsadfs/avssdsdfsd/fsdfsadf/sdvsdvsdv/asdfsadfs?asdffdsaf=sdfsavdsdsfsdf&sadfsadfsadfvjyh=vfddvsdafsdjfhjskdfhjksdhfjkasdf&vdnjksdavbksadbvjhsdpwewrasdfsadfsdf&dsavsdvbsjdvbjshdc,xsfwer=qwertyewrtewwrtqwert"
         let request = Request(method: .get, url: URL(string: url), headers: nil, body: nil)
         let msg = Stub(rewriteRule: nil, index: 0, request: request, response: nil)
-        XCTAssertEqual(filenameHelper.filename(for: msg).count, 130)
+        XCTAssertTrue(filenameHelper.filename(for: msg).count <= 131)
     }
 }
