@@ -16,8 +16,8 @@
 		3F1DFEAC22A92A8600FD9EB5 /* Video in Resources */ = {isa = PBXBuildFile; fileRef = 3F1DFEAB22A92A8600FD9EB5 /* Video */; };
 		3F1DFEAE22A92AA800FD9EB5 /* Alamofire in Resources */ = {isa = PBXBuildFile; fileRef = 3F1DFEAD22A92AA800FD9EB5 /* Alamofire */; };
 		3F1DFEB222A92BC900FD9EB5 /* Image in Resources */ = {isa = PBXBuildFile; fileRef = 3F1DFEB122A92BC900FD9EB5 /* Image */; };
-		3F1DFEB522A9365200FD9EB5 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1DFEB422A9365200FD9EB5 /* TextViewController.swift */; };
-		3F1DFEB722A9366100FD9EB5 /* Text in Resources */ = {isa = PBXBuildFile; fileRef = 3F1DFEB622A9366100FD9EB5 /* Text */; };
+		3F1DFEB522A9365200FD9EB5 /* RewriteRuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1DFEB422A9365200FD9EB5 /* RewriteRuleViewController.swift */; };
+		3F1DFEB722A9366100FD9EB5 /* RewriteRule in Resources */ = {isa = PBXBuildFile; fileRef = 3F1DFEB622A9366100FD9EB5 /* RewriteRule */; };
 		3F1DFEBA22A93A8E00FD9EB5 /* MultipleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1DFEB922A93A8E00FD9EB5 /* MultipleViewController.swift */; };
 		3F1DFEBC22A93A9800FD9EB5 /* Multiple in Resources */ = {isa = PBXBuildFile; fileRef = 3F1DFEBB22A93A9800FD9EB5 /* Multiple */; };
 		3F4C49C020A7EE1B009945E1 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C49BF20A7EE1B009945E1 /* ImageViewController.swift */; };
@@ -53,8 +53,8 @@
 		3F1DFEAB22A92A8600FD9EB5 /* Video */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Video; sourceTree = "<group>"; };
 		3F1DFEAD22A92AA800FD9EB5 /* Alamofire */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Alamofire; sourceTree = "<group>"; };
 		3F1DFEB122A92BC900FD9EB5 /* Image */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Image; sourceTree = "<group>"; };
-		3F1DFEB422A9365200FD9EB5 /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
-		3F1DFEB622A9366100FD9EB5 /* Text */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Text; sourceTree = "<group>"; };
+		3F1DFEB422A9365200FD9EB5 /* RewriteRuleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewriteRuleViewController.swift; sourceTree = "<group>"; };
+		3F1DFEB622A9366100FD9EB5 /* RewriteRule */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RewriteRule; sourceTree = "<group>"; };
 		3F1DFEB922A93A8E00FD9EB5 /* MultipleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleViewController.swift; sourceTree = "<group>"; };
 		3F1DFEBB22A93A9800FD9EB5 /* Multiple */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Multiple; sourceTree = "<group>"; };
 		3F4C49BF20A7EE1B009945E1 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
@@ -99,7 +99,7 @@
 			children = (
 				3F1DFE6C22A91A9400FD9EB5 /* MainViewController.swift */,
 				3F1DFEB822A93A3C00FD9EB5 /* Muliptle Requests */,
-				3F1DFEB322A935F100FD9EB5 /* Text */,
+				3F1DFEB322A935F100FD9EB5 /* RewriteRule */,
 				3F1DFEA922A92A2400FD9EB5 /* Image */,
 				3F1DFEA822A92A1500FD9EB5 /* Alamofire */,
 				3F1DFEAA22A92A3400FD9EB5 /* Video */,
@@ -152,13 +152,13 @@
 			path = Video;
 			sourceTree = "<group>";
 		};
-		3F1DFEB322A935F100FD9EB5 /* Text */ = {
+		3F1DFEB322A935F100FD9EB5 /* RewriteRule */ = {
 			isa = PBXGroup;
 			children = (
-				3F1DFEB622A9366100FD9EB5 /* Text */,
-				3F1DFEB422A9365200FD9EB5 /* TextViewController.swift */,
+				3F1DFEB622A9366100FD9EB5 /* RewriteRule */,
+				3F1DFEB422A9365200FD9EB5 /* RewriteRuleViewController.swift */,
 			);
-			path = Text;
+			path = RewriteRule;
 			sourceTree = "<group>";
 		};
 		3F1DFEB822A93A3C00FD9EB5 /* Muliptle Requests */ = {
@@ -277,7 +277,7 @@
 				3F87687A20A7E82A00DAC66B /* LaunchScreen.storyboard in Resources */,
 				3F87687720A7E82A00DAC66B /* Assets.xcassets in Resources */,
 				3F1DFEB222A92BC900FD9EB5 /* Image in Resources */,
-				3F1DFEB722A9366100FD9EB5 /* Text in Resources */,
+				3F1DFEB722A9366100FD9EB5 /* RewriteRule in Resources */,
 				3F1DFEBC22A93A9800FD9EB5 /* Multiple in Resources */,
 				3F1DFEAE22A92AA800FD9EB5 /* Alamofire in Resources */,
 			);
@@ -333,7 +333,7 @@
 				3F87686E20A7E82900DAC66B /* AppDelegate.swift in Sources */,
 				3F1DFE6D22A91A9400FD9EB5 /* MainViewController.swift in Sources */,
 				3F1DFE8C22A9227E00FD9EB5 /* Storyboardable.swift in Sources */,
-				3F1DFEB522A9365200FD9EB5 /* TextViewController.swift in Sources */,
+				3F1DFEB522A9365200FD9EB5 /* RewriteRuleViewController.swift in Sources */,
 				3F1DFEBA22A93A8E00FD9EB5 /* MultipleViewController.swift in Sources */,
 				3F4C49D420A801A6009945E1 /* VideoPlayerViewController.swift in Sources */,
 				3F4C49C020A7EE1B009945E1 /* ImageViewController.swift in Sources */,

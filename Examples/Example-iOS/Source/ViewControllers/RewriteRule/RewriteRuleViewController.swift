@@ -26,7 +26,10 @@
 import UIKit
 import StubPlay_iOS
 
-class TextViewController: NiblessViewController {
+
+/// Demos RewriteRule and skipSave
+///     Matches host regex: .*.test.com
+class RewriteRuleViewController: NiblessViewController {
     private let textView = UITextView()
     
     override init() {
@@ -39,8 +42,8 @@ class TextViewController: NiblessViewController {
         view.backgroundColor = .white
         view.addSubview(textView)
         
-        testJsonRequest(URL(string: "https://a.google.com/test.txt"))
-        testJsonRequest(URL(string: "https://b.google.com/random"))
+        testJsonRequest(URL(string: "https://a.test.com/test.txt"))
+        testJsonRequest(URL(string: "https://b.test.com/random"))
     }
 
     override func viewWillLayoutSubviews() {
@@ -57,7 +60,7 @@ class TextViewController: NiblessViewController {
         let task = session.dataTask(with: url) { [weak self] data, response, error in
             guard let self = self else { return }
 
-            guard error == nil else {
+            if let error = error {
                 fatalError("ViewController \(error)")
             }
 
@@ -66,7 +69,7 @@ class TextViewController: NiblessViewController {
             }
 
             DispatchQueue.main.async {
-                self.textView.text += "This is request: \(response?.url)\n\(txt)\n------\n"
+                self.textView.text += "This is request: \(response?.url?.absoluteString ?? "")\n\(txt)\n------\n"
             }
         }
 

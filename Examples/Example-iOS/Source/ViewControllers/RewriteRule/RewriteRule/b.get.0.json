@@ -1,8 +1,9 @@
 {
   "bodyFileName" : "b.get.0.body.txt",
   "rewriteRule" : {
-        "host" : ".*.google.com"
+        "host" : ".*.test.com"
     },
+  "skipSave" : true,
   "response" : {
     "headerFields" : {
     },

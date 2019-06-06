@@ -58,9 +58,8 @@ class MultipleViewController: NiblessViewController {
         let task = session.dataTask(with: url!) { [weak self] data, response, error in
             guard let self = self else { return }
 
-            guard error == nil else {
-                print("ViewController", error!)
-                return
+            if let error = error {
+                fatalError("ViewController \(error)")
             }
 
             guard let data = data, let txt = String(data: data, encoding: .utf8) else {

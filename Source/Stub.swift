@@ -29,6 +29,7 @@ public protocol Model: Codable, Hashable { }
 public struct Stub: Model {
     public let rewriteRule: RewriteRule?
     public var index: Int
+    public var skipSave: Bool?
     public var bodyFileName: String? = nil
     public var bodyData: Data?
     public let request: Request

@@ -17,12 +17,12 @@ class MainViewController: UITabBarController {
         super.viewDidLoad()
         
         viewControllers = [
-            TextViewController(),
+            MultipleViewController(),
             ImageViewController(),
             AlamofireViewController(),
             VideoPlayerViewController("Video", url: videoURL),
             VideoPlayerViewController("Video Byte Range", url: videoByteRangeURL),
-            MultipleViewController()
+            RewriteRuleViewController(),
         ]
         
     }

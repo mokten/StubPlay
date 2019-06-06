@@ -57,8 +57,6 @@ public class StubURLProtocol: URLProtocol {
             
         } else {
             logger("NETWORK: ", request.url!)
-//            fatalError()
-            
             let newRequest = request as! NSMutableURLRequest
             URLProtocol.setProperty(true, forKey: CustomURLConst.requestHeaderKey, in: newRequest)
             
@@ -148,7 +146,7 @@ private extension StubURLProtocol {
     func finished(stub: Stub?, response: URLResponse?, bodyData: Data?, isCached: Bool = false) {
         print("finished=")
         
-        if let stub = stub {
+        if let stub = stub, stub.skipSave != true {
             stubManager.save(stub, bodyData: bodyData)
         }
         
