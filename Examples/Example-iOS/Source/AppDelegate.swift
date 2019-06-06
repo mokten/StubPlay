@@ -30,13 +30,21 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
     override init() {
         super.init()
-
         // Initialise in init() is the safest way all classes will get stubbed.
         //      ie. Main.storyboard initilisers are preceded by stub activation
-        try? StubPlay.default.enableStub(for: ["Stub/default"])
+        try? StubPlay.default.enableStub(for: ["Text", "Image", "Alamofire", "Video/Segment", "Video/ByteRange", "Multiple"])
+    }
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        DefaultStyle.applyStyle()
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = MainViewController()
+        window?.makeKeyAndVisible()
+        return true
     }
 }
 

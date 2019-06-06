@@ -54,11 +54,10 @@ class StubURLProtocolTests: XCTestCase {
         
         do {
             try stubCache.load()
+            try StubPlay.default.enableStub(false)
         } catch {
             XCTAssertTrue(false, error.localizedDescription)
         }
-        
-        StubPlay.default.enableStub(false)
     }
     
     func testStubRequest() throws {
@@ -83,8 +82,8 @@ class StubURLProtocolTests: XCTestCase {
         waitForExpectations(timeout: 1000, handler: nil)
     }
     
-    func testStubRequestLoad() {
-        StubPlay.default.enableStub()
+    func testStubRequestLoad() throws {
+        try StubPlay.default.enableStub()
         urls.forEach { _testStubRequestLoad(urlStr: $0) }
     }
     

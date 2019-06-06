@@ -1,0 +1,24 @@
+{
+  "bodyFileName" : "alamofire.body.txt",
+  "response" : {
+    "headerFields" : {
+      "Connection" : "keep-alive",
+      "Content-Type" : "text\/plain; charset=utf-8",
+      "Date" : "Thu, 23 May 2019 13:05:37 GMT",
+      "Content-Encoding" : "gzip",
+      "Content-Length" : "55",
+    },
+    "statusCode" : 200,
+    "mimeType" : "text\/plain"
+  },
+  "request" : {
+    "url" : "https:\/\/raw.githubusercontent.com\/Alamofire\/Alamofire\/0ac38d7e312e87aeea608d384e44401f3d8a6b3d\/Tests\/Resources\/Responses\/JSON\/valid_data.json",
+    "method" : "get",
+    "headers" : {
+      "Accept-Language" : "en;q=1.0",
+      "User-Agent" : "Example-iOS\/0.1 (com.mokten.Example-iOS; build:1; iOS 12.1.0) Alamofire\/4.8.2",
+      "Accept-Encoding" : "gzip;q=1.0, compress;q=0.5"
+    }
+  },
+  "index" : 0
+}

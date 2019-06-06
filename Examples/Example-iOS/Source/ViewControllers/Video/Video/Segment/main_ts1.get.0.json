@@ -1,0 +1,23 @@
+{
+  "bodyFileName" : "main_ts1.get.0.body.ts",
+  "response" : {
+    "headerFields" : {
+      "Content-Length" : "326368",
+      "Content-Type" : "binary\/octet-stream",
+      "Cache-Control" : "no-cache",
+      "Expires" : "Wed, 29 May 2019 13:01:37 GMT",
+    },
+    "statusCode" : 206,
+    "mimeType" : "binary\/octet-stream"
+  },
+  "request" : {
+      "url" : "https://devstreaming-cdn.apple.com/main1.ts",
+    "method" : "get",
+    "headers" : {
+      "User-Agent" : "AppleCoreMedia\/1.0.0.16B91 (iPhone; U; CPU OS 12_1 like Mac OS X; en_us)",
+      "Range" : "bytes=326744-653111",
+      "X-Playback-Session-Id" : "11E3FD0B-EDB8-4203-9926-6E4AC7CEEC76"
+    }
+  },
+  "index" : 0
+}

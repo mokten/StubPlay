@@ -1,0 +1,23 @@
+{
+  "bodyFileName" : "master.get.0.body.m3u",
+  "response" : {
+    "headerFields" : {
+      "Content-Length" : "3286",
+      "Content-Type" : "application/x-mpegURL",
+      "Cache-Control" : "max-age=0, no-cache, no-store",
+      "Expires" : "Wed, 29 May 2019 13:01:37 GMT",
+    },
+    "statusCode" : 200,
+    "mimeType" : "audio\/mpegurl"
+  },
+  "request" : {
+    "url" : "https://devstreaming-cdn.apple.com/master.m3u8",
+    "method" : "get",
+    "headers" : {
+      "User-Agent" : "AppleCoreMedia\/1.0.0.16B91 (iPhone; U; CPU OS 12_1 like Mac OS X; en_us)",
+      "X-Playback-Session-Id" : "11E3FD0B-EDB8-4203-9926-6E4AC7CEEC76",
+      "Accept-Encoding" : "gzip"
+    }
+  },
+  "index" : 0
+}
