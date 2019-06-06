@@ -28,16 +28,16 @@ import StubPlay_iOS
 import Alamofire
 
 class AlamofireViewController: NiblessViewController {
-
+    
     private var textView = UITextView()
- 
+    
     private var sessionManager: SessionManager?
     
     override init() {
         super.init()
         self.title = "Alamofire"
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -49,34 +49,36 @@ class AlamofireViewController: NiblessViewController {
         super.viewWillLayoutSubviews()
         textView.frame = CGRect(x: 20, y: 100, width: view.frame.width - 40, height: 300)
     }
-
+    
     func testAlamofireRequest() {
         let url = URL(string: "https://raw.githubusercontent.com/Alamofire/Alamofire/0ac38d7e312e87aeea608d384e44401f3d8a6b3d/Tests/Resources/Responses/JSON/valid_data.json")!
         
-//        let url = URL(string: "https://a.ab.com/data")!
-//        let url = URL(string: "https://jsonplaceholder.typicode.com/todos/1")!
-//        let url = URL(string: "https://a.ab/test.txt")!
-
+        //        let url = URL(string: "https://a.ab.com/data")!
+        //        let url = URL(string: "https://jsonplaceholder.typicode.com/todos/1")!
+        //        let url = URL(string: "https://a.ab/test.txt")!
+        
         let configuration = URLSessionConfiguration.default
         let sessionManager = Alamofire.SessionManager(configuration: configuration)
         // Must keep reference
         self.sessionManager = sessionManager
-
+        
         let urlRequest = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy)
         
         Alamofire.request(urlRequest).responseData(completionHandler: { response in
-
-            guard response.error == nil,
-                let data = response.data,
-                let str = String(data: data, encoding: .utf8) else {
-                    return print("ViewController \(response.error)")
+            
+            if let error = response.error {
+                fatalError("\(error)")
             }
-
+            
+            guard let data = response.data,
+                let str = String(data: data, encoding: .utf8) else {
+                    fatalError("No data")
+            }
+            
             DispatchQueue.main.async {
-                print("data", str)
                 self.textView.text = str
             }
-
+            
         })
     }
 }

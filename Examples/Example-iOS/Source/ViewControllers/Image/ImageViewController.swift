@@ -60,7 +60,7 @@ class ImageViewController: NiblessViewController {
         let task = session.dataTask(with: url!) { [weak self] data, response, error in
             guard let self = self else { return }
 
-            guard error == nil else {
+            if let error = error {
                 fatalError("ViewController \(error)")
             }
             

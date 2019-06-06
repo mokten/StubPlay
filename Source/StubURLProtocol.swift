@@ -144,8 +144,6 @@ private extension StubURLProtocol {
     }
     
     func finished(stub: Stub?, response: URLResponse?, bodyData: Data?, isCached: Bool = false) {
-        print("finished=")
-        
         if let stub = stub, stub.skipSave != true {
             stubManager.save(stub, bodyData: bodyData)
         }
@@ -156,11 +154,7 @@ private extension StubURLProtocol {
         
         client.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
         
-        print("urlProtocol=")
-        
         if isCached, let data = bodyData {
-            print("urlProtocol=", String(data: data, encoding: .utf8))
-            
             client.urlProtocol(self, didLoad: data)
         }
     }
