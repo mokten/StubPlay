@@ -1,12 +1,11 @@
-platform :ios, '11.0'
-
 install! 'cocoapods', :generate_multiple_pod_projects => true, :incremental_installation => true
 
 def commonPods
-    pod 'Swifter', :git => 'https://github.com/httpswift/swifter.git', :branch => 'stable'
+    pod 'Swifter'
 end
 
 target 'StubPlay iOS' do
+  platform :ios, '11.0'
   use_frameworks!
   commonPods
  
@@ -18,6 +17,7 @@ target 'StubPlay iOS' do
 end
 
 target 'StubPlay tvOS' do
+  platform :tvos, '11.0'
   use_frameworks!
   commonPods
  
@@ -32,6 +32,7 @@ end
 # Sample Apps
 
 target 'Example-iOS' do
+    platform :ios, '11.0'
     use_frameworks!
     workspace 'StubPlay'
     project 'Examples/Example-iOS/Example-iOS'
