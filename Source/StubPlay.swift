@@ -32,28 +32,46 @@ public enum StubPlayConstants {
 public class StubPlay {
     
     public static let `default` = StubPlay()
-    public let serverPort: in_port_t
     public let stubManager: StubManager
-    public let stubServer: StubServer
-    
     private var isEnabled = false
+    
+    public let serverPort: in_port_t
+    
+    private var isEnabledServer = false {
+        didSet {
+            guard oldValue != isEnabledServer else { return }
+            if isEnabledServer {
+                if self.stubServer == nil {
+                    self.stubServer = StubServer(stubManager: stubManager)
+                }
+            } else {
+                self.stubServer?.stop()
+            }
+        }
+    }
+
+    public var stubServer: StubServer? = nil
+    
+    public var saveResponse: Bool = false
     
     init(stubManager: StubManager = StubManager.shared, serverPort: in_port_t = StubPlayConstants.serverPort) {
         self.stubManager = stubManager
-        self.stubServer = StubServer(stubManager: stubManager)
         self.serverPort = serverPort
     }
     
-    public func enableStub(_ enable: Bool = true) throws {
+    public func enableStub(_ enable: Bool = true, isEnabledServer: Bool = false) throws {
         guard isEnabled != enable else { return }
         isEnabled = enable
+        self.isEnabledServer = isEnabledServer
         
         if isEnabled {
-            try stubServer.start(port: StubPlayConstants.serverPort)
+            if isEnabledServer {
+                try stubServer?.start(port: StubPlayConstants.serverPort)
+            }
             URLCache.shared.removeAllCachedResponses()
             URLProtocol.registerClass(StubURLProtocol.self)
         } else {
-            stubServer.stop()
+            stubServer?.stop()
             URLProtocol.unregisterClass(StubURLProtocol.self)
         }
         
@@ -68,9 +86,7 @@ public enum StubPlayError: LocalizedError {
 public extension StubPlay {
     
     // Convenience helper
-    func enableStub(for folders: [Folder], saveResponses: Bool = true, clearSaveDir: Bool = true, bundle: Bundle = Bundle.main) throws {
-        try enableStub()
-        
+    func enableStub(for folders: [Folder], saveResponses: Bool = true, clearSaveDir: Bool = true, bundle: Bundle = Bundle.main, isEnabledServer: Bool = false) throws {
         stubManager.reset()
         let filesManager = FilesManager(bundle: bundle)
         let saver = StubFileSaver(filesManager: filesManager)
@@ -88,6 +104,8 @@ public extension StubPlay {
                 throw StubPlayError.stubCacheLoad(error, stubCache, folder)
             }
         }
+        
+        try enableStub(isEnabledServer: isEnabledServer)
     }
     
     func disableStub() throws {
