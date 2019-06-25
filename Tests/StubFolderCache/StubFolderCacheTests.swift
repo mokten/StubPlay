@@ -52,13 +52,13 @@ class StubFolderCacheTests: XCTestCase {
     
     func testSet() throws {
         measure {
-            do { try _testSet() } catch { XCTAssertTrue(false) }
+            do { try _testSet() } catch { XCTFail() }
         }
     }
     
     func testMatch()  throws {
         measure {
-            do { try _testMatch() } catch { XCTAssertTrue(false) }
+            do { try _testMatch() } catch { XCTFail() }
         }
     }
     
@@ -79,7 +79,7 @@ class StubFolderCacheTests: XCTestCase {
         
         let request = Request(method: .get, url: URL(string: "https://httpbin.org/get"), headers: nil, body: nil)
         let messageCount = 1000
-        let extraExpectedCount = 100
+        let extraExpectedCount = 10
         
         var folderStubs: [Stub] = (0...messageCount).map { Stub(rewriteRule: nil, index: $0, request: request, response: nil) }
         

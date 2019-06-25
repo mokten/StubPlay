@@ -24,6 +24,7 @@
 //
 
 import Swifter
+import Foundation
 
 public class StubServer {
     
@@ -68,7 +69,6 @@ public class StubServer {
         server = nil
     }
 }
-
 
 extension HttpRequest {
     var stubRequest: Request? {

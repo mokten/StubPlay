@@ -1,4 +1,0 @@
-{
-    "team": "alamofire local",
-    "score": 23
-}
