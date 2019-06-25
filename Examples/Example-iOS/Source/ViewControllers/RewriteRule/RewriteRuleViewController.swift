@@ -24,7 +24,7 @@
 //
 
 import UIKit
-import StubPlay_iOS
+import StubPlay
 
 
 /// Demos RewriteRule and skipSave

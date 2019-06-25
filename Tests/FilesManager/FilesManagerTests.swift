@@ -26,12 +26,7 @@
 import Foundation
 
 import XCTest
-
-#if os(iOS)
-@testable import StubPlay_iOS
-#else
-@testable import StubPlay_tvOS
-#endif
+@testable import StubPlay
 
 class FilesManagerTests: XCTestCase {
     

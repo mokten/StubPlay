@@ -24,7 +24,7 @@
 //
 
 import UIKit
-import StubPlay_iOS
+import StubPlay
 
 class MultipleViewController: NiblessViewController {
     private let textView = UITextView()

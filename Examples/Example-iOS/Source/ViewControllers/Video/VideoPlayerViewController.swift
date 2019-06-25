@@ -26,7 +26,7 @@
 import UIKit
 import AVKit
 import AVFoundation
-import StubPlay_iOS
+import StubPlay
 
 private var playerViewControllerKVOContext = 0
 

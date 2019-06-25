@@ -17,24 +17,24 @@
 		3F1DFEB722A9366100FD9EB5 /* RewriteRule in Resources */ = {isa = PBXBuildFile; fileRef = 3F1DFEB622A9366100FD9EB5 /* RewriteRule */; };
 		3F1DFEBA22A93A8E00FD9EB5 /* MultipleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1DFEB922A93A8E00FD9EB5 /* MultipleViewController.swift */; };
 		3F1DFEBC22A93A9800FD9EB5 /* Multiple in Resources */ = {isa = PBXBuildFile; fileRef = 3F1DFEBB22A93A9800FD9EB5 /* Multiple */; };
-		3F4B365222C23D3800CEC9B0 /* StubPlay_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F4B365122C23D3800CEC9B0 /* StubPlay_iOS.framework */; };
-		3F4B365322C23D3800CEC9B0 /* StubPlay_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F4B365122C23D3800CEC9B0 /* StubPlay_iOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3F4C49C020A7EE1B009945E1 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C49BF20A7EE1B009945E1 /* ImageViewController.swift */; };
 		3F4C49C220A7EE39009945E1 /* CustomURLCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C49C120A7EE39009945E1 /* CustomURLCache.swift */; };
 		3F4C49D420A801A6009945E1 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C49D320A801A6009945E1 /* VideoPlayerViewController.swift */; };
+		3F72927122C24F5700AEAF51 /* StubPlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F72927022C24F5700AEAF51 /* StubPlay.framework */; };
+		3F72927222C24F5700AEAF51 /* StubPlay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F72927022C24F5700AEAF51 /* StubPlay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3F87686E20A7E82900DAC66B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F87686D20A7E82900DAC66B /* AppDelegate.swift */; };
 		3F87687720A7E82A00DAC66B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F87687620A7E82A00DAC66B /* Assets.xcassets */; };
 		3F87687A20A7E82A00DAC66B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F87687820A7E82A00DAC66B /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		3F032F9F2296C83B0039C1AE /* Embed Frameworks */ = {
+		3FED386922C24E1100E9A2FF /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3F4B365322C23D3800CEC9B0 /* StubPlay_iOS.framework in Embed Frameworks */,
+				3F72927222C24F5700AEAF51 /* StubPlay.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -42,7 +42,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3F032F9C2296C83B0039C1AE /* StubPlay_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StubPlay_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F1DFE6C22A91A9400FD9EB5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3F1DFE7022A91B8600FD9EB5 /* NiblessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiblessViewController.swift; sourceTree = "<group>"; };
 		3F1DFE8B22A9227E00FD9EB5 /* Storyboardable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboardable.swift; sourceTree = "<group>"; };
@@ -53,16 +52,15 @@
 		3F1DFEB622A9366100FD9EB5 /* RewriteRule */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RewriteRule; sourceTree = "<group>"; };
 		3F1DFEB922A93A8E00FD9EB5 /* MultipleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleViewController.swift; sourceTree = "<group>"; };
 		3F1DFEBB22A93A9800FD9EB5 /* Multiple */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Multiple; sourceTree = "<group>"; };
-		3F4B365122C23D3800CEC9B0 /* StubPlay_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StubPlay_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F4C49BF20A7EE1B009945E1 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		3F4C49C120A7EE39009945E1 /* CustomURLCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomURLCache.swift; sourceTree = "<group>"; };
 		3F4C49D320A801A6009945E1 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
+		3F72927022C24F5700AEAF51 /* StubPlay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StubPlay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F87686A20A7E82900DAC66B /* Example-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F87686D20A7E82900DAC66B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F87687620A7E82A00DAC66B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F87687920A7E82A00DAC66B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F87687B20A7E82A00DAC66B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3F960DEB22BA78FF002B9D0D /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swifter.framework; path = ../../Carthage/Build/iOS/Swifter.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F4B365222C23D3800CEC9B0 /* StubPlay_iOS.framework in Frameworks */,
+				3F72927122C24F5700AEAF51 /* StubPlay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,7 +144,7 @@
 		3F87686120A7E82900DAC66B = {
 			isa = PBXGroup;
 			children = (
-				3F4B365122C23D3800CEC9B0 /* StubPlay_iOS.framework */,
+				3F72927022C24F5700AEAF51 /* StubPlay.framework */,
 				3F87686C20A7E82900DAC66B /* Source */,
 				3F87686B20A7E82900DAC66B /* Products */,
 				6FAE42AD047B839A47B34BD4 /* Frameworks */,
@@ -178,8 +176,6 @@
 		6FAE42AD047B839A47B34BD4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3F960DEB22BA78FF002B9D0D /* Swifter.framework */,
-				3F032F9C2296C83B0039C1AE /* StubPlay_iOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -194,7 +190,7 @@
 				3F87686620A7E82900DAC66B /* Sources */,
 				3F87686720A7E82900DAC66B /* Frameworks */,
 				3F87686820A7E82900DAC66B /* Resources */,
-				3F032F9F2296C83B0039C1AE /* Embed Frameworks */,
+				3FED386922C24E1100E9A2FF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -403,6 +399,7 @@
 		3F87688A20A7E82B00DAC66B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 862DX7386G;
@@ -421,6 +418,7 @@
 		3F87688B20A7E82B00DAC66B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 862DX7386G;

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3FAE4E3622425D3D005EF99D"
-               BuildableName = "StubPlay_tvOS.framework"
+               BuildableName = "StubPlay.framework"
                BlueprintName = "StubPlay tvOS"
                ReferencedContainer = "container:StubPlay.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3FAE4E3622425D3D005EF99D"
-            BuildableName = "StubPlay_tvOS.framework"
+            BuildableName = "StubPlay.framework"
             BlueprintName = "StubPlay tvOS"
             ReferencedContainer = "container:StubPlay.xcodeproj">
          </BuildableReference>
@@ -68,7 +68,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3FAE4E3622425D3D005EF99D"
-            BuildableName = "StubPlay_tvOS.framework"
+            BuildableName = "StubPlay.framework"
             BlueprintName = "StubPlay tvOS"
             ReferencedContainer = "container:StubPlay.xcodeproj">
          </BuildableReference>
@@ -86,7 +86,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3FAE4E3622425D3D005EF99D"
-            BuildableName = "StubPlay_tvOS.framework"
+            BuildableName = "StubPlay.framework"
             BlueprintName = "StubPlay tvOS"
             ReferencedContainer = "container:StubPlay.xcodeproj">
          </BuildableReference>

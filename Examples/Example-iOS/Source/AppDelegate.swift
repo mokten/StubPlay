@@ -23,7 +23,7 @@
 //  THE SOFTWARE.
 //
 
-import StubPlay_iOS
+import StubPlay
 import UIKit
 
 @UIApplicationMain

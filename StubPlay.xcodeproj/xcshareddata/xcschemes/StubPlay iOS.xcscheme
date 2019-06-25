@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3F843C1E22425B6F0007BBA4"
-               BuildableName = "StubPlay_iOS.framework"
+               BuildableName = "StubPlay.framework"
                BlueprintName = "StubPlay iOS"
                ReferencedContainer = "container:StubPlay.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3F843C1E22425B6F0007BBA4"
-            BuildableName = "StubPlay_iOS.framework"
+            BuildableName = "StubPlay.framework"
             BlueprintName = "StubPlay iOS"
             ReferencedContainer = "container:StubPlay.xcodeproj">
          </BuildableReference>
@@ -74,7 +74,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3F843C1E22425B6F0007BBA4"
-            BuildableName = "StubPlay_iOS.framework"
+            BuildableName = "StubPlay.framework"
             BlueprintName = "StubPlay iOS"
             ReferencedContainer = "container:StubPlay.xcodeproj">
          </BuildableReference>
@@ -92,7 +92,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3F843C1E22425B6F0007BBA4"
-            BuildableName = "StubPlay_iOS.framework"
+            BuildableName = "StubPlay.framework"
             BlueprintName = "StubPlay iOS"
             ReferencedContainer = "container:StubPlay.xcodeproj">
          </BuildableReference>
