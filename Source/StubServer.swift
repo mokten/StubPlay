@@ -22,7 +22,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 //
-
+#if canImport(Swifter)
 import Swifter
 import Foundation
 
@@ -88,3 +88,25 @@ extension HttpRequest {
         return Request(method: method, url: url, headers: headers, body: requestBody)
     }
 }
+
+#else
+
+public class StubServer {
+    init(stubManager: StubManager) {
+        fatalError("Swifter needs to be imported")
+    }
+    
+    public func start(port: in_port_t) throws {
+        fatalError("Swifter needs to be imported")
+    }
+    
+    public func shareFilesFromDirectory() -> ((HttpRequest) -> HttpResponse) {
+        fatalError("Swifter needs to be imported")
+    }
+    
+    func stop() {
+        fatalError("Swifter needs to be imported")
+    }
+}
+
+#endif
