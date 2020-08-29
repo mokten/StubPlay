@@ -8,37 +8,6 @@
 
 import Foundation
 
-public extension StubPlay {
-    
-    // Convenience helper
-    func enableStub(for config: Config = Config()) throws {
-        stubManager.reset()
-        let filesManager = FilesManager(bundle: config.bundle)
-        let saver = StubFileSaver(filesManager: filesManager)
-        if config.clearSaveDir { try saver.clear() }
-        stubManager.stubSaver = config.saveResponses ? saver : nil
-        
-        try config.folders.forEach { folder in
-            guard let stubCache = StubFolderCache(baseFolder: folder, filesManager: filesManager) else {
-                throw StubPlayError.stubCacheLoad(nil, nil, folder)
-            }
-            stubManager.add(stubCache)
-            do {
-                try stubCache.load()
-            } catch {
-                throw StubPlayError.stubCacheLoad(error, stubCache, folder)
-            }
-        }
-        
-        try enableStub(isEnabledServer: config.isEnabledServer)
-    }
-    
-    func disableStub() throws {
-        try enableStub(false)
-        stubManager.reset()
-    }
-}
-
 extension StubPlay {
     func swizzleProtocolClasses() {
         let instance = URLSessionConfiguration.default

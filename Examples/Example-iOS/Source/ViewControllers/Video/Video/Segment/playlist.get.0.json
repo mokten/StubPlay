@@ -1,7 +1,7 @@
 {
   "bodyFileName" : "playlist.get.0.body.m3u",
   "response" : {
-    "headerFields" : {
+    "headers" : {
         "Content-Type" : "application/x-mpegURL",
         "Cache-Control" : "no-cache",
         "Content-Length" : "10484"

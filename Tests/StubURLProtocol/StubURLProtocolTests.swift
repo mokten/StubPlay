@@ -36,20 +36,8 @@ class StubURLProtocolTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        
-        let filesManager = FilesManager(bundle: Bundle(for: type(of: self)))
-        let stubSaver = StubFileSaver(filesManager: filesManager)
-        
-        guard let stubCache = StubFolderCache(baseFolder: "StubURLProtocolFiles/testStubRequest", filesManager: filesManager) else {
-            return XCTAssertTrue(false)
-        }
-        
-        StubManager.shared.stubSaver = stubSaver
-        StubManager.shared.add(stubCache)
-        
         do {
-            try stubCache.load()
-            try StubPlay.default.enableStub(false)
+            try StubPlay.default.enableStub(for: StubConfig(folders: ["StubURLProtocolFiles/testStubRequest"], bundle: Bundle(for: type(of: self))))
         } catch {
             XCTAssertTrue(false, error.localizedDescription)
         }
@@ -74,28 +62,7 @@ class StubURLProtocolTests: XCTestCase {
         }
         
         task.resume()
-        waitForExpectations(timeout: 1000, handler: nil)
-    }
-    
-    func testStubRequestLoad() throws {
-        try StubPlay.default.enableStub()
-        urls.forEach { _testStubRequestLoad(urlStr: $0) }
-    }
-    
-    func _testStubRequestLoad(urlStr: String) {
-        let exp = expectation(description: "Success")
-        guard let url = URL(string: urlStr) else { return XCTAssertTrue(false, "\(urlStr)") }
-        
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
-        
-        let task = session.dataTask(with: url) { data, response, error in
-            XCTAssertNil(error)
-            XCTAssertNotNil(data)
-            exp.fulfill()
-        }
-        
-        task.resume()
         waitForExpectations(timeout: 1, handler: nil)
     }
+
 }

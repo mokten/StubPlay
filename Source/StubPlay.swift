@@ -29,10 +29,16 @@ public enum StubPlayConstants {
     public static let serverPort: in_port_t = 9080
 }
 
+/*
+ 
+ Convenience class to use StubPlay
+ 
+ */
 public class StubPlay {
     
     public static let `default` = StubPlay()
     public let stubManager: StubManager
+
     private var isEnabled = false
     
     public let serverPort: in_port_t
@@ -49,7 +55,7 @@ public class StubPlay {
             }
         }
     }
-
+    
     public var stubServer: StubServer? = nil
     
     public var saveResponse: Bool = false
@@ -59,9 +65,32 @@ public class StubPlay {
         self.serverPort = serverPort
     }
     
-    public func enableStub(_ enable: Bool = true, isEnabledServer: Bool = false) throws {
-        guard isEnabled != enable else { return }
-        isEnabled = enable
+    public func enableStub(for config: StubConfig = StubConfig()) throws {
+        Logger.shared.isEnabled = config.isLogging
+        stubManager.reset()
+        let filesManager = FilesManager(bundle: config.bundle)
+        let saver = StubFileSaver(filesManager: filesManager)
+        if config.clearSaveDir { try saver.clear() }
+        stubManager.stubSaver = config.saveResponses ? saver : nil
+        
+        try config.folders.forEach { folder in
+            guard let stubCache = StubFolderCache(baseFolder: folder, filesManager: filesManager) else {
+                throw StubPlayError.stubCacheLoad(nil, nil, folder)
+            }
+            stubManager.add(stubCache)
+            do {
+                try stubCache.load()
+            } catch {
+                throw StubPlayError.stubCacheLoad(error, stubCache, folder)
+            }
+        }
+        
+        try enableStub(isEnabledServer: config.isEnabledServer)
+    }
+    
+    private func enableStub(_ isEnabled: Bool = true, isEnabledServer: Bool = false) throws {
+        guard self.isEnabled != isEnabled else { return }
+        self.isEnabled = isEnabled
         self.isEnabledServer = isEnabledServer
         
         if isEnabled {
@@ -76,6 +105,11 @@ public class StubPlay {
         }
         
         swizzleProtocolClasses()
+    }
+    
+    func disableStub() throws {
+        try enableStub(false)
+        stubManager.reset()
     }
 }
 

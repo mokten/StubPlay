@@ -76,7 +76,7 @@ class StubFolderCacheTests: XCTestCase {
         let messageCount = 1000
         let extraExpectedCount = 10
         
-        var folderStubs: [Stub] = (0...messageCount).map { Stub(rewriteRule: nil, index: $0, request: request, response: nil) }
+        let folderStubs: [Stub] = (0...messageCount).map { Stub(rewriteRule: nil, index: $0, request: request, response: nil) }
         
         let maxIndex = messageCount
         var expectedMessages: [Stub] = folderStubs

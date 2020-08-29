@@ -1,7 +1,7 @@
 {
   "bodyFileName" : "get.get.0.body.json",
   "response" : {
-    "headerFields" : {
+    "headers" : {
       "Content-Encoding" : "gzip",
     },
     "statusCode" : 200,

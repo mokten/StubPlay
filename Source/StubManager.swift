@@ -22,6 +22,9 @@
 
 import Foundation
 
+/*
+ Saves a Stub in a format
+ */
 public protocol StubSaver {
     func save(_ stub: Stub, bodyData: Data?)
 }
@@ -31,6 +34,9 @@ public protocol StubCache {
     func get(request: Request) -> Stub?
 }
 
+/*
+ Manages the mapping of the request to the Stub
+ */
 public class StubManager {
     public static let shared = StubManager()
 

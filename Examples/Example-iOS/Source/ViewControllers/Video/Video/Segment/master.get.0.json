@@ -1,7 +1,7 @@
 {
   "bodyFileName" : "master.get.0.body.m3u",
   "response" : {
-    "headerFields" : {
+    "headers" : {
       "Content-Length" : "3286",
       "Content-Type" : "application/x-mpegURL",
       "Cache-Control" : "max-age=0, no-cache, no-store",

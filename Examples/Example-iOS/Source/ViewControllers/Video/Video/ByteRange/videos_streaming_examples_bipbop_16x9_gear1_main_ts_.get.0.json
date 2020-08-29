@@ -1,7 +1,7 @@
 {
   "bodyFileName" : "videos_streaming_examples_bipbop_16x9_gear1_main_ts_.get.0.body.ts",
   "response" : {
-    "headerFields" : {
+    "headers" : {
       "Content-Type" : "binary\/octet-stream",
       "Accept-Ranges" : "bytes",
       "content-range" : "bytes 326744-653111\/59366640",

@@ -26,22 +26,10 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES"
       enableAddressSanitizer = "YES"
       enableASanStackUseAfterReturn = "YES"
-      codeCoverageEnabled = "YES"
-      shouldUseLaunchSchemeArgsEnv = "YES">
-      <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3F843C2722425B6F0007BBA4"
-               BuildableName = "StubPlayTests.xctest"
-               BlueprintName = "StubPlayTests"
-               ReferencedContainer = "container:StubPlay.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-      </Testables>
+      codeCoverageEnabled = "YES">
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
@@ -58,6 +46,20 @@
             isEnabled = "YES">
          </AdditionalOption>
       </AdditionalOptions>
+      <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES"
+            testExecutionOrdering = "random">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3F843C2722425B6F0007BBA4"
+               BuildableName = "StubPlayTests.xctest"
+               BlueprintName = "StubPlayTests"
+               ReferencedContainer = "container:StubPlay.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -79,8 +81,6 @@
             ReferencedContainer = "container:StubPlay.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

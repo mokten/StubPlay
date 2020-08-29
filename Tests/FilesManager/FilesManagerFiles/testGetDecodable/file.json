@@ -8,7 +8,7 @@
     "bodyUrl": "https:\/\/httpbin.org\/get",
     "statusCode": 200,
     "mimeType" : "application/json",
-    "headerFields": {
+    "headers": {
       "hi": "ho"
     }
   },

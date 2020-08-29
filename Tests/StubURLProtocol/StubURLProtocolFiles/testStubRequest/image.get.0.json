@@ -1,7 +1,7 @@
 {
   "bodyFileName" : "image.get.0.body",
   "response" : {
-    "headerFields" : {
+    "headers" : {
     },
     "statusCode" : 200
   },

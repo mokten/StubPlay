@@ -39,7 +39,7 @@ class StubTests: XCTestCase {
     func testEncodeDecode() throws {
         let bodyUrl = "https://httpbin.org/get"
         let rule = RewriteRule(method: .post, host: "httpbin.org", path: "hi", params: nil)
-        let response = Response(statusCode: 200, mimeType: "application/json", headerFields: ["hi" : "ho"], bodyUrl: bodyUrl)
+        let response = Response(statusCode: 200, mimeType: "application/json", headers: ["hi" : "ho"], bodyUrl: bodyUrl)
         let request = Request(method: .get, url: URL(string: "https://httpbin.org/get"), headers: ["wwdc" : "gogo"], body: "some url")
         let msg = Stub(rewriteRule: rule, request: request, response: response)
         

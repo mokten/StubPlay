@@ -25,14 +25,36 @@
 
 import Foundation
 
+/*
+ 
+ Saves a Stub in a two files.
+ 
+ The reason it is saved in two files is that one file contains the request/response meta data and the second file is the actual content.
+ 
+ This means no extraction needs to be performed and the file can be viewed directly in a compatible viewer.
+ 
+ ie. jpeg can be viewed in a jpeg viewer
+ 
+ 1. Request and response meta data
+ 2. Response body ie. image, json, html, video
+ 
+ */
 public class StubFileSaver: StubSaver {
     
     private let filesManager: FilesManager
     private let filenameFormatter: FilenameFormatter
     private let bodyFilenameFormatter: FilenameFormatter
+    
+    // Keeps count of the request
     private let counter = Counter<Request>()
     private let queue = DispatchQueue(label: "com.mokten.stubplay.stubfilesaver", qos: .background)
     
+    /// Saves a Stub locally in  two files
+    ///
+    /// - Parameters:
+    ///   - filesManager: Responsible for saving the files
+    ///   - filenameFormatter: formats the file names
+    ///   - bodyFilenameFormatter: formats the body file name
     public init(filesManager: FilesManager,
                 filenameFormatter: FilenameFormatter = DefaultFilenameFormatter(),
                 bodyFilenameFormatter: FilenameFormatter = BodyFilenameFormatter()) {

@@ -26,6 +26,9 @@ import Foundation
 
 public protocol Model: Codable, Hashable { }
 
+/*
+ Represents a stubbed http request and response
+ */
 public struct Stub: Model {
     public let rewriteRule: RewriteRule?
     public var index: Int
@@ -118,7 +121,7 @@ public struct Request: Model {
 public struct Response: Model {
     public let statusCode: Int?
     public let mimeType: String?
-    public let headerFields: [String: String]?
+    public let headers: [String: String]?
     public var bodyUrl: String?
 }
 
@@ -152,18 +155,18 @@ public extension Stub {
         return HTTPURLResponse(url: url,
                                statusCode: response?.statusCode ?? 0,
                                httpVersion: "HTTP/1.1",
-                               headerFields: (response?.headerFields) ?? [:])
+                               headerFields: (response?.headers) ?? [:])
     }
 }
 
 public extension HTTPURLResponse {
     var stubResponse: Response {
-        var headerFields: [String: String] = [:]
+        var headers: [String: String] = [:]
         for (key, value) in self.allHeaderFields {
-            headerFields["\(key)"] = "\(value)"
+            headers["\(key)"] = "\(value)"
         }
         
-        return Response(statusCode: statusCode, mimeType: mimeType, headerFields: headerFields, bodyUrl: nil)
+        return Response(statusCode: statusCode, mimeType: mimeType, headers: headers, bodyUrl: nil)
     }
 }
 

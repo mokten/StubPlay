@@ -13,7 +13,7 @@ import StubPlay
 class ExampleTests: XCTestCase {
 
     override func setUp() {
-        try! StubPlay.default.enableStub(for: Config(folders: ["Test1"], bundle: Bundle(for: type(of: self))))
+        try! StubPlay.default.enableStub(for: StubConfig(folders: ["Test1"], bundle: Bundle(for: type(of: self))))
     }
     
     func testJsonRequest() {

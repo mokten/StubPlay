@@ -52,14 +52,14 @@ public class StubURLProtocol: URLProtocol {
     override public func startLoading() {
         
         if let stubRequest = request.stubRequest, let stub = stubManager.get(request: stubRequest) {
-            logger("MOCK: ", request.url!)
+            logger("MOCK:", request.url!)
             finished(stub: stub, response: stub.httpURLResponse(defaultURL: request.url), bodyData: stub.bodyData, isCached: true)
             
         } else {
-            logger("NETWORK: ", request.url!)
+            logger("NETWORK:", request.url!)
             let newRequest = request as! NSMutableURLRequest
             URLProtocol.setProperty(true, forKey: CustomURLConst.requestHeaderKey, in: newRequest)
-            
+             
             let dataTask = session.dataTask(with: newRequest as URLRequest)
             dataTask.resume()
             self.dataTask = dataTask

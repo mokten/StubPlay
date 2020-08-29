@@ -5,7 +5,7 @@
     },
   "skipSave" : true,
   "response" : {
-    "headerFields" : {
+    "headers" : {
     },
     "statusCode" : 200,
     "mimeType" : "text\/plain"

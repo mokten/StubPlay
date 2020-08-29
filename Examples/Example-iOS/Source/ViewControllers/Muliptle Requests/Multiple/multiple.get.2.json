@@ -1,7 +1,7 @@
 {
   "bodyFileName" : "multiple.get.2.body.txt",
   "response" : {
-    "headerFields" : {
+    "headers" : {
     },
     "statusCode" : 200,
     "mimeType" : "text\/plain",

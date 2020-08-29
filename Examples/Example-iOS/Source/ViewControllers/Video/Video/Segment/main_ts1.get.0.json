@@ -1,7 +1,7 @@
 {
   "bodyFileName" : "main_ts1.get.0.body.ts",
   "response" : {
-    "headerFields" : {
+    "headers" : {
       "Content-Length" : "326368",
       "Content-Type" : "binary\/octet-stream",
       "Cache-Control" : "no-cache",
