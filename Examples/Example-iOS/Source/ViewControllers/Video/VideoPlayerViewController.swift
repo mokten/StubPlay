@@ -92,5 +92,10 @@ class VideoPlayerViewController: NiblessViewController {
 
         }
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        player?.pause()
+        super.viewWillDisappear(animated)
+    }
 
 }
