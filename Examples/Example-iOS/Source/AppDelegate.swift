@@ -37,7 +37,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Initialise in init() is the safest way all classes will get stubbed.
         //      ie. Main.storyboard initilisers are preceded by stub activation
         let folders = ["Text", "Image", "Alamofire", "Video/Segment", "Video/ByteRange", "Multiple", "RewriteRule"]
-        try? StubPlay.default.enableStub(for: StubConfig(folders: folders, isEnabledServer: true, isLogging: true))
+        try? StubPlay.default.enableStub(for: StubConfig(folders: folders,
+                                                         saveResponses: true,
+                                                         isEnabledServer: true,
+                                                         isLogging: true))
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

@@ -31,6 +31,7 @@ import StubPlay
 ///     Matches host regex: .*.test.com
 class RewriteRuleViewController: NiblessViewController {
     private let textView = UITextView()
+    private let session = URLSession(configuration: URLSessionConfiguration.default)
     
     override init() {
         super.init()
@@ -53,9 +54,6 @@ class RewriteRuleViewController: NiblessViewController {
 
     func testJsonRequest(_ url: URL?) {
         guard let url = url else { fatalError("Missing url") }
-        
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
 
         let task = session.dataTask(with: url) { [weak self] data, response, error in
             guard let self = self else { return }

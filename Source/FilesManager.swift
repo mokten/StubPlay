@@ -54,7 +54,7 @@ extension FilesManager {
             try? FileManager.default.createDirectory(at: newURL, withIntermediateDirectories: false, attributes: [:])
             saveURL = newURL
             
-            logger(level: .warn, "StubPlay: requests+responses are saved to:\n\t \(saveURL.path)")
+            logger(level: .warn, "StubPlay: stub saved to:\n\t \(saveURL.path)")
         } else {
             fatalError("Could not create URL at directory: \(Constants.baseDir)")
         }

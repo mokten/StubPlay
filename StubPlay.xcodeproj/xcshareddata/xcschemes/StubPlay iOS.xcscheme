@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1010"
+   LastUpgradeVersion = "1200"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -30,15 +30,6 @@
       enableAddressSanitizer = "YES"
       enableASanStackUseAfterReturn = "YES"
       codeCoverageEnabled = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3F843C1E22425B6F0007BBA4"
-            BuildableName = "StubPlay.framework"
-            BlueprintName = "StubPlay iOS"
-            ReferencedContainer = "container:StubPlay.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
          <AdditionalOption
             key = "NSZombieEnabled"

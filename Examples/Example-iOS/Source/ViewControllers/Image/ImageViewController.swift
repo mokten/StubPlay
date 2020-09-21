@@ -33,6 +33,8 @@ class ImageViewController: NiblessViewController {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
+
+    private let session = URLSession(configuration: URLSessionConfiguration.default)
     
     override init() {
         super.init()
@@ -53,9 +55,6 @@ class ImageViewController: NiblessViewController {
 
     func testImageRequest() {
         let url = URL(string: "https://www.google.com.au/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png")
-
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
 
         let task = session.dataTask(with: url!) { [weak self] data, response, error in
             guard let self = self else { return }

@@ -1,11 +1,13 @@
-//
-//  Example_iOSTests.swift
-//  Example-iOSTests
-//
-//  Created by Yoo-Jin Lee on 8/3/20.
-//  Copyright © 2020 Mokten Pty Ltd. All rights reserved.
-//
+- [Unit Test](#unit-test)
 
+# Unit Test
+
+## Introduction
+
+Complete example in Example-iOS.xcodeproj
+
+./ExampleTests.swift
+```swift
 import XCTest
 import StubPlay
 @testable import Example_iOS
@@ -38,3 +40,30 @@ class ExampleTests: XCTestCase {
     }
 
 }
+```
+
+./Test1/multiple.get.0.json
+```json
+{
+  "bodyFileName" : "multiple.get.0.body.txt",
+  "response" : {
+    "headers" : {
+    },
+    "statusCode" : 200,
+    "mimeType" : "text\/plain",
+    "Cache-Control" : "max-age=89098789",
+  },
+  "request" : {
+    "url" : "https:\/\/a.ab\/multiple.txt",
+    "method" : "get",
+    "headers" : {
+      "Accept-Language" : "en;q=1.0",
+      "User-Agent" : "Example-iOS\/0.1 (com.mokten.Example-iOS; build:1; iOS 12.1.0) Alamofire\/4.8.2",
+      "Accept-Encoding" : "gzip;q=1.0, compress;q=0.5"
+    }
+  },
+  "index" : 0
+}
+```
+
+ 

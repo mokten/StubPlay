@@ -2,7 +2,7 @@
 
 Save and replay http requests in Swift
 
-Stubs http responses and supports any http respons including text, html, json, images, videos and HLS.
+Stubs http responses and supports any http response including text, html, json, images, videos and HLS.
 
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/StubPlay.svg)](https://img.shields.io/cocoapods/v/StubPlay.svg)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
@@ -10,9 +10,11 @@ Stubs http responses and supports any http respons including text, html, json, i
 
 1. [Features](#features)
 1. [Requirements](#requirements)
+1. [Compatible](#compatible)
 1. [Installation](#installation)
 1. [Usage](#usage)
-   1. [**Introduction**](./Usage.md#introduction)
+   1. [**Usage**](./Documentation/Usage.md)
+   1. [**Unit Test**](./Documentation/UnitTest.md)
 1. [Concepts](#concepts)
 1. [License](#license)
 
@@ -32,13 +34,15 @@ Stubs http responses and supports any http respons including text, html, json, i
 - iOS 10.0+ / tvOS 11.0+
 - Xcode 11.3+
 - Swift 5.1+
-- Cocoapods 1.7+
  
 ## Installation
 
 ### CocoaPods
 
 [CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
+
+- Cocoapods 1.7+
+
 
 ```bash
 $ gem install cocoapods
@@ -63,6 +67,16 @@ Then, run the following command:
 ```bash
 $ pod install
 ```  
+
+### Carthage
+
+- Carthage 0.33+
+
+Cartfile
+```ogdl
+github "mokten/StubPlay"
+```
+
 
 ## Usage
 
@@ -100,6 +114,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ...
 }
 ```
+ 
+Optionally, all requests are saved to the Caches directory (this can be turned off with configuration):
+
+ie:
+~/Library/Developer/CoreSimulator/Devices/C62F6E5A-6459-45B6-B20B-B7C8E07AA529/data/Containers/Data/Application/1C1E61F8-B7B9-45FA-AA7E-7928E8952989/Library/Caches/com.mokten.stubplay
+
 ## Concepts
 
 1. Stubbed request / response has 2 files
