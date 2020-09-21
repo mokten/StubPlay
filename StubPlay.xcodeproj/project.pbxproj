@@ -18,6 +18,46 @@
 		3F31807A2264A21A00863A32 /* StubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3180792264A21A00863A32 /* StubTests.swift */; };
 		3F44FC842296AD4E0086A7C6 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44FC832296AD4E0086A7C6 /* Logger.swift */; };
 		3F44FC852296AD4E0086A7C6 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44FC832296AD4E0086A7C6 /* Logger.swift */; };
+		3F50E6AE2518D8450074307F /* WebSockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E69A2518D8440074307F /* WebSockets.swift */; };
+		3F50E6AF2518D8450074307F /* WebSockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E69A2518D8440074307F /* WebSockets.swift */; };
+		3F50E6B02518D8450074307F /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E69B2518D8440074307F /* HttpRequest.swift */; };
+		3F50E6B12518D8450074307F /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E69B2518D8440074307F /* HttpRequest.swift */; };
+		3F50E6B22518D8450074307F /* HttpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E69C2518D8440074307F /* HttpRouter.swift */; };
+		3F50E6B32518D8450074307F /* HttpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E69C2518D8440074307F /* HttpRouter.swift */; };
+		3F50E6B42518D8450074307F /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E69D2518D8440074307F /* Socket.swift */; };
+		3F50E6B52518D8450074307F /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E69D2518D8440074307F /* Socket.swift */; };
+		3F50E6B62518D8450074307F /* Socket+File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E69E2518D8440074307F /* Socket+File.swift */; };
+		3F50E6B72518D8450074307F /* Socket+File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E69E2518D8440074307F /* Socket+File.swift */; };
+		3F50E6B82518D8450074307F /* String+Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E69F2518D8440074307F /* String+Misc.swift */; };
+		3F50E6B92518D8450074307F /* String+Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E69F2518D8440074307F /* String+Misc.swift */; };
+		3F50E6BA2518D8450074307F /* String+BASE64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E6A02518D8440074307F /* String+BASE64.swift */; };
+		3F50E6BB2518D8450074307F /* String+BASE64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E6A02518D8440074307F /* String+BASE64.swift */; };
+		3F50E6BC2518D8450074307F /* String+File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E6A12518D8440074307F /* String+File.swift */; };
+		3F50E6BD2518D8450074307F /* String+File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E6A12518D8440074307F /* String+File.swift */; };
+		3F50E6BE2518D8450074307F /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E6A22518D8440074307F /* Process.swift */; };
+		3F50E6BF2518D8450074307F /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E6A22518D8440074307F /* Process.swift */; };
+		3F50E6C02518D8450074307F /* String+SHA1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E6A32518D8440074307F /* String+SHA1.swift */; };
+		3F50E6C12518D8450074307F /* String+SHA1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E6A32518D8440074307F /* String+SHA1.swift */; };
+		3F50E6C22518D8450074307F /* HttpParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E6A42518D8440074307F /* HttpParser.swift */; };
+		3F50E6C32518D8450074307F /* HttpParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E6A42518D8440074307F /* HttpParser.swift */; };
+		3F50E6C42518D8450074307F /* Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E6A52518D8440074307F /* Files.swift */; };
+		3F50E6C52518D8450074307F /* Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E6A52518D8440074307F /* Files.swift */; };
+		3F50E6C62518D8450074307F /* MimeTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E6A62518D8440074307F /* MimeTypes.swift */; };
+		3F50E6C72518D8450074307F /* MimeTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E6A62518D8440074307F /* MimeTypes.swift */; };
+		3F50E6C82518D8450074307F /* Errno.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E6A72518D8440074307F /* Errno.swift */; };
+		3F50E6C92518D8450074307F /* Errno.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E6A72518D8440074307F /* Errno.swift */; };
+		3F50E6CA2518D8450074307F /* HttpServerIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E6A82518D8440074307F /* HttpServerIO.swift */; };
+		3F50E6CB2518D8450074307F /* HttpServerIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E6A82518D8440074307F /* HttpServerIO.swift */; };
+		3F50E6CC2518D8450074307F /* Socket+Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E6A92518D8440074307F /* Socket+Server.swift */; };
+		3F50E6CD2518D8450074307F /* Socket+Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E6A92518D8440074307F /* Socket+Server.swift */; };
+		3F50E6CE2518D8450074307F /* HttpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E6AA2518D8440074307F /* HttpResponse.swift */; };
+		3F50E6CF2518D8450074307F /* HttpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E6AA2518D8440074307F /* HttpResponse.swift */; };
+		3F50E6D02518D8450074307F /* Scopes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E6AB2518D8440074307F /* Scopes.swift */; };
+		3F50E6D12518D8450074307F /* Scopes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E6AB2518D8440074307F /* Scopes.swift */; };
+		3F50E6D22518D8450074307F /* DemoServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E6AC2518D8450074307F /* DemoServer.swift */; };
+		3F50E6D32518D8450074307F /* DemoServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E6AC2518D8450074307F /* DemoServer.swift */; };
+		3F50E6D42518D8450074307F /* HttpServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E6AD2518D8450074307F /* HttpServer.swift */; };
+		3F50E6D52518D8450074307F /* HttpServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50E6AD2518D8450074307F /* HttpServer.swift */; };
 		3F576869224CC2B100BBC26C /* FilenameFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F576868224CC2B100BBC26C /* FilenameFormatterTests.swift */; };
 		3F75A8F2227B24F0003AA140 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F75A8F1227B24F0003AA140 /* Counter.swift */; };
 		3F75A8F3227B24F0003AA140 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F75A8F1227B24F0003AA140 /* Counter.swift */; };
@@ -44,7 +84,6 @@
 		3F943A132289930400655968 /* RewriteRuleCreateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3180762264979E00863A32 /* RewriteRuleCreateTests.swift */; };
 		3F943A142289930B00655968 /* StubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3180792264A21A00863A32 /* StubTests.swift */; };
 		3FAE4E4022425D3D005EF99D /* StubPlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FAE4E3722425D3D005EF99D /* StubPlay.framework */; };
-		3FAE4E4722425D3D005EF99D /* StubPlay_tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FAE4E3922425D3D005EF99D /* StubPlay_tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FAE4E5222425F40005EF99D /* Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE4E5122425F40005EF99D /* Stub.swift */; };
 		3FAE4E5322425F40005EF99D /* Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE4E5122425F40005EF99D /* Stub.swift */; };
 		3FB169BD2296C97E0014773C /* HlsPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB169BA2296C97E0014773C /* HlsPlaylist.swift */; };
@@ -92,132 +131,6 @@
 			remoteGlobalIDString = 3FAE4E3622425D3D005EF99D;
 			remoteInfo = "StubPlay tvOS";
 		};
-		3FE404CC24FA99D6009FEE83 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3FE404C924FA99D6009FEE83 /* Swifter.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 7AE893E61C05127900A29F63;
-			remoteInfo = SwifteriOS;
-		};
-		3FE404D624FA99D6009FEE83 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3FE404C924FA99D6009FEE83 /* Swifter.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7C839B6E19422CFF003A6950;
-			remoteInfo = SwifterSampleiOS;
-		};
-		3FE404D824FA99D6009FEE83 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3FE404C924FA99D6009FEE83 /* Swifter.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7CA4813B19A2EA8D0030B30D;
-			remoteInfo = SwifterSampleOSX;
-		};
-		3FE404DA24FA99D6009FEE83 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3FE404C924FA99D6009FEE83 /* Swifter.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7AE893E71C05127900A29F63;
-			remoteInfo = SwifteriOS;
-		};
-		3FE404DC24FA99D6009FEE83 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3FE404C924FA99D6009FEE83 /* Swifter.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7AE893FB1C0512C400A29F63;
-			remoteInfo = SwifterMac;
-		};
-		3FE404DE24FA99D6009FEE83 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3FE404C924FA99D6009FEE83 /* Swifter.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 269B47A11D3AAAE20042D137;
-			remoteInfo = SwiftertvOS;
-		};
-		3FE404E024FA99D6009FEE83 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3FE404C924FA99D6009FEE83 /* Swifter.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7CCD875C1C66099B0068099B;
-			remoteInfo = SwifteriOSTests;
-		};
-		3FE404E224FA99D6009FEE83 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3FE404C924FA99D6009FEE83 /* Swifter.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 043660C221FED34100497989;
-			remoteInfo = SwiftermacOSTests;
-		};
-		3FE404E424FA99D6009FEE83 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3FE404C924FA99D6009FEE83 /* Swifter.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 043660DA21FED3A300497989;
-			remoteInfo = SwiftertvOSTests;
-		};
-		3FE404E624FA99DD009FEE83 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3FE404C924FA99D6009FEE83 /* Swifter.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 269B47861D3AAAE20042D137;
-			remoteInfo = SwiftertvOS;
-		};
-		3FE404F324FB50BA009FEE83 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3FE404AE24FA99B0009FEE83 /* Swifter.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7C839B6E19422CFF003A6950;
-			remoteInfo = SwifterSampleiOS;
-		};
-		3FE404F524FB50BA009FEE83 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3FE404AE24FA99B0009FEE83 /* Swifter.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7CA4813B19A2EA8D0030B30D;
-			remoteInfo = SwifterSampleOSX;
-		};
-		3FE404F724FB50BA009FEE83 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3FE404AE24FA99B0009FEE83 /* Swifter.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7AE893E71C05127900A29F63;
-			remoteInfo = SwifteriOS;
-		};
-		3FE404F924FB50BA009FEE83 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3FE404AE24FA99B0009FEE83 /* Swifter.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7AE893FB1C0512C400A29F63;
-			remoteInfo = SwifterMac;
-		};
-		3FE404FB24FB50BA009FEE83 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3FE404AE24FA99B0009FEE83 /* Swifter.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 269B47A11D3AAAE20042D137;
-			remoteInfo = SwiftertvOS;
-		};
-		3FE404FD24FB50BA009FEE83 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3FE404AE24FA99B0009FEE83 /* Swifter.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7CCD875C1C66099B0068099B;
-			remoteInfo = SwifteriOSTests;
-		};
-		3FE404FF24FB50BA009FEE83 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3FE404AE24FA99B0009FEE83 /* Swifter.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 043660C221FED34100497989;
-			remoteInfo = SwiftermacOSTests;
-		};
-		3FE4050124FB50BA009FEE83 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3FE404AE24FA99B0009FEE83 /* Swifter.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 043660DA21FED3A300497989;
-			remoteInfo = SwiftertvOSTests;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -229,6 +142,27 @@
 		3F3180762264979E00863A32 /* RewriteRuleCreateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewriteRuleCreateTests.swift; sourceTree = "<group>"; };
 		3F3180792264A21A00863A32 /* StubTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubTests.swift; sourceTree = "<group>"; };
 		3F44FC832296AD4E0086A7C6 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		3F50E62D2518CF600074307F /* StubPlay.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = StubPlay.podspec; sourceTree = "<group>"; };
+		3F50E69A2518D8440074307F /* WebSockets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebSockets.swift; path = XCode/Sources/WebSockets.swift; sourceTree = "<group>"; };
+		3F50E69B2518D8440074307F /* HttpRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HttpRequest.swift; path = XCode/Sources/HttpRequest.swift; sourceTree = "<group>"; };
+		3F50E69C2518D8440074307F /* HttpRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HttpRouter.swift; path = XCode/Sources/HttpRouter.swift; sourceTree = "<group>"; };
+		3F50E69D2518D8440074307F /* Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Socket.swift; path = XCode/Sources/Socket.swift; sourceTree = "<group>"; };
+		3F50E69E2518D8440074307F /* Socket+File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Socket+File.swift"; path = "XCode/Sources/Socket+File.swift"; sourceTree = "<group>"; };
+		3F50E69F2518D8440074307F /* String+Misc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Misc.swift"; path = "XCode/Sources/String+Misc.swift"; sourceTree = "<group>"; };
+		3F50E6A02518D8440074307F /* String+BASE64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+BASE64.swift"; path = "XCode/Sources/String+BASE64.swift"; sourceTree = "<group>"; };
+		3F50E6A12518D8440074307F /* String+File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+File.swift"; path = "XCode/Sources/String+File.swift"; sourceTree = "<group>"; };
+		3F50E6A22518D8440074307F /* Process.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Process.swift; path = XCode/Sources/Process.swift; sourceTree = "<group>"; };
+		3F50E6A32518D8440074307F /* String+SHA1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+SHA1.swift"; path = "XCode/Sources/String+SHA1.swift"; sourceTree = "<group>"; };
+		3F50E6A42518D8440074307F /* HttpParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HttpParser.swift; path = XCode/Sources/HttpParser.swift; sourceTree = "<group>"; };
+		3F50E6A52518D8440074307F /* Files.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Files.swift; path = XCode/Sources/Files.swift; sourceTree = "<group>"; };
+		3F50E6A62518D8440074307F /* MimeTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MimeTypes.swift; path = XCode/Sources/MimeTypes.swift; sourceTree = "<group>"; };
+		3F50E6A72518D8440074307F /* Errno.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Errno.swift; path = XCode/Sources/Errno.swift; sourceTree = "<group>"; };
+		3F50E6A82518D8440074307F /* HttpServerIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HttpServerIO.swift; path = XCode/Sources/HttpServerIO.swift; sourceTree = "<group>"; };
+		3F50E6A92518D8440074307F /* Socket+Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Socket+Server.swift"; path = "XCode/Sources/Socket+Server.swift"; sourceTree = "<group>"; };
+		3F50E6AA2518D8440074307F /* HttpResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HttpResponse.swift; path = XCode/Sources/HttpResponse.swift; sourceTree = "<group>"; };
+		3F50E6AB2518D8440074307F /* Scopes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Scopes.swift; path = XCode/Sources/Scopes.swift; sourceTree = "<group>"; };
+		3F50E6AC2518D8450074307F /* DemoServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DemoServer.swift; path = XCode/Sources/DemoServer.swift; sourceTree = "<group>"; };
+		3F50E6AD2518D8450074307F /* HttpServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HttpServer.swift; path = XCode/Sources/HttpServer.swift; sourceTree = "<group>"; };
 		3F576868224CC2B100BBC26C /* FilenameFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilenameFormatterTests.swift; sourceTree = "<group>"; };
 		3F75A8F1227B24F0003AA140 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		3F843C1F22425B6F0007BBA4 /* StubPlay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StubPlay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -245,10 +179,7 @@
 		3F97B29B22BA6E3100CB343F /* input.xcfilelist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcfilelist; path = input.xcfilelist; sourceTree = SOURCE_ROOT; };
 		3F97B29C22BA6E3100CB343F /* output.xcfilelist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcfilelist; path = output.xcfilelist; sourceTree = SOURCE_ROOT; };
 		3FAE4E3722425D3D005EF99D /* StubPlay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StubPlay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3FAE4E3922425D3D005EF99D /* StubPlay_tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StubPlay_tvOS.h; sourceTree = "<group>"; };
-		3FAE4E3A22425D3D005EF99D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FAE4E3F22425D3D005EF99D /* StubPlay tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "StubPlay tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3FAE4E4622425D3D005EF99D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FAE4E5122425F40005EF99D /* Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stub.swift; sourceTree = "<group>"; };
 		3FB169BA2296C97E0014773C /* HlsPlaylist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HlsPlaylist.swift; sourceTree = "<group>"; };
 		3FB169BB2296C97E0014773C /* AssetResourceLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetResourceLoader.swift; sourceTree = "<group>"; };
@@ -265,8 +196,6 @@
 		3FDDD88A227C68FE00F1CB37 /* StubURLProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubURLProtocolTests.swift; sourceTree = "<group>"; };
 		3FDDD88C227C6A7100F1CB37 /* URLSessionConfiguration+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionConfiguration+Extension.swift"; sourceTree = "<group>"; };
 		3FDDD88E227C6DBD00F1CB37 /* StubURLProtocolFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = StubURLProtocolFiles; sourceTree = "<group>"; };
-		3FE404AE24FA99B0009FEE83 /* Swifter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Swifter.xcodeproj; path = XCode/Swifter.xcodeproj; sourceTree = "<group>"; };
-		3FE404C924FA99D6009FEE83 /* Swifter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Swifter.xcodeproj; path = /Users/ylap2/HD2/App/StubPlay/Vendor/swifter/XCode/Swifter.xcodeproj; sourceTree = "<absolute>"; };
 		3FF207A3227C4C58000202B0 /* StubURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubURLProtocol.swift; sourceTree = "<group>"; };
 		3FFC2597228058A600BC47E8 /* StubPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubPlay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -316,17 +245,23 @@
 			name = Helper;
 			sourceTree = "<group>";
 		};
+		3F50E61E2518CF4F0074307F /* Deployment */ = {
+			isa = PBXGroup;
+			children = (
+				3F50E62D2518CF600074307F /* StubPlay.podspec */,
+			);
+			name = Deployment;
+			sourceTree = "<group>";
+		};
 		3F843C1522425B6F0007BBA4 = {
 			isa = PBXGroup;
 			children = (
 				3F843C2122425B6F0007BBA4 /* Source */,
 				3FE4047024FA97BE009FEE83 /* Vendor */,
 				3F843C2C22425B6F0007BBA4 /* Tests */,
-				3FAE4E3822425D3D005EF99D /* StubPlay tvOS */,
-				3FAE4E4322425D3D005EF99D /* StubPlay tvOSTests */,
+				3F50E61E2518CF4F0074307F /* Deployment */,
 				3F843C2022425B6F0007BBA4 /* Products */,
 				3F97B29422BA6D2800CB343F /* Frameworks */,
-				3FE404C924FA99D6009FEE83 /* Swifter.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -376,23 +311,6 @@
 				3F97B29522BA6D2800CB343F /* Swifter.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		3FAE4E3822425D3D005EF99D /* StubPlay tvOS */ = {
-			isa = PBXGroup;
-			children = (
-				3FAE4E3922425D3D005EF99D /* StubPlay_tvOS.h */,
-				3FAE4E3A22425D3D005EF99D /* Info.plist */,
-			);
-			path = "StubPlay tvOS";
-			sourceTree = "<group>";
-		};
-		3FAE4E4322425D3D005EF99D /* StubPlay tvOSTests */ = {
-			isa = PBXGroup;
-			children = (
-				3FAE4E4622425D3D005EF99D /* Info.plist */,
-			);
-			path = "StubPlay tvOSTests";
 			sourceTree = "<group>";
 		};
 		3FAE4E4E22425D97005EF99D /* Supporting Files */ = {
@@ -490,39 +408,28 @@
 		3FE4047124FA97DE009FEE83 /* swifter */ = {
 			isa = PBXGroup;
 			children = (
-				3FE404AE24FA99B0009FEE83 /* Swifter.xcodeproj */,
+				3F50E6AC2518D8450074307F /* DemoServer.swift */,
+				3F50E6A72518D8440074307F /* Errno.swift */,
+				3F50E6A52518D8440074307F /* Files.swift */,
+				3F50E6A42518D8440074307F /* HttpParser.swift */,
+				3F50E69B2518D8440074307F /* HttpRequest.swift */,
+				3F50E6AA2518D8440074307F /* HttpResponse.swift */,
+				3F50E69C2518D8440074307F /* HttpRouter.swift */,
+				3F50E6AD2518D8450074307F /* HttpServer.swift */,
+				3F50E6A82518D8440074307F /* HttpServerIO.swift */,
+				3F50E6A62518D8440074307F /* MimeTypes.swift */,
+				3F50E6A22518D8440074307F /* Process.swift */,
+				3F50E6AB2518D8440074307F /* Scopes.swift */,
+				3F50E69D2518D8440074307F /* Socket.swift */,
+				3F50E69E2518D8440074307F /* Socket+File.swift */,
+				3F50E6A92518D8440074307F /* Socket+Server.swift */,
+				3F50E6A02518D8440074307F /* String+BASE64.swift */,
+				3F50E6A12518D8440074307F /* String+File.swift */,
+				3F50E69F2518D8440074307F /* String+Misc.swift */,
+				3F50E6A32518D8440074307F /* String+SHA1.swift */,
+				3F50E69A2518D8440074307F /* WebSockets.swift */,
 			);
 			path = swifter;
-			sourceTree = "<group>";
-		};
-		3FE404CA24FA99D6009FEE83 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				3FE404D724FA99D6009FEE83 /* SwifterSampleiOS.app */,
-				3FE404D924FA99D6009FEE83 /* SwifterSampleOSX */,
-				3FE404DB24FA99D6009FEE83 /* Swifter.framework */,
-				3FE404DD24FA99D6009FEE83 /* Swifter.framework */,
-				3FE404DF24FA99D6009FEE83 /* Swifter.framework */,
-				3FE404E124FA99D6009FEE83 /* SwifteriOSTests.xctest */,
-				3FE404E324FA99D6009FEE83 /* SwiftermacOSTests.xctest */,
-				3FE404E524FA99D6009FEE83 /* SwiftertvOSTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		3FE404E924FB50BA009FEE83 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				3FE404F424FB50BA009FEE83 /* SwifterSampleiOS.app */,
-				3FE404F624FB50BA009FEE83 /* SwifterSampleOSX */,
-				3FE404F824FB50BA009FEE83 /* Swifter.framework */,
-				3FE404FA24FB50BA009FEE83 /* Swifter.framework */,
-				3FE404FC24FB50BA009FEE83 /* Swifter.framework */,
-				3FE404FE24FB50BA009FEE83 /* SwifteriOSTests.xctest */,
-				3FE4050024FB50BA009FEE83 /* SwiftermacOSTests.xctest */,
-				3FE4050224FB50BA009FEE83 /* SwiftertvOSTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -540,7 +447,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FAE4E4722425D3D005EF99D /* StubPlay_tvOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,7 +465,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				3FE404CD24FA99D6009FEE83 /* PBXTargetDependency */,
 			);
 			name = "StubPlay iOS";
 			productName = StubPlay;
@@ -596,7 +501,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				3FE404E724FA99DD009FEE83 /* PBXTargetDependency */,
 			);
 			name = "StubPlay tvOS";
 			productName = "StubPlay tvOS";
@@ -659,16 +563,6 @@
 			mainGroup = 3F843C1522425B6F0007BBA4;
 			productRefGroup = 3F843C2022425B6F0007BBA4 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 3FE404E924FB50BA009FEE83 /* Products */;
-					ProjectRef = 3FE404AE24FA99B0009FEE83 /* Swifter.xcodeproj */;
-				},
-				{
-					ProductGroup = 3FE404CA24FA99D6009FEE83 /* Products */;
-					ProjectRef = 3FE404C924FA99D6009FEE83 /* Swifter.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				3F843C1E22425B6F0007BBA4 /* StubPlay iOS */,
@@ -678,121 +572,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		3FE404D724FA99D6009FEE83 /* SwifterSampleiOS.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = SwifterSampleiOS.app;
-			remoteRef = 3FE404D624FA99D6009FEE83 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3FE404D924FA99D6009FEE83 /* SwifterSampleOSX */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = SwifterSampleOSX;
-			remoteRef = 3FE404D824FA99D6009FEE83 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3FE404DB24FA99D6009FEE83 /* Swifter.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Swifter.framework;
-			remoteRef = 3FE404DA24FA99D6009FEE83 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3FE404DD24FA99D6009FEE83 /* Swifter.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Swifter.framework;
-			remoteRef = 3FE404DC24FA99D6009FEE83 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3FE404DF24FA99D6009FEE83 /* Swifter.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Swifter.framework;
-			remoteRef = 3FE404DE24FA99D6009FEE83 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3FE404E124FA99D6009FEE83 /* SwifteriOSTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SwifteriOSTests.xctest;
-			remoteRef = 3FE404E024FA99D6009FEE83 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3FE404E324FA99D6009FEE83 /* SwiftermacOSTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SwiftermacOSTests.xctest;
-			remoteRef = 3FE404E224FA99D6009FEE83 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3FE404E524FA99D6009FEE83 /* SwiftertvOSTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SwiftertvOSTests.xctest;
-			remoteRef = 3FE404E424FA99D6009FEE83 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3FE404F424FB50BA009FEE83 /* SwifterSampleiOS.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = SwifterSampleiOS.app;
-			remoteRef = 3FE404F324FB50BA009FEE83 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3FE404F624FB50BA009FEE83 /* SwifterSampleOSX */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = SwifterSampleOSX;
-			remoteRef = 3FE404F524FB50BA009FEE83 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3FE404F824FB50BA009FEE83 /* Swifter.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Swifter.framework;
-			remoteRef = 3FE404F724FB50BA009FEE83 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3FE404FA24FB50BA009FEE83 /* Swifter.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Swifter.framework;
-			remoteRef = 3FE404F924FB50BA009FEE83 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3FE404FC24FB50BA009FEE83 /* Swifter.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Swifter.framework;
-			remoteRef = 3FE404FB24FB50BA009FEE83 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3FE404FE24FB50BA009FEE83 /* SwifteriOSTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SwifteriOSTests.xctest;
-			remoteRef = 3FE404FD24FB50BA009FEE83 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3FE4050024FB50BA009FEE83 /* SwiftermacOSTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SwiftermacOSTests.xctest;
-			remoteRef = 3FE404FF24FB50BA009FEE83 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3FE4050224FB50BA009FEE83 /* SwiftertvOSTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SwiftertvOSTests.xctest;
-			remoteRef = 3FE4050124FB50BA009FEE83 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3F843C1D22425B6F0007BBA4 /* Resources */ = {
@@ -836,24 +615,44 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F50E6AE2518D8450074307F /* WebSockets.swift in Sources */,
+				3F50E6C22518D8450074307F /* HttpParser.swift in Sources */,
+				3F50E6B02518D8450074307F /* HttpRequest.swift in Sources */,
+				3F50E6BC2518D8450074307F /* String+File.swift in Sources */,
 				3FFC2598228058A600BC47E8 /* StubPlay.swift in Sources */,
+				3F50E6CE2518D8450074307F /* HttpResponse.swift in Sources */,
 				3FB169BF2296C97E0014773C /* AssetResourceLoader.swift in Sources */,
 				3F0E5419227D47CC008E0F6A /* URL+Extension.swift in Sources */,
 				3FB169C12296C97E0014773C /* StubServer.swift in Sources */,
+				3F50E6B42518D8450074307F /* Socket.swift in Sources */,
+				3F50E6D42518D8450074307F /* HttpServer.swift in Sources */,
 				3FB169C42296D1630014773C /* String+Extension.swift in Sources */,
+				3F50E6C62518D8450074307F /* MimeTypes.swift in Sources */,
 				3FD24534241497DF00D285F5 /* StubPlay+Extension.swift in Sources */,
+				3F50E6C82518D8450074307F /* Errno.swift in Sources */,
 				3F75A8F2227B24F0003AA140 /* Counter.swift in Sources */,
+				3F50E6B82518D8450074307F /* String+Misc.swift in Sources */,
 				3FF207A4227C4C58000202B0 /* StubURLProtocol.swift in Sources */,
 				3F8C98662261F2F800717E14 /* FilenameFormatter.swift in Sources */,
 				3F8C98692261F39F00717E14 /* FilesManager.swift in Sources */,
 				3FDDD88D227C6A7100F1CB37 /* URLSessionConfiguration+Extension.swift in Sources */,
+				3F50E6CC2518D8450074307F /* Socket+Server.swift in Sources */,
+				3F50E6C42518D8450074307F /* Files.swift in Sources */,
 				3FD245372414985100D285F5 /* StubConfig.swift in Sources */,
+				3F50E6B62518D8450074307F /* Socket+File.swift in Sources */,
+				3F50E6D02518D8450074307F /* Scopes.swift in Sources */,
 				3F44FC842296AD4E0086A7C6 /* Logger.swift in Sources */,
+				3F50E6C02518D8450074307F /* String+SHA1.swift in Sources */,
 				3F1F0E6F2275B407005FB5DD /* StubFolderCache.swift in Sources */,
 				3FBC1CDB22426A2600B8F41F /* StubManager.swift in Sources */,
 				3FB169BD2296C97E0014773C /* HlsPlaylist.swift in Sources */,
 				3FAE4E5222425F40005EF99D /* Stub.swift in Sources */,
+				3F50E6D22518D8450074307F /* DemoServer.swift in Sources */,
+				3F50E6BE2518D8450074307F /* Process.swift in Sources */,
 				3F101227227DB0A60018D3E0 /* StubFileSaver.swift in Sources */,
+				3F50E6CA2518D8450074307F /* HttpServerIO.swift in Sources */,
+				3F50E6B22518D8450074307F /* HttpRouter.swift in Sources */,
+				3F50E6BA2518D8450074307F /* String+BASE64.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -879,24 +678,44 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F50E6AF2518D8450074307F /* WebSockets.swift in Sources */,
+				3F50E6C32518D8450074307F /* HttpParser.swift in Sources */,
+				3F50E6B12518D8450074307F /* HttpRequest.swift in Sources */,
+				3F50E6BD2518D8450074307F /* String+File.swift in Sources */,
 				3FFF8A632287010A008D179A /* URL+Extension.swift in Sources */,
+				3F50E6CF2518D8450074307F /* HttpResponse.swift in Sources */,
 				3FB169C02296C97E0014773C /* AssetResourceLoader.swift in Sources */,
 				3F75A8F3227B24F0003AA140 /* Counter.swift in Sources */,
 				3FB169C22296C97E0014773C /* StubServer.swift in Sources */,
+				3F50E6B52518D8450074307F /* Socket.swift in Sources */,
+				3F50E6D52518D8450074307F /* HttpServer.swift in Sources */,
 				3FB169C52296D1630014773C /* String+Extension.swift in Sources */,
+				3F50E6C72518D8450074307F /* MimeTypes.swift in Sources */,
 				3FD24535241497DF00D285F5 /* StubPlay+Extension.swift in Sources */,
+				3F50E6C92518D8450074307F /* Errno.swift in Sources */,
 				3FF207A5227C4C59000202B0 /* StubURLProtocol.swift in Sources */,
+				3F50E6B92518D8450074307F /* String+Misc.swift in Sources */,
 				3FFC2599228058A600BC47E8 /* StubPlay.swift in Sources */,
 				3F8C98672261F2F800717E14 /* FilenameFormatter.swift in Sources */,
 				3F8C986A2261F39F00717E14 /* FilesManager.swift in Sources */,
 				3F943A0B228992CF00655968 /* URLSessionConfiguration+Extension.swift in Sources */,
+				3F50E6CD2518D8450074307F /* Socket+Server.swift in Sources */,
+				3F50E6C52518D8450074307F /* Files.swift in Sources */,
 				3FD245382414985100D285F5 /* StubConfig.swift in Sources */,
+				3F50E6B72518D8450074307F /* Socket+File.swift in Sources */,
+				3F50E6D12518D8450074307F /* Scopes.swift in Sources */,
 				3F44FC852296AD4E0086A7C6 /* Logger.swift in Sources */,
+				3F50E6C12518D8450074307F /* String+SHA1.swift in Sources */,
 				3F1F0E702275B407005FB5DD /* StubFolderCache.swift in Sources */,
 				3FBC1CDC22426A2600B8F41F /* StubManager.swift in Sources */,
 				3FB169BE2296C97E0014773C /* HlsPlaylist.swift in Sources */,
 				3FAE4E5322425F40005EF99D /* Stub.swift in Sources */,
+				3F50E6D32518D8450074307F /* DemoServer.swift in Sources */,
+				3F50E6BF2518D8450074307F /* Process.swift in Sources */,
 				3F101228227DB0A60018D3E0 /* StubFileSaver.swift in Sources */,
+				3F50E6CB2518D8450074307F /* HttpServerIO.swift in Sources */,
+				3F50E6B32518D8450074307F /* HttpRouter.swift in Sources */,
+				3F50E6BB2518D8450074307F /* String+BASE64.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -930,16 +749,6 @@
 			isa = PBXTargetDependency;
 			target = 3FAE4E3622425D3D005EF99D /* StubPlay tvOS */;
 			targetProxy = 3FAE4E4122425D3D005EF99D /* PBXContainerItemProxy */;
-		};
-		3FE404CD24FA99D6009FEE83 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SwifteriOS;
-			targetProxy = 3FE404CC24FA99D6009FEE83 /* PBXContainerItemProxy */;
-		};
-		3FE404E724FA99DD009FEE83 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SwiftertvOS;
-			targetProxy = 3FE404E624FA99DD009FEE83 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1094,6 +903,7 @@
 				PRODUCT_MODULE_NAME = StubPlay;
 				PRODUCT_NAME = StubPlay;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1122,6 +932,7 @@
 				PRODUCT_MODULE_NAME = StubPlay;
 				PRODUCT_NAME = StubPlay;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1186,6 +997,7 @@
 				PRODUCT_NAME = StubPlay;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -1215,6 +1027,7 @@
 				PRODUCT_NAME = StubPlay;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 			};
