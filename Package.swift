@@ -13,9 +13,9 @@ let package = Package(
             targets: ["StubPlay"]),
     ],
     dependencies: [
-        // Here we define our package's external dependencies
-        // and from where they can be fetched:
-        .package(name: "Swifter", path: "Vendor/swifter")
+        .package(name: "Swifter", url: "https://github.com/httpswift/swifter.git", .upToNextMajor(from: "1.5.0"))
+        // because package stubplay is required using a version-based requirement and it depends on unversion package swifter and root depends on StubPlay 0.1.9, version solving failed.
+        // .package(name: "Swifter", path: "Vendor/swifter")
     ],
     targets: [
         .target(
