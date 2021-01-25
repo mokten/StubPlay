@@ -31,7 +31,7 @@ class SwifterTestsHttpParser: XCTestCase {
             _ = fcntl(fdRead, F_SETFL, O_NONBLOCK)
 
             // Push the content bytes into the write socket.
-            _ = content.withCString { stringPointer in
+            content.withCString { stringPointer in
                 // Count will be either >=0 to indicate bytes written, or -1
                 // if the bytes will be written later (non-blocking).
                 let count = write(fdWrite, stringPointer, content.lengthOfBytes(using: .utf8) + 1)
@@ -99,6 +99,14 @@ class SwifterTestsHttpParser: XCTestCase {
             _ = try parser.readHttpRequest(TestSocket("GET / HTTP/1.0\nContent-Length: 0\r\n\n"))
         } catch {
             XCTAssert(false, "Parser should not throw any errors if there is a valid 'Content-Length' header.")
+        }
+
+        do {
+            _ = try parser.readHttpRequest(TestSocket("GET / HTTP/1.0\r\nContent-Length: -1\r\n\r\n"))
+        } catch let error {
+            let error = error as? HttpParserError
+            XCTAssertNotNil(error)
+            XCTAssertEqual(error!, HttpParserError.negativeContentLength)
         }
 
         do {

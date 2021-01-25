@@ -18,11 +18,31 @@ All notable changes to this project will be documented in this file. Changes not
 
 # [Unreleased]
 
+# [1.5.0]
+
+## Added
+- Add two new cases to the responses (`notAcceptable`, `tooManyRequests`). ([#437](https://github.com/httpswift/swifter/pull/437)) by [@KKuzmichev](https://github.com/KKuzmichev)
+
+## Fixed
+- Fix an issue causing a crash when the `Content-Lenght` was negative. ([#457](https://github.com/httpswift/swifter/pull/457)) by [@Vkt0r](https://github.com/Vkt0r)
+
+## Changed
+
+- Fix `SUPPORTED_PLATFORMS` for tvOS. This helps Carthage to build only the specified platform when the option `--platform` is used. ([#464](https://github.com/httpswift/swifter/pull/464)) by [@jasminlapalme](https://github.com/jasminlapalme)
+
+
+# [1.5.0-rc.1]
+
+## Removed
+
+- Support for the iOS 8 deployment target. ([#462](https://github.com/httpswift/swifter/pull/462)) by [@Vkt0r](https://github.com/Vkt0r)
+
 ## Added
 
 - Add the `trailing_whitespace` rule in Swiftlint and autocorrect all the source files. ([#421](https://github.com/httpswift/swifter/pull/421)) by [@Vkt0r](https://github.com/Vkt0r)
 - Update the project for Xcode 11.1. ([#438](https://github.com/httpswift/swifter/pull/438)) by [@Vkt0r](https://github.com/Vkt0r)
 - Add optional 'Content-Type' to Data HttpResponse. ([#450](https://github.com/httpswift/swifter/pull/450)) by [@SoftwareEngineerChris](https://github.com/SoftwareEngineerChris)
+- Support Xcode 12 and Swift 5+. ([#462](https://github.com/httpswift/swifter/pull/462)) by [@Vkt0r](https://github.com/Vkt0r)
 
 ## Changed
 
@@ -80,6 +100,8 @@ All notable changes to this project will be documented in this file. Changes not
 - An issue in the `HttpRouter` causing issues to handle routes with overlapping. ([#359](https://github.com/httpswift/swifter/pull/359)) by [@Vkt0r](https://github.com/Vkt0r)
 
 
-[Unreleased]: https://github.com/httpswift/swifter/compare/1.4.6...HEAD
+[Unreleased]: https://github.com/httpswift/swifter/compare/1.5.0...HEAD
 [1.4.6]: https://github.com/httpswift/swifter/compare/1.4.5...1.4.6
 [1.4.7]: https://github.com/httpswift/swifter/compare/1.4.6...1.4.7
+[1.5.0-rc.1]: https://github.com/httpswift/swifter/compare/1.4.7...1.5.0-rc.1
+[1.5.0]: https://github.com/httpswift/swifter/compare/1.5.0-rc.1...1.5.0
