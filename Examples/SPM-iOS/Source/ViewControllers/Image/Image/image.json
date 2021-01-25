@@ -1,0 +1,19 @@
+{
+  "bodyFileName" : "image.body.png",
+  "response" : {
+    "headers" : {
+      "Content-Type" : "image\/png",
+      "Content-Length" : "13504",
+    },
+    "statusCode" : 200,
+    "mimeType" : "image\/png"
+  },
+  "request" : {
+    "url" : "https:\/\/www.google.com.au\/images\/branding\/googlelogo\/2x\/googlelogo_color_272x92dp.png",
+    "method" : "get",
+    "headers" : {
+
+    }
+  },
+  "index" : 0
+}

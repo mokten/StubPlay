@@ -1,0 +1,12 @@
+{
+  "bodyFileName" : "multiple.get.1.body.txt",
+  "response" : {
+      "statusCode" : 200,
+      "mimeType" : "text\/plain"
+  },
+  "request" : {
+    "url" : "https:\/\/a.ab\/multiple.txt",
+    "method" : "get"
+  },
+  "index" : 0
+}
