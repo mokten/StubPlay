@@ -24,7 +24,9 @@
 //
 
 import Foundation
+#if !os(macOS)
 import MobileCoreServices
+#endif
 
 public extension URL {
     

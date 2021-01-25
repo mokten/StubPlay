@@ -24,6 +24,9 @@
 //
 
 import Foundation
+#if canImport(Swifter)
+import Swifter
+#endif
 
 public class StubServer {
     
