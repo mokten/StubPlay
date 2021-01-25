@@ -1,0 +1,21 @@
+{
+  "bodyFileName" : "videos_streaming_examples_bipbop_16x9_bipbop_16x9_variant_m3u8.get.0.body.m3u",
+  "response" : {
+    "headers" : {
+      "Content-Length" : "3286",
+      "Content-Type" : "application/x-mpegURL"
+    },
+    "statusCode" : 200,
+    "mimeType" : "audio\/mpegurl"
+  },
+  "request" : {
+    "url" : "https:\/\/devstreaming-cdn.apple.com\/videos\/streaming\/examples\/bipbop_16x9\/bipbop_16x9_variant.m3u8",
+    "method" : "get",
+    "headers" : {
+      "User-Agent" : "AppleCoreMedia\/1.0.0.16B91 (iPhone; U; CPU OS 12_1 like Mac OS X; en_us)",
+      "X-Playback-Session-Id" : "11E3FD0B-EDB8-4203-9926-6E4AC7CEEC76",
+      "Accept-Encoding" : "gzip"
+    }
+  },
+  "index" : 0
+}

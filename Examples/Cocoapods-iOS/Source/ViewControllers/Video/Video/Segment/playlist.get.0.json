@@ -1,0 +1,22 @@
+{
+  "bodyFileName" : "playlist.get.0.body.m3u",
+  "response" : {
+    "headers" : {
+        "Content-Type" : "application/x-mpegURL",
+        "Cache-Control" : "no-cache",
+        "Content-Length" : "10484"
+    },
+    "statusCode" : 200,
+    "mimeType" : "audio\/mpegurl"
+  },
+  "request" : {
+    "url" : "https://devstreaming-cdn.apple.com/playlist.m3u8",
+    "method" : "get",
+    "headers" : {
+      "User-Agent" : "AppleCoreMedia\/1.0.0.16B91 (iPhone; U; CPU OS 12_1 like Mac OS X; en_us)",
+      "Accept-Encoding" : "gzip",
+      "X-Playback-Session-Id" : "11E3FD0B-EDB8-4203-9926-6E4AC7CEEC76"
+    }
+  },
+  "index" : 0
+}

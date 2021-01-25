@@ -1,0 +1,16 @@
+PODS:
+  - StubPlay (0.1.9)
+
+DEPENDENCIES:
+  - StubPlay
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - StubPlay
+
+SPEC CHECKSUMS:
+  StubPlay: f56f1dd53f2afb2c09dbb72773a58668b2655a1a
+
+PODFILE CHECKSUM: d625028162d25d9a408b11a973158e4abcc9f45e
+
+COCOAPODS: 1.10.1

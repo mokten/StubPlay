@@ -1,0 +1,27 @@
+{
+  "bodyFileName" : "videos_streaming_examples_bipbop_16x9_gear1_main_ts_.get.0.body.ts",
+  "response" : {
+    "headers" : {
+      "Content-Type" : "binary\/octet-stream",
+      "Accept-Ranges" : "bytes",
+      "content-range" : "bytes 326744-653111\/59366640",
+      "Content-Length" : "326368",
+      "Cache-Control" : "max-age=89098789"
+    },
+    "statusCode" : 206,
+    "mimeType" : "binary\/octet-stream"
+  },
+  "request" : {
+    "url" : "https:\/\/devstreaming-cdn.apple.com\/videos\/streaming\/examples\/bipbop_16x9\/gear1\/main.ts?",
+    "method" : "get",
+    "headers" : {
+      "X-Playback-Session-Id" : "5082B0B4-5702-4CC8-92C2-38D27643E294",
+      "Connection" : "Keep-Alive",
+      "User-Agent" : "AppleCoreMedia\/1.0.0.16B91 (iPhone; U; CPU OS 12_1 like Mac OS X; en_us)",
+      "Range" : "bytes=326744-653111",
+      "Accept-Encoding" : "identity",
+      "Accept" : "*\/*"
+    }
+  },
+  "index" : 0
+}
