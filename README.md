@@ -25,7 +25,7 @@ Stubs http responses and supports any http response including text, html, json, 
 - [x] Audit responses
   1.  Server side dev said they didn’t change anything but you can prove they did because you saved the responses
 - [x] Api not ready? That’s ok you can create your own stubs and use them until the api is ready
-- [x] Debug http requests - view requests being saved as responses are being processed
+- [x] Debug http requests - view requests being saved as responses are being consumed by your App
 - [x] Replay customer experiences -> need to upload to your server yourself
 
 
@@ -36,6 +36,14 @@ Stubs http responses and supports any http response including text, html, json, 
 - Swift 5.1+
  
 ## Installation
+
+### Swift Package Manager (SPM)
+
+```swift
+dependencies: [
+    .package(name: "StubPlay", url: "https://github.com/mokten/StubPlay.git", .upToNextMajor(from: "0.1.11"))
+]
+```
 
 ### CocoaPods
 
