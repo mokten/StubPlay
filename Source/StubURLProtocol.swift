@@ -42,6 +42,13 @@ public class StubURLProtocol: URLProtocol {
     // MARK: NSURLProtocol
     
     override public class func canInit(with request: URLRequest) -> Bool {
+        
+        if request.isWebSocket {
+            logger("WEBSOCKET - never stubbed", request, request.allHTTPHeaderFields)
+            return false
+        }
+        
+        logger(request)
         return URLProtocol.property(forKey: CustomURLConst.requestHeaderKey, in: request as URLRequest) == nil
     }
     
@@ -50,14 +57,13 @@ public class StubURLProtocol: URLProtocol {
     }
     
     override public func startLoading() {
-        
         if let stubRequest = request.stubRequest, let stub = stubManager.get(request: stubRequest) {
-            logger("MOCK:", request.url!)
+            logger("MOCK:", request.url)
             finished(stub: stub, response: stub.httpURLResponse(defaultURL: request.url), bodyData: stub.bodyData, isCached: true)
             
         } else {
-            logger("NETWORK:", request.url!)
-            let newRequest = request as! NSMutableURLRequest
+            logger("NETWORK:", request.url)
+            guard let newRequest = request as? NSMutableURLRequest else { return }
             URLProtocol.setProperty(true, forKey: CustomURLConst.requestHeaderKey, in: newRequest)
              
             let dataTask = session.dataTask(with: newRequest as URLRequest)
@@ -65,7 +71,6 @@ public class StubURLProtocol: URLProtocol {
             self.dataTask = dataTask
         }
     }
-    
     
     override public func stopLoading() {
         dataTask?.cancel()
@@ -102,7 +107,6 @@ extension StubURLProtocol: URLSessionDataDelegate {
     }
     
     public func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        
         let protectionSpace = challenge.protectionSpace
         let sender = challenge.sender
         
@@ -159,4 +163,23 @@ private extension StubURLProtocol {
         }
     }
     
+}
+
+private extension URLRequest {
+    var isWebSocket: Bool {
+        /**
+         
+         Reference header fields:
+         Upgrade: websocket
+         Connection: Upgrade
+         Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==
+         Origin: http://example.com
+         Sec-WebSocket-Protocol: chat, superchat
+         Sec-WebSocket-Version: 13
+         
+         Reference: https://tools.ietf.org/html/rfc6455
+         
+         */
+        return self.value(forHTTPHeaderField: "Upgrade")?.lowercased() == "websocket"
+    }
 }
