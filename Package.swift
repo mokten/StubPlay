@@ -4,8 +4,8 @@ import PackageDescription
 let package = Package(
     name: "StubPlay",
     platforms: [
-                .iOS(.v10),
-                .tvOS(.v11)
+        .iOS(.v10),
+        .tvOS(.v11)
     ],
     products: [
         .library(
@@ -21,7 +21,11 @@ let package = Package(
         .target(
             name: "StubPlay",
             dependencies: ["Swifter"],
-            path: "Source")
+            path: "Source",
+            swiftSettings: [
+                .unsafeFlags(["-cross-module-optimization"], .when(configuration: .release))
+            ]
+        )
     ],
     swiftLanguageVersions: [.v5]
 )
