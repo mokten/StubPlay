@@ -21,10 +21,7 @@ let package = Package(
         .target(
             name: "StubPlay",
             dependencies: ["Swifter"],
-            path: "Source",
-            swiftSettings: [
-                .unsafeFlags(["-cross-module-optimization"], .when(configuration: .release))
-            ]
+            path: "Source"
         )
     ],
     swiftLanguageVersions: [.v5]
