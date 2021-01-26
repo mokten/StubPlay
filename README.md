@@ -101,7 +101,7 @@ import StubPlay
 // This will save all requests and responses to the app cache directory
 // Start the app and navigate around
 // Once you have completed your scenario then copy the files in the cache directory to your reading stub directory "Stub/default"
-try StubPlay.default.enableStub(for: ["Stub/default"])
+try? StubPlay.default.enableStub(for: StubConfig(folders: ["Stub/default"], isEnabledServer: true, isLogging: true))
 
 _ = UIApplicationMain(CommandLine.argc, CommandLine.unsafeArgv, NSStringFromClass(Application.self), NSStringFromClass(AppDelegate.self))
 ```
@@ -117,7 +117,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     override init() {
         super.init()
-        try? StubPlay.default.enableStub(for: Config(folders: ["Stub/default"], isEnabledServer: true, isLogging: true))
+        try? StubPlay.default.enableStub(for: StubConfig(folders: ["Stub/default"], isEnabledServer: true, isLogging: true))
     }
     ...
 }
