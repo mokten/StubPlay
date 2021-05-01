@@ -60,7 +60,8 @@ public class StubPlay {
     
     public var saveResponse: Bool = false
     
-    public init(stubManager: StubManager = StubManager.shared, serverPort: in_port_t = StubPlayConstants.serverPort) {
+    public
+    init(stubManager: StubManager = StubManager.shared, serverPort: in_port_t = StubPlayConstants.serverPort) {
         self.stubManager = stubManager
         self.serverPort = serverPort
     }
