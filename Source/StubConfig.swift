@@ -21,7 +21,7 @@ public struct StubConfig {
     /*
      Save responses in the order they were processed.
      */
-    public var saveResponses: Bool
+    public var saveResponsesDirURL: URL?
     
     /*
      
@@ -50,14 +50,14 @@ public struct StubConfig {
     public var isLogging: Bool
     
     public init(folders: [Folder] = [],
-                saveResponses: Bool = false,
+                saveResponsesDirURL: URL? = FilesManager.defaultSaveDirURL,
                 clearSaveDir: Bool = true,
                 bundle: Bundle = Bundle.main,
                 isEnabledServer: Bool = false,
                 isLogging: Bool = false) {
         self.folders = folders
-        self.saveResponses = saveResponses
         self.clearSaveDir = clearSaveDir
+        self.saveResponsesDirURL = saveResponsesDirURL
         self.bundle =  bundle
         self.isEnabledServer = isEnabledServer
         self.isLogging = isLogging

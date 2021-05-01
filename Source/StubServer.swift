@@ -40,7 +40,7 @@ public class StubServer {
     public func start(port: in_port_t) throws {
         let server = HttpServer()
         server["/stub"] = shareFilesFromDirectory()
-        try server.start(port)
+        try server.start(port, priority: .userInteractive)
         self.server = server
     }
     

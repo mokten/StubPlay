@@ -65,7 +65,7 @@ class FilesManagerTests: XCTestCase {
          #"{"hi":"1"}"#,
          #"{"hi":"2"}"#].forEach { text in
             
-            let saveFileURL = try filesManager.save(data: text.data(using: .utf8), to: filename)
+            let saveFileURL = try filesManager.save(data: text.data(using: .utf8), to: filename)!
             guard let returnedData = try filesManager.data(from: saveFileURL) else {
                 return XCTAssertTrue(false, "Bad \(filename) for \(text)")
             }

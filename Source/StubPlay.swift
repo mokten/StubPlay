@@ -26,7 +26,7 @@
 import Foundation
 
 public enum StubPlayConstants {
-    public static let serverPort: in_port_t = 9080
+    public static let serverPort: in_port_t = 9081
 }
 
 /*
@@ -60,7 +60,7 @@ public class StubPlay {
     
     public var saveResponse: Bool = false
     
-    init(stubManager: StubManager = StubManager.shared, serverPort: in_port_t = StubPlayConstants.serverPort) {
+    public init(stubManager: StubManager = StubManager.shared, serverPort: in_port_t = StubPlayConstants.serverPort) {
         self.stubManager = stubManager
         self.serverPort = serverPort
     }
@@ -68,10 +68,12 @@ public class StubPlay {
     public func enableStub(for config: StubConfig = StubConfig()) throws {
         Logger.shared.isEnabled = config.isLogging
         stubManager.reset()
-        let filesManager = FilesManager(bundle: config.bundle)
-        let saver = StubFileSaver(filesManager: filesManager)
-        if config.clearSaveDir { try saver.clear() }
-        stubManager.stubSaver = config.saveResponses ? saver : nil
+        let filesManager = FilesManager(bundle: config.bundle, saveDirectoyURL: config.saveResponsesDirURL)
+        if config.saveResponsesDirURL != nil {
+            let saver = StubFileSaver(filesManager: filesManager)
+            if config.clearSaveDir { try saver.clear() }
+            stubManager.stubSaver = saver
+        }
         
         try config.folders.forEach { folder in
             guard let stubCache = StubFolderCache(baseFolder: folder, filesManager: filesManager) else {

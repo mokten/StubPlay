@@ -54,6 +54,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3F181071260EE12E00DC29AA /* WebSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
 		3F1DFE6C22A91A9400FD9EB5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3F1DFE7022A91B8600FD9EB5 /* NiblessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiblessViewController.swift; sourceTree = "<group>"; };
 		3F1DFE8B22A9227E00FD9EB5 /* Storyboardable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboardable.swift; sourceTree = "<group>"; };
@@ -98,14 +99,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F181070260EE10C00DC29AA /* WebSocket */ = {
+			isa = PBXGroup;
+			children = (
+				3F181071260EE12E00DC29AA /* WebSocket.swift */,
+			);
+			path = WebSocket;
+			sourceTree = "<group>";
+		};
 		3F1DFE6E22A91ADE00FD9EB5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				3F1DFEA922A92A2400FD9EB5 /* Image */,
 				3F1DFE6C22A91A9400FD9EB5 /* MainViewController.swift */,
 				3F1DFEB822A93A3C00FD9EB5 /* Muliptle Requests */,
 				3F1DFEB322A935F100FD9EB5 /* RewriteRule */,
-				3F1DFEA922A92A2400FD9EB5 /* Image */,
 				3F1DFEAA22A92A3400FD9EB5 /* Video */,
+				3F181070260EE10C00DC29AA /* WebSocket */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -240,6 +250,8 @@
 			dependencies = (
 			);
 			name = "Example-iOS";
+			packageProductDependencies = (
+			);
 			productName = "Example-iOS";
 			productReference = 3F87686A20A7E82900DAC66B /* Example-iOS.app */;
 			productType = "com.apple.product-type.application";
@@ -290,6 +302,8 @@
 				Base,
 			);
 			mainGroup = 3F87686120A7E82900DAC66B;
+			packageReferences = (
+			);
 			productRefGroup = 3F87686B20A7E82900DAC66B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

@@ -39,24 +39,28 @@ public struct FilesManager {
         static let baseDir = "com.mokten.stubplay"
     }
     
+    public static let defaultSaveDirURL: URL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
+        .first!.appendingPathComponent(Constants.baseDir)
+    
     public let bundle: Bundle
     
-    public let saveURL: URL
+    public let saveDirectoryURL: URL?
 }
 
 extension FilesManager {
     
-    public init(bundle: Bundle = Bundle.main, saveDirectory: FileManager.SearchPathDirectory = .cachesDirectory) {
+    public init(bundle: Bundle = Bundle.main, saveDirectoyURL: URL? = FilesManager.defaultSaveDirURL) {
         self.bundle = bundle
+        self.saveDirectoryURL = saveDirectoyURL
         
-        if let url = FileManager.default.urls(for: saveDirectory, in: .userDomainMask).first {
-            let newURL = url.appendingPathComponent(Constants.baseDir)
-            try? FileManager.default.createDirectory(at: newURL, withIntermediateDirectories: false, attributes: [:])
-            saveURL = newURL
-            
-            logger(level: .warn, "StubPlay: stub saved to:\n\t \(saveURL.path)")
-        } else {
-            fatalError("Could not create URL at directory: \(Constants.baseDir)")
+        logger(saveDirectoryURL)
+        
+        if let saveDirectoyURL = saveDirectoyURL {
+            do {
+                try FileManager.default.createDirectory(at: saveDirectoyURL, withIntermediateDirectories: true, attributes: [:])
+            } catch {
+                fatalError("Could not create URL at directory: \(saveDirectoyURL)")
+            }
         }
     }
     
@@ -65,6 +69,7 @@ extension FilesManager {
     }
     
     public func url(for resource: String) -> URL? {
+        guard let saveURL = saveDirectoryURL else { return nil }
         return saveURL.appendingPathComponent(resource)
     }
     
@@ -90,7 +95,8 @@ extension FilesManager {
         return FileManager.default.contents(atPath: url.path)
     }
     
-    public func save(data: Data?, to fileName: String) throws -> URL {
+    public func save(data: Data?, to fileName: String) throws -> URL? {
+        guard let saveURL = saveDirectoryURL else { return nil }
         let url = saveURL.appendingPathComponent(fileName, isDirectory: false)
         try data?.write(to: url, options: .atomic)
         return url
@@ -98,6 +104,7 @@ extension FilesManager {
     
     /// Remove all files at specified directory
     public func clear() throws {
+        guard let saveURL = saveDirectoryURL else { return }
         let contents = try FileManager.default.contentsOfDirectory(at: saveURL, includingPropertiesForKeys: nil, options: [])
         for fileUrl in contents {
             try FileManager.default.removeItem(at: fileUrl)
