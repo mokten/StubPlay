@@ -110,6 +110,6 @@ class StubFolderCacheTests: XCTestCase {
             }
         }))
         
-        waitForExpectations(timeout: 2)
+        waitForExpectations(timeout: 4)
     }
 }
