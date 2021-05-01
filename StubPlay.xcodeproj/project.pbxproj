@@ -69,6 +69,7 @@
 		3FDDD88D227C6A7100F1CB37 /* URLSessionConfiguration+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDDD88C227C6A7100F1CB37 /* URLSessionConfiguration+Extension.swift */; };
 		3FDDD88F227C6DBD00F1CB37 /* StubURLProtocolFiles in Resources */ = {isa = PBXBuildFile; fileRef = 3FDDD88E227C6DBD00F1CB37 /* StubURLProtocolFiles */; };
 		3FDDD890227C6DBD00F1CB37 /* StubURLProtocolFiles in Resources */ = {isa = PBXBuildFile; fileRef = 3FDDD88E227C6DBD00F1CB37 /* StubURLProtocolFiles */; };
+		3FDE77A1263D1AF900E71DBF /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = 3FDE77A0263D1AF900E71DBF /* Swifter */; };
 		3FF207A4227C4C58000202B0 /* StubURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF207A3227C4C58000202B0 /* StubURLProtocol.swift */; };
 		3FF207A5227C4C59000202B0 /* StubURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF207A3227C4C58000202B0 /* StubURLProtocol.swift */; };
 		3FFC2598228058A600BC47E8 /* StubPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC2597228058A600BC47E8 /* StubPlay.swift */; };
@@ -162,6 +163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FDE77A1263D1AF900E71DBF /* Swifter in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +414,9 @@
 			dependencies = (
 			);
 			name = "StubPlay tvOS";
+			packageProductDependencies = (
+				3FDE77A0263D1AF900E71DBF /* Swifter */,
+			);
 			productName = "StubPlay tvOS";
 			productReference = 3FAE4E3722425D3D005EF99D /* StubPlay.framework */;
 			productType = "com.apple.product-type.framework";
@@ -1005,6 +1010,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3FDE77A0263D1AF900E71DBF /* Swifter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3FFE5A6E263D0B53005DAFB3 /* XCRemoteSwiftPackageReference "swifter" */;
+			productName = Swifter;
+		};
 		3FFE5A6F263D0B53005DAFB3 /* Swifter */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3FFE5A6E263D0B53005DAFB3 /* XCRemoteSwiftPackageReference "swifter" */;
