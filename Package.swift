@@ -22,7 +22,18 @@ let package = Package(
             name: "StubPlay",
             dependencies: ["Swifter"],
             path: "Source"
-        )
+        ),
+        .testTarget(
+            name: "Tests",
+            dependencies: ["StubPlay"],
+            path: "Tests",
+            
+            resources: [
+                .copy("FilesManager"),
+                .copy("StubFolderCache"),
+                .copy("StubURLProtocol"),
+            ]
+        ),
     ],
     swiftLanguageVersions: [.v5]
 )
