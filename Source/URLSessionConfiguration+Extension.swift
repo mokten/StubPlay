@@ -27,10 +27,12 @@ import Foundation
 
 public extension URLSessionConfiguration {
     
-    func enableStub(_ isEnabled: Bool) {
+    static let stubplay = URLSessionConfiguration.default.enableStub()
+    
+    func enableStub(_ isEnabled: Bool = true) -> Self {
         guard var protocolClasses = protocolClasses else {
             self.protocolClasses = [StubURLProtocol.self]
-            return
+            return self
         }
         
         let protoCls: AnyClass = StubURLProtocol.self
@@ -42,5 +44,6 @@ public extension URLSessionConfiguration {
         }
         
         self.protocolClasses = protocolClasses
+        return self
     }
 }
