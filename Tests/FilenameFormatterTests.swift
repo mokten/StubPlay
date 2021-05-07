@@ -29,6 +29,12 @@ import XCTest
 class FilenameFormatterTests: XCTestCase {
     private let filenameHelper = DefaultFilenameFormatter()
     
+    func testFileNameSlash_path() {
+        let request = Request(method: .get, url: URL(string: "https://localhost/"), headers:nil, body: nil)
+        let msg = Stub(rewriteRule: nil, index: 0, request: request, response: nil)
+        XCTAssertEqual(filenameHelper.filename(for: msg), "_.get.0.json")
+    }
+    
     func testFileName_path() {
         let request = Request(method: .get, url: URL(string: "https://localhost"), headers:nil, body: nil)
         let msg = Stub(rewriteRule: nil, index: 0, request: request, response: nil)

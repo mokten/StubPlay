@@ -69,7 +69,8 @@ public extension String {
     var safeFileName: String {
         guard !isEmpty else { return "_" }
         let filename = self.replacingOccurrences(of: "^/", with: "", options: .regularExpression)
-        return filename.replacingOccurrences(of: "[/\\* <>?%|.:]", with: "_", options: .regularExpression)
+        let name = filename.replacingOccurrences(of: "[/\\* <>?%|.:]", with: "_", options: .regularExpression)
+        return name == "" ? "_" : name
     }
 }
 
