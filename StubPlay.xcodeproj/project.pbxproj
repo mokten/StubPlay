@@ -22,7 +22,7 @@
 		3F75A8F2227B24F0003AA140 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F75A8F1227B24F0003AA140 /* Counter.swift */; };
 		3F75A8F3227B24F0003AA140 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F75A8F1227B24F0003AA140 /* Counter.swift */; };
 		3F843C2922425B6F0007BBA4 /* StubPlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F843C1F22425B6F0007BBA4 /* StubPlay.framework */; };
-		3F843C3022425B6F0007BBA4 /* StubPlay.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F843C2222425B6F0007BBA4 /* StubPlay.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3F843C3022425B6F0007BBA4 /* StubPlay-Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F843C2222425B6F0007BBA4 /* StubPlay-Swift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3F8C986422618EC600717E14 /* RewriteRuleMatchesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8C986322618EC600717E14 /* RewriteRuleMatchesTests.swift */; };
 		3F8C98662261F2F800717E14 /* FilenameFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8C98652261F2F800717E14 /* FilenameFormatter.swift */; };
 		3F8C98672261F2F800717E14 /* FilenameFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8C98652261F2F800717E14 /* FilenameFormatter.swift */; };
@@ -110,7 +110,7 @@
 		3F576868224CC2B100BBC26C /* FilenameFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilenameFormatterTests.swift; sourceTree = "<group>"; };
 		3F75A8F1227B24F0003AA140 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		3F843C1F22425B6F0007BBA4 /* StubPlay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StubPlay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F843C2222425B6F0007BBA4 /* StubPlay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StubPlay.h; sourceTree = "<group>"; };
+		3F843C2222425B6F0007BBA4 /* StubPlay-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StubPlay-Swift.h"; sourceTree = "<group>"; };
 		3F843C2322425B6F0007BBA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F843C2822425B6F0007BBA4 /* StubPlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StubPlayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F843C2F22425B6F0007BBA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -120,8 +120,6 @@
 		3F8C986B2261F55E00717E14 /* FilesManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesManagerTests.swift; sourceTree = "<group>"; };
 		3F97B29522BA6D2800CB343F /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swifter.framework; path = Carthage/Build/iOS/Swifter.framework; sourceTree = "<group>"; };
 		3F97B29722BA6D3B00CB343F /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swifter.framework; path = Carthage/Build/tvOS/Swifter.framework; sourceTree = "<group>"; };
-		3F97B29B22BA6E3100CB343F /* input.xcfilelist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcfilelist; path = input.xcfilelist; sourceTree = SOURCE_ROOT; };
-		3F97B29C22BA6E3100CB343F /* output.xcfilelist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcfilelist; path = output.xcfilelist; sourceTree = SOURCE_ROOT; };
 		3FAE4E3722425D3D005EF99D /* StubPlay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StubPlay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FAE4E3F22425D3D005EF99D /* StubPlay tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "StubPlay tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FAE4E5122425F40005EF99D /* Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stub.swift; sourceTree = "<group>"; };
@@ -263,10 +261,8 @@
 		3FAE4E4E22425D97005EF99D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3F97B29B22BA6E3100CB343F /* input.xcfilelist */,
-				3F97B29C22BA6E3100CB343F /* output.xcfilelist */,
 				3F843C2322425B6F0007BBA4 /* Info.plist */,
-				3F843C2222425B6F0007BBA4 /* StubPlay.h */,
+				3F843C2222425B6F0007BBA4 /* StubPlay-Swift.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -359,7 +355,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F843C3022425B6F0007BBA4 /* StubPlay.h in Headers */,
+				3F843C3022425B6F0007BBA4 /* StubPlay-Swift.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

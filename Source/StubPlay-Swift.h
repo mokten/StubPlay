@@ -1,5 +1,5 @@
 //
-//  StubPlay.h
+//  StubPlay-Swift.h
 //  StubPlay
 //
 //  Created by Yoo-Jin Lee on 20/3/19.
