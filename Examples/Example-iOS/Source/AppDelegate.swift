@@ -28,7 +28,7 @@ import StubPlay
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
     
     override init() {
@@ -39,13 +39,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let folders = ["Text", "Image", "Alamofire", "Video/Segment", "Video/ByteRange", "Multiple", "RewriteRule"]
         do {
             try StubPlay.default.enableStub(for: StubConfig(folders: folders,
-                                                         isEnabledServer: true,
-                                                         isLogging: true))
+                                                            saveResponsesDirURL: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("stubplay"),
+                                                            isEnabledServer: true,
+                                                            isLogging: true))
         } catch {
             print(error)
         }
     }
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         DefaultStyle.applyStyle()
         
