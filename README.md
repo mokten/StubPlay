@@ -102,7 +102,7 @@ import StubPlay
 // Start the app and navigate around
 // Once you have completed your scenario then copy the files in the cache directory to your reading stub directory "Stub/default"
 try? StubPlay.default.enableStub(for: StubConfig(folders: ["Stub/default"],
-                                                 saveResponses: true,
+                                                 saveResponsesDirURL: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("stubplay"),
                                                  isEnabledServer: true,
                                                  isLogging: true))
 
@@ -121,7 +121,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     override init() {
         super.init()
         try? StubPlay.default.enableStub(for: StubConfig(folders: ["Stub/default"],
-                                                         saveResponses: true,
+                                                 	 saveResponsesDirURL: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("stubplay"),
                                                          isEnabledServer: true,
                                                          isLogging: true))
     }
