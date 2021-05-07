@@ -72,6 +72,8 @@
 		3FDE77A1263D1AF900E71DBF /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = 3FDE77A0263D1AF900E71DBF /* Swifter */; };
 		3FF207A4227C4C58000202B0 /* StubURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF207A3227C4C58000202B0 /* StubURLProtocol.swift */; };
 		3FF207A5227C4C59000202B0 /* StubURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF207A3227C4C58000202B0 /* StubURLProtocol.swift */; };
+		3FF54B9026455B180026BB50 /* StubPlay iOS.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 3FF54B8F26455B180026BB50 /* StubPlay iOS.xctestplan */; };
+		3FF54B9126455B180026BB50 /* StubPlay iOS.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 3FF54B8F26455B180026BB50 /* StubPlay iOS.xctestplan */; };
 		3FFC2598228058A600BC47E8 /* StubPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC2597228058A600BC47E8 /* StubPlay.swift */; };
 		3FFC2599228058A600BC47E8 /* StubPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC2597228058A600BC47E8 /* StubPlay.swift */; };
 		3FFE5A70263D0B53005DAFB3 /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = 3FFE5A6F263D0B53005DAFB3 /* Swifter */; };
@@ -139,6 +141,7 @@
 		3FDDD88C227C6A7100F1CB37 /* URLSessionConfiguration+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionConfiguration+Extension.swift"; sourceTree = "<group>"; };
 		3FDDD88E227C6DBD00F1CB37 /* StubURLProtocolFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = StubURLProtocolFiles; sourceTree = "<group>"; };
 		3FF207A3227C4C58000202B0 /* StubURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubURLProtocol.swift; sourceTree = "<group>"; };
+		3FF54B8F26455B180026BB50 /* StubPlay iOS.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "StubPlay iOS.xctestplan"; sourceTree = "<group>"; };
 		3FFC2597228058A600BC47E8 /* StubPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubPlay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -235,6 +238,7 @@
 		3F843C2C22425B6F0007BBA4 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				3FF54B9226455B230026BB50 /* TestPlans */,
 				3FDDD889227C68EC00F1CB37 /* StubURLProtocol */,
 				3FD3DF38227B045600953856 /* FilesManager */,
 				3FD3DF2F227AF99100953856 /* StubFolderCache */,
@@ -338,6 +342,14 @@
 				3FDDD88A227C68FE00F1CB37 /* StubURLProtocolTests.swift */,
 			);
 			path = StubURLProtocol;
+			sourceTree = "<group>";
+		};
+		3FF54B9226455B230026BB50 /* TestPlans */ = {
+			isa = PBXGroup;
+			children = (
+				3FF54B8F26455B180026BB50 /* StubPlay iOS.xctestplan */,
+			);
+			path = TestPlans;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -504,6 +516,7 @@
 			files = (
 				3FDDD88F227C6DBD00F1CB37 /* StubURLProtocolFiles in Resources */,
 				3FD3DF42227B048A00953856 /* FilesManagerFiles in Resources */,
+				3FF54B9026455B180026BB50 /* StubPlay iOS.xctestplan in Resources */,
 				3FD3DF37227B03F400953856 /* StubFolderCacheFiles in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,6 +534,7 @@
 			files = (
 				3F943A092289929F00655968 /* FilesManagerFiles in Resources */,
 				3F943A0C228992E000655968 /* StubFolderCacheFiles in Resources */,
+				3FF54B9126455B180026BB50 /* StubPlay iOS.xctestplan in Resources */,
 				3FDDD890227C6DBD00F1CB37 /* StubURLProtocolFiles in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -51,7 +51,7 @@ class StubFolderCacheTests: XCTestCase {
         }
     }
     
-    func testMatch()  throws {
+    func testMatch() throws {
         measure {
             do { try _testMatch() } catch { XCTFail() }
         }

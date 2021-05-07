@@ -1,0 +1,33 @@
+{
+  "configurations" : [
+    {
+      "id" : "AF552855-6156-442C-A923-70E6DD16985E",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "addressSanitizer" : {
+      "detectStackUseAfterReturn" : true,
+      "enabled" : true
+    },
+    "nsZombieEnabled" : true,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:StubPlay.xcodeproj",
+      "identifier" : "3F843C1E22425B6F0007BBA4",
+      "name" : "StubPlay iOS"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:StubPlay.xcodeproj",
+        "identifier" : "3F843C2722425B6F0007BBA4",
+        "name" : "StubPlayTests"
+      }
+    }
+  ],
+  "version" : 1
+}
