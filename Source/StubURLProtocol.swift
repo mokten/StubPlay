@@ -32,7 +32,14 @@ public class StubURLProtocol: URLProtocol {
     }
     
     private lazy var session: URLSession = {
-        return URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: nil)
+        let config = URLSessionConfiguration.ephemeral
+        config.isDiscretionary = true
+        config.timeoutIntervalForResource = 3600
+        config.httpMaximumConnectionsPerHost = 1
+        if #available(iOS 11.0, *) {
+            config.waitsForConnectivity = true
+        }
+        return URLSession(configuration: config, delegate: self, delegateQueue: nil)
     }()
     
     private let stubManager = StubManager.shared
@@ -48,7 +55,7 @@ public class StubURLProtocol: URLProtocol {
             return false
         }
         
-        logger(request)
+        // logger(request)
         return URLProtocol.property(forKey: CustomURLConst.requestHeaderKey, in: request as URLRequest) == nil
     }
     
@@ -65,7 +72,7 @@ public class StubURLProtocol: URLProtocol {
             logger("NETWORK:", request.url)
             guard let newRequest = request as? NSMutableURLRequest else { return }
             URLProtocol.setProperty(true, forKey: CustomURLConst.requestHeaderKey, in: newRequest)
-             
+            
             let dataTask = session.dataTask(with: newRequest as URLRequest)
             dataTask.resume()
             self.dataTask = dataTask
@@ -153,14 +160,15 @@ private extension StubURLProtocol {
         }
         
         guard let client = client else { return }
-        defer { client.urlProtocolDidFinishLoading(self) }
-        guard let response = response else { return }
         
-        client.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
-        
-        if isCached, let data = bodyData {
-            client.urlProtocol(self, didLoad: data)
+        if isCached, let response = response {
+            client.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
+            if let data = bodyData {
+                client.urlProtocol(self, didLoad: data)
+            }
         }
+        
+        client.urlProtocolDidFinishLoading(self)
     }
     
 }
