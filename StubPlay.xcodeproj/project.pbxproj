@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -76,6 +76,29 @@
 		3FDDD88F227C6DBD00F1CB37 /* StubURLProtocolFiles in Resources */ = {isa = PBXBuildFile; fileRef = 3FDDD88E227C6DBD00F1CB37 /* StubURLProtocolFiles */; };
 		3FDDD890227C6DBD00F1CB37 /* StubURLProtocolFiles in Resources */ = {isa = PBXBuildFile; fileRef = 3FDDD88E227C6DBD00F1CB37 /* StubURLProtocolFiles */; };
 		3FDE77A1263D1AF900E71DBF /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = 3FDE77A0263D1AF900E71DBF /* Swifter */; };
+		3FF0D9CF26469E850033EC4A /* StubPlay_MacOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF0D9C626469E840033EC4A /* StubPlay_MacOS.framework */; };
+		3FF0D9D426469E850033EC4A /* StubPlay_MacOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0D9D326469E850033EC4A /* StubPlay_MacOSTests.swift */; };
+		3FF0D9D626469E850033EC4A /* StubPlay_MacOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FF0D9C826469E850033EC4A /* StubPlay_MacOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3FF0D9DD26469EA80033EC4A /* StubPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC2597228058A600BC47E8 /* StubPlay.swift */; };
+		3FF0D9DE26469EA80033EC4A /* StubPlay+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD24533241497DF00D285F5 /* StubPlay+Extension.swift */; };
+		3FF0D9DF26469EA80033EC4A /* StubConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD245362414985100D285F5 /* StubConfig.swift */; };
+		3FF0D9E026469EA80033EC4A /* StubManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBC1CDA22426A2600B8F41F /* StubManager.swift */; };
+		3FF0D9E126469EA80033EC4A /* StubURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF207A3227C4C58000202B0 /* StubURLProtocol.swift */; };
+		3FF0D9E226469EA80033EC4A /* StubFileSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F101226227DB0A60018D3E0 /* StubFileSaver.swift */; };
+		3FF0D9E326469EA80033EC4A /* StubFolderCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1F0E6E2275B407005FB5DD /* StubFolderCache.swift */; };
+		3FF0D9E426469EA80033EC4A /* Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE4E5122425F40005EF99D /* Stub.swift */; };
+		3FF0D9E526469EA80033EC4A /* Stub+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8DD542264684ED00B9A98D /* Stub+Name.swift */; };
+		3FF0D9E726469EA80033EC4A /* URLSessionConfiguration+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDDD88C227C6A7100F1CB37 /* URLSessionConfiguration+Extension.swift */; };
+		3FF0D9E826469EA80033EC4A /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0E5418227D47CC008E0F6A /* URL+Extension.swift */; };
+		3FF0D9E926469EA80033EC4A /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB169C32296D1630014773C /* String+Extension.swift */; };
+		3FF0D9EB26469EA80033EC4A /* FilenameFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8C98652261F2F800717E14 /* FilenameFormatter.swift */; };
+		3FF0D9EC26469EA80033EC4A /* FilesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8C98682261F39F00717E14 /* FilesManager.swift */; };
+		3FF0D9ED26469EA80033EC4A /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F75A8F1227B24F0003AA140 /* Counter.swift */; };
+		3FF0D9EE26469EA80033EC4A /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44FC832296AD4E0086A7C6 /* Logger.swift */; };
+		3FF0D9EF26469EA80033EC4A /* AssetResourceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB169BB2296C97E0014773C /* AssetResourceLoader.swift */; };
+		3FF0D9F026469EA80033EC4A /* HlsPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB169BA2296C97E0014773C /* HlsPlaylist.swift */; };
+		3FF0D9F126469EA80033EC4A /* StubServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB169BC2296C97E0014773C /* StubServer.swift */; };
+		3FF0D9F326469F140033EC4A /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = 3FF0D9F226469F140033EC4A /* Swifter */; };
 		3FF207A4227C4C58000202B0 /* StubURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF207A3227C4C58000202B0 /* StubURLProtocol.swift */; };
 		3FF207A5227C4C59000202B0 /* StubURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF207A3227C4C58000202B0 /* StubURLProtocol.swift */; };
 		3FF54B9026455B180026BB50 /* StubPlay iOS.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 3FF54B8F26455B180026BB50 /* StubPlay iOS.xctestplan */; };
@@ -100,6 +123,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 3FAE4E3622425D3D005EF99D;
 			remoteInfo = "StubPlay tvOS";
+		};
+		3FF0D9D026469E850033EC4A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F843C1622425B6F0007BBA4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3FF0D9C526469E840033EC4A;
+			remoteInfo = "StubPlay MacOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -147,6 +177,12 @@
 		3FDDD88A227C68FE00F1CB37 /* StubURLProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubURLProtocolTests.swift; sourceTree = "<group>"; };
 		3FDDD88C227C6A7100F1CB37 /* URLSessionConfiguration+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionConfiguration+Extension.swift"; sourceTree = "<group>"; };
 		3FDDD88E227C6DBD00F1CB37 /* StubURLProtocolFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = StubURLProtocolFiles; sourceTree = "<group>"; };
+		3FF0D9C626469E840033EC4A /* StubPlay_MacOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StubPlay_MacOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FF0D9C826469E850033EC4A /* StubPlay_MacOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StubPlay_MacOS.h; sourceTree = "<group>"; };
+		3FF0D9C926469E850033EC4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3FF0D9CE26469E850033EC4A /* StubPlay MacOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "StubPlay MacOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FF0D9D326469E850033EC4A /* StubPlay_MacOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubPlay_MacOSTests.swift; sourceTree = "<group>"; };
+		3FF0D9D526469E850033EC4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FF207A3227C4C58000202B0 /* StubURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubURLProtocol.swift; sourceTree = "<group>"; };
 		3FF54B8F26455B180026BB50 /* StubPlay iOS.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "StubPlay iOS.xctestplan"; sourceTree = "<group>"; };
 		3FFC2597228058A600BC47E8 /* StubPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubPlay.swift; sourceTree = "<group>"; };
@@ -185,6 +221,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3FF0D9C326469E840033EC4A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3FF0D9F326469F140033EC4A /* Swifter in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FF0D9CB26469E850033EC4A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3FF0D9CF26469E850033EC4A /* StubPlay_MacOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -213,6 +265,8 @@
 				3F843C2122425B6F0007BBA4 /* Source */,
 				3F843C2C22425B6F0007BBA4 /* Tests */,
 				3F50E61E2518CF4F0074307F /* Deployment */,
+				3FF0D9C726469E850033EC4A /* StubPlay MacOS */,
+				3FF0D9D226469E850033EC4A /* StubPlay MacOSTests */,
 				3F843C2022425B6F0007BBA4 /* Products */,
 				3F97B29422BA6D2800CB343F /* Frameworks */,
 			);
@@ -225,6 +279,8 @@
 				3F843C2822425B6F0007BBA4 /* StubPlayTests.xctest */,
 				3FAE4E3722425D3D005EF99D /* StubPlay.framework */,
 				3FAE4E3F22425D3D005EF99D /* StubPlay tvOSTests.xctest */,
+				3FF0D9C626469E840033EC4A /* StubPlay_MacOS.framework */,
+				3FF0D9CE26469E850033EC4A /* StubPlay MacOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -352,6 +408,24 @@
 			path = StubURLProtocol;
 			sourceTree = "<group>";
 		};
+		3FF0D9C726469E850033EC4A /* StubPlay MacOS */ = {
+			isa = PBXGroup;
+			children = (
+				3FF0D9C826469E850033EC4A /* StubPlay_MacOS.h */,
+				3FF0D9C926469E850033EC4A /* Info.plist */,
+			);
+			path = "StubPlay MacOS";
+			sourceTree = "<group>";
+		};
+		3FF0D9D226469E850033EC4A /* StubPlay MacOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				3FF0D9D326469E850033EC4A /* StubPlay_MacOSTests.swift */,
+				3FF0D9D526469E850033EC4A /* Info.plist */,
+			);
+			path = "StubPlay MacOSTests";
+			sourceTree = "<group>";
+		};
 		3FF54B9226455B230026BB50 /* TestPlans */ = {
 			isa = PBXGroup;
 			children = (
@@ -375,6 +449,14 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FF0D9C126469E840033EC4A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3FF0D9D626469E850033EC4A /* StubPlay_MacOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,13 +541,52 @@
 			productReference = 3FAE4E3F22425D3D005EF99D /* StubPlay tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		3FF0D9C526469E840033EC4A /* StubPlay MacOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3FF0D9DB26469E850033EC4A /* Build configuration list for PBXNativeTarget "StubPlay MacOS" */;
+			buildPhases = (
+				3FF0D9C126469E840033EC4A /* Headers */,
+				3FF0D9C226469E840033EC4A /* Sources */,
+				3FF0D9C326469E840033EC4A /* Frameworks */,
+				3FF0D9C426469E840033EC4A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "StubPlay MacOS";
+			packageProductDependencies = (
+				3FF0D9F226469F140033EC4A /* Swifter */,
+			);
+			productName = "StubPlay MacOS";
+			productReference = 3FF0D9C626469E840033EC4A /* StubPlay_MacOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		3FF0D9CD26469E850033EC4A /* StubPlay MacOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3FF0D9DC26469E850033EC4A /* Build configuration list for PBXNativeTarget "StubPlay MacOSTests" */;
+			buildPhases = (
+				3FF0D9CA26469E850033EC4A /* Sources */,
+				3FF0D9CB26469E850033EC4A /* Frameworks */,
+				3FF0D9CC26469E850033EC4A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3FF0D9D126469E850033EC4A /* PBXTargetDependency */,
+			);
+			name = "StubPlay MacOSTests";
+			productName = "StubPlay MacOSTests";
+			productReference = 3FF0D9CE26469E850033EC4A /* StubPlay MacOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		3F843C1622425B6F0007BBA4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Mokten Pty Ltd";
 				TargetAttributes = {
@@ -484,10 +605,16 @@
 					3FAE4E3E22425D3D005EF99D = {
 						CreatedOnToolsVersion = 10.1;
 					};
+					3FF0D9C526469E840033EC4A = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					3FF0D9CD26469E850033EC4A = {
+						CreatedOnToolsVersion = 12.5;
+					};
 				};
 			};
 			buildConfigurationList = 3F843C1922425B6F0007BBA4 /* Build configuration list for PBXProject "StubPlay" */;
-			compatibilityVersion = "Xcode 11.0";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -506,6 +633,8 @@
 				3F843C2722425B6F0007BBA4 /* StubPlayTests */,
 				3FAE4E3622425D3D005EF99D /* StubPlay tvOS */,
 				3FAE4E3E22425D3D005EF99D /* StubPlay tvOSTests */,
+				3FF0D9C526469E840033EC4A /* StubPlay MacOS */,
+				3FF0D9CD26469E850033EC4A /* StubPlay MacOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -544,6 +673,20 @@
 				3F943A0C228992E000655968 /* StubFolderCacheFiles in Resources */,
 				3FF54B9126455B180026BB50 /* StubPlay iOS.xctestplan in Resources */,
 				3FDDD890227C6DBD00F1CB37 /* StubURLProtocolFiles in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FF0D9C426469E840033EC4A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FF0D9CC26469E850033EC4A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,6 +785,40 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3FF0D9C226469E840033EC4A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3FF0D9DD26469EA80033EC4A /* StubPlay.swift in Sources */,
+				3FF0D9DE26469EA80033EC4A /* StubPlay+Extension.swift in Sources */,
+				3FF0D9DF26469EA80033EC4A /* StubConfig.swift in Sources */,
+				3FF0D9E026469EA80033EC4A /* StubManager.swift in Sources */,
+				3FF0D9E126469EA80033EC4A /* StubURLProtocol.swift in Sources */,
+				3FF0D9E226469EA80033EC4A /* StubFileSaver.swift in Sources */,
+				3FF0D9E326469EA80033EC4A /* StubFolderCache.swift in Sources */,
+				3FF0D9E426469EA80033EC4A /* Stub.swift in Sources */,
+				3FF0D9E526469EA80033EC4A /* Stub+Name.swift in Sources */,
+				3FF0D9E726469EA80033EC4A /* URLSessionConfiguration+Extension.swift in Sources */,
+				3FF0D9E826469EA80033EC4A /* URL+Extension.swift in Sources */,
+				3FF0D9E926469EA80033EC4A /* String+Extension.swift in Sources */,
+				3FF0D9EB26469EA80033EC4A /* FilenameFormatter.swift in Sources */,
+				3FF0D9EC26469EA80033EC4A /* FilesManager.swift in Sources */,
+				3FF0D9ED26469EA80033EC4A /* Counter.swift in Sources */,
+				3FF0D9EE26469EA80033EC4A /* Logger.swift in Sources */,
+				3FF0D9EF26469EA80033EC4A /* AssetResourceLoader.swift in Sources */,
+				3FF0D9F026469EA80033EC4A /* HlsPlaylist.swift in Sources */,
+				3FF0D9F126469EA80033EC4A /* StubServer.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FF0D9CA26469E850033EC4A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3FF0D9D426469E850033EC4A /* StubPlay_MacOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -654,6 +831,11 @@
 			isa = PBXTargetDependency;
 			target = 3FAE4E3622425D3D005EF99D /* StubPlay tvOS */;
 			targetProxy = 3FAE4E4122425D3D005EF99D /* PBXContainerItemProxy */;
+		};
+		3FF0D9D126469E850033EC4A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3FF0D9C526469E840033EC4A /* StubPlay MacOS */;
+			targetProxy = 3FF0D9D026469E850033EC4A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -980,6 +1162,100 @@
 			};
 			name = Release;
 		};
+		3FF0D9D726469E850033EC4A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 862DX7386G;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "StubPlay MacOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mokten.StubPlay-MacOS";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		3FF0D9D826469E850033EC4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 862DX7386G;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "StubPlay MacOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mokten.StubPlay-MacOS";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		3FF0D9D926469E850033EC4A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 862DX7386G;
+				INFOPLIST_FILE = "StubPlay MacOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.2;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mokten.StubPlay-MacOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		3FF0D9DA26469E850033EC4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 862DX7386G;
+				INFOPLIST_FILE = "StubPlay MacOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.2;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mokten.StubPlay-MacOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1028,6 +1304,24 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		3FF0D9DB26469E850033EC4A /* Build configuration list for PBXNativeTarget "StubPlay MacOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3FF0D9D726469E850033EC4A /* Debug */,
+				3FF0D9D826469E850033EC4A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3FF0D9DC26469E850033EC4A /* Build configuration list for PBXNativeTarget "StubPlay MacOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3FF0D9D926469E850033EC4A /* Debug */,
+				3FF0D9DA26469E850033EC4A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -1043,6 +1337,11 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		3FDE77A0263D1AF900E71DBF /* Swifter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3FFE5A6E263D0B53005DAFB3 /* XCRemoteSwiftPackageReference "swifter" */;
+			productName = Swifter;
+		};
+		3FF0D9F226469F140033EC4A /* Swifter */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3FFE5A6E263D0B53005DAFB3 /* XCRemoteSwiftPackageReference "swifter" */;
 			productName = Swifter;

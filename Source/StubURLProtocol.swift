@@ -37,8 +37,11 @@ public class StubURLProtocol: URLProtocol {
         config.timeoutIntervalForResource = 3600
         config.httpMaximumConnectionsPerHost = 1
         if #available(iOS 11.0, *) {
-            config.waitsForConnectivity = true
+            if #available(macOS 10.13, *) {
+                config.waitsForConnectivity = true
+            }
         }
+        
         return URLSession(configuration: config, delegate: self, delegateQueue: nil)
     }()
     

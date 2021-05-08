@@ -5,12 +5,11 @@ let package = Package(
     name: "StubPlay",
     platforms: [
         .iOS(.v10),
-        .tvOS(.v11)
+        .tvOS(.v11),
+        .macOS(.v11)
     ],
     products: [
-        .library(
-            name: "StubPlay",
-            targets: ["StubPlay"]),
+        .library(name: "StubPlay", targets: ["StubPlay"])
     ],
     dependencies: [
         .package(name: "Swifter", url: "https://github.com/httpswift/swifter.git", .upToNextMajor(from: "1.5.0"))
@@ -18,16 +17,9 @@ let package = Package(
         // .package(name: "Swifter", path: "Vendor/swifter")
     ],
     targets: [
-        .target(
-            name: "StubPlay",
-            dependencies: ["Swifter"],
-            path: "Source"
+        .target(name: "StubPlay", dependencies: ["Swifter"], path: "Source"
         ),
-        .testTarget(
-            name: "Tests",
-            dependencies: ["StubPlay"],
-            path: "Tests",
-            
+        .testTarget(name: "Tests", dependencies: ["StubPlay"], path: "Tests",
             resources: [
                 .copy("FilesManager"),
                 .copy("StubFolderCache"),
