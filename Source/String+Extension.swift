@@ -10,6 +10,13 @@ import Foundation
 
 extension String {
     
+    /**
+     
+     A unique hash vs a secure hash SHA256
+     
+     We just want a quick way to create a hash that's unique.
+     
+     */
     var djb2hash: Int {
         let unicodeScalars = self.unicodeScalars.map { $0.value }
         return unicodeScalars.reduce(5381) { ($0 << 5) &+ $0 &+ Int($1) }

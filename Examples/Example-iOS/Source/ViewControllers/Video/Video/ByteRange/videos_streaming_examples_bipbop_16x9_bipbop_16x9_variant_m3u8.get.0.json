@@ -1,5 +1,5 @@
 {
-  "bodyFileName" : "videos_streaming_examples_bipbop_16x9_bipbop_16x9_variant_m3u8.get.0.body.m3u",
+  "responseDataFileName" : "videos_streaming_examples_bipbop_16x9_bipbop_16x9_variant_m3u8.get.0.body.m3u",
   "response" : {
     "headers" : {
       "Content-Length" : "3286",

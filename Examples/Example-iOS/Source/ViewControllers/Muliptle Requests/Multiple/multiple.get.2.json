@@ -1,5 +1,5 @@
 {
-  "bodyFileName" : "multiple.get.2.body.txt",
+  "responseDataFileName" : "multiple.get.2.body.txt",
   "response" : {
       "statusCode" : 200,
       "mimeType" : "text\/plain"

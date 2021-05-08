@@ -1,5 +1,5 @@
 {
-  "bodyFileName" : "offers_itunes-monthly_x=Y.get.0.body.json",
+  "responseDataFileName" : "offers_itunes-monthly_x=Y.get.0.body.json",
   "response" : {
     "headers" : {
       "Vary" : "Accept-Encoding",

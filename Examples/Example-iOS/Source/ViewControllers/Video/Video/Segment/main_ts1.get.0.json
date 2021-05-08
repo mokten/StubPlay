@@ -1,5 +1,5 @@
 {
-  "bodyFileName" : "main_ts1.get.0.body.ts",
+  "responseDataFileName" : "main_ts1.get.0.body.ts",
   "response" : {
     "headers" : {
       "Content-Length" : "326368",

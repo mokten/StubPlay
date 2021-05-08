@@ -66,7 +66,7 @@ public class StubURLProtocol: URLProtocol {
     override public func startLoading() {
         if let stubRequest = request.stubRequest, let stub = stubManager.get(request: stubRequest) {
             logger("MOCK:", request.url)
-            finished(stub: stub, response: stub.httpURLResponse(defaultURL: request.url), bodyData: stub.bodyData, isCached: true)
+            finished(stub: stub, response: stub.httpURLResponse(defaultURL: request.url), bodyData: stub.responseData, isCached: true)
             
         } else {
             logger("NETWORK:", request.url)

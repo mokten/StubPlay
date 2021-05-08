@@ -1,5 +1,5 @@
 {
-  "bodyFileName" : "playlist.get.0.body.m3u",
+  "responseDataFileName" : "playlist.get.0.body.m3u",
   "response" : {
     "headers" : {
         "Content-Type" : "application/x-mpegURL",

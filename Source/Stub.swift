@@ -31,28 +31,30 @@ public protocol Model: Codable, Hashable { }
  */
 public struct Stub: Model {
     public let rewriteRule: RewriteRule?
-    public var index: Int
+    public var index: Int = 0
     public var skipSave: Bool?
-    public var bodyFileName: String? = nil
-    public var bodyData: Data?
+    public var responseDataFileName: String?
+    public var responseData: Data?
     public let request: Request
     public let response: Response?
-    
-    public init(rewriteRule: RewriteRule? = nil, index: Int = 0, bodyFileName: String? = nil, request: Request, response: Response?) {
+}
+
+public extension Stub {
+    init(rewriteRule: RewriteRule? = nil, index: Int = 0, responseDataFileName: String? = nil, request: Request, response: Response?) {
         self.rewriteRule = rewriteRule
         self.index = index
-        self.bodyFileName = bodyFileName
-        self.bodyData = nil
+        self.responseDataFileName = responseDataFileName
+        self.responseData = nil
         self.request = request
         self.response = response
     }
     
-    public init?(request: URLRequest, response: HTTPURLResponse?) {
+    init?(request: URLRequest, response: HTTPURLResponse?) {
         guard let stubRequest = request.stubRequest else { return nil }
         self.rewriteRule = nil
         index = 0
-        bodyFileName = nil
-        bodyData = nil
+        responseDataFileName = nil
+        responseData = nil
         self.request = stubRequest
         self.response = response?.stubResponse
     }
@@ -103,7 +105,7 @@ public struct Request: Model {
     public let method: HttpMethod
     public let url: URL?
     public let headers: [String: String]?
-    public let body: String?
+    public var body: String?
     
     public var rewriteRule: RewriteRule {
         let params: String?

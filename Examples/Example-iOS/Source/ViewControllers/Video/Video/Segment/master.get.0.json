@@ -1,5 +1,5 @@
 {
-  "bodyFileName" : "master.get.0.body.m3u",
+  "responseDataFileName" : "master.get.0.body.m3u",
   "response" : {
     "headers" : {
       "Content-Length" : "3286",

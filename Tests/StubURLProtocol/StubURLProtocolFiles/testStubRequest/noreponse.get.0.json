@@ -1,5 +1,5 @@
 {
-  "bodyFileName" : "get.get.0.body.json",
+  "responseDataFileName" : "get.get.0.body.json",
   "response" : {
     "headers" : {
       "Content-Encoding" : "gzip",

@@ -42,7 +42,7 @@ class StubFolderCacheBodyDataTests: XCTestCase {
         do { try folder.load() } catch { XCTAssertTrue(false) }
         let request = Request(method: .get, url: URL(string: "https://a.b/data.json"), headers: nil, body: nil)
         let stub = folder.get(request: request)
-        let data = (stub?.bodyData)!
+        let data = (stub?.responseData)!
         let body = String(data: data, encoding: .utf8)!
         XCTAssertEqual(body, "hiya\n")
     }
@@ -52,7 +52,7 @@ class StubFolderCacheBodyDataTests: XCTestCase {
         do { try folder.load() } catch { XCTAssertTrue(false) }
         let request = Request(method: .get, url: URL(string: "https://a.com.au/offers/itunes-monthly?x=Y"), headers: nil, body: nil)
         let stub = folder.get(request: request)
-        let data = (stub?.bodyData)!
+        let data = (stub?.responseData)!
         let body = String(data: data, encoding: .utf8)!
         XCTAssertEqual(body, "oh yeah baby\n")
     }
@@ -62,7 +62,7 @@ class StubFolderCacheBodyDataTests: XCTestCase {
         do { try folder.load() } catch { XCTAssertTrue(false) }
         let request = Request(method: .post, url: URL(string: "https://a.com.au/au"), headers: nil, body: nil)
         let stub = folder.get(request: request)
-        let data = (stub?.bodyData)!
+        let data = (stub?.responseData)!
         let body = String(data: data, encoding: .utf8)!
         XCTAssertTrue(body.contains("access_token"))
     }

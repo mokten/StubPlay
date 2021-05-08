@@ -1,5 +1,5 @@
 {
-  "bodyFileName" : "data2_json.get.0.body.json",
+  "responseDataFileName" : "data2_json.get.0.body.json",
   "response" : {
     "headers" : {
       "Connection" : "keep-alive"

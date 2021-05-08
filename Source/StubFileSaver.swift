@@ -43,7 +43,7 @@ public class StubFileSaver: StubSaver {
     
     private let filesManager: FilesManager
     private let filenameFormatter: FilenameFormatter
-    private let bodyFilenameFormatter: FilenameFormatter
+    private let responseDataFileNameFormatter: FilenameFormatter
     
     // Keeps count of the request
     private let counter = Counter<Request>()
@@ -54,13 +54,13 @@ public class StubFileSaver: StubSaver {
     /// - Parameters:
     ///   - filesManager: Responsible for saving the files
     ///   - filenameFormatter: formats the file names
-    ///   - bodyFilenameFormatter: formats the body file name
+    ///   - ResponseDataFileNameFormatter: formats the body file name
     public init(filesManager: FilesManager,
                 filenameFormatter: FilenameFormatter = DefaultFilenameFormatter(),
-                bodyFilenameFormatter: FilenameFormatter = BodyFilenameFormatter()) {
+                responseDataFileNameFormatter: FilenameFormatter = ResponseDataFileNameFormatter()) {
         self.filesManager = filesManager
         self.filenameFormatter = filenameFormatter
-        self.bodyFilenameFormatter = bodyFilenameFormatter
+        self.responseDataFileNameFormatter = responseDataFileNameFormatter
     }
     
     public func save(_ stub: Stub, bodyData: Data?) {
@@ -69,12 +69,12 @@ public class StubFileSaver: StubSaver {
                 var msg = stub
                 msg.index = self.counter.count(for: msg.request)
                 let filename = self.filenameFormatter.filename(for: msg)
-                let bodyFileName = self.bodyFilenameFormatter.filename(for: msg)
-                msg.bodyFileName = bodyFileName
-                msg.bodyData = nil
+                let responseDataFileName = self.responseDataFileNameFormatter.filename(for: msg)
+                msg.responseDataFileName = responseDataFileName
+                msg.responseData = nil
                 
                 self.filesManager.save(msg, to: filename)
-                _ = try self.filesManager.save(data: bodyData, to: bodyFileName)
+                _ = try self.filesManager.save(data: bodyData, to: responseDataFileName)
             } catch {
                 //TODO:
                 logger(error)

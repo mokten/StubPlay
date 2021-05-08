@@ -56,7 +56,7 @@ class StubPlayTests: XCTestCase {
                 "Accept-Encoding": "gzip;q=1.0, compress;q=0.5",
                 "User-Agent": "Kayo/1.1.4 (au.com.streamotion.kayo; build:135; iOS 12.2.0) Alamofire/4.7.3"], body: nil)
             let stub = self.stubManager.get(request: request)
-            if let data = stub?.bodyData {
+            if let data = stub?.responseData {
                 let body = String(data: data, encoding: .utf8)!
                 XCTAssertEqual(body, "oh yeah baby\n")
             } else {

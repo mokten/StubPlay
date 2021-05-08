@@ -25,11 +25,6 @@
 
 import Foundation
 
-private enum Constants {
-    static let maxExtensionLength = 10
-    static let maxFilenamePartLength = 100
-}
-
 public protocol FilenameFormatter {
     func filename(for stub: Stub) -> String
 }
@@ -43,7 +38,7 @@ public struct DefaultFilenameFormatter: FilenameFormatter {
     }
 }
 
-public struct BodyFilenameFormatter: FilenameFormatter {
+public struct ResponseDataFileNameFormatter: FilenameFormatter {
     
     public init() { }
     
@@ -71,43 +66,5 @@ public extension String {
         let filename = self.replacingOccurrences(of: "^/", with: "", options: .regularExpression)
         let name = filename.replacingOccurrences(of: "[/\\* <>?%|.:]", with: "_", options: .regularExpression)
         return name == "" ? "_" : name
-    }
-}
-
-private extension Stub {
-    var name: String {
-        var name: String
-        if let path = request.url?.path, !path.isEmpty {
-            name = path
-        } else {
-            name = "_"
-        }
-        
-        if let query = request.url?.query {
-            if !name.hasSuffix("_") { name += "_" }
-            name += query
-        }
-        
-        if name.count > Constants.maxFilenamePartLength {
-            name = "\(name.prefix(Constants.maxFilenamePartLength))_\(name.hashValue)"
-        }
-        
-        return name.safeFileName
-    }
-    
-    var fileExtension: String {
-        let ext: String
-        if let mimeType = response?.mimeType, let mimeTypeExt = URL.pathExtension(for: mimeType) {
-            ext = mimeTypeExt
-        } else if let pathExt = request.url?.pathExtension, !pathExt.isEmpty {
-            if pathExt.count > Constants.maxExtensionLength {
-                ext = "\(pathExt.prefix(Constants.maxExtensionLength))_\(pathExt.djb2hash)"
-            } else {
-                ext = pathExt
-            }
-        } else {
-            ext = "txt"
-        }
-        return ext
     }
 }

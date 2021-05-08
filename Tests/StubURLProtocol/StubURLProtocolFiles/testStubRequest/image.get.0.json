@@ -1,5 +1,5 @@
 {
-  "bodyFileName" : "image.get.0.body",
+  "responseDataFileName" : "image.get.0.body",
   "response" : {
     "headers" : {
     },

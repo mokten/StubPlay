@@ -1,5 +1,5 @@
 {
-  "bodyFileName" : "b.get.0.body.txt",
+  "responseDataFileName" : "b.get.0.body.txt",
   "rewriteRule" : {
         "host" : ".*.test.com"
     },

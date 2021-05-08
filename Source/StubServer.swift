@@ -56,7 +56,7 @@ public class StubServer {
             
             let statusCode = response.statusCode ?? 200
             
-            guard let data = stub.bodyData else {
+            guard let data = stub.responseData else {
                 return .raw(statusCode, "OK", response.headers, nil)
             }
             

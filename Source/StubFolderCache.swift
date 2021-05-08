@@ -103,10 +103,10 @@ extension StubFolderCache: StubCache {
                 self.requestStubs[matchedRewriteRule] = matchedStubs
             }
             
-            if matchedStub.bodyData == nil,
-                let bodyFilename = matchedStub.bodyFileName,
-                let bodyData = try? filesManager.bundleData(for: bodyFilename, inDirectory: baseFolder) {
-                matchedStub.bodyData = bodyData
+            if matchedStub.responseData == nil,
+                let responseDataFileName = matchedStub.responseDataFileName,
+                let bodyData = try? filesManager.bundleData(for: responseDataFileName, inDirectory: baseFolder) {
+                matchedStub.responseData = bodyData
             }
             
             if matchedStubs.count > 1 {

@@ -24,7 +24,6 @@
 //
 
 import XCTest
-
 @testable import StubPlay
 
 class StubTests: XCTestCase {

@@ -1,5 +1,5 @@
 {
-  "bodyFileName" : "image.body.png",
+  "responseDataFileName" : "image.body.png",
   "response" : {
     "headers" : {
       "Content-Type" : "image\/png",

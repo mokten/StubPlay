@@ -1,5 +1,5 @@
 {
-  "bodyFileName" : "oauth_token.post.0.body.json",
+  "responseDataFileName" : "oauth_token.post.0.body.json",
   "response" : {
     "headers" : {
       "Server" : "nginx",
