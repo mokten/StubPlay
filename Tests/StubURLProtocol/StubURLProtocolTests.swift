@@ -37,7 +37,12 @@ class StubURLProtocolTests: XCTestCase {
     override func setUp() {
         super.setUp()
         do {
-            try StubPlay.default.start(with: StubConfig(folders: ["StubURLProtocolFiles/testStubRequest"], bundle: Bundle(for: type(of: self))))
+            try StubPlay.default.start(with: StubConfig(folders: ["StubURLProtocolFiles/testStubRequest"],
+                                                        saveResponsesDirURL: nil,
+                                                        validateResponseFile: false,
+                                                        bundle: Bundle(for: type(of: self)),
+                                                        isEnabledServer: false)
+            )
         } catch {
             XCTAssertTrue(false, error.localizedDescription)
         }
@@ -52,7 +57,7 @@ class StubURLProtocolTests: XCTestCase {
         guard let url = URL(string: urlStr) else { return XCTAssertTrue(false, "\(urlStr)") }
         
         let config = URLSessionConfiguration.default
-        config.enableStub(true)
+//        config.enableStub(true)
         let session = URLSession(configuration: config)
         
         let task = session.dataTask(with: url) { data, response, error in
@@ -62,7 +67,10 @@ class StubURLProtocolTests: XCTestCase {
         }
         
         task.resume()
-        waitForExpectations(timeout: 1, handler: nil)
+        waitForExpectations(timeout: 1) { error in
+            guard let error = error else { return }
+            fatalError("Timeout \(urlStr), \(String(describing: error))")
+        }
     }
 
 }
