@@ -36,7 +36,7 @@ public protocol StubURLProtocolStorage {
 public final class StubURLProtocolStore: NSObject {
     static let shared = StubURLProtocolStore()
     
-    private lazy var session: URLSession = {
+    private lazy var defaultSession: URLSession = {
         let config = URLSessionConfiguration.default
         config.isDiscretionary = true
         config.timeoutIntervalForResource = 3600
@@ -48,6 +48,8 @@ public final class StubURLProtocolStore: NSObject {
         return URLSession(configuration: config, delegate: self, delegateQueue: nil)
     }()
     
+    private lazy var session: URLSession = defaultSession
+    
     private let stubManager = StubManager.shared
     
     @Atomic
@@ -55,6 +57,14 @@ public final class StubURLProtocolStore: NSObject {
         keyOptions: .weakMemory,
         valueOptions: .weakMemory
     )
+    
+    public func updateSession(config: URLSessionConfiguration?) {
+        guard let config = config else {
+            session = defaultSession
+            return
+        }
+        session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
+    }
 }
 
 extension StubURLProtocolStore: StubURLProtocolStorage {

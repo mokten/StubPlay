@@ -43,6 +43,11 @@ public struct StubConfig {
     public var clearSaveDir: Bool
     
     /*
+     Update the URLProtocol session URLSessionConfiguration
+     */
+    public var protocolURLSessionConfiguration: URLSessionConfiguration?
+    
+    /*
      Bundle resource loader
      */
     public var bundle: Bundle
@@ -66,6 +71,7 @@ public struct StubConfig {
                 clearSaveDir: Bool = true,
                 bundle: Bundle = Bundle.main,
                 isEnabledServer: Bool = true,
+                protocolURLSessionConfiguration: URLSessionConfiguration? = nil,
                 isLogging: Bool = true) {
         self.folders = folders
         self.clearSaveDir = clearSaveDir
@@ -74,6 +80,7 @@ public struct StubConfig {
         self.validateResponseFile = validateResponseFile
         self.bundle =  bundle
         self.isEnabledServer = isEnabledServer
+        self.protocolURLSessionConfiguration = protocolURLSessionConfiguration
         self.isLogging = isLogging
     }
 }

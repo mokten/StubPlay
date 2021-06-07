@@ -57,7 +57,7 @@ class StubURLProtocolTests: XCTestCase {
         guard let url = URL(string: urlStr) else { return XCTAssertTrue(false, "\(urlStr)") }
         
         let config = URLSessionConfiguration.default
-//        config.enableStub(true)
+        _ = config.enableStub(true)
         let session = URLSession(configuration: config)
         
         let task = session.dataTask(with: url) { data, response, error in

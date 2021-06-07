@@ -71,6 +71,7 @@ public class StubPlay {
         Logger.shared.isEnabled = config.isLogging
         
         stubManager.reset()
+        StubURLProtocolStore.shared.updateSession(config: config.protocolURLSessionConfiguration)
         
         let filesManager = FilesManager(bundle: config.bundle, saveDirectoyURL: config.saveResponsesDirURL)
         if config.saveResponsesDirURL != nil {
