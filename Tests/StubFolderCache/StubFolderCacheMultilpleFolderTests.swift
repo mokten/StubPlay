@@ -33,7 +33,7 @@ class StubFolderCacheMultilpleFolderTests: XCTestCase {
         super.setUp()
         do {
             let folders = ["StubFolderCacheFiles/testMultipleFolders/folder1", "StubFolderCacheFiles/testMultipleFolders/folder2"]
-            try StubPlay.default.enableStub(for: StubConfig(folders: folders, bundle: Bundle(for: type(of: self))))
+            try StubPlay.default.start(with: StubConfig(folders: folders, bundle: Bundle(for: type(of: self))))
         } catch {
             XCTAssertTrue(false)
         }

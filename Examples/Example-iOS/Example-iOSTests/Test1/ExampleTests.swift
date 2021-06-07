@@ -14,7 +14,7 @@ class ExampleTests: XCTestCase {
 
     override func setUp() {
       // Loads all stub files in the directory Test1
-        try! StubPlay.default.enableStub(for: StubConfig(folders: ["Test1"], bundle: Bundle(for: type(of: self))))
+        try! StubPlay.default.start(with: StubConfig(folders: ["Test1"], bundle: Bundle(for: type(of: self))))
     }
     
     /*

@@ -48,7 +48,7 @@ class FilesManagerTests: XCTestCase {
     func testReadFilesInDirectory() {
         let expectedFiles = ["__a=b.get.0.json","_.get.0.json","_a.get.0.json","a.post.0.json"]
         let dirURL = (filesManager?.bundleUrl(for: "FilesManagerFiles/testReadFilesInDirectory"))!
-        let files = (filesManager?.urls(at: dirURL))!
+        let files = (try! filesManager?.urls(at: dirURL))!
         
         XCTAssertEqual(files.count, expectedFiles.count)
         

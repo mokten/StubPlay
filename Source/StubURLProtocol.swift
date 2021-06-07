@@ -25,29 +25,16 @@
 
 import Foundation
 
-public class StubURLProtocol: URLProtocol {
+public final class StubURLProtocol: URLProtocol {
     
-    private enum CustomURLConst {
+    private enum Constants {
         static let requestHeaderKey = "StubPlayRequestHeader"
     }
     
-    private lazy var session: URLSession = {
-        let config = URLSessionConfiguration.ephemeral
-        config.isDiscretionary = true
-        config.timeoutIntervalForResource = 3600
-        config.httpMaximumConnectionsPerHost = 1
-        if #available(iOS 11.0, *) {
-            if #available(macOS 10.13, *) {
-                config.waitsForConnectivity = true
-            }
-        }
-        
-        return URLSession(configuration: config, delegate: self, delegateQueue: nil)
-    }()
+    private lazy var store: StubURLProtocolStorage = StubURLProtocolStore.shared
     
-    private let stubManager = StubManager.shared
-    private var dataTask: URLSessionDataTask?
-    private var responseData: Data?
+    var dataTask: URLSessionDataTask?
+    var responseData: Data?
     
     // MARK: NSURLProtocol
     
@@ -59,7 +46,7 @@ public class StubURLProtocol: URLProtocol {
         }
         
         // logger(request)
-        return URLProtocol.property(forKey: CustomURLConst.requestHeaderKey, in: request as URLRequest) == nil
+        return URLProtocol.property(forKey: Constants.requestHeaderKey, in: request as URLRequest) == nil
     }
     
     override public class func canonicalRequest(for request: URLRequest) -> URLRequest {
@@ -67,18 +54,22 @@ public class StubURLProtocol: URLProtocol {
     }
     
     override public func startLoading() {
-        if let stubRequest = request.stubRequest, let stub = stubManager.get(request: stubRequest) {
+        if let stubRequest = request.stubRequest,
+           let stub = store.get(request: stubRequest) {
             logger("MOCK:", request.url)
-            finished(stub: stub, response: stub.httpURLResponse(defaultURL: request.url), bodyData: stub.responseData, isCached: true)
+            store.finished(stub: stub,
+                           urlProtocol: self,
+                     response: stub.httpURLResponse(defaultURL: request.url),
+                     bodyData: stub.responseData,
+                     isCached: true)
             
         } else {
             logger("NETWORK:", request.url)
             guard let newRequest = request as? NSMutableURLRequest else { return }
-            URLProtocol.setProperty(true, forKey: CustomURLConst.requestHeaderKey, in: newRequest)
+            URLProtocol.setProperty(true, forKey: Constants.requestHeaderKey, in: newRequest)
             
-            let dataTask = session.dataTask(with: newRequest as URLRequest)
-            dataTask.resume()
-            self.dataTask = dataTask
+            dataTask = store.dataTask(with: newRequest as URLRequest, urlProtocol: self)
+            dataTask?.resume()
         }
     }
     
@@ -87,93 +78,6 @@ public class StubURLProtocol: URLProtocol {
         dataTask = nil
         responseData = nil
     }
-}
-
-extension StubURLProtocol: URLSessionDataDelegate {
-    
-    public func urlSession(_ session: URLSession,
-                           dataTask: URLSessionDataTask,
-                           didReceive response: URLResponse,
-                           completionHandler: @escaping (URLSession.ResponseDisposition) -> Void) {
-        
-        client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
-        responseData = Data()
-        completionHandler(.allow)
-    }
-    
-    public func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
-        client?.urlProtocol(self, didLoad: data)
-        responseData?.append(data)
-    }
-    
-    public func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse, newRequest request: URLRequest, completionHandler: @escaping (URLRequest?) -> Void) {
-        client?.urlProtocol(self, wasRedirectedTo: request, redirectResponse: response)
-        completionHandler(request)
-    }
-    
-    public func urlSession(_ session: URLSession, didBecomeInvalidWithError error: Error?) {
-        guard let error = error else { return }
-        client?.urlProtocol(self, didFailWithError: error)
-    }
-    
-    public func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        let protectionSpace = challenge.protectionSpace
-        let sender = challenge.sender
-        
-        if protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
-            if let serverTrust = protectionSpace.serverTrust {
-                let credential = URLCredential(trust: serverTrust)
-                sender?.use(credential, for: challenge)
-                completionHandler(.useCredential, credential)
-                return
-            }
-        }
-        
-        completionHandler(.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!))
-    }
-    
-    public func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
-        finished(response: dataTask?.response, bodyData: responseData)
-    }
-}
-
-
-extension StubURLProtocol: URLSessionTaskDelegate {
-    
-    public func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-        
-        if let error = error {
-            client?.urlProtocol(self, didFailWithError: error)
-            
-        } else {
-            finished(response: dataTask?.response, bodyData: responseData)
-        }
-    }
-}
-
-private extension StubURLProtocol {
-    func finished(response: URLResponse?, bodyData: Data?, isCached: Bool = false) {
-        let stub = Stub(request: request, response: response as? HTTPURLResponse)
-        finished(stub: stub, response: response, bodyData: bodyData, isCached: isCached)
-    }
-    
-    func finished(stub: Stub?, response: URLResponse?, bodyData: Data?, isCached: Bool = false) {
-        if let stub = stub, stub.skipSave != true {
-            stubManager.save(stub, bodyData: bodyData)
-        }
-        
-        guard let client = client else { return }
-        
-        if isCached, let response = response {
-            client.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
-            if let data = bodyData {
-                client.urlProtocol(self, didLoad: data)
-            }
-        }
-        
-        client.urlProtocolDidFinishLoading(self)
-    }
-    
 }
 
 private extension URLRequest {

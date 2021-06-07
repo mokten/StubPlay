@@ -37,7 +37,7 @@ class StubURLProtocolTests: XCTestCase {
     override func setUp() {
         super.setUp()
         do {
-            try StubPlay.default.enableStub(for: StubConfig(folders: ["StubURLProtocolFiles/testStubRequest"], bundle: Bundle(for: type(of: self))))
+            try StubPlay.default.start(with: StubConfig(folders: ["StubURLProtocolFiles/testStubRequest"], bundle: Bundle(for: type(of: self))))
         } catch {
             XCTAssertTrue(false, error.localizedDescription)
         }

@@ -88,6 +88,13 @@ class FilenameFormatterTests: XCTestCase {
         XCTAssertEqual(filenameHelper.filename(for: msg), "_.get.0.json")
     }
     
+    func testFileName_query() {
+        let url = URL(string: "https://msg.corelogic.asia/property/search/AU/rppiphone?addressSuburbStatePostcode=Englorie%20Park%20NSW%202560&offset=1&limit=50")!
+            let request = Request(method: .get, url: url, headers: nil, body: nil)
+            let msg = Stub(rewriteRule: nil, index: 0, request: request, response: nil)
+            XCTAssertEqual(filenameHelper.filename(for: msg), "property_search_AU_rppiphone_addressSuburbStatePostcode=Englorie_20Park_20NSW_202560&offset=1&limit_-8563436252288307235.get.0.json")
+    }
+    
     func testFileNameShorten() {
         let url = "https://localhost/asdf/bsadfs/avssdsdfsd/fsdfsadf/sdvsdvsdv/asdfsadfs?asdffdsaf=sdfsavdsdsfsdf&sadfsadfsadfvjyh=vfddvsdafsdjfhjskdfhjksdhfjkasdf&vdnjksdavbksadbvjhsdpwewrasdfsadfsdf&dsavsdvbsjdvbjshdc,xsfwer=qwertyewrtewwrtqwert"
         let request = Request(method: .get, url: URL(string: url), headers: nil, body: nil)

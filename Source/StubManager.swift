@@ -41,25 +41,9 @@ public class StubManager {
     public static let shared = StubManager()
 
     public var stubSaver: StubSaver?
-    
-    private let cacheQueue = DispatchQueue(label: "com.mokten.stubmanager.stubs", qos: .utility, attributes: .concurrent)
-    
-    private var _stubCaches: [StubCache] = []
-    private var stubCaches: [StubCache] {
-        get {
-            var stubCaches: [StubCache] = []
-            cacheQueue.sync {
-                stubCaches = self._stubCaches
-            }
-            return stubCaches
-        }
-        
-        set {
-            cacheQueue.async(flags: .barrier) {
-                self._stubCaches = newValue
-            }
-        }
-    }
+      
+    @Atomic
+    private var stubCaches: [StubCache] = []
     
     private init() { }
     
@@ -74,15 +58,21 @@ public class StubManager {
     
     // increments index
     func save(_ stub: Stub, bodyData: Data?) {
-        stubSaver?.save(stub, bodyData: bodyData)
+        _stubCaches.mutate { _ in
+            stubSaver?.save(stub, bodyData: bodyData)
+        }
     }
     
     func add(_ cache: StubCache) {
-        stubCaches.append(cache)
+        _stubCaches.mutate { stubCaches in
+            stubCaches.append(cache)
+        }
     }
     
     func reset() {
-        stubCaches.removeAll()
-        stubSaver = nil
+        _stubCaches.mutate { stubCaches in
+            stubCaches.removeAll()
+            stubSaver = nil
+        }
     }
 }

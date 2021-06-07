@@ -23,6 +23,16 @@ public struct StubConfig {
      */
     public var saveResponsesDirURL: URL?
     
+    /**
+     if true then do not save responses that were originally stubbed
+     */
+    public var skipSavingStubbedResponses: Bool?
+    
+    /**
+     if true then validates the response file on load of folder cache
+     */
+    public var validateResponseFile: Bool
+    
     /*
      
      Clears the saved responses when re-running StubPlay
@@ -45,19 +55,23 @@ public struct StubConfig {
     public var isEnabledServer: Bool
     
     /*
-     Shows loggin in the console
+     Shows logging in the console
      */
     public var isLogging: Bool
     
     public init(folders: [Folder] = [],
                 saveResponsesDirURL: URL? = FilesManager.defaultSaveDirURL,
+                skipSavingStubbedResponses: Bool? = nil,
+                validateResponseFile: Bool = true,
                 clearSaveDir: Bool = true,
                 bundle: Bundle = Bundle.main,
-                isEnabledServer: Bool = false,
-                isLogging: Bool = false) {
+                isEnabledServer: Bool = true,
+                isLogging: Bool = true) {
         self.folders = folders
         self.clearSaveDir = clearSaveDir
         self.saveResponsesDirURL = saveResponsesDirURL
+        self.skipSavingStubbedResponses = skipSavingStubbedResponses
+        self.validateResponseFile = validateResponseFile
         self.bundle =  bundle
         self.isEnabledServer = isEnabledServer
         self.isLogging = isLogging

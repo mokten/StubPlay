@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //      ie. Main.storyboard initilisers are preceded by stub activation
         let folders = ["Text", "Image", "Alamofire", "Video/Segment", "Video/ByteRange", "Multiple", "RewriteRule"]
         do {
-            try StubPlay.default.enableStub(for: StubConfig(folders: folders,
+            try StubPlay.default.start(with: StubConfig(folders: folders,
                                                             saveResponsesDirURL: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("stubplay"),
                                                             isEnabledServer: true,
                                                             isLogging: true))

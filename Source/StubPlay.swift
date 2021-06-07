@@ -37,28 +37,29 @@ public enum StubPlayConstants {
 public class StubPlay {
     
     public static let `default` = StubPlay()
+    
     public let stubManager: StubManager
-
-    private var isEnabled = false
-    
     public let serverPort: in_port_t
-    
+    public var stubServer: StubServer? = nil
     private var isEnabledServer = false {
         didSet {
             guard oldValue != isEnabledServer else { return }
+             
             if isEnabledServer {
-                if self.stubServer == nil {
-                    self.stubServer = StubServer(stubManager: stubManager)
+                do {
+                    try stubServer?.start(port: StubPlayConstants.serverPort)
+                } catch {
+                    logger(error)
                 }
             } else {
-                self.stubServer?.stop()
+                stubServer?.stop()
             }
         }
     }
     
-    public var stubServer: StubServer? = nil
-    
-    public var saveResponse: Bool = false
+    private lazy var swizzle: Void = {
+        swizzleProtocolClasses()
+    }()
     
     public
     init(stubManager: StubManager = StubManager.shared, serverPort: in_port_t = StubPlayConstants.serverPort) {
@@ -66,18 +67,24 @@ public class StubPlay {
         self.serverPort = serverPort
     }
     
-    public func enableStub(for config: StubConfig = StubConfig()) throws {
+    public func start(with config: StubConfig = StubConfig()) throws {
         Logger.shared.isEnabled = config.isLogging
+        
         stubManager.reset()
+        
         let filesManager = FilesManager(bundle: config.bundle, saveDirectoyURL: config.saveResponsesDirURL)
         if config.saveResponsesDirURL != nil {
             let saver = StubFileSaver(filesManager: filesManager)
-            if config.clearSaveDir { try saver.clear() }
+            if config.clearSaveDir { saver.clear() }
             stubManager.stubSaver = saver
         }
         
+        //
         try config.folders.forEach { folder in
-            guard let stubCache = StubFolderCache(baseFolder: folder, filesManager: filesManager) else {
+            guard let stubCache = StubFolderCache(baseFolder: folder,
+                                                  filesManager: filesManager,
+                                                  forceSkipSave: config.skipSavingStubbedResponses,
+                                                  validateResponseFile: config.validateResponseFile) else {
                 throw StubPlayError.stubCacheLoad(nil, nil, folder)
             }
             stubManager.add(stubCache)
@@ -88,31 +95,40 @@ public class StubPlay {
             }
         }
         
-        try enableStub(isEnabledServer: config.isEnabledServer)
+        self.isEnabledServer = config.isEnabledServer
+        
+        _ = swizzle
     }
     
-    private func enableStub(_ isEnabled: Bool = true, isEnabledServer: Bool = false) throws {
-        guard self.isEnabled != isEnabled else { return }
-        self.isEnabled = isEnabled
-        self.isEnabledServer = isEnabledServer
+    // Validates and removes invalid files
+    public func validate(_ folder: String, with bundle: Bundle, removeInvalidFiles: Bool) throws -> [String] {
+        let filesManager = FilesManager(bundle: bundle, saveDirectoyURL: nil)
+        let baseURL = bundle.bundleURL.appendingPathComponent(folder)
+        var missingFiles: [String?] = []
         
-        if isEnabled {
-            if isEnabledServer {
-                try stubServer?.start(port: StubPlayConstants.serverPort)
+        try filesManager.urls(at: baseURL)?.forEach { url in
+            let subFolder = folder + "/" + url.lastPathComponent
+            guard let stubCache = StubFolderCache(baseFolder: subFolder, filesManager: filesManager) else {
+                throw StubPlayError.stubCacheLoad(nil, nil, subFolder)
             }
-            URLCache.shared.removeAllCachedResponses()
-            URLProtocol.registerClass(StubURLProtocol.self)
-        } else {
-            stubServer?.stop()
-            URLProtocol.unregisterClass(StubURLProtocol.self)
+            
+            do {
+                try stubCache.load()
+                
+                stubCache.requestStubs.values.forEach { stubs in
+                    stubs.forEach { stub in
+                        if try! !stubCache.hasValidResponseFile(for: stub) {
+                            missingFiles.append(stubCache.responsePath(for: stub))
+                        }
+                    }
+                }
+                
+            } catch {
+                throw StubPlayError.stubCacheLoad(error, stubCache, folder)
+            }
         }
         
-        swizzleProtocolClasses()
-    }
-    
-    func disableStub() throws {
-        try enableStub(false)
-        stubManager.reset()
+        return missingFiles.compactMap { $0 }
     }
 }
 

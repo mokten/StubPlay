@@ -1,0 +1,20 @@
+{
+  "responseDataFileName" : "_6954243420180.post.0.body.text",
+  "response" : {
+    "headers" : {
+      "allow" : "GET, HEAD",
+      "Content-Type" : "text\/text; charset=UTF-8",
+    },
+    "statusCode" : 200,
+    "mimeType" : "text\/text"
+  },
+  "request" : {
+    "body" : "yahooo",
+    "method" : "post",
+    "headers" : {
+      "Content-Length" : "6"
+    },
+    "url" : "https:\/\/google.com\/"
+  },
+  "index" : 0
+}

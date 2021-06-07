@@ -47,7 +47,7 @@ public class StubFileSaver: StubSaver {
     
     // Keeps count of the request
     private let counter = Counter<Request>()
-    private let queue = DispatchQueue(label: "com.mokten.stubplay.stubfilesaver", qos: .background)
+    private let queue = DispatchQueue(label: "com.mokten.stubplay.stubfilesaver")
     
     /// Saves a Stub locally in  two files
     ///
@@ -82,7 +82,9 @@ public class StubFileSaver: StubSaver {
         }
     }
     
-    public func clear() throws {
-        try filesManager.clear()
+    public func clear() {
+         queue.async {
+            try? self.filesManager.clear()
+        }
     }
 }

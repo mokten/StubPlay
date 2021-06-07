@@ -31,61 +31,66 @@ public final class StubFolderCache {
     
     private let baseFolder: Folder
     private var filesManager: FilesManager
-    private let matchQueue = DispatchQueue(label: "com.mokten.stubfoldercache.match", qos: .background)
-    private let requestStubsQueue = DispatchQueue(label: "com.mokten.stubfoldercache.stubs", qos: .background, attributes: .concurrent)
+    private let matchQueue = DispatchQueue(label: "com.mokten.stubfoldercache.match")
     
-    private var _requestStubs: [RewriteRule: [Stub]] = [:]
-    private(set) var requestStubs: [RewriteRule: [Stub]] {
-        get {
-            var requestStubs: [RewriteRule: [Stub]] = [:]
-            requestStubsQueue.sync {
-                requestStubs = self._requestStubs
-            }
-            return requestStubs
-        }
-        
-        set {
-            requestStubsQueue.async(flags: .barrier) {
-                self._requestStubs = newValue
-            }
-        }
-    }
+    private let forceSkipSave: Bool?
+    private let validateResponseFile: Bool
+    public var invalideURLs: [URL] = []
     
-    public init?(baseFolder: Folder, filesManager: FilesManager) {
+    @Atomic
+    private(set) var requestStubs: [RewriteRule: [Stub]] = [:]
+    
+    public init?(baseFolder: Folder,
+                 filesManager: FilesManager,
+                 forceSkipSave: Bool? = nil,
+                 validateResponseFile: Bool = false) {
         self.baseFolder = baseFolder
         self.filesManager = filesManager
+        self.forceSkipSave = forceSkipSave
+        self.validateResponseFile = validateResponseFile
     }
     
     public func set(stubs: [Stub]) throws {
-        var requestStubs: [RewriteRule: [Stub]] = [:]
-        
-        // Organize stubs with their Request key
-        stubs.forEach({ stub in
-            requestStubs[stub.rewriteRule ?? stub.request.rewriteRule, default: []].append(stub)
-        })
-        
-        // Sort stubs
-        for key in requestStubs.keys {
-            let stubs = requestStubs[key]
-            requestStubs[key] = stubs?.sorted{ $0.index < $1.index }
+        _requestStubs.mutate { _requestStubs in
+            var requestStubs: [RewriteRule: [Stub]] = [:]
+            
+            // Organize stubs with their Request key
+            stubs.forEach { stub in
+                requestStubs[stub.rewriteRule ?? stub.request.rewriteRule, default: []].append(stub)
+            }
+            
+            // Sort stubs
+            for key in requestStubs.keys {
+                let stubs = requestStubs[key]
+                requestStubs[key] = stubs?.sorted{ $0.index < $1.index }
+            }
+            
+            _requestStubs = requestStubs
         }
-        
-        self.requestStubs = requestStubs
     }
 }
 
 extension StubFolderCache: StubCache {
     
     public func load() throws {
-        try matchQueue.sync {
-            var stubs: [Stub] = []
-            let urls = filesManager.urls(at: baseFolder)?.filter { $0.pathExtension == "json" && !$0.lastPathComponent.contains(".body.")}
-            try urls?.forEach({ url in
-                let stub: Stub = try filesManager.get(Stub.self, from: url)
-                stubs.append(stub)
-            })
-            try set(stubs: stubs)
+        var stubs: [Stub] = []
+        let urls = try filesManager.urls(at: baseFolder)?.filter { $0.pathExtension == "json" && !$0.lastPathComponent.contains(".body.")}
+        var invalideURLs: [URL] = []
+        try urls?.forEach { url in
+            var stub: Stub = try filesManager.get(Stub.self, from: url)
+
+            if validateResponseFile, let isValid = try? self.hasValidResponseFile(for: stub), !isValid {
+                invalideURLs.append(url)
+                return
+            }
+            
+            if let forceSkipSave = forceSkipSave {
+                stub.skipSave = forceSkipSave
+            }
+            stubs.append(stub)
         }
+        try set(stubs: stubs)
+        self.invalideURLs = invalideURLs
     }
     
     public func get(request: Request) -> Stub? {
@@ -93,9 +98,9 @@ extension StubFolderCache: StubCache {
         
         matchQueue.sync {
             guard let matchedRewriteRule = self.requestStubs.keys.first(where: { $0.matches(request) }),
-                var matchedStubs = self.requestStubs[matchedRewriteRule],
-                var matchedStub = matchedStubs.first else {
-                    return
+                  var matchedStubs = self.requestStubs[matchedRewriteRule],
+                  var matchedStub = matchedStubs.first else {
+                return
             }
             
             defer {
@@ -104,8 +109,8 @@ extension StubFolderCache: StubCache {
             }
             
             if matchedStub.responseData == nil,
-                let responseDataFileName = matchedStub.responseDataFileName,
-                let bodyData = try? filesManager.bundleData(for: responseDataFileName, inDirectory: baseFolder) {
+               let responseDataFileName = matchedStub.responseDataFileName,
+               let bodyData = try? filesManager.bundleData(for: responseDataFileName, inDirectory: baseFolder) {
                 matchedStub.responseData = bodyData
             }
             
@@ -117,5 +122,20 @@ extension StubFolderCache: StubCache {
         }
         
         return stub
+    }
+
+    /// true if not responseDataFileName or response file exists
+    public func hasValidResponseFile(for stub: Stub) throws -> Bool {
+        guard let responseDataFileName = stub.responseDataFileName else {
+            return true
+        }
+        return try filesManager.bundleResourceExists(for: responseDataFileName, inDirectory: baseFolder)
+    }
+    
+    public func responsePath(for stub: Stub) -> String? {
+        guard let responseDataFileName = stub.responseDataFileName else {
+            return nil
+        }
+        return filesManager.bundlePath(for: responseDataFileName, inDirectory: baseFolder)
     }
 }

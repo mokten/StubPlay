@@ -95,9 +95,20 @@ class RewriteRuleMatchesTests: XCTestCase {
     }
 
     func testMatches_2() {
-        let rule = RewriteRule(method: .get, host: nil, path: "/offers/itunes-monthly", params: "x=Y")
+        let rule = RewriteRule(method: .get, host: nil, path: "/offers/itunes-monthly", params: "x=Y", body: "a=2")
         let request = Request(method: .get, url: URL(string: "https://a.com.au/offers/itunes-monthly?x=Y"), headers:["h": "1"], body: "a=1")
         XCTAssertFalse(rule.matches(request))
     }
     
+    func testNamePostQuery() throws {
+        let rule = RewriteRule(method: .post, host: nil, path: nil, params: nil, body: nil)
+        let request = Request(method: .post, url: URL(string: "https://localhost.com"), headers:nil, body: "1234567890-98765432123456789098765432112345678900987654321")
+        XCTAssertTrue(rule.matches(request))
+    }
+    
+    func testNamePostNoQuery() throws {
+        let rule = RewriteRule(method: .post, host: nil, path: nil, params: nil, body: "1234567890-98765432123456789098765432112345678900987654321")
+        let request = Request(method: .post, url: URL(string: "https://localhost.com"), headers:nil, body: "1234567890-98765432123456789098765432112345678900987654321")
+        XCTAssertTrue(rule.matches(request))
+    }
 }

@@ -73,15 +73,26 @@ extension FilesManager {
         return saveURL.appendingPathComponent(resource)
     }
     
-    public func urls(at dir: URL) -> [URL]? {
-        return try? FileManager.default.contentsOfDirectory(at: dir,
+    public func urls(at dir: URL) throws -> [URL]? {
+        return try FileManager.default.contentsOfDirectory(at: dir,
                                                             includingPropertiesForKeys: [],
                                                             options: [.skipsHiddenFiles, .skipsSubdirectoryDescendants, .skipsPackageDescendants])
     }
     
-    public func urls(at resource: String) ->[URL]? {
+    public func urls(at resource: String) throws -> [URL]? {
         guard let folder = bundleUrl(for: resource) else { return nil }
-        return urls(at: folder)
+        return try urls(at: folder)
+    }
+    
+    public func bundlePath(for resource: String, inDirectory: String? = nil) -> String? {
+        return bundle.path(forResource: resource, ofType: nil, inDirectory: inDirectory)
+    }
+    
+    public func bundleResourceExists(for resource: String, inDirectory: String? = nil) throws -> Bool {
+        guard let path = bundle.path(forResource: resource, ofType: nil, inDirectory: inDirectory) else {
+            return false
+        }
+        return FileManager.default.fileExists(atPath: path)
     }
     
     public func bundleData(for resource: String, inDirectory: String? = nil) throws -> Data? {
