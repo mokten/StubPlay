@@ -27,11 +27,11 @@ import Foundation
  */
 public class StubManager {
     public static let shared = StubManager()
-
+    
     public var stubRules: StubRewriteRules?
-
+    
     public var stubSaver: StubSaver?
-      
+    
     @Atomic
     private var stubCaches: [StubCache] = []
     
@@ -48,8 +48,6 @@ public class StubManager {
     
     // increments index
     func save(_ stub: Stub, bodyData: Data?, completion: ((Result<Stub?, Error>) -> Void)? = nil) {
-//        _stubCaches.mutate { _ in
-         
         var stub = stub
         if let stubRules = stubRules {
             if stubRules.doNotSaveStubRules?.first(where: { $0.matches(stub.request) }) != nil {
@@ -63,8 +61,6 @@ public class StubManager {
         }
         
         stubSaver?.save(stub, bodyData: bodyData, completion: completion)
-        
-//        }
     }
     
     func add(_ cache: StubCache) {
