@@ -15,14 +15,6 @@ public struct Request: Model {
     public var body: String?
     
     public var rewriteRule: RewriteRule {
-//        let params: String?
-//
-//        if method == .get {
-//            params = url?.query
-//        } else {
-//            params = body
-//        }
-        
         return RewriteRule(method: method, host: nil, path: url?.path, params: url?.query, body: body)
     }
 }

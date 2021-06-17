@@ -30,7 +30,7 @@ public protocol Model: Codable, Hashable { }
  Represents a stubbed http request and response
  */
 public struct Stub: Model {
-    public let rewriteRule: RewriteRule?
+    public var rewriteRule: RewriteRule?
     public var index: Int = 0
     public var skipSave: Bool?
     public var responseDataFileName: String?

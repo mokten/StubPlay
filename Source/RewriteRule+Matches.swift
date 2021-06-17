@@ -36,7 +36,6 @@ extension RewriteRule {
         
         if let params = params {
             if RewriteRule.doesNotMatch(key: params, matcher: requestUrl.query) { return false }
-//            if doesNotMatch(key: params, matcher: request.body) { return false }
         }
         
         if let body = body {

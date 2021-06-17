@@ -23,22 +23,12 @@
 import Foundation
 
 /*
- Saves a Stub in a format
- */
-public protocol StubSaver {
-    func save(_ stub: Stub, bodyData: Data?)
-}
-
-public protocol StubCache {
-    func load() throws
-    func get(request: Request) -> Stub?
-}
-
-/*
  Manages the mapping of the request to the Stub
  */
 public class StubManager {
     public static let shared = StubManager()
+
+    public var stubRules: StubRewriteRules?
 
     public var stubSaver: StubSaver?
       
@@ -57,10 +47,24 @@ public class StubManager {
     }
     
     // increments index
-    func save(_ stub: Stub, bodyData: Data?) {
-        _stubCaches.mutate { _ in
-            stubSaver?.save(stub, bodyData: bodyData)
+    func save(_ stub: Stub, bodyData: Data?, completion: ((Result<Stub?, Error>) -> Void)? = nil) {
+//        _stubCaches.mutate { _ in
+         
+        var stub = stub
+        if let stubRules = stubRules {
+            if stubRules.doNotSaveStubRules?.first(where: { $0.matches(stub.request) }) != nil {
+                completion?(.success(nil))
+                return
+            }
+            
+            if stub.rewriteRule == nil, let rewriteRule = stubRules.addToSavedStubRules?.first(where: { $0.matches(stub.request) }) {
+                stub.rewriteRule = rewriteRule
+            }
         }
+        
+        stubSaver?.save(stub, bodyData: bodyData, completion: completion)
+        
+//        }
     }
     
     func add(_ cache: StubCache) {
@@ -73,6 +77,7 @@ public class StubManager {
         _stubCaches.mutate { stubCaches in
             stubCaches.removeAll()
             stubSaver = nil
+            stubRules = nil
         }
     }
 }

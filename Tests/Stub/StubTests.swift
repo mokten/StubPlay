@@ -35,6 +35,29 @@ class StubTests: XCTestCase {
         filesManager = FilesManager(bundle: Bundle(for: type(of: self)))
     }
     
+    func testConfig() throws {
+        try? StubPlay.default.start(with: StubConfig(
+            globalConfig: "StubFiles/.config",
+            folders: ["StubFiles"],
+            clearSaveDir: true,
+            bundle: Bundle(for: type(of: self)),
+            isEnabledServer: false,
+            isLogging: false))
+        
+        let expectedRule = StubRewriteRules(
+            addToSavedStubRules:
+                [
+                    RewriteRule(method: nil, host: nil, path: "/a.txt", params: nil, body: nil)
+                ],
+            doNotSaveStubRules:
+                [
+                    RewriteRule(method: nil, host: "analytics.com", path: nil, params: nil, body: nil)
+                ]
+        )
+        
+        XCTAssertEqual(StubManager.shared.stubRules, expectedRule)
+    }
+    
     func testEncodeDecode() throws {
         let bodyUrl = "https://httpbin.org/get"
         let rule = RewriteRule(method: .post, host: "httpbin.org", path: "hi", params: nil)
@@ -52,12 +75,13 @@ class StubTests: XCTestCase {
     func testPost() throws {
         let exp = expectation(description: "Success")
         
-        try? StubPlay.default.start(with: StubConfig(folders: ["StubFiles"],
-                                                         clearSaveDir: true,
-                                                         bundle: Bundle(for: type(of: self)),
-                                                         isEnabledServer: false,
-                                                         isLogging: false))
-         
+        try? StubPlay.default.start(with: StubConfig(
+            folders: ["StubFiles"],
+            clearSaveDir: true,
+            bundle: Bundle(for: type(of: self)),
+            isEnabledServer: false,
+            isLogging: false))
+        
         let session = URLSession(configuration: .default)
         var request = URLRequest(url: URL(string: "https://google.com/")!)
         request.httpMethod = "POST"

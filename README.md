@@ -14,6 +14,7 @@ Stubs http responses and supports any http response including text, html, json, 
 1. [Installation](#installation)
 1. [Usage](#usage)
    1. [**Usage**](./Documentation/Usage.md)
+   1. [**Global Config**](./Documentation/GlobalConfig.md)
    1. [**Unit Test**](./Documentation/UnitTest.md)
 1. [Concepts](#concepts)
 1. [License](#license)
@@ -101,10 +102,16 @@ import StubPlay
 // This will save all requests and responses to the app cache directory
 // Start the app and navigate around
 // Once you have completed your scenario then copy the files in the cache directory to your reading stub directory "Stub/default"
-try? StubPlay.default.enableStub(for: StubConfig(folders: ["Stub/default"],
-                                                 saveResponsesDirURL: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("stubplay"),
-                                                 isEnabledServer: true,
-                                                 isLogging: true))
+let config = StubConfig(folders: ["Stub/default"],
+                        saveResponsesDirURL: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("stubplay"),
+                        skipSavingStubbedResponses: false,
+                        validateResponseFile: false,
+                        clearSaveDir: true,
+                        bundle: Bundle(for: type(of: self) ,
+                        isEnabledServer: true,
+                        protocolURLSessionConfiguration: nil,
+                        isLogging: true)
+try StubPlay.default.start(with: config)
 
 _ = UIApplicationMain(CommandLine.argc, CommandLine.unsafeArgv, NSStringFromClass(Application.self), NSStringFromClass(AppDelegate.self))
 ```
@@ -120,10 +127,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     override init() {
         super.init()
-        try? StubPlay.default.enableStub(for: StubConfig(folders: ["Stub/default"],
-                                                 	 saveResponsesDirURL: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("stubplay"),
-                                                         isEnabledServer: true,
-                                                         isLogging: true))
+        do {
+            // let config = StubConfig() // use default settings or else override them as follows
+            let config = StubConfig(folders: ["Stub/default"],
+                                    saveResponsesDirURL: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("stubplay"),
+                                    skipSavingStubbedResponses: false,
+                                    validateResponseFile: false,
+                                    clearSaveDir: true,
+                                    bundle: Bundle.main,
+                                    isEnabledServer: true,
+                                    protocolURLSessionConfiguration: nil,
+                                    isLogging: true)
+            try StubPlay.default.start(with: config)
+        } catch {
+            print(error)
+        }
     }
     ...
 }

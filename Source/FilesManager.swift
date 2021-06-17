@@ -32,8 +32,26 @@ public enum FilesManagerError: Error, Equatable {
     case couldNotCreateFile(String)
 }
 
+public protocol FilesManagable {
+    func bundleUrl(for resource: String) -> URL?
+    func url(for resource: String) -> URL?
+    func urls(at dir: URL) throws -> [URL]?
+    func urls(at resource: String) throws -> [URL]?
+    func bundlePath(for resource: String, inDirectory: String?) -> String?
+    func bundleResourceExists(for resource: String, inDirectory: String?) throws -> Bool
+    func bundleData(for resource: String, inDirectory: String?) throws -> Data?
+    func data(from url: URL) throws -> Data?
+    @discardableResult
+    func save(data: Data?, to fileName: String) throws -> URL?
+    func clear() throws
+    func create(directory: URL) throws
+    
+    func save<T: Encodable>(_ object: T, to fileName: String)
+    func get<T: Decodable>(_ type: T.Type, from url: URL) throws -> T
+}
+
 // Saves/Reads files locally
-public struct FilesManager {
+public struct FilesManager: FilesManagable {
     
     private enum Constants {
         static let baseDir = "com.mokten.stubplay"
@@ -75,8 +93,8 @@ extension FilesManager {
     
     public func urls(at dir: URL) throws -> [URL]? {
         return try FileManager.default.contentsOfDirectory(at: dir,
-                                                            includingPropertiesForKeys: [],
-                                                            options: [.skipsHiddenFiles, .skipsSubdirectoryDescendants, .skipsPackageDescendants])
+                                                           includingPropertiesForKeys: [],
+                                                           options: [.skipsHiddenFiles, .skipsSubdirectoryDescendants, .skipsPackageDescendants])
     }
     
     public func urls(at resource: String) throws -> [URL]? {
@@ -97,7 +115,7 @@ extension FilesManager {
     
     public func bundleData(for resource: String, inDirectory: String? = nil) throws -> Data? {
         guard let path = bundle.path(forResource: resource, ofType: nil, inDirectory: inDirectory) else {
-            return nil            
+            return nil
         }
         return FileManager.default.contents(atPath: path)
     }
@@ -106,6 +124,7 @@ extension FilesManager {
         return FileManager.default.contents(atPath: url.path)
     }
     
+    @discardableResult
     public func save(data: Data?, to fileName: String) throws -> URL? {
         guard let saveURL = saveDirectoryURL else { return nil }
         let url = saveURL.appendingPathComponent(fileName, isDirectory: false)

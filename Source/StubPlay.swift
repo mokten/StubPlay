@@ -72,8 +72,13 @@ public class StubPlay {
         
         stubManager.reset()
         StubURLProtocolStore.shared.updateSession(config: config.protocolURLSessionConfiguration)
-        
+         
         let filesManager = FilesManager(bundle: config.bundle, saveDirectoyURL: config.saveResponsesDirURL)
+
+        if let globalConfig = config.globalConfig, let configURL = filesManager.bundleUrl(for: globalConfig) {
+            stubManager.stubRules = try filesManager.get(StubRewriteRules.self, from: configURL)
+        }
+        
         if config.saveResponsesDirURL != nil {
             let saver = StubFileSaver(filesManager: filesManager)
             if config.clearSaveDir { saver.clear() }

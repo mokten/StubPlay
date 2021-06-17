@@ -26,6 +26,13 @@
 import Foundation
 
 /*
+ Saves a Stub in a format
+ */
+public protocol StubSaver {
+    func save(_ stub: Stub, bodyData: Data?, completion: ((Result<Stub?, Error>) -> Void)?)
+}
+
+/*
  
  Saves a Stub in a two files.
  
@@ -41,7 +48,7 @@ import Foundation
  */
 public class StubFileSaver: StubSaver {
     
-    private let filesManager: FilesManager
+    private let filesManager: FilesManagable
     private let filenameFormatter: FilenameFormatter
     private let responseDataFileNameFormatter: FilenameFormatter
     
@@ -49,13 +56,13 @@ public class StubFileSaver: StubSaver {
     private let counter = Counter<Request>()
     private let queue = DispatchQueue(label: "com.mokten.stubplay.stubfilesaver")
     
-    /// Saves a Stub locally in  two files
+    /// Saves a Stub locally in two files
     ///
     /// - Parameters:
     ///   - filesManager: Responsible for saving the files
     ///   - filenameFormatter: formats the file names
     ///   - ResponseDataFileNameFormatter: formats the body file name
-    public init(filesManager: FilesManager,
+    public init(filesManager: FilesManagable,
                 filenameFormatter: FilenameFormatter = DefaultFilenameFormatter(),
                 responseDataFileNameFormatter: FilenameFormatter = ResponseDataFileNameFormatter()) {
         self.filesManager = filesManager
@@ -63,21 +70,26 @@ public class StubFileSaver: StubSaver {
         self.responseDataFileNameFormatter = responseDataFileNameFormatter
     }
     
-    public func save(_ stub: Stub, bodyData: Data?) {
+    public func save(_ stub: Stub, bodyData: Data?, completion: ((Result<Stub?, Error>) -> Void)? = nil) {
         queue.async {
             do {
                 var msg = stub
                 msg.index = self.counter.count(for: msg.request)
                 let filename = self.filenameFormatter.filename(for: msg)
-                let responseDataFileName = self.responseDataFileNameFormatter.filename(for: msg)
+                let responseDataFileName: String? = bodyData != nil ? self.responseDataFileNameFormatter.filename(for: msg) : nil
                 msg.responseDataFileName = responseDataFileName
                 msg.responseData = nil
                 
                 self.filesManager.save(msg, to: filename)
-                _ = try self.filesManager.save(data: bodyData, to: responseDataFileName)
+                if let bodyData = bodyData, let responseDataFileName = responseDataFileName {
+                    try self.filesManager.save(data: bodyData, to: responseDataFileName)
+                }
+                
+                completion?(.success(msg))
             } catch {
                 //TODO:
                 logger(error)
+                completion?(.failure(error))
             }
         }
     }

@@ -9,6 +9,12 @@
 import Foundation
 
 public struct StubConfig {
+
+    /*
+     Global config file for StubManager.stubRules = StubRewriteRules
+     */
+    public var globalConfig: String?
+    
     /*
      
      Folders that contain the stubbed files.
@@ -64,7 +70,8 @@ public struct StubConfig {
      */
     public var isLogging: Bool
     
-    public init(folders: [Folder] = [],
+    public init(globalConfig: String? = nil,
+                folders: [Folder] = [],
                 saveResponsesDirURL: URL? = FilesManager.defaultSaveDirURL,
                 skipSavingStubbedResponses: Bool? = nil,
                 validateResponseFile: Bool = true,
@@ -73,6 +80,7 @@ public struct StubConfig {
                 isEnabledServer: Bool = true,
                 protocolURLSessionConfiguration: URLSessionConfiguration? = nil,
                 isLogging: Bool = true) {
+        self.globalConfig = globalConfig
         self.folders = folders
         self.clearSaveDir = clearSaveDir
         self.saveResponsesDirURL = saveResponsesDirURL

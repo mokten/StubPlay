@@ -9,11 +9,16 @@ StubPlay lets you save http requests and responses and replay them inside the ap
 ## Saving Requests
 StubPlay provides a variety of convenience methods for making HTTP requests. 
 
+The following shows what the main request/response file would look like with all the options enabled.
+
 ```json
 {
   "bodyFileName" : "b.get.0.body.txt",
   "rewriteRule" : {
-        "host" : ".*.test.com"
+        "method" : "get",
+        "host" : ".*.test.com",
+        "path" : "/multiple.txt",
+        "params" : "c=d",
     },
   "skipSave" : true,
   "response" : {
@@ -24,6 +29,7 @@ StubPlay provides a variety of convenience methods for making HTTP requests.
   },
   "request" : { 
     "method" : "get",
+    "url" : "https:\/\/a.test.com\/multiple.txt?c=d",
     "headers" : {
       "Accept-Language" : "en;q=1.0",
       "User-Agent" : "Example-iOS\/0.1 (com.mokten.Example-iOS; build:1; iOS 12.1.0) Alamofire\/4.8.2",
@@ -34,14 +40,17 @@ StubPlay provides a variety of convenience methods for making HTTP requests.
 }
 ```
 
+### Optional: rewriteRule
 
-## Matching requests using regular expressions
+By default, StubPlay will match exactly using the request properties - method, url and body.
 
-### rewriteRule
+Use `rewriteRule` to match part of the url or even use regular expressions.
 
-Use host, method, path, params
+Valid properties are:
 
-For example match all requests that are part of `.test.com`
+host, method, path, params, body
+
+For example, match all requests that are part of `.test.com`
 
 ```json
   "rewriteRule" : {
@@ -50,7 +59,9 @@ For example match all requests that are part of `.test.com`
 ``` 
  
 
-## Do not save a request's stub.
+## Optional: skipSave
+
+Use skipSave to disable saving a request's stub.
 
 Request + Response file:
 

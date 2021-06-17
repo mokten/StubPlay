@@ -16,7 +16,16 @@ class ExampleTests: XCTestCase {
 
     override func setUp() {
       // Loads all stub files in the directory Test1
-        try! StubPlay.default.enableStub(for: StubConfig(folders: ["Test1"], bundle: Bundle(for: type(of: self))))
+      let config = StubConfig(folders: ["Test1"],
+                              saveResponsesDirURL: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("stubplay"),
+                              skipSavingStubbedResponses: false,
+                              validateResponseFile: false,
+                              clearSaveDir: true,
+                              bundle: Bundle(for: type(of: self) ,
+                              isEnabledServer: true,
+                              protocolURLSessionConfiguration: nil,
+                              isLogging: true)
+      try StubPlay.default.start(with: config)
     }
     
     /*

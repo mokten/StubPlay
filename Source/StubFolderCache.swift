@@ -25,6 +25,11 @@
 
 import Foundation
 
+public protocol StubCache {
+    func load() throws
+    func get(request: Request) -> Stub?
+}
+
 public typealias Folder = String
 
 public final class StubFolderCache {

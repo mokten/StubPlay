@@ -111,7 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				3F1DFE6C22A91A9400FD9EB5 /* MainViewController.swift */,
-				3F1DFEB822A93A3C00FD9EB5 /* Muliptle Requests */,
+				3F1DFEB822A93A3C00FD9EB5 /* Multiple Requests */,
 				3F1DFEA922A92A2400FD9EB5 /* Image */,
 				3F1DFEB322A935F100FD9EB5 /* RewriteRule */,
 				3F1DFEAA22A92A3400FD9EB5 /* Video */,
@@ -165,13 +165,13 @@
 			path = RewriteRule;
 			sourceTree = "<group>";
 		};
-		3F1DFEB822A93A3C00FD9EB5 /* Muliptle Requests */ = {
+		3F1DFEB822A93A3C00FD9EB5 /* Multiple Requests */ = {
 			isa = PBXGroup;
 			children = (
 				3F1DFEBB22A93A9800FD9EB5 /* Multiple */,
 				3F1DFEB922A93A8E00FD9EB5 /* MultipleViewController.swift */,
 			);
-			path = "Muliptle Requests";
+			path = "Multiple Requests";
 			sourceTree = "<group>";
 		};
 		3F87686120A7E82900DAC66B = {
