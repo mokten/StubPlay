@@ -28,18 +28,15 @@ import AVKit
 import AVFoundation
 import StubPlay
 
-private var playerViewControllerKVOContext = 0
-
 class VideoPlayerViewController: NiblessViewController {
     
     private let url: URL
-
-    private let assetResourceLoader = AssetResourceLoader(configuration: URLSessionConfiguration.default, stubManager: StubManager.shared, port: Int(StubPlayConstants.serverPort))
+    private lazy var assetResourceLoader = StubPlay.default.resourceLoader()
     private var asset: AVURLAsset?
 
     private let playerController = AVPlayerViewController()
     private var playerItem: AVPlayerItem?
-    @objc private var player: AVPlayer?
+    private var player: AVPlayer?
 
     // KVO
     var statusObservation: NSKeyValueObservation?
@@ -52,15 +49,10 @@ class VideoPlayerViewController: NiblessViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        let url = URL(string: "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_16x9/bipbop_16x9_variant.m3u8")!
-//        let url = URL(string: "https://localhost/discontinuity.m3u8")!
-        
         let asset = assetResourceLoader.avAsset(with: url)
         self.asset = asset
         asset.loadValuesAsynchronously(forKeys: ["playable", "hasProtectedContent"]) { [weak self] in
-
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
 
                 // We can't play this asset.

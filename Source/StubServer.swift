@@ -32,16 +32,20 @@ public class StubServer {
     
     private let stubManager: StubManager
     private var server: HttpServer?
+    private var port: in_port_t = StubPlayConstants.serverPort
     
     init(stubManager: StubManager) {
         self.stubManager = stubManager
     }
     
-    public func start(port: in_port_t) throws {
+    @discardableResult
+    public func start(port: in_port_t) throws -> String {
+        self.port = port
         let server = HttpServer()
         server["/stub"] = shareFilesFromDirectory()
         try server.start(port, priority: .userInteractive)
         self.server = server
+        return ipAddress
     }
     
     public func shareFilesFromDirectory() -> ((HttpRequest) -> HttpResponse) {
@@ -66,13 +70,19 @@ public class StubServer {
         }
     }
     
-    func stop() {
+    public func stop() {
         server?.stop()
         server = nil
     }
 }
 
-extension HttpRequest {
+extension StubServer {
+    public var ipAddress: String {
+        return "http://" + Network.ipAddress + ":\(port)"
+    }
+}
+
+private extension HttpRequest {
     var stubRequest: Request? {
         let method =  HttpMethod(rawValue: self.method.lowercased()) ?? .get
         guard let queryParam = queryParams.first else { return nil }

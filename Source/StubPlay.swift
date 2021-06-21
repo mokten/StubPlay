@@ -38,6 +38,8 @@ public class StubPlay {
     
     public static let `default` = StubPlay()
     
+    public var config: StubConfig?
+    private weak var session: URLSession?
     public let stubManager: StubManager
     public let serverPort: in_port_t
     public var stubServer: StubServer? = nil
@@ -47,12 +49,17 @@ public class StubPlay {
              
             if isEnabledServer {
                 do {
-                    try stubServer?.start(port: StubPlayConstants.serverPort)
+                    let stubServer = StubServer(stubManager: stubManager)
+                    self.stubServer = stubServer
+                    let ip = try stubServer.start(port: serverPort)
+                    logger(ip)
+                    
                 } catch {
                     logger(error)
                 }
             } else {
                 stubServer?.stop()
+                stubServer = nil
             }
         }
     }
@@ -68,12 +75,13 @@ public class StubPlay {
     }
     
     public func start(with config: StubConfig = StubConfig()) throws {
+        self.config = config
         Logger.shared.isEnabled = config.isLogging
         
         stubManager.reset()
-        StubURLProtocolStore.shared.updateSession(config: config.protocolURLSessionConfiguration)
-         
-        let filesManager = FilesManager(bundle: config.bundle, saveDirectoyURL: config.saveResponsesDirURL)
+        session = StubURLProtocolStore.shared.updateSession(config: config.protocolURLSessionConfiguration)
+        
+       let filesManager = FilesManager(bundle: config.bundle, saveDirectoyURL: config.saveResponsesDirURL)
 
         if let globalConfig = config.globalConfig, let configURL = filesManager.bundleUrl(for: globalConfig) {
             stubManager.stubRules = try filesManager.get(StubRewriteRules.self, from: configURL)
@@ -135,6 +143,15 @@ public class StubPlay {
         }
         
         return missingFiles.compactMap { $0 }
+    }
+}
+
+extension StubPlay {
+    public func resourceLoader() -> AssetResourceLoader {
+        guard let session = session else {
+            fatalError("session not initialised")
+        }
+        return AssetResourceLoader(session: session, stubManager: stubManager, port: Int(self.serverPort))
     }
 }
 

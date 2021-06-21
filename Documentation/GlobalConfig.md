@@ -66,7 +66,4 @@ This is similar to the skipSave in the saved stub file.
       "host" : "analytics.com",
     }
   ]
-``` 
-
-# More
-More: [**Global Config**](./GlobalConfig.md)
+```

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3F0E5419227D47CC008E0F6A /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0E5418227D47CC008E0F6A /* URL+Extension.swift */; };
 		3F101227227DB0A60018D3E0 /* StubFileSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F101226227DB0A60018D3E0 /* StubFileSaver.swift */; };
+		3F11FAE22680A2EE0024388B /* StubResourceLoaderStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F11FAE12680A2EE0024388B /* StubResourceLoaderStore.swift */; };
+		3F11FAE42680AE930024388B /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F11FAE32680AE930024388B /* Network.swift */; };
 		3F19675D2287FFEF00199246 /* StubPlayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F19675C2287FFEF00199246 /* StubPlayTests.swift */; };
 		3F1F0E6F2275B407005FB5DD /* StubFolderCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1F0E6E2275B407005FB5DD /* StubFolderCache.swift */; };
 		3F1F0E722275CC04005FB5DD /* StubFolderCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1F0E712275CC04005FB5DD /* StubFolderCacheTests.swift */; };
@@ -103,6 +105,8 @@
 /* Begin PBXFileReference section */
 		3F0E5418227D47CC008E0F6A /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		3F101226227DB0A60018D3E0 /* StubFileSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubFileSaver.swift; sourceTree = "<group>"; };
+		3F11FAE12680A2EE0024388B /* StubResourceLoaderStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubResourceLoaderStore.swift; sourceTree = "<group>"; };
+		3F11FAE32680AE930024388B /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		3F19675C2287FFEF00199246 /* StubPlayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubPlayTests.swift; sourceTree = "<group>"; };
 		3F1F0E6E2275B407005FB5DD /* StubFolderCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubFolderCache.swift; sourceTree = "<group>"; };
 		3F1F0E712275CC04005FB5DD /* StubFolderCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubFolderCacheTests.swift; sourceTree = "<group>"; };
@@ -345,8 +349,10 @@
 			isa = PBXGroup;
 			children = (
 				3FB169BB2296C97E0014773C /* AssetResourceLoader.swift */,
+				3F11FAE12680A2EE0024388B /* StubResourceLoaderStore.swift */,
 				3FB169BA2296C97E0014773C /* HlsPlaylist.swift */,
 				3FB169BC2296C97E0014773C /* StubServer.swift */,
+				3F11FAE32680AE930024388B /* Network.swift */,
 			);
 			name = AVPlayer;
 			sourceTree = "<group>";
@@ -624,6 +630,7 @@
 				3FB169C12296C97E0014773C /* StubServer.swift in Sources */,
 				3FB169C42296D1630014773C /* String+Extension.swift in Sources */,
 				3FF0D9F52646A8BB0033EC4A /* URLRequest+Extension.swift in Sources */,
+				3F11FAE22680A2EE0024388B /* StubResourceLoaderStore.swift in Sources */,
 				3FD24534241497DF00D285F5 /* StubPlay+Swizzle.swift in Sources */,
 				3F75A8F2227B24F0003AA140 /* Counter.swift in Sources */,
 				3FF207A4227C4C58000202B0 /* StubURLProtocol.swift in Sources */,
@@ -634,6 +641,7 @@
 				3F8DD543264684ED00B9A98D /* Stub+Name.swift in Sources */,
 				3FD245372414985100D285F5 /* StubConfig.swift in Sources */,
 				3F44FC842296AD4E0086A7C6 /* Logger.swift in Sources */,
+				3F11FAE42680AE930024388B /* Network.swift in Sources */,
 				3F1F0E6F2275B407005FB5DD /* StubFolderCache.swift in Sources */,
 				3FBC1CDB22426A2600B8F41F /* StubManager.swift in Sources */,
 				3F1F1F7F2646BBD20029F82C /* HttpMethod.swift in Sources */,

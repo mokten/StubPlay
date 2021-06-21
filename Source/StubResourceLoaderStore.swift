@@ -1,5 +1,5 @@
 //
-//  StubURLStore.swift
+//  StubResourceLoaderStore.swift
 //  StubPlay
 //
 //  Copyright © 2019 Mokten Pty Ltd. All rights reserved.
@@ -25,16 +25,16 @@
 
 import Foundation
 
-public protocol StubURLProtocolStorage {
-    func get(request: Request) -> Stub?
-    
-    func dataTask(with request: URLRequest, urlProtocol: StubURLProtocol) -> URLSessionDataTask
-    
-    func finished(stub: Stub?, urlProtocol: URLProtocol, response: URLResponse?, bodyData: Data?, isCached: Bool)
+public protocol StubResourceLoaderStorable {
+//    func get(request: Request) -> Stub?
+//
+//    func dataTask(with request: URLRequest, urlProtocol: StubURLProtocol) -> URLSessionDataTask
+//
+//    func finished(stub: Stub?, urlProtocol: URLProtocol, response: URLResponse?, bodyData: Data?, isCached: Bool)
 }
 
-public final class StubURLProtocolStore: NSObject {
-    static let shared = StubURLProtocolStore()
+public final class StubResourceLoaderStore: NSObject {
+    static let shared = StubResourceLoaderStore()
     
     private lazy var defaultSession: URLSession = {
         let config = URLSessionConfiguration.default
@@ -58,18 +58,16 @@ public final class StubURLProtocolStore: NSObject {
         valueOptions: .weakMemory
     )
     
-    @discardableResult
-    public func updateSession(config: URLSessionConfiguration?) -> URLSession {
+    public func updateSession(config: URLSessionConfiguration?) {
         guard let config = config else {
             session = defaultSession
-            return session
+            return
         }
         session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
-        return session
     }
 }
 
-extension StubURLProtocolStore: StubURLProtocolStorage {
+extension StubResourceLoaderStore: StubResourceLoaderStorable {
     public func get(request: Request) -> Stub? {
         return stubManager.get(request: request)
     }
@@ -98,7 +96,7 @@ extension StubURLProtocolStore: StubURLProtocolStorage {
     }
 }
 
-extension StubURLProtocolStore: URLSessionDataDelegate {
+extension StubResourceLoaderStore: URLSessionDataDelegate {
     
     public func urlSession(_ session: URLSession,
                            dataTask: URLSessionDataTask,
@@ -122,12 +120,11 @@ extension StubURLProtocolStore: URLSessionDataDelegate {
     }
     
     public func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse, newRequest request: URLRequest, completionHandler: @escaping (URLRequest?) -> Void) {
-        defer { completionHandler(request) }
-
         guard let urlProtocol = cache.object(forKey: task) else {
-            return
+            fatalError()
         }
         urlProtocol.client?.urlProtocol(urlProtocol, wasRedirectedTo: request, redirectResponse: response)
+        completionHandler(request)
     }
     
     public func urlSession(_ session: URLSession, didBecomeInvalidWithError error: Error?) {
@@ -169,7 +166,7 @@ extension StubURLProtocolStore: URLSessionDataDelegate {
 }
 
 
-extension StubURLProtocolStore: URLSessionTaskDelegate {
+extension StubResourceLoaderStore: URLSessionTaskDelegate {
     
     public func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         _cache.mutate { cache in
@@ -190,7 +187,7 @@ extension StubURLProtocolStore: URLSessionTaskDelegate {
     }
 }
 
-private extension StubURLProtocolStore {
+private extension StubResourceLoaderStore {
     func finished(urlProtocol: StubURLProtocol?, response: URLResponse?, bodyData: Data?, isCached: Bool = false) {
         guard let urlProtocol = urlProtocol else { return }
         let stub = Stub(request: urlProtocol.request, response: urlProtocol.dataTask?.response as? HTTPURLResponse)

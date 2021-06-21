@@ -25,7 +25,7 @@
 
 import AVFoundation
 
-public enum AssetResource {
+private enum AssetResource {
     static let internalScheme = "cplp"
     static let redirectScheme = "rdtp"
     static let httpScheme = "http"
@@ -37,7 +37,7 @@ public enum AssetResource {
     }
 }
 
-public class AssetResourceLoader: NSObject, AVAssetResourceLoaderDelegate {
+public class AssetResourceLoader: NSObject {
     
     private let stubManager: StubManager
     private let port: Int
@@ -46,21 +46,20 @@ public class AssetResourceLoader: NSObject, AVAssetResourceLoaderDelegate {
     
     private let playlist = HlsPlaylist()
     
-    private lazy var session: URLSession = {
-        return URLSession(configuration: self.configuration, delegate: self, delegateQueue: nil)
-    }()
+    private weak var session: URLSession?
     
-    private var configuration: URLSessionConfiguration
+    private var queue = DispatchQueue(label: "com.mokten.assetresource")
     
-    public init(configuration: URLSessionConfiguration, stubManager: StubManager, port: Int) {
-        self.configuration = configuration
+    public init(session: URLSession,
+                stubManager: StubManager,
+                port: Int) {
+        self.session = session
         self.stubManager = stubManager
         self.port = port
     }
-    
-    deinit {
-        session.invalidateAndCancel()
-    }
+}
+
+extension AssetResourceLoader: AVAssetResourceLoaderDelegate {
     
     /// Convenience method to set the AVURLAsset resourceLoader
     ///
@@ -71,20 +70,19 @@ public class AssetResourceLoader: NSObject, AVAssetResourceLoaderDelegate {
     public func avAsset(with url: URL, options: [String: Any]? = nil) -> AVURLAsset {
         let internalUrl = url.url(with: AssetResource.internalScheme)
         let asset = AVURLAsset(url: internalUrl, options: options)
-        asset.resourceLoader.setDelegate(self, queue: DispatchQueue(label: "com.mokten.assetresource")) // , qos: .utility, attributes: .concurrent
+        asset.resourceLoader.setDelegate(self, queue: queue)
         return asset
     }
     
     public func resourceLoader(_ resourceLoader: AVAssetResourceLoader, shouldWaitForLoadingOfRequestedResource loadingRequest: AVAssetResourceLoadingRequest) -> Bool {
         guard let url = loadingRequest.request.url else { return false }
-        
+
         if let scheme = url.scheme,
             scheme.hasPrefix(AssetResource.redirectScheme) {
             return loadRedirectRequest(loadingRequest)
         } else {
             return load(loadingRequest, loadSessionData: processSessionData)
         }
-        
     }
     
     public func resourceLoader(_ resourceLoader: AVAssetResourceLoader, shouldWaitForRenewalOfRequestedResource renewalRequest: AVAssetResourceRenewalRequest) -> Bool {
@@ -93,6 +91,10 @@ public class AssetResourceLoader: NSObject, AVAssetResourceLoaderDelegate {
     
     public func load(_ loadingRequest: AVAssetResourceLoadingRequest, loadSessionData: @escaping(loadSessionData)) -> Bool {
         guard var url = loadingRequest.request.url else {
+            return false
+        }
+        guard let session = session else {
+            logger("Missing session")
             return false
         }
         
@@ -117,21 +119,14 @@ public class AssetResourceLoader: NSObject, AVAssetResourceLoaderDelegate {
                 loadingRequest.finishLoading(with: AssetResource.DataError.noData("\(url)"))
                 return
             }
-            
-            logger("data=", data.count)
-            
-            
             loadSessionData(url, loadingRequest, httpResponse, data)
         }
-        
         task.resume()
         
         return true
     }
     
     public func processSessionData(url: URL, loadingRequest: AVAssetResourceLoadingRequest, httpResponse: HTTPURLResponse, sessionData: Data) {
-        logger()
-        
         var data = sessionData
         
         //Handle m3u8 playlist
@@ -151,13 +146,10 @@ public class AssetResourceLoader: NSObject, AVAssetResourceLoaderDelegate {
     }
     
     public func loadRedirectRequest(_ loadingRequest: AVAssetResourceLoadingRequest) -> Bool {
-        logger()
         return load(loadingRequest, loadSessionData: processRedirectData)
     }
     
     public func processRedirectData(url: URL, loadingRequest: AVAssetResourceLoadingRequest, httpResponse: HTTPURLResponse, sessionData: Data) {
-        logger()
-        
         // Apple deliberately makes loading from http
         var request = loadingRequest.request
         let originalURL = url.url(with: AssetResource.httpScheme)
@@ -171,20 +163,18 @@ public class AssetResourceLoader: NSObject, AVAssetResourceLoaderDelegate {
             comp.host = "localhost"
             comp.port = port
             comp.path = "/stub"
-        
             comp.query = "url=\(originalURL.absoluteString)"
 
             if let newURL = comp.url {
                 request.url = newURL
             }
-            
         }
         
         loadingRequest.redirect = request
         loadingRequest.response = HTTPURLResponse(url: request.url!,
                                                   statusCode: AssetResource.redirectStatusCode,
                                                   httpVersion: "HTTP/1.1",
-                                                  headerFields: nil)
+                                                  headerFields: request.allHTTPHeaderFields)
         loadingRequest.finishLoading()
     }
     
@@ -192,32 +182,3 @@ public class AssetResourceLoader: NSObject, AVAssetResourceLoaderDelegate {
         return true
     }
 }
-
-extension AssetResourceLoader: URLSessionDataDelegate {
-    
-    public func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse, newRequest request: URLRequest, completionHandler: @escaping (URLRequest?) -> Void) {
-        completionHandler(request)
-    }
-    
-    public func urlSession(_ session: URLSession, didBecomeInvalidWithError error: Error?) {
-        logger("didBecomeInvalidWithError", error.debugDescription)
-    }
-    
-    public func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        
-        let protectionSpace = challenge.protectionSpace
-        let sender = challenge.sender
-        
-        if protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
-            if let serverTrust = protectionSpace.serverTrust {
-                let credential = URLCredential(trust: serverTrust)
-                sender?.use(credential, for: challenge)
-                completionHandler(.useCredential, credential)
-                return
-            }
-        }
-        
-        completionHandler(.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!))
-    }
-}
-
