@@ -1,9 +1,25 @@
 {
+  "rewriteRule" : {
+      "host" : "devstreaming-cdn.apple.com",
+      "path" : "videos/streaming/examples/bipbop_16x9/bipbop_16x9_variant.m3u8"
+  },
   "responseDataFileName" : "videos_streaming_examples_bipbop_16x9_bipbop_16x9_variant_m3u8.get.0.body.m3u",
   "response" : {
     "headers" : {
       "Content-Length" : "3286",
-      "Content-Type" : "application/x-mpegURL"
+      "Server" : "ATS\/8.1.2",
+      "x-amz-id-2" : "M3t7WtA0VMiprGE+r4Wqe\/wE+Un9+oIzScGDrwSQuRq2lef2nEQl350iiPo08XoWH2feyP8yMZQ=",
+      "Etag" : "\"f2a2619dff2042649d4539e1ef3d790c\"",
+      "Content-Type" : "audio\/mpegurl",
+      "Cache-Control" : "max-age=600, public",
+      "Accept-Ranges" : "bytes",
+      "Last-Modified" : "Tue, 10 Oct 2017 22:08:09 GMT",
+      "x-amz-request-id" : "EPMWQN6VWE07WQWH",
+      "cdnuuid" : "46429511-b74b-46c9-800c-2241ab5d50e4-5056846057",
+      "Age" : "0",
+      "Via" : "https\/1.1 usnyc3-edge-lx-008.ts.apple.com (ApacheTrafficServer\/8.1.2), https\/1.1 usnyc3-edge-bx-001.ts.apple.com (ApacheTrafficServer\/8.1.2)",
+      "Date" : "Sat, 26 Jun 2021 13:18:55 GMT",
+      "x-cache" : "hit-stale, hit-stale"
     },
     "statusCode" : 200,
     "mimeType" : "audio\/mpegurl"
@@ -12,9 +28,10 @@
     "url" : "https:\/\/devstreaming-cdn.apple.com\/videos\/streaming\/examples\/bipbop_16x9\/bipbop_16x9_variant.m3u8",
     "method" : "get",
     "headers" : {
-      "User-Agent" : "AppleCoreMedia\/1.0.0.16B91 (iPhone; U; CPU OS 12_1 like Mac OS X; en_us)",
-      "X-Playback-Session-Id" : "11E3FD0B-EDB8-4203-9926-6E4AC7CEEC76",
-      "Accept-Encoding" : "gzip"
+      "X-Playback-Session-Id" : "E2EA2AD7-5E36-4259-8048-ECCC72BB4958",
+      "Accept-Encoding" : "gzip",
+      "User-Agent" : "LiSTNR.au.com.podcastoneaustralia.dev\/3.7.0 x86_64 iOS\/14.5 CFNetwork\/1237 Darwin\/20.4.0",
+      "Accept" : "*\/*"
     }
   },
   "index" : 0

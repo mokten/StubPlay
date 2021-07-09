@@ -81,11 +81,14 @@ extension StubURLProtocolStore: StubURLProtocolStorage {
     }
     
     public func finished(stub: Stub?, urlProtocol: URLProtocol, response: URLResponse?, bodyData: Data?, isCached: Bool = false) {
+          
         if let stub = stub, stub.skipSave != true {
             stubManager.save(stub, bodyData: bodyData)
         }
         
-        guard let client = urlProtocol.client else { return }
+        guard let client = urlProtocol.client else {
+            return
+        }
         
         if isCached, let response = response {
             client.urlProtocol(urlProtocol, didReceive: response, cacheStoragePolicy: .notAllowed)
@@ -122,12 +125,7 @@ extension StubURLProtocolStore: URLSessionDataDelegate {
     }
     
     public func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse, newRequest request: URLRequest, completionHandler: @escaping (URLRequest?) -> Void) {
-        defer { completionHandler(request) }
-
-        guard let urlProtocol = cache.object(forKey: task) else {
-            return
-        }
-        urlProtocol.client?.urlProtocol(urlProtocol, wasRedirectedTo: request, redirectResponse: response)
+        completionHandler(request)
     }
     
     public func urlSession(_ session: URLSession, didBecomeInvalidWithError error: Error?) {

@@ -50,7 +50,7 @@ class StubFolderCacheMultilpleFolderTests: XCTestCase {
         let expec = expectation(description: "")
         
         DispatchQueue.main.async {
-            let request = Request(method: .get, url: URL(string: "https://a.b/data.json"), headers: nil, body: nil)
+            let request = Request(method: .get, url: URL(string: "https://a.b/data.json")!)
             let stub1 = self.stubManager.get(request: request)
             let body1 = String(data: (stub1?.responseData)!, encoding: .utf8)!
             XCTAssertEqual(body1, "I am in folder1\n")
@@ -60,7 +60,7 @@ class StubFolderCacheMultilpleFolderTests: XCTestCase {
             XCTAssertEqual(body1b, "I am in folder1\n")
             
             
-            let request2 = Request(method: .get, url: URL(string: "https://a.b/data2.json"), headers: nil, body: nil)
+            let request2 = Request(method: .get, url: URL(string: "https://a.b/data2.json")!)
             let stub2 = self.stubManager.get(request: request2)
             let body2 = String(data: (stub2?.responseData)!, encoding: .utf8)!
             XCTAssertEqual(body2, "I am data2 and in folder2\n")

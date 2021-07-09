@@ -27,7 +27,12 @@ import Foundation
 
 public protocol StubCache {
     func load() throws
-    func get(request: Request) -> Stub?
+    
+    /// Returns Stub if found
+    /// - Parameters:
+    ///   - request: request to match a Stub
+    ///   - isChangeIndex: true changs the index, otherwise does not change the index
+    func get(request: Request, isChangeIndex: Bool) -> Stub?
 }
 
 public typealias Folder = String
@@ -42,8 +47,8 @@ public final class StubFolderCache {
     private let validateResponseFile: Bool
     public var invalideURLs: [URL] = []
     
-    @Atomic
     private(set) var requestStubs: [RewriteRule: [Stub]] = [:]
+    private(set) var requestStubsIndex: [RewriteRule: Int] = [:]
     
     public init?(baseFolder: Folder,
                  filesManager: FilesManager,
@@ -55,62 +60,78 @@ public final class StubFolderCache {
         self.validateResponseFile = validateResponseFile
     }
     
-    public func set(stubs: [Stub]) throws {
-        _requestStubs.mutate { _requestStubs in
-            var requestStubs: [RewriteRule: [Stub]] = [:]
-            
-            // Organize stubs with their Request key
-            stubs.forEach { stub in
-                requestStubs[stub.rewriteRule ?? stub.request.rewriteRule, default: []].append(stub)
+    public func set(stubs: [Stub]) {
+        matchQueue.async { [weak self] in
+            do {
+                try self?._set(stubs: stubs)
+            } catch {
+                logger(error: error)
             }
-            
-            // Sort stubs
-            for key in requestStubs.keys {
-                let stubs = requestStubs[key]
-                requestStubs[key] = stubs?.sorted{ $0.index < $1.index }
-            }
-            
-            _requestStubs = requestStubs
         }
+    }
+    
+    
+    func _set(stubs: [Stub]) throws {
+        var requestStubs: [RewriteRule: [Stub]] = [:]
+        var requestStubsIndex: [RewriteRule: Int] = [:]
+        
+        // Organize stubs with their Request key
+        stubs.forEach { stub in
+            requestStubs[stub.rewriteRule ?? stub.request.rewriteRule, default: []].append(stub)
+        }
+        
+        // Sort stubs
+        for key in requestStubs.keys {
+            guard let stubs = requestStubs[key] else { continue }
+            requestStubs[key] = stubs.sorted{ $0.index < $1.index }
+            requestStubsIndex[key] = 0
+        }
+        self.requestStubs = requestStubs
+        self.requestStubsIndex = requestStubsIndex
     }
 }
 
 extension StubFolderCache: StubCache {
     
-    public func load() throws {
-        var stubs: [Stub] = []
-        let urls = try filesManager.urls(at: baseFolder)?.filter { $0.pathExtension == "json" && !$0.lastPathComponent.contains(".body.")}
-        var invalideURLs: [URL] = []
-        try urls?.forEach { url in
-            var stub: Stub = try filesManager.get(Stub.self, from: url)
-
-            if validateResponseFile, let isValid = try? self.hasValidResponseFile(for: stub), !isValid {
-                invalideURLs.append(url)
-                return
+    public func load() {
+        matchQueue.async { [weak self] in
+            guard let self = self else { return }
+            do {
+                var stubs: [Stub] = []
+                let urls = try self.filesManager.urls(at: self.baseFolder)?.filter { $0.pathExtension == "json" && !$0.lastPathComponent.contains(".body.")}
+                var invalideURLs: [URL] = []
+                try urls?.forEach { url in
+                    var stub: Stub = try self.filesManager.get(Stub.self, from: url)
+                    
+                    if self.validateResponseFile, let isValid = try? self.hasValidResponseFile(for: stub), !isValid {
+                        invalideURLs.append(url)
+                        return
+                    }
+                    
+                    if let forceSkipSave = self.forceSkipSave {
+                        stub.skipSave = forceSkipSave
+                    }
+                    stubs.append(stub)
+                }
+                try self._set(stubs: stubs)
+                self.invalideURLs = invalideURLs
+            } catch {
+                logger(error: error)
             }
-            
-            if let forceSkipSave = forceSkipSave {
-                stub.skipSave = forceSkipSave
-            }
-            stubs.append(stub)
         }
-        try set(stubs: stubs)
-        self.invalideURLs = invalideURLs
     }
     
-    public func get(request: Request) -> Stub? {
+    public func get(request: Request, isChangeIndex: Bool = true) -> Stub? {
         var stub: Stub?
         
-        matchQueue.sync {
-            guard let matchedRewriteRule = self.requestStubs.keys.first(where: { $0.matches(request) }),
-                  var matchedStubs = self.requestStubs[matchedRewriteRule],
-                  var matchedStub = matchedStubs.first else {
-                return
-            }
+        matchQueue.sync { [weak self] in
+            guard let self = self else { return }
             
-            defer {
-                stub = matchedStub
-                self.requestStubs[matchedRewriteRule] = matchedStubs
+            guard let matchedRewriteRule = self.requestStubs.keys.first(where: { $0.matches(request) }),
+                  let matchedStubs = self.requestStubs[matchedRewriteRule],
+                  var index = self.requestStubsIndex[matchedRewriteRule],
+                  var matchedStub = matchedStubs[safe: index] else {
+                return
             }
             
             if matchedStub.responseData == nil,
@@ -119,16 +140,23 @@ extension StubFolderCache: StubCache {
                 matchedStub.responseData = bodyData
             }
             
-            if matchedStubs.count > 1 {
-                matchedStubs.removeFirst()
-            } else {
-                matchedStubs[0] = matchedStub
+            if isChangeIndex {
+                let lastIndex = matchedStubs.count - 1
+                if index >= lastIndex {
+                    if let newIndex = matchedStub.whenAtEndLoopToIndex {
+                        index = newIndex
+                    }
+                } else {
+                    index += 1
+                }
             }
+            self.requestStubsIndex[matchedRewriteRule] = index
+            stub = matchedStub
         }
         
         return stub
     }
-
+    
     /// true if not responseDataFileName or response file exists
     public func hasValidResponseFile(for stub: Stub) throws -> Bool {
         guard let responseDataFileName = stub.responseDataFileName else {

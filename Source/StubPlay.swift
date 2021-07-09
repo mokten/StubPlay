@@ -24,6 +24,7 @@
 //
 
 import Foundation
+import AVFoundation
 
 public enum StubPlayConstants {
     public static let serverPort: in_port_t = 9081
@@ -46,16 +47,18 @@ public class StubPlay {
     private var isEnabledServer = false {
         didSet {
             guard oldValue != isEnabledServer else { return }
-             
+            
             if isEnabledServer {
                 do {
                     let stubServer = StubServer(stubManager: stubManager)
                     self.stubServer = stubServer
                     let ip = try stubServer.start(port: serverPort)
-                    logger(ip)
+                    logger(level: .warn, ip)
+                    
+                    avPlayerResourceLoader = AssetResourceLoader(session: session!, stubManager: stubManager, port: Int(self.serverPort))
                     
                 } catch {
-                    logger(error)
+                    logger(error: error)
                 }
             } else {
                 stubServer?.stop()
@@ -63,6 +66,8 @@ public class StubPlay {
             }
         }
     }
+    
+    private var avPlayerResourceLoader: AssetResourceLoader?
     
     private lazy var swizzle: Void = {
         swizzleProtocolClasses()
@@ -81,10 +86,16 @@ public class StubPlay {
         stubManager.reset()
         session = StubURLProtocolStore.shared.updateSession(config: config.protocolURLSessionConfiguration)
         
-       let filesManager = FilesManager(bundle: config.bundle, saveDirectoyURL: config.saveResponsesDirURL)
-
+        StubResourceLoaderStore.shared.update(config: config.protocolURLSessionConfiguration, stubManager: stubManager, port: Int(serverPort))
+        
+        let filesManager = FilesManager(bundle: config.bundle, saveDirectoyURL: config.saveResponsesDirURL)
+        
         if let globalConfig = config.globalConfig, let configURL = filesManager.bundleUrl(for: globalConfig) {
-            stubManager.stubRules = try filesManager.get(StubRewriteRules.self, from: configURL)
+            do {
+                stubManager.stubRules = try filesManager.get(StubRewriteRules.self, from: configURL)
+            } catch {
+                logger(error)
+            }
         }
         
         if config.saveResponsesDirURL != nil {
@@ -92,8 +103,7 @@ public class StubPlay {
             if config.clearSaveDir { saver.clear() }
             stubManager.stubSaver = saver
         }
-        
-        //
+
         try config.folders.forEach { folder in
             guard let stubCache = StubFolderCache(baseFolder: folder,
                                                   filesManager: filesManager,
@@ -102,11 +112,7 @@ public class StubPlay {
                 throw StubPlayError.stubCacheLoad(nil, nil, folder)
             }
             stubManager.add(stubCache)
-            do {
-                try stubCache.load()
-            } catch {
-                throw StubPlayError.stubCacheLoad(error, stubCache, folder)
-            }
+            stubCache.load()
         }
         
         self.isEnabledServer = config.isEnabledServer
@@ -125,20 +131,14 @@ public class StubPlay {
             guard let stubCache = StubFolderCache(baseFolder: subFolder, filesManager: filesManager) else {
                 throw StubPlayError.stubCacheLoad(nil, nil, subFolder)
             }
+            stubCache.load()
             
-            do {
-                try stubCache.load()
-                
-                stubCache.requestStubs.values.forEach { stubs in
-                    stubs.forEach { stub in
-                        if try! !stubCache.hasValidResponseFile(for: stub) {
-                            missingFiles.append(stubCache.responsePath(for: stub))
-                        }
+            stubCache.requestStubs.values.forEach { stubs in
+                stubs.forEach { stub in
+                    if try! !stubCache.hasValidResponseFile(for: stub) {
+                        missingFiles.append(stubCache.responsePath(for: stub))
                     }
                 }
-                
-            } catch {
-                throw StubPlayError.stubCacheLoad(error, stubCache, folder)
             }
         }
         
@@ -147,11 +147,19 @@ public class StubPlay {
 }
 
 extension StubPlay {
-    public func resourceLoader() -> AssetResourceLoader {
-        guard let session = session else {
-            fatalError("session not initialised")
+    public func avAsset(url: URL, options: [String: Any]? = nil) -> AVURLAsset {        
+        if let avPlayerResourceLoader = avPlayerResourceLoader {
+            return avPlayerResourceLoader.avAsset(with: url, options: options)
+        } else {
+            return AVURLAsset(url: url, options: options)
         }
-        return AssetResourceLoader(session: session, stubManager: stubManager, port: Int(self.serverPort))
+    }
+    
+    public func resourceLoader() -> AssetResourceLoader {
+        guard let avPlayerResourceLoader = avPlayerResourceLoader else {
+            fatalError("Please enable the server")
+        }
+        return avPlayerResourceLoader
     }
 }
 

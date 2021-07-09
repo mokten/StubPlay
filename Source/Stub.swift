@@ -32,7 +32,13 @@ public protocol Model: Codable, Hashable { }
 public struct Stub: Model {
     public var rewriteRule: RewriteRule?
     public var index: Int = 0
+    
+    /// It will not save the stub
     public var skipSave: Bool?
+    
+    /// Once the index has reached the maximum number of stubs then it will reset to this index
+    public var whenAtEndLoopToIndex: Int?
+    
     public var responseDataFileName: String?
     public var responseData: Data?
     public let request: Request
@@ -62,11 +68,18 @@ public extension Stub {
 
 public extension Stub {
     func httpURLResponse(defaultURL: URL?) -> HTTPURLResponse? {
-        let url = request.url ?? defaultURL ?? URL(string: "https://stubplay.com/missing_url")!
+        let url = request.url
         return HTTPURLResponse(url: url,
                                statusCode: response?.statusCode ?? 0,
                                httpVersion: "HTTP/1.1",
                                headerFields: (response?.headers) ?? [:])
+    }
+    
+    func httpURLRequest() -> URLRequest {
+        var request = URLRequest(url: request.url, httpMethod: request.method.rawValue)
+        request.httpBody = request.httpBody
+        request.allHTTPHeaderFields = request.allHTTPHeaderFields
+        return request
     }
 }
 
@@ -80,4 +93,3 @@ public extension HTTPURLResponse {
         return Response(statusCode: statusCode, mimeType: mimeType, headers: headers, bodyUrl: nil)
     }
 }
-

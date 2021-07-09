@@ -18,9 +18,9 @@ class MainViewController: UITabBarController {
         
         viewControllers = [
             MultipleViewController(),
-            ImageViewController(),
-            VideoPlayerViewController("Video", url: videoURL),
             VideoPlayerViewController("Video Byte Range", url: videoByteRangeURL),
+            VideoPlayerViewController("Video", url: videoURL),
+            ImageViewController(),
             RewriteRuleViewController(),
         ]
         

@@ -20,28 +20,49 @@ extension RewriteRule {
     }
     
     public func matches(_ request: Request) -> Bool {
-        guard let requestUrl = request.url else { return false }
+        let requestUrl = request.url
+        var isMatch = false
         
         if let method = method {
             guard request.method == method else { return false }
+            isMatch = true
         }
         
         if let host = host {
-            if RewriteRule.doesNotMatch(key: host, matcher: requestUrl.host) { return false }
+            if RewriteRule.doesNotMatch(key: host, matcher: requestUrl.host) {
+                return false
+            }
+            isMatch = true
         }
         
         if let path = path {
             if RewriteRule.doesNotMatch(key: path, matcher: requestUrl.path) { return false }
+            isMatch = true
         }
         
         if let params = params {
             if RewriteRule.doesNotMatch(key: params, matcher: requestUrl.query) { return false }
+            isMatch = true
         }
         
         if let body = body {
             if RewriteRule.doesNotMatch(key: body, matcher: request.body) { return false }
+            isMatch = true
+        }
+
+        if let headers = headers, let requestHeaders = request.headers, !requestHeaders.isEmpty {
+            for (key, value) in headers {
+                guard let requestValue = requestHeaders[key] else {
+                    logger(level: .error, "Missing request value: \(requestHeaders)")
+                    return false
+                }
+                if RewriteRule.doesNotMatch(key: value, matcher: requestValue) {
+                    return false
+                }
+            }
+            isMatch = true
         }
         
-        return true
+        return isMatch
     }
 }

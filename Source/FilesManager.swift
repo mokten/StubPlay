@@ -71,8 +71,6 @@ extension FilesManager {
         self.bundle = bundle
         self.saveDirectoryURL = saveDirectoyURL
         
-        logger(saveDirectoryURL)
-        
         if let saveDirectoyURL = saveDirectoyURL {
             do {
                 try FileManager.default.createDirectory(at: saveDirectoyURL, withIntermediateDirectories: true, attributes: [:])
@@ -157,7 +155,7 @@ public extension FilesManager {
             _ = try self.save(data: data, to: fileName)
         } catch {
             // TODO:
-            logger(level: .error, error)
+            logger(level: .error, error, fileName)
         }
     }
     
@@ -169,7 +167,7 @@ public extension FilesManager {
             let decoder = JSONDecoder()
             return try decoder.decode(type, from: fileData)
         } catch {
-            logger(level: .error, "Error! \(url.absoluteString): \(String(data:fileData, encoding: .utf8) ?? "")")
+            logger(level: .error, "Decoding Error: \(error) \(url.absoluteString): \n\n\(String(data:fileData, encoding: .utf8) ?? "")")
             throw error
         }
     }

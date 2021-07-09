@@ -52,4 +52,18 @@ public struct RewriteRule: Model {
     public let params: String?
     
     public var body: String?
+    
+    /*
+     Request headers
+     */
+    public var headers: [String: String]?
+    
+    init(method: HttpMethod? = nil, host: String? = nil, path: String? = nil, params: String? = nil, body: String? = nil, headers: [String : String]? = nil) {
+        self.method = method
+        self.host = host
+        self.path = path
+        self.params = params
+        self.body = body
+        self.headers = headers
+    }
 }

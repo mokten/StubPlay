@@ -21,6 +21,7 @@ The following shows what the main request/response file would look like with all
         "params" : "c=d",
     },
   "skipSave" : true,
+  "whenAtEndLoopToIndex" : 0,
   "response" : {
     "headers" : {
     },
@@ -70,4 +71,16 @@ Add `skipSave : true`
 ```json
   "skipSave" : true,
 ``` 
+ 
+ ## Optional: whenAtEndLoopToIndex
+
+ Use whenAtEndLoopToIndex to set the internal index of a rewrite rule when it reaches the end of the stubs index
+
+ Request + Response file:
+
+ Add `whenAtEndLoopToIndex : Int`
+
+ ```json
+   "whenAtEndLoopToIndex" : 2,
+ ``` 
  

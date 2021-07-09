@@ -51,7 +51,7 @@ class StubPlayTests: XCTestCase {
         let expec = expectation(description: "")
         
         DispatchQueue.main.async {
-            let request = Request(method: .get, url: URL(string: "https://a.com/offers/itunes-monthly?x=Y"),
+            let request = Request(method: .get, url: URL(string: "https://a.com/offers/itunes-monthly?x=Y")!,
                                   headers: ["Accept-Language": "en;q=1.0",
                 "Accept-Encoding": "gzip;q=1.0, compress;q=0.5",
                 "User-Agent": "Kayo/1.1.4 (au.com.streamotion.kayo; build:135; iOS 12.2.0) Alamofire/4.7.3"], body: nil)

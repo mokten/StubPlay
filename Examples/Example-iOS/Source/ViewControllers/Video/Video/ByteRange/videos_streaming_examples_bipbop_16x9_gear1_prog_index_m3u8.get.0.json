@@ -1,11 +1,25 @@
 {
   "responseDataFileName" : "videos_streaming_examples_bipbop_16x9_gear1_prog_index_m3u8.get.0.body.m3u",
+  "rewriteRule" : {
+    "path" : "\/videos\/streaming\/.*\\.m3u8",
+    "host" : "devstreaming-cdn.apple.com"
+  },
   "response" : {
     "headers" : {
+      "x-amz-id-2" : "YIBJuf0PCRll+s9AGM1D6NWQLl+fYCVgCsg2edX31ApXDoQnCSfRtDltM0roQor0wMkw02XvN3A=",
+      "Server" : "ATS\/8.1.2",
       "Content-Length" : "10484",
-      "Content-Type" : "application/x-mpegURL",
-      "Cache-Control" : "max-age=0, no-cache, no-store",
-      "Expires" : "Wed, 29 May 2019 13:01:37 GMT",
+      "Etag" : "\"a2831dcd22eb5e1ebc3477230f14806a\"",
+      "Content-Type" : "audio\/mpegurl",
+      "Cache-Control" : "max-age=600, public",
+      "Accept-Ranges" : "bytes",
+      "Last-Modified" : "Wed, 24 May 2017 23:44:02 GMT",
+      "x-amz-request-id" : "SH59QGEYTD212BNK",
+      "cdnuuid" : "75d7dd21-31a8-448a-abfd-1c6a0f3bef75-1707844104",
+      "Date" : "Fri, 09 Jul 2021 11:53:57 GMT",
+      "Via" : "https\/1.1 sgsin8-edge-lx-001.ts.apple.com (ApacheTrafficServer\/8.1.2), https\/1.1 sgsin8-edge-bx-003.ts.apple.com (ApacheTrafficServer\/8.1.2)",
+      "Age" : "2",
+      "x-cache" : "miss, hit-stale"
     },
     "statusCode" : 200,
     "mimeType" : "audio\/mpegurl"
@@ -14,10 +28,10 @@
     "url" : "https:\/\/devstreaming-cdn.apple.com\/videos\/streaming\/examples\/bipbop_16x9\/gear1\/prog_index.m3u8",
     "method" : "get",
     "headers" : {
-      "User-Agent" : "AppleCoreMedia\/1.0.0.16B91 (iPhone; U; CPU OS 12_1 like Mac OS X; en_us)",
+      "User-Agent" : "AppleCoreMedia\/1.0.0.18E182 (iPhone; U; CPU OS 14_5 like Mac OS X; en_us)",
       "Accept-Encoding" : "gzip",
-      "X-Playback-Session-Id" : "11E3FD0B-EDB8-4203-9926-6E4AC7CEEC76"
+      "X-Playback-Session-Id" : "1C38B634-F22B-46ED-8C33-E115794B2AE5"
     }
   },
-  "index" : 0
+  "index" : 1
 }

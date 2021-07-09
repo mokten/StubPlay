@@ -30,7 +30,7 @@ class RewriteRuleCreateTests: XCTestCase {
     private let filenameHelper = DefaultFilenameFormatter()
     
     func testFileName_path() {
-        let request = Request(method: .get, url: URL(string: "https://localhost"), headers: nil, body: nil)
+        let request = Request(method: .get, url: URL(string: "https://localhost")!)
         let msg = Stub(rewriteRule: nil, index: 0, request: request, response: nil)
         XCTAssertEqual(filenameHelper.filename(for: msg), "_.get.0.json")
     }

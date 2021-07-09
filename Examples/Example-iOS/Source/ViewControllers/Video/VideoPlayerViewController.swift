@@ -31,7 +31,6 @@ import StubPlay
 class VideoPlayerViewController: NiblessViewController {
     
     private let url: URL
-    private lazy var assetResourceLoader = StubPlay.default.resourceLoader()
     private var asset: AVURLAsset?
 
     private let playerController = AVPlayerViewController()
@@ -49,7 +48,7 @@ class VideoPlayerViewController: NiblessViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let asset = assetResourceLoader.avAsset(with: url)
+        let asset = StubPlay.default.avAsset(url: url, options: ["AVURLAssetHTTPHeaderFieldsKey": ["User-Agent": "LiSTNR.au.com.podcastoneaustralia.dev/3.7.0 x86_64 iOS/14.5 CFNetwork/1237 Darwin/20.4.0"]])
         self.asset = asset
         asset.loadValuesAsynchronously(forKeys: ["playable", "hasProtectedContent"]) { [weak self] in
             DispatchQueue.main.async { [weak self] in

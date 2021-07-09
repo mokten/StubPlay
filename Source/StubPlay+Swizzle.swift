@@ -11,8 +11,6 @@ import Foundation
 public extension StubPlay {
     
     func swizzleProtocolClasses() {
-        logger()
-        
         URLCache.shared.removeAllCachedResponses()
         URLProtocol.registerClass(StubURLProtocol.self)
         

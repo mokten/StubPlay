@@ -36,7 +36,7 @@ class FilesManagerTests: XCTestCase {
         let bodyUrl = "https://httpbin.org/get"
         let rule = RewriteRule(method: .post, host: "httpbin.org", path: "hi", params: nil)
         let response = Response(statusCode: 200, mimeType: "application/json", headers: ["hi" : "ho"], bodyUrl: bodyUrl)
-        let request = Request(method: .get, url: URL(string: "https://httpbin.org/get"), headers: nil, body: nil)
+        let request = Request(method: .get, url: URL(string: "https://httpbin.org/get")!)
         return Stub(rewriteRule: rule, index: 0, request: request, response: response)
     }()
     

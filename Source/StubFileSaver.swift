@@ -71,32 +71,35 @@ public class StubFileSaver: StubSaver {
     }
     
     public func save(_ stub: Stub, bodyData: Data?, completion: ((Result<Stub?, Error>) -> Void)? = nil) {
-        queue.async {
+        queue.async { [weak self] in
+            guard let self = self else { return }
             do {
-                var msg = stub
-                msg.index = self.counter.count(for: msg.request)
-                let filename = self.filenameFormatter.filename(for: msg)
-                let responseDataFileName: String? = bodyData != nil ? self.responseDataFileNameFormatter.filename(for: msg) : nil
-                msg.responseDataFileName = responseDataFileName
-                msg.responseData = nil
+                var stub = stub
+                if stub.index == 0 {
+                    stub.index = self.counter.count(for: stub.request)
+                }
+                let filename = self.filenameFormatter.filename(for: stub)
+                let responseDataFileName: String? = bodyData != nil ? self.responseDataFileNameFormatter.filename(for: stub) : nil
+                stub.responseDataFileName = responseDataFileName
+                stub.responseData = nil
                 
-                self.filesManager.save(msg, to: filename)
+                self.filesManager.save(stub, to: filename)
                 if let bodyData = bodyData, let responseDataFileName = responseDataFileName {
                     try self.filesManager.save(data: bodyData, to: responseDataFileName)
                 }
                 
-                completion?(.success(msg))
+                completion?(.success(stub))
             } catch {
                 //TODO:
-                logger(error)
+                logger(error: error)
                 completion?(.failure(error))
             }
         }
     }
     
     public func clear() {
-         queue.async {
-            try? self.filesManager.clear()
+         queue.async { [weak self] in
+            try? self?.filesManager.clear()
         }
     }
 }

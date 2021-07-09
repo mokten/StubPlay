@@ -1,5 +1,5 @@
 {
-  "responseDataFileName" : "_6954243420180.post.0.body.text",
+  "responseDataFileName" : "header.body.text",
   "response" : {
     "headers" : {
       "allow" : "GET, HEAD",
@@ -12,9 +12,10 @@
     "body" : "yahooo",
     "method" : "post",
     "headers" : {
-      "Content-Length" : "6"
+        "Content-Length" : "6",
+        "X-ABC-DEF" : "777"
     },
-    "url" : "https:\/\/google.com\/"
+    "url" : "https:\/\/header.com\/hee"
   },
   "index" : 0
 }

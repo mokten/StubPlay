@@ -11,24 +11,30 @@ StubPlay provides a variety of convenience methods for making HTTP requests.
 
 The following shows what the main request/response file would look like with all the options enabled.
 
+Precedence is in the following order:
+  1. doNotSaveStubRewriteRule
+  1. rewriteRule
+  
 ```json
 {  
-  "addToSavedStubRules" : [
+  "doNotSaveStubRewriteRule" : [
     {
-        "path" : "/a.txt"
+      "host" : "a.com",
+      "path" : "/a.temp"
     }
   ],
-  "doNotSaveStubRules" : [
+  "rewriteRule" : [
     {
-      "host" : "analytics.com",
+        "host" : "a.com",
+        "path" : "/a.txt"
     }
   ]
 }
 ```
 
-### Optional: addToSavedStubRules
+### Optional: rewriteRule
 
-Use `addToSavedStubRules` force a rewrite rule in the saved stub file.
+Use `rewriteRule` to add a rewrite rule in a matched and saved stub file.
 
 If your saved stub has dynamic data in the request, and you want to replay the stub then this will save you time from manually adding the rewrite rule to the stub file.
 
@@ -42,9 +48,20 @@ https://a.com/a.txt?date=12345675
 https://a.com/a.txt?date=23456788
 
 ```json
-  "addToSavedStubRules" : [
+  "rewriteRule" : [
     {
+        "host" : "a.com",
         "path" : "/multiple.txt"
+    }
+  ]
+``` 
+
+You can also use regex.
+
+```json
+  "rewriteRule" : [
+    {
+        "host" : "a\\.c.*"
     }
   ]
 ``` 
@@ -54,14 +71,14 @@ You can now copy the saved stub files and replay them in your client.
 
 Note: if there is a cached stub file with a rewrite rule then the global addToSavedStubRule will not be used.
  
-## Optional: doNotSaveStubRules
+## Optional: doNotSaveStubRewriteRule
 
 Use doNotSaveStubRules to disable saving a request's stub.
 
 This is similar to the skipSave in the saved stub file.
 
 ```json
-  "doNotSaveStubRules" : [
+  "doNotSaveStubRewriteRule" : [
     {
       "host" : "analytics.com",
     }

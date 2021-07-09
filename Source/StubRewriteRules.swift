@@ -12,12 +12,11 @@ import Foundation
  
  Configuration rules for saving stubs
 
+ Match precedence is in the following order:
+   1. rewriteRule
+ 
  */
 public struct StubRewriteRules: Model {
-
     /// When saving the stub, will add the first matched rule
-    public let addToSavedStubRules: [RewriteRule]?
-    
-    /// Will not save the Stub if there is a matched rule
-    public let doNotSaveStubRules: [RewriteRule]?
+    public let rewriteRule: [RewriteRule]?
 }

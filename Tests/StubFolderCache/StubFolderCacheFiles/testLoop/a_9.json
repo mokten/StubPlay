@@ -1,0 +1,8 @@
+{
+    "whenAtEndLoopToIndex": 0,
+    "request": {
+        "url": "https:\/\/a.org/a",
+        "method": "get"
+    },
+    "index": 9
+}

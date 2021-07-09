@@ -51,12 +51,17 @@ class StubFolderCacheLoadTests: XCTestCase {
         guard let folder = StubFolderCache(baseFolder: "StubFolderCacheFiles/testLoad", filesManager: filesManager) else {
             return XCTAssertTrue(false)
         }
+        folder.load()
         
-        try folder.load()
+        let rule = RewriteRule(method: .get, path: "/a")
+        let request = Request(method: .get, url: URL(string: "https://a.org/a")!)
         
-        let request = Request(method: .get, url: URL(string: "https://a.org/a"), headers: nil, body: nil)
+        // make sure load finished
+        _ = folder.get(request: request)
+        
         let returnedRequestMessages = folder.requestStubs
-        let returnedMessages = returnedRequestMessages[request.rewriteRule]
+         
+        let returnedMessages = returnedRequestMessages[rule]
         XCTAssertEqual(returnedMessages,  (0...9).map { Stub(rewriteRule: nil, index: $0, request: request, response: nil) })
     }
     
@@ -74,8 +79,8 @@ class StubFolderCacheLoadTests: XCTestCase {
         let saveQueueB = DispatchQueue(label: "com.mokten.saveQueue.b")
         let dispatchGroup = DispatchGroup()
         
-        let requestA = Request(method: .get, url: URL(string: "https://a.org/a"), headers: nil, body: nil)
-        let requestB = Request(method: .get, url: URL(string: "https://b.org/b"), headers: nil, body: nil)
+        let requestA = Request(method: .get, url: URL(string: "https://a.org/a")!)
+        let requestB = Request(method: .get, url: URL(string: "https://b.org/b")!)
         
         let expectedA = (0...4).map { _ in Stub(rewriteRule: nil, index: 0, request: requestA, response: nil) }
         
@@ -85,7 +90,7 @@ class StubFolderCacheLoadTests: XCTestCase {
                                     Stub(rewriteRule: nil, index: 1, request: requestB, response: nil),
                                     Stub(rewriteRule: nil, index: 1, request: requestB, response: nil)]
         
-        try folder.load()
+        folder.load()
         
         var returnedMessagesA: [Stub] = []
         var returnedMessagesB: [Stub] = []

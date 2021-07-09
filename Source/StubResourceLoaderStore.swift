@@ -52,48 +52,21 @@ public final class StubResourceLoaderStore: NSObject {
     
     private let stubManager = StubManager.shared
     
-    @Atomic
-    private var cache = NSMapTable<URLSessionTask, StubURLProtocol>.init(
-        keyOptions: .weakMemory,
-        valueOptions: .weakMemory
-    )
+    private(set) var avPlayerResourceLoader: AssetResourceLoader!
     
-    public func updateSession(config: URLSessionConfiguration?) {
+    public func update(config: URLSessionConfiguration?, stubManager: StubManager, port: Int) {
         guard let config = config else {
             session = defaultSession
+            avPlayerResourceLoader = AssetResourceLoader(session: session, stubManager: stubManager, port: port)
             return
         }
         session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
+        avPlayerResourceLoader = AssetResourceLoader(session: session, stubManager: stubManager, port: port)
     }
 }
 
 extension StubResourceLoaderStore: StubResourceLoaderStorable {
-    public func get(request: Request) -> Stub? {
-        return stubManager.get(request: request)
-    }
     
-    public func dataTask(with request: URLRequest, urlProtocol: StubURLProtocol) -> URLSessionDataTask {
-        let dataTask = session.dataTask(with: request)
-        cache.setObject(urlProtocol, forKey: dataTask)
-        return dataTask
-    }
-    
-    public func finished(stub: Stub?, urlProtocol: URLProtocol, response: URLResponse?, bodyData: Data?, isCached: Bool = false) {
-        if let stub = stub, stub.skipSave != true {
-            stubManager.save(stub, bodyData: bodyData)
-        }
-        
-        guard let client = urlProtocol.client else { return }
-        
-        if isCached, let response = response {
-            client.urlProtocol(urlProtocol, didReceive: response, cacheStoragePolicy: .notAllowed)
-            if let data = bodyData {
-                client.urlProtocol(urlProtocol, didLoad: data)
-            }
-        }
-        
-        client.urlProtocolDidFinishLoading(urlProtocol)
-    }
 }
 
 extension StubResourceLoaderStore: URLSessionDataDelegate {
@@ -102,40 +75,14 @@ extension StubResourceLoaderStore: URLSessionDataDelegate {
                            dataTask: URLSessionDataTask,
                            didReceive response: URLResponse,
                            completionHandler: @escaping (URLSession.ResponseDisposition) -> Void) {
-        guard let urlProtocol = cache.object(forKey: dataTask) else {
-            fatalError()
-        }
-        
-        urlProtocol.client?.urlProtocol(urlProtocol, didReceive: response, cacheStoragePolicy: .notAllowed)
-        urlProtocol.responseData = Data()
         completionHandler(.allow)
     }
     
-    public func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
-        guard let urlProtocol = cache.object(forKey: dataTask) else {
-            fatalError()
-        }
-        urlProtocol.client?.urlProtocol(urlProtocol, didLoad: data)
-        urlProtocol.responseData?.append(data)
-    }
-    
     public func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse, newRequest request: URLRequest, completionHandler: @escaping (URLRequest?) -> Void) {
-        guard let urlProtocol = cache.object(forKey: task) else {
-            fatalError()
-        }
-        urlProtocol.client?.urlProtocol(urlProtocol, wasRedirectedTo: request, redirectResponse: response)
         completionHandler(request)
     }
     
     public func urlSession(_ session: URLSession, didBecomeInvalidWithError error: Error?) {
-        guard let error = error else { return }
-        _cache.mutate { cache in
-            guard let enumerator = cache.objectEnumerator() else { return }
-            while let urlProtocol = enumerator.nextObject() as? StubURLProtocol {
-                urlProtocol.client?.urlProtocol(urlProtocol, didFailWithError: error)
-            }
-            cache.removeAllObjects()
-        }
     }
     
     public func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
@@ -154,43 +101,8 @@ extension StubResourceLoaderStore: URLSessionDataDelegate {
         completionHandler(.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!))
     }
     
-    public func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
-        _cache.mutate { cache in
-            guard let enumerator = cache.objectEnumerator() else { return }
-            while let urlProtocol = enumerator.nextObject() as? StubURLProtocol {
-                urlProtocol.client?.urlProtocolDidFinishLoading(urlProtocol)
-            }
-            cache.removeAllObjects()
-        }
-    }
-}
-
-
-extension StubResourceLoaderStore: URLSessionTaskDelegate {
+//    public func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+//        logger(level: .warn, "")
+//    }
     
-    public func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-        _cache.mutate { cache in
-            
-            if let error = error {
-                guard let urlProtocol = cache.object(forKey: task) else {
-                    return
-                }
-                urlProtocol.client?.urlProtocol(urlProtocol, didFailWithError: error)
-            } else {
-                guard let urlProtocol = cache.object(forKey: task) else {
-                    fatalError()
-                }
-                finished(urlProtocol: urlProtocol, response: task.response, bodyData: urlProtocol.responseData)
-            }
-            cache.removeObject(forKey: task)
-        }
-    }
-}
-
-private extension StubResourceLoaderStore {
-    func finished(urlProtocol: StubURLProtocol?, response: URLResponse?, bodyData: Data?, isCached: Bool = false) {
-        guard let urlProtocol = urlProtocol else { return }
-        let stub = Stub(request: urlProtocol.request, response: urlProtocol.dataTask?.response as? HTTPURLResponse)
-        finished(stub: stub, urlProtocol: urlProtocol, response: response, bodyData: bodyData, isCached: isCached)
-    }
 }

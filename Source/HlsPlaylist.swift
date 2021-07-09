@@ -26,7 +26,7 @@
 import Foundation
 
 public protocol HlsPlaylistTransform {
-    func replace(text: String?, with scheme: String, to baseUrl: URL) -> String?
+    func replace(text: String?, with scheme: String, to baseUrl: URL, stubURL: URL?) -> String?
 }
 
 public class HlsPlaylist: HlsPlaylistTransform {
@@ -37,18 +37,23 @@ public class HlsPlaylist: HlsPlaylistTransform {
     
     public init() { }
     
-    public func replace(text: String?, with scheme: String, to baseUrl: URL) -> String? {
+    public func replace(text: String?, with scheme: String, to baseUrl: URL, stubURL: URL? = nil) -> String? {
         guard let text = text else { return nil }
         
-        let lines = text.components(separatedBy: .newlines)
-        var buffer = ""
+        let lines = text.components(separatedBy: "\n")
+        let linesCount = (lines.count - 1)
         
+        var buffer = ""        
         var lastByteRange: String?
         
         for (i, line) in lines.enumerated() {
-            let newLine = line.trimmingCharacters(in: .whitespaces)
+            let newLine = line.trimmingCharacters(in: .whitespacesAndNewlines)
             
-            if newLine.hasPrefix("#EXT-X-BYTERANGE:") {
+            if newLine.hasPrefix("#EXT-X-PROGRAM-DATE-TIME") {
+                // if keep this then the player will not play the next segment
+                // #EXT-X-PROGRAM-DATE-TIME:2021-06-24T14:00:48.010+00:00
+                buffer += ("#EXT-X-PROGRAM-DATE-TIME:" + DateFormatter.dateFmt.string(from: Date()))
+            } else if newLine.hasPrefix("#EXT-X-BYTERANGE:") {
                 // #EXT-X-BYTERANGE:75232@0
                 // Range: bytes=326744-653111
                 lastByteRange = byteRange(for: newLine)
@@ -63,17 +68,16 @@ public class HlsPlaylist: HlsPlaylistTransform {
                 
             } else if newLine.hasPrefix(scheme) || newLine.hasSuffix("m3u8") {
                 buffer += append(to: newLine, name: HlsPlaylistConst.byteRangeKey, value: lastByteRange)
-                
             } else {
-                buffer += replace(line: newLine, with: scheme, to: baseUrl, with: lastByteRange)
+                buffer += replace(line: newLine, with: scheme, to: baseUrl, with: lastByteRange, stubURL: stubURL)
                 lastByteRange = nil
             }
             
-            if i < (lines.count - 1) {
+            if i < linesCount {
                 buffer += "\n"
             }
         }
-        
+
         return buffer
     }
     
@@ -94,7 +98,7 @@ public class HlsPlaylist: HlsPlaylistTransform {
         return "\(startRangeInt)-\(endRange)"
     }
     
-    public func replace(line: String, with scheme: String, to baseURL: URL, with byteRange: String? = nil) -> String {
+    public func replace(line: String, with scheme: String, to baseURL: URL, with byteRange: String? = nil, stubURL: URL? = nil) -> String {
         var newLine = line.trimmingCharacters(in: .whitespaces)
         
         guard newLine.count != 0 && !newLine.hasPrefix(scheme) else {
@@ -106,6 +110,13 @@ public class HlsPlaylist: HlsPlaylistTransform {
             
         } else if let relativeURL = URL(string: newLine, relativeTo: baseURL)?.standardized {
             newLine = relativeURL.absoluteString
+        }
+        
+        if let stubURL = stubURL, var comp = URLComponents(url: stubURL, resolvingAgainstBaseURL: false) {
+            comp.queryItems = [URLQueryItem(name: "url", value: newLine)]
+            if let url = comp.url?.absoluteString {
+                newLine = url
+            }
         }
         
         return append(to: newLine, name: HlsPlaylistConst.byteRangeKey, value: byteRange)
@@ -171,3 +182,13 @@ public class HlsPlaylist: HlsPlaylistTransform {
     
 }
 
+private extension DateFormatter {
+    static let dateFmt: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .iso8601)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
+        return formatter
+    }()
+}

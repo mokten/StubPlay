@@ -28,18 +28,34 @@ import Foundation
 public class StubManager {
     public static let shared = StubManager()
     
-    public var stubRules: StubRewriteRules?
-    
     public var stubSaver: StubSaver?
     
     @Atomic
     private var stubCaches: [StubCache] = []
     
+    public var stubRules: StubRewriteRules? {
+        didSet {
+            guard let stubRules = stubRules else {
+                saveRewriteRules = [:]
+                return
+            }
+            stubRules.rewriteRule?.forEach{ rule in
+                saveRewriteRules[rule] = 0
+            }
+        }
+    }
+    
+    /// Used to set a rewrite rule in the saved stub
+    /// - Only sets when matched and the stub does not already have a rewrite rule
+    /// - When matched increases the position by 1
+    @Atomic
+    private var saveRewriteRules: [RewriteRule: Int] = [:]
+    
     private init() { }
     
-    func get(request: Request) -> Stub? {
+    func get(request: Request, isChangeIndex: Bool = true) -> Stub? {
         for cache in stubCaches {
-            if let cacheStub = cache.get(request: request) {
+            if let cacheStub = cache.get(request: request, isChangeIndex: isChangeIndex) {
                 return cacheStub
             }
         }
@@ -48,19 +64,23 @@ public class StubManager {
     
     // increments index
     func save(_ stub: Stub, bodyData: Data?, completion: ((Result<Stub?, Error>) -> Void)? = nil) {
-        var stub = stub
-        if let stubRules = stubRules {
-            if stubRules.doNotSaveStubRules?.first(where: { $0.matches(stub.request) }) != nil {
-                completion?(.success(nil))
-                return
+        
+        _saveRewriteRules.mutate { [weak self] saveRewriteRules in
+            guard let self = self else { return }
+            
+            var stub = stub
+            
+            if let stubRules = self.stubRules {                
+                if let matchedRewriteRule = stubRules.rewriteRule?.first(where: { $0.matches(stub.request) }),
+                   let index = saveRewriteRules[matchedRewriteRule] {
+                    stub.rewriteRule = matchedRewriteRule
+                    stub.index = index
+                    saveRewriteRules[matchedRewriteRule] = index + 1
+                }
             }
             
-            if stub.rewriteRule == nil, let rewriteRule = stubRules.addToSavedStubRules?.first(where: { $0.matches(stub.request) }) {
-                stub.rewriteRule = rewriteRule
-            }
+            self.stubSaver?.save(stub, bodyData: bodyData, completion: completion)
         }
-        
-        stubSaver?.save(stub, bodyData: bodyData, completion: completion)
     }
     
     func add(_ cache: StubCache) {

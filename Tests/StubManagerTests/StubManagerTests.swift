@@ -13,69 +13,71 @@ class StubManagerTests: XCTestCase {
     let manager = StubManager.shared
     
     override func setUp() {
+        
+        try? StubPlay.default.start(with: StubConfig(
+                                        folders: ["StubFiles"],
+                                        clearSaveDir: true,
+                                        bundle: Bundle(for: type(of: self)),
+                                        isEnabledServer: false,
+                                        isLogging: false))
         manager.stubSaver = StubFileSaver(filesManager: FilesManagableStub())
     }
     
-    func testSave() throws {
-      let r = StubRewriteRules(
-            addToSavedStubRules: [
-                RewriteRule(method: nil, host: nil, path: "/d/e", params: nil, body: nil)
-            ],
-            doNotSaveStubRules: [
-                RewriteRule(method: nil, host: nil, path: "/d/e", params: nil, body: nil)
+    func testSaveStubRules() throws {
+        let exp = expectation(description: "Success")
+        
+        let rule1 = RewriteRule(method: nil, host: "a.co", path: nil, params: nil, body: nil)
+        manager.stubRules = StubRewriteRules(
+            rewriteRule: [
+                rule1,
+                RewriteRule(method: nil, host: nil, path: "/d/e", params: nil, body: nil),
+                RewriteRule(method: nil, host: nil, path: nil, params: "f=g", body: nil),
+                RewriteRule(method: nil, host: "a\\..*", path: "/d/e", params: "f=g", body: nil),
             ])
         
-            let encoder = JSONEncoder()
-            encoder.outputFormatting = .prettyPrinted
-            let data = try encoder.encode(r)
-        
-        print(String(data: data, encoding: .utf8))
-        
-        
-        let url = URL(string: "https://a.co/d/e?f=g")
-        let stub = Stub(request: Request(method: .get, url: url, headers: nil, body: nil), response: nil)
-        
-        for i in 0..<10 {
-            let exp = expectation(description: "Success")
-            manager.save(stub, bodyData: nil) { result in
-                switch result {
-                case .success(let resultStub):
-                    XCTAssertEqual(resultStub, Stub(index: i,
-                                                    request: Request(method: .get, url: url, headers: nil, body: nil),
-                                                    response: nil)
-                    )
-                    exp.fulfill()
-                case .failure(let error):
-                    XCTFail(error.localizedDescription)
-                    exp.fulfill()
-                }
+        let url = URL(string: "https://a.co/d/e?f=g")!
+        let stub = Stub(request: Request(method: .get, url: url), response: nil)
+        manager.save(stub, bodyData: nil) { result in
+            switch result {
+            case .success(let resultStub):
+                XCTAssertEqual(resultStub, Stub(
+                                rewriteRule: rule1,
+                                index: 0,
+                                request: Request(method: .get, url: url),
+                                response: nil)
+                )
+                exp.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+                exp.fulfill()
             }
         }
         
         waitForExpectations(timeout: 1)
     }
     
-    func testSaveStubRules() throws {
-        let url = URL(string: "https://a.co/d/e?f=g")
-        let rule1 = RewriteRule(method: nil, host: "a.co", path: nil, params: nil, body: nil)
+    func testSaveStubRulesOrdered() throws {
+        let exp = expectation(description: "Success")
+        
+        let rule1 = RewriteRule(method: nil, host: "a\\..*", path: "/d/e", params: "f=g", body: nil)
         manager.stubRules = StubRewriteRules(
-            addToSavedStubRules: [
+            rewriteRule: [
                 rule1,
                 RewriteRule(method: nil, host: nil, path: "/d/e", params: nil, body: nil),
-                RewriteRule(method: nil, host: nil, path: nil, params: "f=g", body: nil)
-            ],
-            doNotSaveStubRules: nil)
+                RewriteRule(method: nil, host: nil, path: nil, params: "f=g", body: nil),
+                RewriteRule(method: nil, host: "a.co", path: nil, params: nil, body: nil)
+            ])
         
-        let stub = Stub(request: Request(method: .get, url: url, headers: nil, body: nil), response: nil)
-        let exp = expectation(description: "Success")
+        let url = URL(string: "https://a.co/d/e?f=g")!
+        let stub = Stub(request: Request(method: .get, url: url), response: nil)
         manager.save(stub, bodyData: nil) { result in
             switch result {
             case .success(let resultStub):
                 XCTAssertEqual(resultStub, Stub(
-                    rewriteRule: rule1,
-                    index: 0,
-                    request: Request(method: .get, url: url, headers: nil, body: nil),
-                    response: nil)
+                                rewriteRule: rule1,
+                                index: 0,
+                                request: Request(method: .get, url: url),
+                                response: nil)
                 )
                 exp.fulfill()
             case .failure(let error):
@@ -88,52 +90,25 @@ class StubManagerTests: XCTestCase {
     }
     
     func testSaveStubRulesWithStubHasRule() throws {
-        let url = URL(string: "https://a.co/d/e?f=g")
-        let rule = RewriteRule(method: .get, host: ".*.co", path: nil, params: nil, body: nil)
-        manager.stubRules = StubRewriteRules(
-            addToSavedStubRules: [
-                RewriteRule(method: nil, host: "a.co", path: nil, params: nil, body: nil),
-            ],
-            doNotSaveStubRules: nil)
+        let url = URL(string: "https://a.co/d/e?f=g")!
+        let rule = RewriteRule(method: .get, host: ".*\\.co", path: nil, params: nil, body: nil)
         
-        let stub = Stub(rewriteRule: rule, request: Request(method: .get, url: url, headers: nil, body: nil), response: nil)
+        manager.stubRules = StubRewriteRules(
+            rewriteRule: [
+                rule
+            ])
+        
+        let stub = Stub(rewriteRule: nil, request: Request(method: .get, url: url), response: nil)
         let exp = expectation(description: "Success")
         manager.save(stub, bodyData: nil) { result in
             switch result {
             case .success(let resultStub):
                 XCTAssertEqual(resultStub, Stub(
-                    rewriteRule: rule,
-                    index: 0,
-                    request: Request(method: .get, url: url, headers: nil, body: nil),
-                    response: nil)
+                                rewriteRule: rule,
+                                index: 0,
+                                request: Request(method: .get, url: url),
+                                response: nil)
                 )
-                exp.fulfill()
-            case .failure(let error):
-                XCTFail(error.localizedDescription)
-                exp.fulfill()
-            }
-        }
-        
-        waitForExpectations(timeout: 1)
-    }
-
-    func testDoNotSaveStubRules() throws {
-        let url = URL(string: "https://a.co/d/e?f=g")
-        let rule1 = RewriteRule(method: nil, host: "a.co", path: nil, params: nil, body: nil)
-        manager.stubRules = StubRewriteRules(
-            addToSavedStubRules: [
-                rule1,
-            ],
-            doNotSaveStubRules: [
-                rule1,
-            ])
-        
-        let stub = Stub(request: Request(method: .get, url: url, headers: nil, body: nil), response: nil)
-        let exp = expectation(description: "Success")
-        manager.save(stub, bodyData: nil) { result in
-            switch result {
-            case .success(let resultStub):
-                XCTAssertNil(resultStub)
                 exp.fulfill()
             case .failure(let error):
                 XCTFail(error.localizedDescription)

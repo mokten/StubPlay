@@ -19,9 +19,36 @@
 		3F1F1F7F2646BBD20029F82C /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1F1F7E2646BBD20029F82C /* HttpMethod.swift */; };
 		3F1F1F832646BBE40029F82C /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1F1F822646BBE40029F82C /* Request.swift */; };
 		3F1F1F872646BBF60029F82C /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1F1F862646BBF60029F82C /* Response.swift */; };
+		3F24AA5B2686FE710058CEDD /* JSONCodingKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F24AA5A2686FE710058CEDD /* JSONCodingKeys.swift */; };
+		3F24AA6326873F490058CEDD /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F24AA6226873F490058CEDD /* Array+Extensions.swift */; };
+		3F24AA64268741B70058CEDD /* StubFolderCacheLoadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD3DF30227AF9B600953856 /* StubFolderCacheLoadTests.swift */; };
+		3F24AA65268741D70058CEDD /* FilesManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8C986B2261F55E00717E14 /* FilesManagerTests.swift */; };
+		3F24AA66268741D70058CEDD /* StubFolderCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1F0E712275CC04005FB5DD /* StubFolderCacheTests.swift */; };
+		3F24AA67268741D70058CEDD /* StubFolderCacheMultilpleFolderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBDB1412289796D006CC848 /* StubFolderCacheMultilpleFolderTests.swift */; };
+		3F24AA68268741D70058CEDD /* StubFolderCacheBodyDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC46D6E2286917E0021E275 /* StubFolderCacheBodyDataTests.swift */; };
+		3F24AA69268741D70058CEDD /* StubPlayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F19675C2287FFEF00199246 /* StubPlayTests.swift */; };
+		3F24AA6A268741D70058CEDD /* StubNameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8DD5452646860A00B9A98D /* StubNameTests.swift */; };
+		3F24AA6B268741D70058CEDD /* FilenameFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F576868224CC2B100BBC26C /* FilenameFormatterTests.swift */; };
+		3F24AA6C268741D70058CEDD /* StringExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8DD5482646970E00B9A98D /* StringExtensionsTests.swift */; };
+		3F24AA6D268741D70058CEDD /* RewriteRuleMatchesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8C986322618EC600717E14 /* RewriteRuleMatchesTests.swift */; };
+		3F24AA6E268741D70058CEDD /* RewriteRuleCreateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3180762264979E00863A32 /* RewriteRuleCreateTests.swift */; };
+		3F24AA6F268741D70058CEDD /* StubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3180792264A21A00863A32 /* StubTests.swift */; };
 		3F3180772264979E00863A32 /* RewriteRuleCreateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3180762264979E00863A32 /* RewriteRuleCreateTests.swift */; };
 		3F31807A2264A21A00863A32 /* StubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3180792264A21A00863A32 /* StubTests.swift */; };
 		3F44FC842296AD4E0086A7C6 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44FC832296AD4E0086A7C6 /* Logger.swift */; };
+		3F53A825269846BD000CA642 /* HlsPlaylistTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F53A824269846BD000CA642 /* HlsPlaylistTests.swift */; };
+		3F53A826269846BD000CA642 /* HlsPlaylistTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F53A824269846BD000CA642 /* HlsPlaylistTests.swift */; };
+		3F53A827269846BD000CA642 /* HlsPlaylistTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F53A824269846BD000CA642 /* HlsPlaylistTests.swift */; };
+		3F53A829269846EB000CA642 /* HlsPlaylist in Resources */ = {isa = PBXBuildFile; fileRef = 3F53A828269846EB000CA642 /* HlsPlaylist */; };
+		3F53A82A269846EB000CA642 /* HlsPlaylist in Resources */ = {isa = PBXBuildFile; fileRef = 3F53A828269846EB000CA642 /* HlsPlaylist */; };
+		3F53A82B269846EB000CA642 /* HlsPlaylist in Resources */ = {isa = PBXBuildFile; fileRef = 3F53A828269846EB000CA642 /* HlsPlaylist */; };
+		3F53A83226985336000CA642 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F53A83126985336000CA642 /* String+Extensions.swift */; };
+		3F53A83326985336000CA642 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F53A83126985336000CA642 /* String+Extensions.swift */; };
+		3F53A83426985336000CA642 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F53A83126985336000CA642 /* String+Extensions.swift */; };
+		3F53A8362698549D000CA642 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F53A8352698549D000CA642 /* Bundle+Extensions.swift */; };
+		3F53A8372698549D000CA642 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F53A8352698549D000CA642 /* Bundle+Extensions.swift */; };
+		3F53A8382698549D000CA642 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F53A8352698549D000CA642 /* Bundle+Extensions.swift */; };
+		3F570CA62698899800BB1CE9 /* String+Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F570CA52698899800BB1CE9 /* String+Stream.swift */; };
 		3F576869224CC2B100BBC26C /* FilenameFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F576868224CC2B100BBC26C /* FilenameFormatterTests.swift */; };
 		3F660DA9265D0EC700AE99B6 /* Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F660DA8265D0EC700AE99B6 /* Atomic.swift */; };
 		3F6B1CC6266E571E001EA8E2 /* StubURLProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDDD88A227C68FE00F1CB37 /* StubURLProtocolTests.swift */; };
@@ -32,6 +59,12 @@
 		3F793075264FA89F002573C5 /* StubPlaySwizzleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F793074264FA89F002573C5 /* StubPlaySwizzleTests.swift */; };
 		3F793076264FA89F002573C5 /* StubPlaySwizzleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F793074264FA89F002573C5 /* StubPlaySwizzleTests.swift */; };
 		3F793077264FA89F002573C5 /* StubPlaySwizzleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F793074264FA89F002573C5 /* StubPlaySwizzleTests.swift */; };
+		3F80BB6D2683478300BA2186 /* StubManagerTests+Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F80BB6C2683478300BA2186 /* StubManagerTests+Regex.swift */; };
+		3F80BB6E2683478300BA2186 /* StubManagerTests+Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F80BB6C2683478300BA2186 /* StubManagerTests+Regex.swift */; };
+		3F80BB6F2683478300BA2186 /* StubManagerTests+Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F80BB6C2683478300BA2186 /* StubManagerTests+Regex.swift */; };
+		3F80BB7526834D9300BA2186 /* StubConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F80BB7426834D9300BA2186 /* StubConfigTests.swift */; };
+		3F80BB7626834D9300BA2186 /* StubConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F80BB7426834D9300BA2186 /* StubConfigTests.swift */; };
+		3F80BB7726834D9300BA2186 /* StubConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F80BB7426834D9300BA2186 /* StubConfigTests.swift */; };
 		3F843C2922425B6F0007BBA4 /* StubPlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F843C1F22425B6F0007BBA4 /* StubPlay.framework */; };
 		3F843C3022425B6F0007BBA4 /* StubPlay-Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F843C2222425B6F0007BBA4 /* StubPlay-Swift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3F84C2D0266648A80088B47C /* StubURLProtocolStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F84C2CF266648A80088B47C /* StubURLProtocolStore.swift */; };
@@ -57,6 +90,7 @@
 		3F943A12228992FE00655968 /* RewriteRuleMatchesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8C986322618EC600717E14 /* RewriteRuleMatchesTests.swift */; };
 		3F943A132289930400655968 /* RewriteRuleCreateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3180762264979E00863A32 /* RewriteRuleCreateTests.swift */; };
 		3F943A142289930B00655968 /* StubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3180792264A21A00863A32 /* StubTests.swift */; };
+		3FAAD2E32684B74F0026DC44 /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAAD2E22684B74F0026DC44 /* Dictionary+Extension.swift */; };
 		3FAAFE52267B603800E62332 /* StubRewriteRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAAFE51267B603800E62332 /* StubRewriteRules.swift */; };
 		3FAAFE57267B6B3C00E62332 /* StubManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAAFE56267B6B3C00E62332 /* StubManagerTests.swift */; };
 		3FAAFE58267B6B3C00E62332 /* StubManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAAFE56267B6B3C00E62332 /* StubManagerTests.swift */; };
@@ -84,6 +118,9 @@
 		3FDDD88D227C6A7100F1CB37 /* URLSessionConfiguration+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDDD88C227C6A7100F1CB37 /* URLSessionConfiguration+Extension.swift */; };
 		3FDDD88F227C6DBD00F1CB37 /* StubURLProtocolFiles in Resources */ = {isa = PBXBuildFile; fileRef = 3FDDD88E227C6DBD00F1CB37 /* StubURLProtocolFiles */; };
 		3FDDD890227C6DBD00F1CB37 /* StubURLProtocolFiles in Resources */ = {isa = PBXBuildFile; fileRef = 3FDDD88E227C6DBD00F1CB37 /* StubURLProtocolFiles */; };
+		3FE3A54B26874CB000BB1492 /* StubFolderCacheLoopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE3A54A26874CB000BB1492 /* StubFolderCacheLoopTests.swift */; };
+		3FE3A54C26874CB000BB1492 /* StubFolderCacheLoopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE3A54A26874CB000BB1492 /* StubFolderCacheLoopTests.swift */; };
+		3FE3A54D26874CB000BB1492 /* StubFolderCacheLoopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE3A54A26874CB000BB1492 /* StubFolderCacheLoopTests.swift */; };
 		3FF0D9D426469E850033EC4A /* StubPlay_MacOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0D9D326469E850033EC4A /* StubPlay_MacOSTests.swift */; };
 		3FF0D9F52646A8BB0033EC4A /* URLRequest+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0D9F42646A8BB0033EC4A /* URLRequest+Extension.swift */; };
 		3FF207A4227C4C58000202B0 /* StubURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF207A3227C4C58000202B0 /* StubURLProtocol.swift */; };
@@ -115,14 +152,23 @@
 		3F1F1F7E2646BBD20029F82C /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
 		3F1F1F822646BBE40029F82C /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		3F1F1F862646BBF60029F82C /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		3F24AA5A2686FE710058CEDD /* JSONCodingKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONCodingKeys.swift; sourceTree = "<group>"; };
+		3F24AA6226873F490058CEDD /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		3F3180762264979E00863A32 /* RewriteRuleCreateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewriteRuleCreateTests.swift; sourceTree = "<group>"; };
 		3F3180792264A21A00863A32 /* StubTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubTests.swift; sourceTree = "<group>"; };
 		3F44FC832296AD4E0086A7C6 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		3F50E62D2518CF600074307F /* StubPlay.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = StubPlay.podspec; sourceTree = "<group>"; };
+		3F53A824269846BD000CA642 /* HlsPlaylistTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HlsPlaylistTests.swift; sourceTree = "<group>"; };
+		3F53A828269846EB000CA642 /* HlsPlaylist */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HlsPlaylist; sourceTree = "<group>"; };
+		3F53A83126985336000CA642 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		3F53A8352698549D000CA642 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
+		3F570CA52698899800BB1CE9 /* String+Stream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Stream.swift"; sourceTree = "<group>"; };
 		3F576868224CC2B100BBC26C /* FilenameFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilenameFormatterTests.swift; sourceTree = "<group>"; };
 		3F660DA8265D0EC700AE99B6 /* Atomic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Atomic.swift; sourceTree = "<group>"; };
 		3F75A8F1227B24F0003AA140 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		3F793074264FA89F002573C5 /* StubPlaySwizzleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubPlaySwizzleTests.swift; sourceTree = "<group>"; };
+		3F80BB6C2683478300BA2186 /* StubManagerTests+Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StubManagerTests+Regex.swift"; sourceTree = "<group>"; };
+		3F80BB7426834D9300BA2186 /* StubConfigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubConfigTests.swift; sourceTree = "<group>"; };
 		3F843C1F22425B6F0007BBA4 /* StubPlay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StubPlay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F843C2222425B6F0007BBA4 /* StubPlay-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StubPlay-Swift.h"; sourceTree = "<group>"; };
 		3F843C2322425B6F0007BBA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -138,6 +184,7 @@
 		3F8DD5482646970E00B9A98D /* StringExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionsTests.swift; sourceTree = "<group>"; };
 		3F97B29522BA6D2800CB343F /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swifter.framework; path = Carthage/Build/iOS/Swifter.framework; sourceTree = "<group>"; };
 		3F97B29722BA6D3B00CB343F /* Swifter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swifter.framework; path = Carthage/Build/tvOS/Swifter.framework; sourceTree = "<group>"; };
+		3FAAD2E22684B74F0026DC44 /* Dictionary+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
 		3FAAFE51267B603800E62332 /* StubRewriteRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubRewriteRules.swift; sourceTree = "<group>"; };
 		3FAAFE56267B6B3C00E62332 /* StubManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubManagerTests.swift; sourceTree = "<group>"; };
 		3FAAFE5B267B6D6B00E62332 /* FilesManagableStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesManagableStub.swift; sourceTree = "<group>"; };
@@ -159,6 +206,7 @@
 		3FDDD88A227C68FE00F1CB37 /* StubURLProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubURLProtocolTests.swift; sourceTree = "<group>"; };
 		3FDDD88C227C6A7100F1CB37 /* URLSessionConfiguration+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionConfiguration+Extension.swift"; sourceTree = "<group>"; };
 		3FDDD88E227C6DBD00F1CB37 /* StubURLProtocolFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = StubURLProtocolFiles; sourceTree = "<group>"; };
+		3FE3A54A26874CB000BB1492 /* StubFolderCacheLoopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubFolderCacheLoopTests.swift; sourceTree = "<group>"; };
 		3FF0D9C826469E850033EC4A /* StubPlay_MacOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StubPlay_MacOS.h; sourceTree = "<group>"; };
 		3FF0D9C926469E850033EC4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FF0D9CE26469E850033EC4A /* StubPlay MacOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "StubPlay MacOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -215,12 +263,38 @@
 			name = Helper;
 			sourceTree = "<group>";
 		};
+		3F24AA592686FE660058CEDD /* Coding */ = {
+			isa = PBXGroup;
+			children = (
+				3F24AA5A2686FE710058CEDD /* JSONCodingKeys.swift */,
+			);
+			name = Coding;
+			sourceTree = "<group>";
+		};
 		3F50E61E2518CF4F0074307F /* Deployment */ = {
 			isa = PBXGroup;
 			children = (
 				3F50E62D2518CF600074307F /* StubPlay.podspec */,
 			);
 			name = Deployment;
+			sourceTree = "<group>";
+		};
+		3F53A823269846AD000CA642 /* HlsPlaylist */ = {
+			isa = PBXGroup;
+			children = (
+				3F53A828269846EB000CA642 /* HlsPlaylist */,
+				3F53A824269846BD000CA642 /* HlsPlaylistTests.swift */,
+			);
+			path = HlsPlaylist;
+			sourceTree = "<group>";
+		};
+		3F53A8302698531F000CA642 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3F53A83126985336000CA642 /* String+Extensions.swift */,
+				3F53A8352698549D000CA642 /* Bundle+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		3F843C1522425B6F0007BBA4 = {
@@ -270,12 +344,14 @@
 				3FD3DF2F227AF99100953856 /* StubFolderCache */,
 				3F843C2F22425B6F0007BBA4 /* Info.plist */,
 				3FAAFE55267B6B2900E62332 /* StubManagerTests */,
+				3F53A823269846AD000CA642 /* HlsPlaylist */,
 				3F8DD5452646860A00B9A98D /* StubNameTests.swift */,
 				3F576868224CC2B100BBC26C /* FilenameFormatterTests.swift */,
 				3F8DD5482646970E00B9A98D /* StringExtensionsTests.swift */,
 				3F8C986322618EC600717E14 /* RewriteRuleMatchesTests.swift */,
 				3F3180762264979E00863A32 /* RewriteRuleCreateTests.swift */,
 				3F793074264FA89F002573C5 /* StubPlaySwizzleTests.swift */,
+				3F53A8302698531F000CA642 /* Extensions */,
 				3FC513D72646B6D00064C3C7 /* Stub */,
 			);
 			path = Tests;
@@ -294,6 +370,7 @@
 			isa = PBXGroup;
 			children = (
 				3FAAFE56267B6B3C00E62332 /* StubManagerTests.swift */,
+				3F80BB6C2683478300BA2186 /* StubManagerTests+Regex.swift */,
 			);
 			path = StubManagerTests;
 			sourceTree = "<group>";
@@ -360,11 +437,15 @@
 		3FBC1CDD2242714000B8F41F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				3F24AA592686FE660058CEDD /* Coding */,
 				3FDDD88C227C6A7100F1CB37 /* URLSessionConfiguration+Extension.swift */,
 				3F0E5418227D47CC008E0F6A /* URL+Extension.swift */,
 				3FF0D9F42646A8BB0033EC4A /* URLRequest+Extension.swift */,
 				3FB169C32296D1630014773C /* String+Extension.swift */,
+				3F570CA52698899800BB1CE9 /* String+Stream.swift */,
 				3F660DA8265D0EC700AE99B6 /* Atomic.swift */,
+				3FAAD2E22684B74F0026DC44 /* Dictionary+Extension.swift */,
+				3F24AA6226873F490058CEDD /* Array+Extensions.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -374,6 +455,7 @@
 			children = (
 				3FC513D82646B7170064C3C7 /* StubFiles */,
 				3F3180792264A21A00863A32 /* StubTests.swift */,
+				3F80BB7426834D9300BA2186 /* StubConfigTests.swift */,
 			);
 			path = Stub;
 			sourceTree = "<group>";
@@ -387,6 +469,7 @@
 				3FC46D6E2286917E0021E275 /* StubFolderCacheBodyDataTests.swift */,
 				3F19675C2287FFEF00199246 /* StubPlayTests.swift */,
 				3FD3DF30227AF9B600953856 /* StubFolderCacheLoadTests.swift */,
+				3FE3A54A26874CB000BB1492 /* StubFolderCacheLoopTests.swift */,
 			);
 			path = StubFolderCache;
 			sourceTree = "<group>";
@@ -587,6 +670,7 @@
 				3FDDD88F227C6DBD00F1CB37 /* StubURLProtocolFiles in Resources */,
 				3FC513D92646B7170064C3C7 /* StubFiles in Resources */,
 				3FD3DF42227B048A00953856 /* FilesManagerFiles in Resources */,
+				3F53A829269846EB000CA642 /* HlsPlaylist in Resources */,
 				3FD3DF37227B03F400953856 /* StubFolderCacheFiles in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -595,6 +679,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F53A82A269846EB000CA642 /* HlsPlaylist in Resources */,
 				3F943A092289929F00655968 /* FilesManagerFiles in Resources */,
 				3FC513DA2646B7170064C3C7 /* StubFiles in Resources */,
 				3F943A0C228992E000655968 /* StubFolderCacheFiles in Resources */,
@@ -610,6 +695,7 @@
 				3F6B1CC8266E572B001EA8E2 /* FilesManagerFiles in Resources */,
 				3F6B1CC9266E572E001EA8E2 /* StubFolderCacheFiles in Resources */,
 				3F6B1CC7266E5726001EA8E2 /* StubURLProtocolFiles in Resources */,
+				3F53A82B269846EB000CA642 /* HlsPlaylist in Resources */,
 				3FC513DB2646B7170064C3C7 /* StubFiles in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -621,6 +707,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F570CA62698899800BB1CE9 /* String+Stream.swift in Sources */,
 				3FFC2598228058A600BC47E8 /* StubPlay.swift in Sources */,
 				3F1F1F832646BBE40029F82C /* Request.swift in Sources */,
 				3FB169BF2296C97E0014773C /* AssetResourceLoader.swift in Sources */,
@@ -630,6 +717,7 @@
 				3FB169C12296C97E0014773C /* StubServer.swift in Sources */,
 				3FB169C42296D1630014773C /* String+Extension.swift in Sources */,
 				3FF0D9F52646A8BB0033EC4A /* URLRequest+Extension.swift in Sources */,
+				3FAAD2E32684B74F0026DC44 /* Dictionary+Extension.swift in Sources */,
 				3F11FAE22680A2EE0024388B /* StubResourceLoaderStore.swift in Sources */,
 				3FD24534241497DF00D285F5 /* StubPlay+Swizzle.swift in Sources */,
 				3F75A8F2227B24F0003AA140 /* Counter.swift in Sources */,
@@ -645,6 +733,8 @@
 				3F1F0E6F2275B407005FB5DD /* StubFolderCache.swift in Sources */,
 				3FBC1CDB22426A2600B8F41F /* StubManager.swift in Sources */,
 				3F1F1F7F2646BBD20029F82C /* HttpMethod.swift in Sources */,
+				3F24AA6326873F490058CEDD /* Array+Extensions.swift in Sources */,
+				3F24AA5B2686FE710058CEDD /* JSONCodingKeys.swift in Sources */,
 				3FB169BD2296C97E0014773C /* HlsPlaylist.swift in Sources */,
 				3F1F1F772646BB940029F82C /* RewriteRule.swift in Sources */,
 				3FAE4E5222425F40005EF99D /* Stub.swift in Sources */,
@@ -659,21 +749,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F793075264FA89F002573C5 /* StubPlaySwizzleTests.swift in Sources */,
+				3F53A83226985336000CA642 /* String+Extensions.swift in Sources */,
 				3F31807A2264A21A00863A32 /* StubTests.swift in Sources */,
 				3F3180772264979E00863A32 /* RewriteRuleCreateTests.swift in Sources */,
 				3FAAFE57267B6B3C00E62332 /* StubManagerTests.swift in Sources */,
 				3FBDB1422289796D006CC848 /* StubFolderCacheMultilpleFolderTests.swift in Sources */,
+				3F53A825269846BD000CA642 /* HlsPlaylistTests.swift in Sources */,
 				3F8C986422618EC600717E14 /* RewriteRuleMatchesTests.swift in Sources */,
 				3F8DD5462646860A00B9A98D /* StubNameTests.swift in Sources */,
 				3F19675D2287FFEF00199246 /* StubPlayTests.swift in Sources */,
 				3FDDD88B227C68FE00F1CB37 /* StubURLProtocolTests.swift in Sources */,
 				3F8DD5492646970E00B9A98D /* StringExtensionsTests.swift in Sources */,
+				3FE3A54B26874CB000BB1492 /* StubFolderCacheLoopTests.swift in Sources */,
+				3F53A8362698549D000CA642 /* Bundle+Extensions.swift in Sources */,
 				3FC46D6F2286917E0021E275 /* StubFolderCacheBodyDataTests.swift in Sources */,
 				3F1F0E722275CC04005FB5DD /* StubFolderCacheTests.swift in Sources */,
 				3FAAFE5C267B6D6B00E62332 /* FilesManagableStub.swift in Sources */,
+				3F80BB6D2683478300BA2186 /* StubManagerTests+Regex.swift in Sources */,
 				3F8C986C2261F55E00717E14 /* FilesManagerTests.swift in Sources */,
 				3F576869224CC2B100BBC26C /* FilenameFormatterTests.swift in Sources */,
 				3FD3DF31227AF9B600953856 /* StubFolderCacheLoadTests.swift in Sources */,
+				3F80BB7526834D9300BA2186 /* StubConfigTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -682,21 +778,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F793076264FA89F002573C5 /* StubPlaySwizzleTests.swift in Sources */,
+				3F53A83326985336000CA642 /* String+Extensions.swift in Sources */,
 				3F943A132289930400655968 /* RewriteRuleCreateTests.swift in Sources */,
 				3F943A10228992E600655968 /* StubPlayTests.swift in Sources */,
 				3FAAFE58267B6B3C00E62332 /* StubManagerTests.swift in Sources */,
 				3F943A072289921E00655968 /* FilenameFormatterTests.swift in Sources */,
+				3F53A826269846BD000CA642 /* HlsPlaylistTests.swift in Sources */,
 				3F943A11228992E600655968 /* StubFolderCacheLoadTests.swift in Sources */,
 				3F8DD5472646860A00B9A98D /* StubNameTests.swift in Sources */,
 				3F943A0A228992A300655968 /* FilesManagerTests.swift in Sources */,
 				3F943A0E228992E600655968 /* StubFolderCacheMultilpleFolderTests.swift in Sources */,
 				3F8DD54A2646970E00B9A98D /* StringExtensionsTests.swift in Sources */,
+				3FE3A54C26874CB000BB1492 /* StubFolderCacheLoopTests.swift in Sources */,
+				3F53A8372698549D000CA642 /* Bundle+Extensions.swift in Sources */,
 				3F943A12228992FE00655968 /* RewriteRuleMatchesTests.swift in Sources */,
 				3F943A0D228992E300655968 /* StubFolderCacheTests.swift in Sources */,
 				3FAAFE5D267B6D6B00E62332 /* FilesManagableStub.swift in Sources */,
+				3F80BB6E2683478300BA2186 /* StubManagerTests+Regex.swift in Sources */,
 				3F943A0F228992E600655968 /* StubFolderCacheBodyDataTests.swift in Sources */,
 				3F943A142289930B00655968 /* StubTests.swift in Sources */,
 				3F943A082289929900655968 /* StubURLProtocolTests.swift in Sources */,
+				3F80BB7626834D9300BA2186 /* StubConfigTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -704,10 +806,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F53A8382698549D000CA642 /* Bundle+Extensions.swift in Sources */,
+				3F24AA65268741D70058CEDD /* FilesManagerTests.swift in Sources */,
+				3F24AA66268741D70058CEDD /* StubFolderCacheTests.swift in Sources */,
+				3F24AA67268741D70058CEDD /* StubFolderCacheMultilpleFolderTests.swift in Sources */,
+				3F24AA68268741D70058CEDD /* StubFolderCacheBodyDataTests.swift in Sources */,
+				3F24AA69268741D70058CEDD /* StubPlayTests.swift in Sources */,
+				3F24AA6A268741D70058CEDD /* StubNameTests.swift in Sources */,
+				3F24AA6B268741D70058CEDD /* FilenameFormatterTests.swift in Sources */,
+				3F24AA6C268741D70058CEDD /* StringExtensionsTests.swift in Sources */,
+				3F24AA6D268741D70058CEDD /* RewriteRuleMatchesTests.swift in Sources */,
+				3F24AA6E268741D70058CEDD /* RewriteRuleCreateTests.swift in Sources */,
+				3F24AA6F268741D70058CEDD /* StubTests.swift in Sources */,
+				3F80BB7726834D9300BA2186 /* StubConfigTests.swift in Sources */,
+				3F53A83426985336000CA642 /* String+Extensions.swift in Sources */,
+				3FE3A54D26874CB000BB1492 /* StubFolderCacheLoopTests.swift in Sources */,
 				3FAAFE5E267B6D6B00E62332 /* FilesManagableStub.swift in Sources */,
+				3F24AA64268741B70058CEDD /* StubFolderCacheLoadTests.swift in Sources */,
+				3F80BB6F2683478300BA2186 /* StubManagerTests+Regex.swift in Sources */,
 				3F793077264FA89F002573C5 /* StubPlaySwizzleTests.swift in Sources */,
 				3FAAFE59267B6B3C00E62332 /* StubManagerTests.swift in Sources */,
 				3F6B1CC6266E571E001EA8E2 /* StubURLProtocolTests.swift in Sources */,
+				3F53A827269846BD000CA642 /* HlsPlaylistTests.swift in Sources */,
 				3FF0D9D426469E850033EC4A /* StubPlay_MacOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -857,6 +977,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 0;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 862DX7386G;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -869,7 +990,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.0;
+				MARKETING_VERSION = 0.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mokten.StubPlay;
 				PRODUCT_MODULE_NAME = StubPlay;
 				PRODUCT_NAME = StubPlay;
@@ -888,6 +1009,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 0;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 862DX7386G;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -900,7 +1022,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.0;
+				MARKETING_VERSION = 0.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mokten.StubPlay;
 				PRODUCT_MODULE_NAME = StubPlay;
 				PRODUCT_NAME = StubPlay;

@@ -22,14 +22,9 @@ extension Stub {
      
      */
     var name: String {
-        var name: String
-        if let path = request.url?.path, !path.isEmpty {
-            name = path
-        } else {
-            name = "_"
-        }
+        var name = request.url.path.isEmpty ? "_" : request.url.path
         
-        if let query = request.url?.query {
+        if let query = request.url.query {
             if !name.hasSuffix("_") { name += "_" }
             name += query
         }
@@ -52,7 +47,8 @@ extension Stub {
         let ext: String
         if let mimeType = response?.mimeType, let mimeTypeExt = URL.pathExtension(for: mimeType) {
             ext = mimeTypeExt
-        } else if let pathExt = request.url?.pathExtension, !pathExt.isEmpty {
+        } else if !request.url.pathExtension.isEmpty {
+            let pathExt = request.url.pathExtension
             if pathExt.count > Constants.maxExtensionLength {
                 ext = "\(pathExt.prefix(Constants.maxExtensionLength))_\(pathExt.djb2hash)"
             } else {

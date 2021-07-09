@@ -39,8 +39,8 @@ class StubFolderCacheBodyDataTests: XCTestCase {
     
     func testBodyData() throws {
         folder = StubFolderCache(baseFolder: "StubFolderCacheFiles/testBodyData", filesManager: filesManager)
-        do { try folder.load() } catch { XCTAssertTrue(false) }
-        let request = Request(method: .get, url: URL(string: "https://a.b/data.json"), headers: nil, body: nil)
+        folder.load()
+        let request = Request(method: .get, url: URL(string: "https://a.b/data.json")!)
         let stub = folder.get(request: request)
         let data = (stub?.responseData)!
         let body = String(data: data, encoding: .utf8)!
@@ -49,8 +49,8 @@ class StubFolderCacheBodyDataTests: XCTestCase {
     
     func testBodyDataParams() throws {
         folder = StubFolderCache(baseFolder: "StubFolderCacheFiles/testBodyDataParams", filesManager: filesManager)
-        do { try folder.load() } catch { XCTAssertTrue(false) }
-        let request = Request(method: .get, url: URL(string: "https://a.com.au/offers/itunes-monthly?x=Y"), headers: nil, body: nil)
+        folder.load()
+        let request = Request(method: .get, url: URL(string: "https://a.com.au/offers/itunes-monthly?x=Y")!)
         let stub = folder.get(request: request)
         let data = (stub?.responseData)!
         let body = String(data: data, encoding: .utf8)!
@@ -59,8 +59,8 @@ class StubFolderCacheBodyDataTests: XCTestCase {
     
     func testBodyDataPost() throws {
         folder = StubFolderCache(baseFolder: "StubFolderCacheFiles/testBodyData", filesManager: filesManager)
-        do { try folder.load() } catch { XCTAssertTrue(false) }
-        let request = Request(method: .post, url: URL(string: "https://a.com.au/au"), headers: nil, body: nil)
+        folder.load()
+        let request = Request(method: .post, url: URL(string: "https://a.com.au/au")!)
         let stub = folder.get(request: request)
         let data = (stub?.responseData)!
         let body = String(data: data, encoding: .utf8)!

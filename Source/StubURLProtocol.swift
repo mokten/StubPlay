@@ -28,7 +28,7 @@ import Foundation
 public final class StubURLProtocol: URLProtocol {
     
     private enum Constants {
-        static let requestHeaderKey = "StubPlayRequestHeader"
+        static let requestHeaderKey = "StubPlay"
     }
     
     private lazy var store: StubURLProtocolStorage = StubURLProtocolStore.shared
@@ -44,8 +44,7 @@ public final class StubURLProtocol: URLProtocol {
             logger("WEBSOCKET - never stubbed", request, request.allHTTPHeaderFields)
             return false
         }
-        
-        // logger(request)
+
         return URLProtocol.property(forKey: Constants.requestHeaderKey, in: request as URLRequest) == nil
     }
     
@@ -56,20 +55,34 @@ public final class StubURLProtocol: URLProtocol {
     override public func startLoading() {
         if let stubRequest = request.stubRequest,
            let stub = store.get(request: stubRequest) {
-            logger("MOCK:", request.url)
+            logger("MOCK:", stub.index, request.url)
             store.finished(stub: stub,
                            urlProtocol: self,
-                     response: stub.httpURLResponse(defaultURL: request.url),
-                     bodyData: stub.responseData,
-                     isCached: true)
+                           response: stub.httpURLResponse(defaultURL: request.url),
+                           bodyData: stub.responseData,
+                           isCached: true)
             
         } else {
-            logger("NETWORK:", request.url)
             guard let newRequest = request as? NSMutableURLRequest else { return }
             URLProtocol.setProperty(true, forKey: Constants.requestHeaderKey, in: newRequest)
+
+            if let url = newRequest.url, let scheme = url.scheme, scheme.hasPrefix(AssetResource.internalScheme) {
+                let httpURL = url.url(with: AssetResource.httpScheme)
+                if let stubRequest = (newRequest as URLRequest).stubRequest(url: httpURL),
+                   let stub = store.get(request: stubRequest) {
+                    store.finished(stub: stub,
+                                   urlProtocol: self,
+                                   response: stub.httpURLResponse(defaultURL: request.url),
+                                   bodyData: stub.responseData,
+                                   isCached: true)
+                    return
+                }
+            }
             
-            dataTask = store.dataTask(with: newRequest as URLRequest, urlProtocol: self)
-            dataTask?.resume()
+            logger("NETWORK:", request.url)
+            let dataTask = store.dataTask(with: newRequest as URLRequest, urlProtocol: self)
+            self.dataTask = dataTask
+            dataTask.resume()
         }
     }
     

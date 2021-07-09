@@ -23,16 +23,12 @@ try StubPlay.default.start(with: config)
 
 ```swift
 class VideoPlayerViewController {
-     
-    // You must keep a strong reference to the StubPlay resourceLoader
-    private lazy var assetResourceLoader = StubPlay.default.resourceLoader()
-        
     private var playerItem: AVPlayerItem?
     private var player: AVPlayer?
         
     func startPlayer() {    
         // Use the convenience helper to create an AVURLAsset
-        let asset = assetResourceLoader.avAsset(with: url, options: nil)
+        let asset = StubPlay.default.resourceLoader().avAsset(with: url, options: nil)
             
         asset.loadValuesAsynchronously(forKeys: ["playable"]) { [weak self] in
                 self.playerItem = AVPlayerItem(asset: asset)

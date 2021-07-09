@@ -34,13 +34,16 @@ class StubFolderCacheTests: XCTestCase {
         super.setUp()
         filesManager = FilesManager(bundle: Bundle(for: type(of: self)))
         folder = StubFolderCache(baseFolder: "StubFolderCacheFiles/testMatch", filesManager: filesManager)
+        folder.load() 
     }
     
     func testNoGet() throws {
-        let request = Request(method: .get, url: URL(string: "https://httpbin.org/get"), headers: nil, body: nil)
-        let noRequest = Request(method: .get, url: URL(string: "https://nothere.org/geta"), headers: nil, body: nil)
+        let request = Request(method: .get, url: URL(string: "https://httpbin.org/get")!)
+        let noRequest = Request(method: .get, url: URL(string: "https://nothere.org/geta")!)
         let folderStubs = [Stub(rewriteRule: nil, index: 0, request: request, response: nil)]
-        try folder.set(stubs: folderStubs.shuffled())
+        folder.set(stubs: folderStubs.shuffled())
+        // ensures loaded
+        _ = folder.get(request: Request(method: .get, url: URL(string: "https://abc.com")!))
         let returnedStub = self.folder.get(request: noRequest)
         XCTAssertNil(returnedStub)
     }
@@ -58,9 +61,12 @@ class StubFolderCacheTests: XCTestCase {
     }
     
     func _testSet() throws {
-        let request = Request(method: .get, url: URL(string: "https://httpbin.org/get"), headers: nil, body: nil)
-        let folderStubs = (0...10000).map { Stub(rewriteRule: nil, index: $0, request: request, response: nil) }
-        try folder.set(stubs: folderStubs.shuffled())
+        let request = Request(method: .get, url: URL(string: "https://httpbin.org/get")!)
+        let folderStubs = (0...1000).map { Stub(rewriteRule: nil, index: $0, request: request, response: nil) }
+        folder.set(stubs: folderStubs.shuffled())
+        // ensures loaded
+        _ = folder.get(request: Request(method: .get, url: URL(string: "https://abc.com")!))
+        
         let returnedMessages = folder.requestStubs[request.rewriteRule]!
         XCTAssertEqual(returnedMessages, folderStubs)
     }
@@ -72,7 +78,7 @@ class StubFolderCacheTests: XCTestCase {
         let saveQueue = DispatchQueue(label: "com.mokten.saveQueue")
         let dispatchGroup = DispatchGroup()
         
-        let request = Request(method: .get, url: URL(string: "https://httpbin.org/get"), headers: nil, body: nil)
+        let request = Request(method: .get, url: URL(string: "https://httpbin.org/get")!)
         let messageCount = 1000
         let extraExpectedCount = 10
         
@@ -84,7 +90,9 @@ class StubFolderCacheTests: XCTestCase {
             expectedMessages.append(Stub(rewriteRule: nil, index: maxIndex, request: request, response: nil))
         }
         
-        try folder.set(stubs: folderStubs.shuffled())
+        folder.set(stubs: folderStubs.shuffled())
+        // ensures loaded
+        _ = folder.get(request: Request(method: .get, url: URL(string: "https://abc.com")!))
         
         var returnedMessages: [Stub] = []
         for _ in 0...(expectedMessages.count/2 - 1)  {
@@ -105,7 +113,11 @@ class StubFolderCacheTests: XCTestCase {
         
         dispatchGroup.notify(queue: DispatchQueue.main, work: DispatchWorkItem(block: {
             saveQueue.async {
-                XCTAssertEqual(returnedMessages, expectedMessages)
+                XCTAssertEqual(returnedMessages.count, expectedMessages.count)
+                XCTAssertEqual(returnedMessages.first, expectedMessages.first)
+                XCTAssertEqual(returnedMessages.last, expectedMessages.last)
+                returnedMessages.removeAll (where: { expectedMessages.contains($0) })
+                XCTAssertTrue(returnedMessages.isEmpty)
                 expect.fulfill()
             }
         }))

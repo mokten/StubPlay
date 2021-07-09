@@ -37,17 +37,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Initialise in init() is the safest way all classes will get stubbed.
         //      ie. Main.storyboard initilisers are preceded by stub activation
         do {
-            let config = StubConfig(folders: ["Text", "Image", "Alamofire",
-                                              "Video/Segment", "Video/ByteRange",
-                                              "Multiple", "RewriteRule"],
-                                    saveResponsesDirURL: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("stubplay"),
-                                    skipSavingStubbedResponses: false,
-                                    validateResponseFile: false,
-                                    clearSaveDir: true,
-                                    bundle: Bundle.main,
-                                    isEnabledServer: true,
-                                    protocolURLSessionConfiguration: nil,
-                                    isLogging: true)
+            let config = StubConfig(
+                globalConfig: "Video/.config",
+                folders: ["Text", "Image", "Alamofire",
+                          "Video/Segment", "Video/ByteRange",
+                          "Multiple", "RewriteRule"],
+                saveResponsesDirURL: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("stubplay"),
+                skipSavingStubbedResponses: false,
+                validateResponseFile: false,
+                clearSaveDir: true,
+                bundle: Bundle.main,
+                isEnabledServer: true,
+                protocolURLSessionConfiguration: nil,
+                isLogging: true)
             try StubPlay.default.start(with: config)
         } catch {
             print(error)

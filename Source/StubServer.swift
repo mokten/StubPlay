@@ -24,15 +24,14 @@
 //
 
 import Foundation
-#if canImport(Swifter)
 import Swifter
-#endif
 
 public class StubServer {
     
     private let stubManager: StubManager
     private var server: HttpServer?
     private var port: in_port_t = StubPlayConstants.serverPort
+    private let playlist = HlsPlaylist()
     
     init(stubManager: StubManager) {
         self.stubManager = stubManager
@@ -50,22 +49,50 @@ public class StubServer {
     
     public func shareFilesFromDirectory() -> ((HttpRequest) -> HttpResponse) {
         return { [weak self] request in
+            
             guard let self = self,
-                let stubRequest = request.stubRequest,
-                let stub = self.stubManager.get(request: stubRequest),
-                let response = stub.response
-                else {
+                  let stubRequest = request.stubRequest,
+                  let stub = self.stubManager.get(request: stubRequest, isChangeIndex: false),
+                  let response = stub.response
+            else {
                 return .notFound
             }
             
             let statusCode = response.statusCode ?? 200
+            var headers = response.headers
+            var data = stub.responseData
             
-            guard let data = stub.responseData else {
-                return .raw(statusCode, "OK", response.headers, nil)
+            if let contentType = headers?[caseInsensitive: "Content-Type"],
+               contentType.lowercased().contains("mpegurl"),
+               let m3u8Data = data,
+               let text = String(data: m3u8Data, encoding: .utf8)
+            {
+                let baseURL = stub.request.url.url(with: AssetResource.httpScheme)
+                
+                if let updatedText = self.playlist.replace(text: text,
+                                                           with: AssetResource.redirectScheme,
+                                                           to: baseURL,
+                                                           stubURL: URL(string: "http://127.0.0.1:\(Int(self.port))/stub")) {
+                    data = updatedText.data(using: .utf8)
+                }
             }
             
-            return .raw(statusCode, "OK", response.headers, { writer in
-                try? writer.write(data)
+            if headers?[caseInsensitive: "Content-Encoding"] != nil {
+                headers?[caseInsensitive: "Content-Encoding"] = nil
+            }
+            
+            if headers?[caseInsensitive: "Content-Length"] != nil, let data = stub.responseData {
+                headers?[caseInsensitive: "Content-Length"] = "\(data.count)"
+            }
+            
+            return .raw(statusCode, "OK", headers, { writer in
+                do {
+                    if let data = data {
+                        try writer.write(data)
+                    }
+                } catch {
+                    logger(error: error)
+                }
             })
         }
     }
@@ -85,8 +112,8 @@ extension StubServer {
 private extension HttpRequest {
     var stubRequest: Request? {
         let method =  HttpMethod(rawValue: self.method.lowercased()) ?? .get
-        guard let queryParam = queryParams.first else { return nil }
-        let urlStr = queryParam.1
+        guard let urlStr = queryParams.first?.1.removingPercentEncoding else { return nil }
+        
         guard let url = URL(string: urlStr) else { return nil }
         
         // TODO: Check image/count max ?
