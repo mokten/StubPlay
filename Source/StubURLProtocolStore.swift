@@ -108,7 +108,7 @@ extension StubURLProtocolStore: URLSessionDataDelegate {
                            didReceive response: URLResponse,
                            completionHandler: @escaping (URLSession.ResponseDisposition) -> Void) {
         guard let urlProtocol = cache.object(forKey: dataTask) else {
-            fatalError()
+            return
         }
         
         urlProtocol.client?.urlProtocol(urlProtocol, didReceive: response, cacheStoragePolicy: .notAllowed)
@@ -118,7 +118,7 @@ extension StubURLProtocolStore: URLSessionDataDelegate {
     
     public func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
         guard let urlProtocol = cache.object(forKey: dataTask) else {
-            fatalError()
+            return
         }
         urlProtocol.client?.urlProtocol(urlProtocol, didLoad: data)
         urlProtocol.responseData?.append(data)
@@ -179,7 +179,7 @@ extension StubURLProtocolStore: URLSessionTaskDelegate {
                 urlProtocol.client?.urlProtocol(urlProtocol, didFailWithError: error)
             } else {
                 guard let urlProtocol = cache.object(forKey: task) else {
-                    fatalError()
+                    return
                 }
                 finished(urlProtocol: urlProtocol, response: task.response, bodyData: urlProtocol.responseData)
             }
