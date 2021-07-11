@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'StubPlay'
-  s.version          = '0.4.0'
+  s.version          = '0.4.1'
   s.swift_version    = '5.3'
   s.summary          = 'Save http requests and responses and then replay them later on.'
 

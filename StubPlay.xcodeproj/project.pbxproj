@@ -990,7 +990,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.4.0;
+				MARKETING_VERSION = 0.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mokten.StubPlay;
 				PRODUCT_MODULE_NAME = StubPlay;
 				PRODUCT_NAME = StubPlay;
@@ -1022,7 +1022,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.4.0;
+				MARKETING_VERSION = 0.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mokten.StubPlay;
 				PRODUCT_MODULE_NAME = StubPlay;
 				PRODUCT_NAME = StubPlay;
