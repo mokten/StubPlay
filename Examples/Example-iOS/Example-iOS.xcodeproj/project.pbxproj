@@ -26,6 +26,10 @@
 		3F87687720A7E82A00DAC66B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F87687620A7E82A00DAC66B /* Assets.xcassets */; };
 		3F87687A20A7E82A00DAC66B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F87687820A7E82A00DAC66B /* LaunchScreen.storyboard */; };
 		3FD2454924149C2100D285F5 /* Test1 in Resources */ = {isa = PBXBuildFile; fileRef = 3FD2454824149C2100D285F5 /* Test1 */; };
+		3FEE5BCA269C4A9000B74911 /* NetworkStringViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEE5BC9269C4A9000B74911 /* NetworkStringViewModelTests.swift */; };
+		3FEE5BCC269C53F100B74911 /* MultipleTests in Resources */ = {isa = PBXBuildFile; fileRef = 3FEE5BCB269C53F100B74911 /* MultipleTests */; };
+		3FEE5BCE269C544100B74911 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEE5BCD269C544100B74911 /* Bundle+Extensions.swift */; };
+		3FEE5BD0269C5A0900B74911 /* NetworkStringViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEE5BCF269C5A0900B74911 /* NetworkStringViewModel.swift */; };
 		3FF69EE32414B6BF0073BF03 /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF69EE22414B6BF0073BF03 /* ExampleTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +81,10 @@
 		3FD2453D24149B0B00D285F5 /* Example-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Example-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FD2454124149B0B00D285F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FD2454824149C2100D285F5 /* Test1 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Test1; sourceTree = "<group>"; };
+		3FEE5BC9269C4A9000B74911 /* NetworkStringViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStringViewModelTests.swift; sourceTree = "<group>"; };
+		3FEE5BCB269C53F100B74911 /* MultipleTests */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MultipleTests; sourceTree = "<group>"; };
+		3FEE5BCD269C544100B74911 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
+		3FEE5BCF269C5A0900B74911 /* NetworkStringViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStringViewModel.swift; sourceTree = "<group>"; };
 		3FF69EE22414B6BF0073BF03 /* ExampleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,8 +176,10 @@
 		3F1DFEB822A93A3C00FD9EB5 /* Multiple Requests */ = {
 			isa = PBXGroup;
 			children = (
+				3FEE5BC8269C4A7A00B74911 /* Tests */,
 				3F1DFEBB22A93A9800FD9EB5 /* Multiple */,
 				3F1DFEB922A93A8E00FD9EB5 /* MultipleViewController.swift */,
+				3FEE5BCF269C5A0900B74911 /* NetworkStringViewModel.swift */,
 			);
 			path = "Multiple Requests";
 			sourceTree = "<group>";
@@ -212,6 +222,7 @@
 			children = (
 				3FD2454724149BCB00D285F5 /* Test1 */,
 				3FD2454124149B0B00D285F5 /* Info.plist */,
+				3FEE5BCD269C544100B74911 /* Bundle+Extensions.swift */,
 			);
 			path = "Example-iOSTests";
 			sourceTree = "<group>";
@@ -223,6 +234,15 @@
 				3FF69EE22414B6BF0073BF03 /* ExampleTests.swift */,
 			);
 			path = Test1;
+			sourceTree = "<group>";
+		};
+		3FEE5BC8269C4A7A00B74911 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				3FEE5BCB269C53F100B74911 /* MultipleTests */,
+				3FEE5BC9269C4A9000B74911 /* NetworkStringViewModelTests.swift */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		6FAE42AD047B839A47B34BD4 /* Frameworks */ = {
@@ -332,6 +352,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FEE5BCC269C53F100B74911 /* MultipleTests in Resources */,
 				3FD2454924149C2100D285F5 /* Test1 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,6 +374,7 @@
 				3F4C49C020A7EE1B009945E1 /* ImageViewController.swift in Sources */,
 				3F1DFEA722A9281200FD9EB5 /* Style.swift in Sources */,
 				3F1DFE7122A91B8600FD9EB5 /* NiblessViewController.swift in Sources */,
+				3FEE5BD0269C5A0900B74911 /* NetworkStringViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +382,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FEE5BCE269C544100B74911 /* Bundle+Extensions.swift in Sources */,
+				3FEE5BCA269C4A9000B74911 /* NetworkStringViewModelTests.swift in Sources */,
 				3FF69EE32414B6BF0073BF03 /* ExampleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -29,7 +29,7 @@ import StubPlay
 class MultipleViewController: NiblessViewController {
     
     private let textView = UITextView()
-    private let session = URLSession(configuration: URLSessionConfiguration.default)
+    private let viewModel = NetworkStringViewModel(url: URL(string: "https://a.ab/multiple.txt")!, count: 5)
     
     override init() {
         super.init()
@@ -41,37 +41,18 @@ class MultipleViewController: NiblessViewController {
         view.backgroundColor = .white
         view.addSubview(textView)
         
-        (0...4).forEach { index in
-            testJsonRequest(index)
+        viewModel.fetch { texts in
+            DispatchQueue.main.async {
+                for (i, text) in texts.enumerated() {
+                    self.textView.text += "\(i): \(text)"
+                }
+            }
         }
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         textView.frame = CGRect(x: 20, y: 100, width: view.frame.width - 40, height: 300)
-    }
-    
-    func testJsonRequest(_ index: Int) {
-        let url = URL(string: "https://a.ab/multiple.txt")
-        
-        let task = session.dataTask(with: url!) { [weak self] data, response, error in
-            guard let self = self else { return }
-            
-            if let error = error {
-                fatalError("ViewController \(error)")
-            }
-            
-            guard let data = data, let txt = String(data: data, encoding: .utf8) else {
-                print("ViewController no data")
-                return
-            }
-            
-            DispatchQueue.main.async {
-                self.textView.text += "This is request: \(index)\n\(txt)\n------\n"
-            }
-        }
-        
-        task.resume()
     }
     
 }

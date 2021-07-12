@@ -33,7 +33,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     override init() {
         super.init()
-        
+        guard !isTest() else {
+            return
+        }
+
         // Initialise in init() is the safest way all classes will get stubbed.
         //      ie. Main.storyboard initilisers are preceded by stub activation
         do {
@@ -60,9 +63,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DefaultStyle.applyStyle()
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = MainViewController()
+        window?.rootViewController = isTest() ? UIViewController() : MainViewController()
         window?.makeKeyAndVisible()
         return true
+    }
+    
+    private func isTest() -> Bool {
+        return NSClassFromString("XCTestCase") != nil
     }
 }
 
