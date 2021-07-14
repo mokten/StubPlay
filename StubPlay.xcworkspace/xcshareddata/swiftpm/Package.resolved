@@ -2,7 +2,7 @@
   "object": {
     "pins": [
       {
-        "package": "Swifter",
+        "package": "swifter",
         "repositoryURL": "https://github.com/httpswift/swifter.git",
         "state": {
           "branch": null,
