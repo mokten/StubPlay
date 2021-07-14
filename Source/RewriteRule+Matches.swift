@@ -53,7 +53,6 @@ extension RewriteRule {
         if let headers = headers, let requestHeaders = request.headers, !requestHeaders.isEmpty {
             for (key, value) in headers {
                 guard let requestValue = requestHeaders[key] else {
-                    logger(level: .error, "Missing request value: \(requestHeaders)")
                     return false
                 }
                 if RewriteRule.doesNotMatch(key: value, matcher: requestValue) {
