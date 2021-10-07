@@ -17,15 +17,19 @@ let package = Package(
         // .package(name: "Swifter", path: "Vendor/swifter")
     ],
     targets: [
-        .target(name: "StubPlay", dependencies: ["Swifter"], path: "Source"
-        ),
+        .target(name: "StubPlay", dependencies: ["Swifter"], path: "Source", exclude:["Info.plist"]),
         .testTarget(name: "Tests", dependencies: ["StubPlay"], path: "Tests",
-            resources: [
-                .copy("FilesManager"),
-                .copy("StubFolderCache"),
-                .copy("StubURLProtocol"),
-            ]
-        ),
+                    exclude: ["Stub/StubFiles",
+                              "Info.plist",
+                              "TestPlans",
+                              "HlsPlaylist/HlsPlaylist/simple.m3u8"
+                             ],
+                    resources: [
+                        .copy("FilesManager"),
+                        .copy("StubFolderCache"),
+                        .copy("StubURLProtocol"),
+                    ]
+                   ),
     ],
     swiftLanguageVersions: [.v5]
 )
