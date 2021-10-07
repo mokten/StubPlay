@@ -12,9 +12,7 @@ let package = Package(
         .library(name: "StubPlay", targets: ["StubPlay"])
     ],
     dependencies: [
-        .package(name: "Swifter", url: "https://github.com/httpswift/swifter.git", .upToNextMajor(from: "1.5.0"))
-        // because package stubplay is required using a version-based requirement and it depends on unversion package swifter and root depends on StubPlay 0.1.9, version solving failed.
-        // .package(name: "Swifter", path: "Vendor/swifter")
+        .package(name: "Swifter", url: "https://github.com/httpswift/swifter.git", .revision("eea4bb1e652c2e7aaf09bab39065b1c81a36d2e1")) // Sep 28, 2021
     ],
     targets: [
         .target(name: "StubPlay", dependencies: ["Swifter"], path: "Source", exclude:["Info.plist"]),

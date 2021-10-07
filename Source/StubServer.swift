@@ -55,7 +55,7 @@ public class StubServer {
                   let stub = self.stubManager.get(request: stubRequest, isChangeIndex: false),
                   let response = stub.response
             else {
-                return .notFound
+                return .notFound()
             }
             
             let statusCode = response.statusCode ?? 200
