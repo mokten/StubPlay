@@ -206,6 +206,7 @@
 		3FDDD88A227C68FE00F1CB37 /* StubURLProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubURLProtocolTests.swift; sourceTree = "<group>"; };
 		3FDDD88C227C6A7100F1CB37 /* URLSessionConfiguration+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionConfiguration+Extension.swift"; sourceTree = "<group>"; };
 		3FDDD88E227C6DBD00F1CB37 /* StubURLProtocolFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = StubURLProtocolFiles; sourceTree = "<group>"; };
+		3FE3592D276C45A800B06293 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = SOURCE_ROOT; };
 		3FE3A54A26874CB000BB1492 /* StubFolderCacheLoopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubFolderCacheLoopTests.swift; sourceTree = "<group>"; };
 		3FF0D9C826469E850033EC4A /* StubPlay_MacOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StubPlay_MacOS.h; sourceTree = "<group>"; };
 		3FF0D9C926469E850033EC4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -386,6 +387,7 @@
 		3FAE4E4E22425D97005EF99D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3FE3592D276C45A800B06293 /* Package.swift */,
 				3F843C2322425B6F0007BBA4 /* Info.plist */,
 				3F843C2222425B6F0007BBA4 /* StubPlay-Swift.h */,
 			);
@@ -1207,8 +1209,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/httpswift/swifter.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.5.0;
+				kind = revision;
+				revision = 1e4f51c92d7ca486242d8bf0722b99de2c3531aa;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
