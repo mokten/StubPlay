@@ -28,6 +28,7 @@ import AVFoundation
 
 public enum StubPlayConstants {
     public static let serverPort: in_port_t = 9081
+    public static let serverPath = "/stub"
 }
 
 /*

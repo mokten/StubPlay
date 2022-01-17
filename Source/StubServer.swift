@@ -41,7 +41,7 @@ public class StubServer {
     public func start(port: in_port_t) throws -> String {
         self.port = port
         let server = HttpServer()
-        server["/stub"] = shareFilesFromDirectory()
+        server[StubPlayConstants.serverPath] = shareFilesFromDirectory()
         try server.start(port, priority: .userInteractive)
         self.server = server
         return ipAddress
@@ -72,7 +72,7 @@ public class StubServer {
                 if let updatedText = self.playlist.replace(text: text,
                                                            with: AssetResource.redirectScheme,
                                                            to: baseURL,
-                                                           stubURL: URL(string: "http://127.0.0.1:\(Int(self.port))/stub")) {
+                                                           stubURL: URL(string: "http://127.0.0.1:\(Int(self.port))\(StubPlayConstants.serverPath)")) {
                     data = updatedText.data(using: .utf8)
                 }
             }

@@ -183,7 +183,7 @@ extension AssetResourceLoader: AVAssetResourceLoaderDelegate {
             comp.scheme = "http"
             comp.host = "127.0.0.1"
             comp.port = port
-            comp.path = "/stub"
+            comp.path = StubPlayConstants.serverPath
             comp.queryItems = [URLQueryItem(name: "url", value: originalURL.absoluteString)]
             
             if let newURL = comp.url {
