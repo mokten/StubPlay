@@ -40,11 +40,14 @@ public class StubPlay {
     
     public static let `default` = StubPlay()
     
+    public var isStubbing = false
+    
     public var config: StubConfig?
     private weak var session: URLSession?
     public let stubManager: StubManager
     public let serverPort: in_port_t
     public var stubServer: StubServer? = nil
+    
     private var isEnabledServer = false {
         didSet {
             guard oldValue != isEnabledServer else { return }
@@ -120,7 +123,20 @@ public class StubPlay {
         
         self.isEnabledServer = config.isEnabledServer
         
-        _ = swizzle
+        guard !isStubbing else { return }
+        swizzleProtocolClasses()
+        isStubbing = true
+    }
+    
+    public func stop() {
+        guard isStubbing else { return }
+        isStubbing = false
+        
+        swizzleProtocolClasses()
+        isEnabledServer = false
+        stubManager.reset()
+        config = nil
+        session = nil
     }
     
     // Validates and removes invalid files

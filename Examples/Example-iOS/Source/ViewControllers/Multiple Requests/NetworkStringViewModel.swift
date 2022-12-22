@@ -30,7 +30,8 @@ class NetworkStringViewModel {
                 guard let self = self else { return }
                 
                 if let error = error {
-                    fatalError("\(error)")
+                    print(error)
+                    return
                 }
                 
                 guard let data = data, let txt = String(data: data, encoding: .utf8) else {

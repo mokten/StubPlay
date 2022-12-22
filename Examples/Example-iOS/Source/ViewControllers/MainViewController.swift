@@ -23,6 +23,7 @@ class MainViewController: UITabBarController {
             VideoPlayerViewController("Video", url: videoURL),
             ImageViewController(),
             RewriteRuleViewController(),
+            UIViewController.swiftUIDemoView
         ].map { UINavigationController(rootViewController: $0) }
         
     }

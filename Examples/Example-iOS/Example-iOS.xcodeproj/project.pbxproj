@@ -26,6 +26,8 @@
 		3F87687720A7E82A00DAC66B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F87687620A7E82A00DAC66B /* Assets.xcassets */; };
 		3F87687A20A7E82A00DAC66B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F87687820A7E82A00DAC66B /* LaunchScreen.storyboard */; };
 		3FBC613B285C5A9600007684 /* SkipStubPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBC613A285C5A9600007684 /* SkipStubPlayViewController.swift */; };
+		3FCA74212954212D0037DAEE /* SwiftUIDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCA74202954212D0037DAEE /* SwiftUIDemoView.swift */; };
+		3FCA7425295424730037DAEE /* StubManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCA7424295424730037DAEE /* StubManager.swift */; };
 		3FD2454924149C2100D285F5 /* Test1 in Resources */ = {isa = PBXBuildFile; fileRef = 3FD2454824149C2100D285F5 /* Test1 */; };
 		3FEE5BCA269C4A9000B74911 /* NetworkStringViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEE5BC9269C4A9000B74911 /* NetworkStringViewModelTests.swift */; };
 		3FEE5BCC269C53F100B74911 /* MultipleTests in Resources */ = {isa = PBXBuildFile; fileRef = 3FEE5BCB269C53F100B74911 /* MultipleTests */; };
@@ -91,6 +93,8 @@
 		3F87687920A7E82A00DAC66B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F87687B20A7E82A00DAC66B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FBC613A285C5A9600007684 /* SkipStubPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipStubPlayViewController.swift; sourceTree = "<group>"; };
+		3FCA74202954212D0037DAEE /* SwiftUIDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIDemoView.swift; sourceTree = "<group>"; };
+		3FCA7424295424730037DAEE /* StubManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubManager.swift; sourceTree = "<group>"; };
 		3FD2453D24149B0B00D285F5 /* Example-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Example-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FD2454124149B0B00D285F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FD2454824149C2100D285F5 /* Test1 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Test1; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				3F1DFE6C22A91A9400FD9EB5 /* MainViewController.swift */,
+				3FCA741D295420FB0037DAEE /* SwiftUI */,
 				3FBC6139285C5A7200007684 /* SkipStubPlay */,
 				3F1DFEB822A93A3C00FD9EB5 /* Multiple Requests */,
 				3F1DFEA922A92A2400FD9EB5 /* Image */,
@@ -235,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				3F87686D20A7E82900DAC66B /* AppDelegate.swift */,
+				3FCA7424295424730037DAEE /* StubManager.swift */,
 				3F1DFE6E22A91ADE00FD9EB5 /* ViewControllers */,
 				3F1DFE8F22A927E600FD9EB5 /* View */,
 				3F1DFE6F22A91B7A00FD9EB5 /* Helpers */,
@@ -258,6 +264,14 @@
 				3FBC613A285C5A9600007684 /* SkipStubPlayViewController.swift */,
 			);
 			path = SkipStubPlay;
+			sourceTree = "<group>";
+		};
+		3FCA741D295420FB0037DAEE /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				3FCA74202954212D0037DAEE /* SwiftUIDemoView.swift */,
+			);
+			path = SwiftUI;
 			sourceTree = "<group>";
 		};
 		3FD2453E24149B0B00D285F5 /* Example-iOSTests */ = {
@@ -482,8 +496,10 @@
 				3F4C49D420A801A6009945E1 /* VideoPlayerViewController.swift in Sources */,
 				3F4C49C020A7EE1B009945E1 /* ImageViewController.swift in Sources */,
 				3F1DFEA722A9281200FD9EB5 /* Style.swift in Sources */,
+				3FCA7425295424730037DAEE /* StubManager.swift in Sources */,
 				3F1DFE7122A91B8600FD9EB5 /* NiblessViewController.swift in Sources */,
 				3FBC613B285C5A9600007684 /* SkipStubPlayViewController.swift in Sources */,
+				3FCA74212954212D0037DAEE /* SwiftUIDemoView.swift in Sources */,
 				3FEE5BD0269C5A0900B74911 /* NetworkStringViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
