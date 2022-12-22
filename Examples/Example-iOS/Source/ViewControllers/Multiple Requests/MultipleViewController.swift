@@ -41,10 +41,12 @@ class MultipleViewController: NiblessViewController {
         view.backgroundColor = .white
         view.addSubview(textView)
         
+        textView.accessibilityIdentifier = "stubText"
+        
         viewModel.fetch { texts in
             DispatchQueue.main.async {
                 for (i, text) in texts.enumerated() {
-                    self.textView.text += "\(i): \(text)"
+                    self.textView.text += "\(i): \(text)\n"
                 }
             }
         }

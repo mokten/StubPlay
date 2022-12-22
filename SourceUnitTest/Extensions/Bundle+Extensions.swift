@@ -14,4 +14,9 @@ private class TestClass {
 
 extension Bundle {
     static let test = TestClass().test
+    
+    /// Returns the project directory
+    /// 
+    /// Requires PROJECT_DIR to be set in Info.plist PROJECT_DIR = $(PROJECT_DIR)
+    static let projectDir = test.infoDictionary!["PROJECT_DIR"] as? String
 }

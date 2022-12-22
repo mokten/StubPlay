@@ -61,10 +61,15 @@ public extension Canonical {
 }
 
 public extension String {
+
     var safeFileName: String {
+        safeFileName()
+    }
+    
+    func safeFileName(replaceWith: String = "_") -> String {
         guard !isEmpty else { return "_" }
         let filename = self.replacingOccurrences(of: "^/", with: "", options: .regularExpression)
-        let name = filename.replacingOccurrences(of: "[/\\* <>?%|.:]", with: "_", options: .regularExpression)
-        return name == "" ? "_" : name
+        let name = filename.replacingOccurrences(of: "[/\\* <>?%|.:()]", with: replaceWith, options: .regularExpression)
+        return name == "" ? replaceWith : name
     }
 }

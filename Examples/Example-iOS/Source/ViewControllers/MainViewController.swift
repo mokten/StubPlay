@@ -17,12 +17,13 @@ class MainViewController: UITabBarController {
         super.viewDidLoad()
         
         viewControllers = [
+            SkipStubPlayViewController(),
             MultipleViewController(),
             VideoPlayerViewController("Video Byte Range", url: videoByteRangeURL),
             VideoPlayerViewController("Video", url: videoURL),
             ImageViewController(),
             RewriteRuleViewController(),
-        ]
+        ].map { UINavigationController(rootViewController: $0) }
         
     }
 }

@@ -39,7 +39,7 @@ class NetworkStringViewModelTests: XCTestCase {
             expec.fulfill()
         }
         
-        waitForExpectations(timeout: 10) { error in
+        waitForExpectations(timeout: 1) { error in
             if let error = error { XCTFail(error.localizedDescription)}
         }
     }

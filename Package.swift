@@ -9,7 +9,8 @@ let package = Package(
         .macOS(.v11)
     ],
     products: [
-        .library(name: "StubPlay", targets: ["StubPlay"])
+        .library(name: "StubPlay", targets: ["StubPlay"]),
+        .library(name: "StubPlayUnitTest", targets: ["StubPlayUnitTest"]),
     ],
     dependencies: [
         .package(name: "Swifter", url: "https://github.com/httpswift/swifter.git", .revision("1e4f51c92d7ca486242d8bf0722b99de2c3531aa")) // Nov 27, 2021
@@ -28,6 +29,7 @@ let package = Package(
                         .copy("StubURLProtocol"),
                     ]
                    ),
+        .target(name: "StubPlayUnitTest", dependencies: ["StubPlay"], path: "SourceUnitTest", exclude:[]),
     ],
     swiftLanguageVersions: [.v5]
 )

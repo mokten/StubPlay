@@ -42,12 +42,6 @@
 		3F53A829269846EB000CA642 /* HlsPlaylist in Resources */ = {isa = PBXBuildFile; fileRef = 3F53A828269846EB000CA642 /* HlsPlaylist */; };
 		3F53A82A269846EB000CA642 /* HlsPlaylist in Resources */ = {isa = PBXBuildFile; fileRef = 3F53A828269846EB000CA642 /* HlsPlaylist */; };
 		3F53A82B269846EB000CA642 /* HlsPlaylist in Resources */ = {isa = PBXBuildFile; fileRef = 3F53A828269846EB000CA642 /* HlsPlaylist */; };
-		3F53A83226985336000CA642 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F53A83126985336000CA642 /* String+Extensions.swift */; };
-		3F53A83326985336000CA642 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F53A83126985336000CA642 /* String+Extensions.swift */; };
-		3F53A83426985336000CA642 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F53A83126985336000CA642 /* String+Extensions.swift */; };
-		3F53A8362698549D000CA642 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F53A8352698549D000CA642 /* Bundle+Extensions.swift */; };
-		3F53A8372698549D000CA642 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F53A8352698549D000CA642 /* Bundle+Extensions.swift */; };
-		3F53A8382698549D000CA642 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F53A8352698549D000CA642 /* Bundle+Extensions.swift */; };
 		3F570CA62698899800BB1CE9 /* String+Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F570CA52698899800BB1CE9 /* String+Stream.swift */; };
 		3F576869224CC2B100BBC26C /* FilenameFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F576868224CC2B100BBC26C /* FilenameFormatterTests.swift */; };
 		3F660DA9265D0EC700AE99B6 /* Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F660DA8265D0EC700AE99B6 /* Atomic.swift */; };
@@ -156,6 +150,7 @@
 		3F24AA6226873F490058CEDD /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		3F3180762264979E00863A32 /* RewriteRuleCreateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewriteRuleCreateTests.swift; sourceTree = "<group>"; };
 		3F3180792264A21A00863A32 /* StubTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubTests.swift; sourceTree = "<group>"; };
+		3F33EE3B28F6D19C00A0B28D /* StubAssert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAssert.swift; sourceTree = "<group>"; };
 		3F44FC832296AD4E0086A7C6 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		3F50E62D2518CF600074307F /* StubPlay.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = StubPlay.podspec; sourceTree = "<group>"; };
 		3F53A824269846BD000CA642 /* HlsPlaylistTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HlsPlaylistTests.swift; sourceTree = "<group>"; };
@@ -272,6 +267,15 @@
 			name = Coding;
 			sourceTree = "<group>";
 		};
+		3F33EE3528F6CACC00A0B28D /* SourceUnitTest */ = {
+			isa = PBXGroup;
+			children = (
+				3F33EE3B28F6D19C00A0B28D /* StubAssert.swift */,
+				3F53A8302698531F000CA642 /* Extensions */,
+			);
+			path = SourceUnitTest;
+			sourceTree = "<group>";
+		};
 		3F50E61E2518CF4F0074307F /* Deployment */ = {
 			isa = PBXGroup;
 			children = (
@@ -302,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				3F843C2122425B6F0007BBA4 /* Source */,
+				3F33EE3528F6CACC00A0B28D /* SourceUnitTest */,
 				3F843C2C22425B6F0007BBA4 /* Tests */,
 				3F50E61E2518CF4F0074307F /* Deployment */,
 				3FF0D9C726469E850033EC4A /* StubPlay MacOS */,
@@ -352,7 +357,6 @@
 				3F8C986322618EC600717E14 /* RewriteRuleMatchesTests.swift */,
 				3F3180762264979E00863A32 /* RewriteRuleCreateTests.swift */,
 				3F793074264FA89F002573C5 /* StubPlaySwizzleTests.swift */,
-				3F53A8302698531F000CA642 /* Extensions */,
 				3FC513D72646B6D00064C3C7 /* Stub */,
 			);
 			path = Tests;
@@ -751,7 +755,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F793075264FA89F002573C5 /* StubPlaySwizzleTests.swift in Sources */,
-				3F53A83226985336000CA642 /* String+Extensions.swift in Sources */,
 				3F31807A2264A21A00863A32 /* StubTests.swift in Sources */,
 				3F3180772264979E00863A32 /* RewriteRuleCreateTests.swift in Sources */,
 				3FAAFE57267B6B3C00E62332 /* StubManagerTests.swift in Sources */,
@@ -763,7 +766,6 @@
 				3FDDD88B227C68FE00F1CB37 /* StubURLProtocolTests.swift in Sources */,
 				3F8DD5492646970E00B9A98D /* StringExtensionsTests.swift in Sources */,
 				3FE3A54B26874CB000BB1492 /* StubFolderCacheLoopTests.swift in Sources */,
-				3F53A8362698549D000CA642 /* Bundle+Extensions.swift in Sources */,
 				3FC46D6F2286917E0021E275 /* StubFolderCacheBodyDataTests.swift in Sources */,
 				3F1F0E722275CC04005FB5DD /* StubFolderCacheTests.swift in Sources */,
 				3FAAFE5C267B6D6B00E62332 /* FilesManagableStub.swift in Sources */,
@@ -780,7 +782,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F793076264FA89F002573C5 /* StubPlaySwizzleTests.swift in Sources */,
-				3F53A83326985336000CA642 /* String+Extensions.swift in Sources */,
 				3F943A132289930400655968 /* RewriteRuleCreateTests.swift in Sources */,
 				3F943A10228992E600655968 /* StubPlayTests.swift in Sources */,
 				3FAAFE58267B6B3C00E62332 /* StubManagerTests.swift in Sources */,
@@ -792,7 +793,6 @@
 				3F943A0E228992E600655968 /* StubFolderCacheMultilpleFolderTests.swift in Sources */,
 				3F8DD54A2646970E00B9A98D /* StringExtensionsTests.swift in Sources */,
 				3FE3A54C26874CB000BB1492 /* StubFolderCacheLoopTests.swift in Sources */,
-				3F53A8372698549D000CA642 /* Bundle+Extensions.swift in Sources */,
 				3F943A12228992FE00655968 /* RewriteRuleMatchesTests.swift in Sources */,
 				3F943A0D228992E300655968 /* StubFolderCacheTests.swift in Sources */,
 				3FAAFE5D267B6D6B00E62332 /* FilesManagableStub.swift in Sources */,
@@ -808,7 +808,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F53A8382698549D000CA642 /* Bundle+Extensions.swift in Sources */,
 				3F24AA65268741D70058CEDD /* FilesManagerTests.swift in Sources */,
 				3F24AA66268741D70058CEDD /* StubFolderCacheTests.swift in Sources */,
 				3F24AA67268741D70058CEDD /* StubFolderCacheMultilpleFolderTests.swift in Sources */,
@@ -821,7 +820,6 @@
 				3F24AA6E268741D70058CEDD /* RewriteRuleCreateTests.swift in Sources */,
 				3F24AA6F268741D70058CEDD /* StubTests.swift in Sources */,
 				3F80BB7726834D9300BA2186 /* StubConfigTests.swift in Sources */,
-				3F53A83426985336000CA642 /* String+Extensions.swift in Sources */,
 				3FE3A54D26874CB000BB1492 /* StubFolderCacheLoopTests.swift in Sources */,
 				3FAAFE5E267B6D6B00E62332 /* FilesManagableStub.swift in Sources */,
 				3F24AA64268741B70058CEDD /* StubFolderCacheLoadTests.swift in Sources */,
@@ -898,7 +896,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -959,7 +958,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -987,6 +987,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1019,6 +1020,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

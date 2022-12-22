@@ -29,6 +29,10 @@ import XCTest
 
 class FilenameFormatterTests: XCTestCase {
     private let filenameHelper = DefaultFilenameFormatter()
+
+    func testFunctionSafeFileName() throws {
+        XCTAssertEqual(#function.safeFileName(replaceWith: ""), "testFunctionSafeFileName")
+    }
     
     func testFileNameSlash_path() {
         let request = Request(method: .get, url: URL(string: "https://localhost/")!, headers:nil, body: nil)

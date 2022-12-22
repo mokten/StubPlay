@@ -51,9 +51,11 @@ public final class StubURLProtocolStore: NSObject {
     private lazy var session: URLSession = defaultSession
     
     private let stubManager = StubManager.shared
+
+    private var saveMetrics: Bool = true
     
     @Atomic
-    private var cache = NSMapTable<URLSessionTask, StubURLProtocol>.init(
+    private var taskProtocolCache = NSMapTable<URLSessionTask, StubURLProtocol>.init(
         keyOptions: .weakMemory,
         valueOptions: .weakMemory
     )
@@ -76,11 +78,12 @@ extension StubURLProtocolStore: StubURLProtocolStorage {
     
     public func dataTask(with request: URLRequest, urlProtocol: StubURLProtocol) -> URLSessionDataTask {
         let dataTask = session.dataTask(with: request)
-        cache.setObject(urlProtocol, forKey: dataTask)
+        taskProtocolCache.setObject(urlProtocol, forKey: dataTask)
         return dataTask
     }
     
     public func finished(stub: Stub?, urlProtocol: URLProtocol, response: URLResponse?, bodyData: Data?, isCached: Bool = false) {
+        logger()
           
         if let stub = stub, stub.skipSave != true {
             stubManager.save(stub, bodyData: bodyData)
@@ -107,7 +110,7 @@ extension StubURLProtocolStore: URLSessionDataDelegate {
                            dataTask: URLSessionDataTask,
                            didReceive response: URLResponse,
                            completionHandler: @escaping (URLSession.ResponseDisposition) -> Void) {
-        guard let urlProtocol = cache.object(forKey: dataTask) else {
+        guard let urlProtocol = taskProtocolCache.object(forKey: dataTask) else {
             return
         }
         
@@ -117,7 +120,7 @@ extension StubURLProtocolStore: URLSessionDataDelegate {
     }
     
     public func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
-        guard let urlProtocol = cache.object(forKey: dataTask) else {
+        guard let urlProtocol = taskProtocolCache.object(forKey: dataTask) else {
             return
         }
         urlProtocol.client?.urlProtocol(urlProtocol, didLoad: data)
@@ -130,7 +133,7 @@ extension StubURLProtocolStore: URLSessionDataDelegate {
     
     public func urlSession(_ session: URLSession, didBecomeInvalidWithError error: Error?) {
         guard let error = error else { return }
-        _cache.mutate { cache in
+        _taskProtocolCache.mutate { cache in
             guard let enumerator = cache.objectEnumerator() else { return }
             while let urlProtocol = enumerator.nextObject() as? StubURLProtocol {
                 urlProtocol.client?.urlProtocol(urlProtocol, didFailWithError: error)
@@ -156,7 +159,7 @@ extension StubURLProtocolStore: URLSessionDataDelegate {
     }
     
     public func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
-        _cache.mutate { cache in
+        _taskProtocolCache.mutate { cache in
             guard let enumerator = cache.objectEnumerator() else { return }
             while let urlProtocol = enumerator.nextObject() as? StubURLProtocol {
                 urlProtocol.client?.urlProtocolDidFinishLoading(urlProtocol)
@@ -170,7 +173,8 @@ extension StubURLProtocolStore: URLSessionDataDelegate {
 extension StubURLProtocolStore: URLSessionTaskDelegate {
     
     public func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-        _cache.mutate { cache in
+        _taskProtocolCache.mutate { cache in
+            logger()
             
             if let error = error {
                 guard let urlProtocol = cache.object(forKey: task) else {
@@ -184,6 +188,94 @@ extension StubURLProtocolStore: URLSessionTaskDelegate {
                 finished(urlProtocol: urlProtocol, response: task.response, bodyData: urlProtocol.responseData)
             }
             cache.removeObject(forKey: task)
+        }
+    }
+
+    public func urlSession(_ session: URLSession, task: URLSessionTask, didFinishCollecting metrics: URLSessionTaskMetrics) {
+        logger()
+        
+        /**
+         iCloud Private Relay can change the timing and sequence of events for your tasks by sending requests through a set of privacy proxies. All tasks that use iCloud Private Relay set the isProxyConnection property in their transaction metrics. In this case, the remoteAddress property contains the address of the proxy, and not the origin server.
+
+         Tasks to different hosts can reuse the same transport connection, just like how tasks can already share a connection when using HTTP/2. In these cases, a proxied task may not report any secureConnectionStartDate or secureConnectionEndDate.
+         
+         */
+        if  #available(iOS 13.0, *), saveMetrics {
+            logger("\(task.currentRequest?.url?.absoluteString ?? "")\n taskInterval=", metrics.taskInterval.duration, "redirectCount=", metrics.redirectCount)
+        
+            for metric in metrics.transactionMetrics {
+                print(metric.details
+                      ,"\n", metric
+                )
+            }
+            
+//            metrics.transactionMetrics.first?.negotiatedTLSProtocolVersion
+//            metrics.transactionMetrics.first?.networkProtocolName
+        }
+    }
+}
+
+@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+extension URLSessionTaskTransactionMetrics {
+    
+    public var details: String {
+        "Protocol: \(negotiatedTLSProtocolVersion?.description ?? "")\n"
+        + "NetworkProtocolName: \(self.networkProtocolString)\n"
+        + "Using Proxy: \(self.isProxyConnection)\n"
+        + "Total Time: \(Date.distance(fetchStartDate, to: responseEndDate) ?? -1)\n"
+        + " DNS Lookup: \(Date.distance(domainLookupStartDate, to: domainLookupEndDate) ?? -1)\n"
+        + " TCP: \(Date.distance(connectStartDate, to: secureConnectionStartDate) ?? -1)\n"
+        + " TLS: \(Date.distance(secureConnectionStartDate, to: secureConnectionEndDate) ?? -1)\n"
+        + " Request: \(Date.distance(requestStartDate, to: requestEndDate) ?? -1)\n"
+        + " HTTP: \(Date.distance(requestEndDate, to: responseStartDate) ?? -1)\n"
+        + " Response: \(Date.distance(responseStartDate, to: responseEndDate) ?? -1)\n"
+    }
+    
+    /// https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml
+    public var networkProtocolString: String {
+        guard let networkProtocolName = networkProtocolName else { return "" }
+        switch networkProtocolName {
+        case "stun.turn": return "Traversal Using Relays around NAT (TURN)"
+        case "stun.nat-discovery": return "STUN"
+        case "h2": return "HTTP/2 over TLS"
+        case "h2c": return "HTTP/2 over TCP"
+        case "webrtc": return "WebRTC Media and Data"
+        case "c-webrtc": return "Confidential WebRTC Media and Data"
+        case "managesieve": return "ManageSieve"
+        case "coap": return "CoAP"
+        case "XMPP jabber:client namespace": return "xmpp-client"
+        case "XMPP jabber:server namespace": return "xmpp-server"
+        case "DNS-over-TLS": return "dot"
+        case "h3": return "HTTP/3"
+        case "smb": return "SMB2"
+        default: return networkProtocolName.uppercased()
+        }
+    }
+}
+
+extension Date {
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    static func distance(_ from: Date?, to: Date?) -> TimeInterval? {
+        guard let from = from, let to = to else { return nil }
+        return from.distance(to: to)
+    }
+}
+
+@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+extension tls_protocol_version_t: CustomDebugStringConvertible {
+    public var debugDescription: String {
+        description
+    }
+    
+    public var description: String {
+        switch self {
+        case .TLSv10: return "TLS 1.0"
+        case .TLSv11: return "TLS 1.1"
+        case .TLSv12: return "TLS 1.2"
+        case .TLSv13: return "TLS 1.3"
+        case .DTLSv10: return "DTL 1.0"
+        case .DTLSv12: return "DTL 1.2"
+        @unknown default: return "unknown"
         }
     }
 }

@@ -84,6 +84,8 @@ public class StubPlay {
         self.config = config
         Logger.shared.isEnabled = config.isLogging
         
+        logger("config=", config)
+        
         stubManager.reset()
         session = StubURLProtocolStore.shared.updateSession(config: config.protocolURLSessionConfiguration)
         

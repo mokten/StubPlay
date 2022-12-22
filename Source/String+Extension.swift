@@ -10,6 +10,14 @@ import Foundation
 
 extension String {
     
+    /// the file name without any directory or extension
+    /// ie. /var/path/myFileName.swift -> myFileName
+    ///
+    var filename: String {
+        let url = URL(fileURLWithPath: self, isDirectory: false)
+        return url.lastPathComponent.replacingOccurrences(of: "\\.\(url.pathExtension)$", with: "", options: .regularExpression)
+    }
+    
     /**
      
      A unique hash vs a secure hash SHA256

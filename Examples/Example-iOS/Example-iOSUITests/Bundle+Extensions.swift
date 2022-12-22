@@ -1,6 +1,6 @@
 //
 //  Bundle+Extensions.swift
-//  Example-iOSTests
+//  Example-iOSUITests
 //
 //  Created by Yoo-Jin Lee on 12/7/21.
 //  Copyright © 2021 Mokten Pty Ltd. All rights reserved.
@@ -13,5 +13,5 @@ private class TestClass {
 }
 
 extension Bundle {
-    static let test = TestClass().test
+    static let uiTest = TestClass().test
 }

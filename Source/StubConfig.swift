@@ -70,6 +70,11 @@ public struct StubConfig {
      */
     public var isLogging: Bool
     
+    /*
+     Saves metrics
+     */
+    public var saveMetrics: Bool
+    
     public init(globalConfig: String? = nil,
                 folders: [Folder] = [],
                 saveResponsesDirURL: URL? = FilesManager.defaultSaveDirURL,
@@ -79,6 +84,7 @@ public struct StubConfig {
                 bundle: Bundle = Bundle.main,
                 isEnabledServer: Bool = true,
                 protocolURLSessionConfiguration: URLSessionConfiguration? = nil,
+                saveMetrics: Bool = false,
                 isLogging: Bool = true) {
         self.globalConfig = globalConfig
         self.folders = folders
@@ -89,6 +95,23 @@ public struct StubConfig {
         self.bundle =  bundle
         self.isEnabledServer = isEnabledServer
         self.protocolURLSessionConfiguration = protocolURLSessionConfiguration
+        self.saveMetrics = saveMetrics
         self.isLogging = isLogging
+    }
+}
+
+extension StubConfig: CustomStringConvertible {
+    public var description: String {
+        "StubConfig(globalConfig=\(globalConfig?.description ?? "nil")\n"
+        + "folders=\(folders)\n"
+        + "saveResponsesDirURL=\(saveResponsesDirURL?.debugDescription ?? "nil")\n"
+        + "skipSavingStubbedResponses=\(skipSavingStubbedResponses?.description ?? "nil")\n"
+        + "validateResponseFile=\(validateResponseFile)\n"
+        + "clearSaveDir=\(clearSaveDir)\n"
+        + "bundle=\(bundle)\n"
+        + "isEnabledServer=\(isEnabledServer)\n"
+        + "protocolURLSessionConfiguration=\(protocolURLSessionConfiguration?.description ?? "nil")\n"
+        + "saveMetrics=\(saveMetrics)\n"
+        + "isLogging=\(isLogging))"
     }
 }

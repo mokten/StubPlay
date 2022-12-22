@@ -29,9 +29,11 @@ import XCTest
 class StubURLProtocolTests: XCTestCase {
     
     private let urls = [
-        "https://a.b/data.json",
-        "https://a.b/noreponse",
-        "https://a.com/image/block.png"
+//        "https://a.b/data.json",
+//        "https://a.b/noreponse",
+//        "https://a.com/image/block.png"
+        
+        "https://www.google.com/"
     ]
     
     override func setUp() {
@@ -40,8 +42,9 @@ class StubURLProtocolTests: XCTestCase {
             try StubPlay.default.start(with: StubConfig(folders: ["StubURLProtocolFiles/testStubRequest"],
                                                         saveResponsesDirURL: nil,
                                                         validateResponseFile: false,
-                                                        bundle: Bundle(for: type(of: self)),
-                                                        isEnabledServer: false)
+                                                        bundle: Bundle.test,
+                                                        isEnabledServer: false,                                                        
+                                                        isLogging: true)
             )
         } catch {
             XCTAssertTrue(false, error.localizedDescription)
@@ -57,10 +60,18 @@ class StubURLProtocolTests: XCTestCase {
         guard let url = URL(string: urlStr) else { return XCTAssertTrue(false, "\(urlStr)") }
         
         let config = URLSessionConfiguration.default
+
+        if #available(iOS 11.0, *) {
+            config.multipathServiceType = .handover
+        }
+
         _ = config.enableStub(true)
         let session = URLSession(configuration: config)
-        
-        let task = session.dataTask(with: url) { data, response, error in
+        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10)
+        if #available(iOS 14.5, *) {
+            request.assumesHTTP3Capable = true
+        }
+        let task = session.dataTask(with: request) { data, response, error in
             XCTAssertNil(error)
             XCTAssertNotNil(data)
             exp.fulfill()

@@ -10,6 +10,11 @@ import XCTest
 @testable import StubPlay
 
 class StringExtensionsTests: XCTestCase {
+
+    func testFilename() throws {
+        XCTAssertEqual(#file.filename, "StringExtensionsTests")
+    }
+    
     func testDjb2hash() throws {
         XCTAssertEqual("".djb2hash, 5381)
         XCTAssertEqual("".djb2hash, "".djb2hash)
