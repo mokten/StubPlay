@@ -13,7 +13,7 @@ let package = Package(
         .library(name: "StubPlayUnitTest", targets: ["StubPlayUnitTest"]),
     ],
     dependencies: [
-        .package(name: "Swifter", url: "https://github.com/httpswift/swifter.git", .revision("1e4f51c92d7ca486242d8bf0722b99de2c3531aa")) // Nov 27, 2021
+        .package(url: "https://github.com/mokten/swifter.git", .exactItem("1.5.1"))
     ],
     targets: [
         .target(name: "StubPlay", dependencies: ["Swifter"], path: "Source", exclude:["Info.plist"]),

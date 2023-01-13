@@ -3,11 +3,11 @@
     "pins": [
       {
         "package": "Swifter",
-        "repositoryURL": "https://github.com/httpswift/swifter.git",
+        "repositoryURL": "https://github.com/mokten/swifter.git",
         "state": {
           "branch": null,
           "revision": "1e4f51c92d7ca486242d8bf0722b99de2c3531aa",
-          "version": null
+          "version": "1.5.1"
         }
       }
     ]
