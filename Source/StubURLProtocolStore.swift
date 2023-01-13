@@ -193,22 +193,18 @@ extension StubURLProtocolStore: URLSessionTaskDelegate {
     }
 
     public func urlSession(_ session: URLSession, task: URLSessionTask, didFinishCollecting metrics: URLSessionTaskMetrics) {
-        logger()
-        
+        guard #available(iOS 13.0, *), saveMetrics else { return }
+
         /**
          iCloud Private Relay can change the timing and sequence of events for your tasks by sending requests through a set of privacy proxies. All tasks that use iCloud Private Relay set the isProxyConnection property in their transaction metrics. In this case, the remoteAddress property contains the address of the proxy, and not the origin server.
-
+         
          Tasks to different hosts can reuse the same transport connection, just like how tasks can already share a connection when using HTTP/2. In these cases, a proxied task may not report any secureConnectionStartDate or secureConnectionEndDate.
          
          */
-        if #available(iOS 13.0, *), saveMetrics {
-            logger("\(task.currentRequest?.url?.absoluteString ?? "")\n taskInterval=", metrics.taskInterval.duration, "redirectCount=", metrics.redirectCount)
+        logger("\(task.currentRequest?.url?.absoluteString ?? "")\n taskInterval=", metrics.taskInterval.duration, "redirectCount=", metrics.redirectCount)
         
-            for metric in metrics.transactionMetrics {
-                print(metric.details
-                      ,"\n", metric
-                )
-            }
+        for metric in metrics.transactionMetrics {
+            logger(metric.details)
         }
     }
 }
