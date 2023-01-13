@@ -29,7 +29,8 @@ import Foundation
  Saves a Stub in a format
  */
 public protocol StubSaver {
-    func save(_ stub: Stub, bodyData: Data?, completion: ((Result<Stub?, Error>) -> Void)?)
+    func save(_ stub: Stub, bodyData: Data?, completion: ((Result<Stub?, Error>) -> Void)?)    
+    func clear()
 }
 
 /*
