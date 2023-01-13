@@ -16,7 +16,7 @@ let package = Package(
         .package(url: "https://github.com/mokten/swifter.git", .exactItem("1.5.1"))
     ],
     targets: [
-        .target(name: "StubPlay", dependencies: ["Swifter"], path: "Source", exclude:["Info.plist"]),
+        .target(name: "StubPlay", dependencies: [.product(name: "Swifter", package: "swifter")], path: "Source", exclude:["Info.plist"]),
         .testTarget(name: "Tests", dependencies: ["StubPlay"], path: "Tests",
                     exclude: ["Stub/StubFiles",
                               "Info.plist",
