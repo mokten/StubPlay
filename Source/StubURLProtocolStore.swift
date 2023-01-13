@@ -52,7 +52,7 @@ public final class StubURLProtocolStore: NSObject {
     
     private let stubManager = StubManager.shared
 
-    private var saveMetrics: Bool = true
+    private var saveMetrics: Bool = false
     
     @Atomic
     private var taskProtocolCache = NSMapTable<URLSessionTask, StubURLProtocol>.init(
@@ -61,7 +61,8 @@ public final class StubURLProtocolStore: NSObject {
     )
     
     @discardableResult
-    public func updateSession(config: URLSessionConfiguration?) -> URLSession {
+    public func updateSession(config: URLSessionConfiguration?, saveMetrics: Bool = true) -> URLSession {
+        self.saveMetrics = saveMetrics
         guard let config = config else {
             session = defaultSession
             return session
@@ -200,7 +201,7 @@ extension StubURLProtocolStore: URLSessionTaskDelegate {
          Tasks to different hosts can reuse the same transport connection, just like how tasks can already share a connection when using HTTP/2. In these cases, a proxied task may not report any secureConnectionStartDate or secureConnectionEndDate.
          
          */
-        if  #available(iOS 13.0, *), saveMetrics {
+        if #available(iOS 13.0, *), saveMetrics {
             logger("\(task.currentRequest?.url?.absoluteString ?? "")\n taskInterval=", metrics.taskInterval.duration, "redirectCount=", metrics.redirectCount)
         
             for metric in metrics.transactionMetrics {
@@ -208,9 +209,6 @@ extension StubURLProtocolStore: URLSessionTaskDelegate {
                       ,"\n", metric
                 )
             }
-            
-//            metrics.transactionMetrics.first?.negotiatedTLSProtocolVersion
-//            metrics.transactionMetrics.first?.networkProtocolName
         }
     }
 }

@@ -90,7 +90,7 @@ public class StubPlay {
         logger("config=", config)
         
         stubManager.reset()
-        session = StubURLProtocolStore.shared.updateSession(config: config.protocolURLSessionConfiguration)
+        session = StubURLProtocolStore.shared.updateSession(config: config.protocolURLSessionConfiguration, saveMetrics: config.saveMetrics)
         
         StubResourceLoaderStore.shared.update(config: config.protocolURLSessionConfiguration, stubManager: stubManager, port: Int(serverPort))
         
