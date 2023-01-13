@@ -35,6 +35,8 @@
 		3F24AA6F268741D70058CEDD /* StubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3180792264A21A00863A32 /* StubTests.swift */; };
 		3F3180772264979E00863A32 /* RewriteRuleCreateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3180762264979E00863A32 /* RewriteRuleCreateTests.swift */; };
 		3F31807A2264A21A00863A32 /* StubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3180792264A21A00863A32 /* StubTests.swift */; };
+		3F3D535929710A24006FEECD /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3D535829710A24006FEECD /* Swifter */; };
+		3F3D535B29710A53006FEECD /* FileManager+Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3D535A29710A53006FEECD /* FileManager+Archive.swift */; };
 		3F44FC842296AD4E0086A7C6 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44FC832296AD4E0086A7C6 /* Logger.swift */; };
 		3F53A825269846BD000CA642 /* HlsPlaylistTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F53A824269846BD000CA642 /* HlsPlaylistTests.swift */; };
 		3F53A826269846BD000CA642 /* HlsPlaylistTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F53A824269846BD000CA642 /* HlsPlaylistTests.swift */; };
@@ -120,7 +122,6 @@
 		3FF207A4227C4C58000202B0 /* StubURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF207A3227C4C58000202B0 /* StubURLProtocol.swift */; };
 		3FF54B9126455B180026BB50 /* StubPlay iOS.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 3FF54B8F26455B180026BB50 /* StubPlay iOS.xctestplan */; };
 		3FFC2598228058A600BC47E8 /* StubPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC2597228058A600BC47E8 /* StubPlay.swift */; };
-		3FFE5A70263D0B53005DAFB3 /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = 3FFE5A6F263D0B53005DAFB3 /* Swifter */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +152,7 @@
 		3F3180762264979E00863A32 /* RewriteRuleCreateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewriteRuleCreateTests.swift; sourceTree = "<group>"; };
 		3F3180792264A21A00863A32 /* StubTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubTests.swift; sourceTree = "<group>"; };
 		3F33EE3B28F6D19C00A0B28D /* StubAssert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAssert.swift; sourceTree = "<group>"; };
+		3F3D535A29710A53006FEECD /* FileManager+Archive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+Archive.swift"; sourceTree = "<group>"; };
 		3F44FC832296AD4E0086A7C6 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		3F50E62D2518CF600074307F /* StubPlay.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = StubPlay.podspec; sourceTree = "<group>"; };
 		3F53A824269846BD000CA642 /* HlsPlaylistTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HlsPlaylistTests.swift; sourceTree = "<group>"; };
@@ -219,7 +221,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FFE5A70263D0B53005DAFB3 /* Swifter in Frameworks */,
+				3F3D535929710A24006FEECD /* Swifter in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				3F24AA592686FE660058CEDD /* Coding */,
+				3F3D535A29710A53006FEECD /* FileManager+Archive.swift */,
 				3FDDD88C227C6A7100F1CB37 /* URLSessionConfiguration+Extension.swift */,
 				3F0E5418227D47CC008E0F6A /* URL+Extension.swift */,
 				3FF0D9F42646A8BB0033EC4A /* URLRequest+Extension.swift */,
@@ -553,7 +556,7 @@
 			);
 			name = StubPlay;
 			packageProductDependencies = (
-				3FFE5A6F263D0B53005DAFB3 /* Swifter */,
+				3F3D535829710A24006FEECD /* Swifter */,
 			);
 			productName = StubPlay;
 			productReference = 3F843C1F22425B6F0007BBA4 /* StubPlay.framework */;
@@ -647,7 +650,7 @@
 			);
 			mainGroup = 3F843C1522425B6F0007BBA4;
 			packageReferences = (
-				3FFE5A6E263D0B53005DAFB3 /* XCRemoteSwiftPackageReference "swifter" */,
+				3F3D535729710A24006FEECD /* XCRemoteSwiftPackageReference "swifter" */,
 			);
 			productRefGroup = 3F843C2022425B6F0007BBA4 /* Products */;
 			projectDirPath = "";
@@ -744,6 +747,7 @@
 				3FB169BD2296C97E0014773C /* HlsPlaylist.swift in Sources */,
 				3F1F1F772646BB940029F82C /* RewriteRule.swift in Sources */,
 				3FAE4E5222425F40005EF99D /* Stub.swift in Sources */,
+				3F3D535B29710A53006FEECD /* FileManager+Archive.swift in Sources */,
 				3F1F1F7B2646BBA90029F82C /* RewriteRule+Matches.swift in Sources */,
 				3F101227227DB0A60018D3E0 /* StubFileSaver.swift in Sources */,
 				3F1F1F872646BBF60029F82C /* Response.swift in Sources */,
@@ -1207,20 +1211,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3FFE5A6E263D0B53005DAFB3 /* XCRemoteSwiftPackageReference "swifter" */ = {
+		3F3D535729710A24006FEECD /* XCRemoteSwiftPackageReference "swifter" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/httpswift/swifter.git";
+			repositoryURL = "https://github.com/mokten/swifter.git";
 			requirement = {
-				kind = revision;
-				revision = 1e4f51c92d7ca486242d8bf0722b99de2c3531aa;
+				kind = exactVersion;
+				version = 1.5.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3FFE5A6F263D0B53005DAFB3 /* Swifter */ = {
+		3F3D535829710A24006FEECD /* Swifter */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3FFE5A6E263D0B53005DAFB3 /* XCRemoteSwiftPackageReference "swifter" */;
+			package = 3F3D535729710A24006FEECD /* XCRemoteSwiftPackageReference "swifter" */;
 			productName = Swifter;
 		};
 /* End XCSwiftPackageProductDependency section */

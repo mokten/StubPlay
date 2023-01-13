@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "StubPlay",
     platforms: [
-        .iOS(.v10),
+        .iOS(.v11),
         .tvOS(.v11),
         .macOS(.v11)
     ],

@@ -25,7 +25,7 @@ public struct StubConfig {
     public var folders: [Folder]
     
     /*
-     Save responses in the order they were processed.
+     Folder where responses are saved.
      */
     public var saveResponsesDirURL: URL?
     
